@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'zermatt';
+    src: url('/fonts/Zermatt-First.ttf') format('truetype');
+    /* You can also specify other font properties like font-weight and font-style if needed */
+}
+
+@font-face {
+    font-family: 'zermatt2';
+    src: url('/fonts/zermatt-first.otf') format('opentype');
+    /* You can also specify other font properties like font-weight and font-style if needed */
+}
