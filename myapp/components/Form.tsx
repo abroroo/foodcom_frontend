@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 import { motion } from "framer-motion"
 import DatePicker from "react-datepicker"
 
@@ -7,6 +8,11 @@ import AddressFinder from "./AddressFinder"
 import "react-datepicker/dist/react-datepicker.css"
 
 import Image from "next/image"
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons"
 import {
   faBuilding,
   faCalendarDays,
@@ -29,7 +35,7 @@ import { setHours, setMinutes } from "date-fns" // Import the functions
 
 import { tr } from "date-fns/locale"
 import ko from "date-fns/locale/ko"
-import { PartyPopper, Users, Wallet } from "lucide-react"
+import { Link, PartyPopper, Users, Wallet } from "lucide-react"
 import ConfettiExplosion from "react-confetti-explosion"
 
 interface ChildComponentProps {
@@ -54,6 +60,7 @@ const Form = ({
   const [phoneNumber, setPhoneNumber] = useState("")
   const [customerMessage, setCustomerMessage] = useState("")
   const [eventVenue, setEventVenue] = useState("")
+  const router = useRouter()
   // ...
 
   // const currentDate = new Date(); // Get the current date and time
@@ -62,12 +69,20 @@ const Form = ({
   const [currentDate, setCurrentDate] = useState<Date | null>(new Date())
 
   const [selectedAccesories, setSelectedAccesories] = useState<string[]>([])
+  const [customTool, setCustomTool] = useState<string>("")
 
   const handleCheckboxAccesories = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = event.target
     setSelectedAccesories((prevFormData: any) => [...prevFormData, value])
+  }
+
+  const handleCheckboxAccesoriesOther = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.target
+    setCustomTool(value)
   }
 
   // 키다 option handling var
@@ -85,7 +100,7 @@ const Form = ({
     if (value === "otherEventType") {
       setShowOtherEventInput("true")
     } else if (value === "otherPlace") {
-      setShowInputOtherPlace("false")
+      setShowInputOtherPlace("true")
     } else if (value === "otherTool") {
       setShowOtherToolInput("true")
     } else {
@@ -178,29 +193,6 @@ const Form = ({
     setPhoneNumber(validatedPhoneNumber)
   }
 
-  // Animation for the checkboxes in the all questions exept the first one
-  const checkboxAnimationsGeneral = {
-    scale: [1.1, 1.05, 1],
-    transition: {
-      duration: 0.2,
-    },
-  }
-
-  const checkboxAnimationsSecondary = {
-    scale: [1, 1.2, 1],
-    transition: {
-      duration: 0.2,
-    },
-  }
-
-  // Animation for the checkboxes in the first question
-  const checkboxAnimations = {
-    scale: [1, 1.2, 1],
-    transition: {
-      duration: 0.2,
-    },
-  }
-
   // Confetti Animation
   const [isExploding, setIsExploding] = useState(false)
 
@@ -287,6 +279,7 @@ const Form = ({
       ...prevFormData,
       address: eventAddress,
       tool: selectedAccesories,
+      customTool: customTool,
       event_type: eventTypeOther || selectedEvent,
       date_rigistered: currentDate,
       event_time: eventDate,
@@ -329,6 +322,32 @@ const Form = ({
   // as Month Day, hour:minute
   const formattedEventTime = eventTime.toLocaleString("ko-KR", options)
 
+  // Animation for the checkboxes in the all questions exept the first one
+  const checkboxAnimationsGeneral = {
+    scale: [1.15, 1.25, 1],
+    transition: {
+      duration: 0.2,
+    },
+  }
+
+  const checkboxAnimationsSecondary = {
+    scale: [1, 1.2, 1],
+    transition: {
+      duration: 0.2,
+    },
+  }
+
+  // Animation for the checkboxes in the first question
+  const checkboxAnimations = {
+    scale: [1.1, 1.2, 1],
+    transition: {
+      duration: 0.2,
+    },
+  }
+
+  // For chnaging backgroundcolor of checked option
+  const [checkedOption, setCheckedOption] = useState("")
+
   return (
     <>
       <form
@@ -339,7 +358,7 @@ const Form = ({
 
         {currentQuestion === 0 && (
           <div className="flex flex-col items-center justify-center">
-            <h1 className="flex items-center justify-center font-kr text-[1rem] font-semibold lg:text-[22px]">
+            <h1 className="font-NexonGothic flex items-center  justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
               <PartyPopper
                 style={{ color: buttonBackground }}
                 className="mr-2 h-9 w-9"
@@ -351,8 +370,8 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#F25287] peer-checked:border-[#F25287] peer-checked:text-[#F25287] 
-    md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#F25287] peer-checked:border-[#F25287] 
+    peer-checked:text-[#F25287] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   type="checkbox"
@@ -383,7 +402,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB] peer-checked:text-[#2563EB] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB] peer-checked:text-[#2563EB] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -412,7 +431,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#047857] peer-checked:border-[#047857] peer-checked:text-[#047857] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#047857] peer-checked:border-[#047857] peer-checked:text-[#047857] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -441,7 +460,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#7C3AED] peer-checked:border-[#7C3AED] peer-checked:text-[#7C3AED] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#7C3AED] peer-checked:border-[#7C3AED] peer-checked:text-[#7C3AED] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{
@@ -461,7 +480,7 @@ const Form = ({
                   <Image
                     width="64"
                     height="64"
-                    src="/images/icons/festival.png"
+                    src="/images/icons/festival2.png"
                     alt="festival"
                     className="h-10 w-10 md:h-[64px] md:w-[64px]"
                   />
@@ -472,7 +491,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#9D174D] peer-checked:border-[#9D174D] peer-checked:text-[#9D174D] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#9D174D] peer-checked:border-[#9D174D] peer-checked:text-[#9D174D] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -501,7 +520,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#FE0000] peer-checked:border-[#FE0000] peer-checked:text-[#FE0000] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#FE0000] peer-checked:border-[#FE0000] peer-checked:text-[#FE0000] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{
@@ -518,7 +537,14 @@ const Form = ({
                   htmlFor="steak"
                   className="absolute inset-0 flex flex-col items-center justify-center"
                 >
-                  <svg
+                  <Image
+                    src="/images/icons/steak.png"
+                    alt="Steak icon"
+                    width={50}
+                    height={50}
+                    className="mb-2 h-10 w-10 md:h-[50px] md:w-[50px]"
+                  />
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
                     height="48"
@@ -533,7 +559,7 @@ const Form = ({
                     <circle cx="12.5" cy="8.5" r="2.5" />
                     <path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z" />
                     <path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5" />
-                  </svg>
+                  </svg> */}
                   스테이크 행사
                 </label>
               </motion.div>
@@ -541,7 +567,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#F8B400] peer-checked:border-[#F8B400] peer-checked:text-[#F8B400] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#F8B400] peer-checked:border-[#F8B400] peer-checked:text-[#F8B400] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{
@@ -558,7 +584,7 @@ const Form = ({
                   htmlFor="fingerFood"
                   className="absolute inset-0 flex flex-col items-center justify-center"
                 >
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
                     height="48"
@@ -573,7 +599,14 @@ const Form = ({
                     <circle cx="12" cy="2" r="1" />
                     <path d="M10.2 3.2C5.5 4 2 8.1 2 13a2 2 0 0 0 4 0v-1a2 2 0 0 1 4 0v4a2 2 0 0 0 4 0v-4a2 2 0 0 1 4 0v1a2 2 0 0 0 4 0c0-4.9-3.5-9-8.2-9.8" />
                     <path d="M3.2 14.8a9 9 0 0 0 17.6 0" />
-                  </svg>
+                  </svg> */}
+                  <Image
+                    src="/images/icons/fingerfood.png"
+                    alt="Finger food icon"
+                    width={50}
+                    height={50}
+                    className="mb-2 h-10 w-10 md:h-[50px] md:w-[50px]"
+                  />
                   핑거푸드
                 </label>
               </motion.div>
@@ -581,7 +614,7 @@ const Form = ({
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
-                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] hover:bg-gray-50 hover:text-[#C05621] peer-checked:border-[#C05621] peer-checked:text-[#C05621] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+                className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px]  text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#C05621] peer-checked:border-[#C05621] peer-checked:text-[#C05621] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -659,7 +692,7 @@ const Form = ({
         {currentQuestion === 1 && (
           <div className=" mx-auto w-full ">
             <motion.h4
-              className="mb-5 flex items-center justify-center font-kr text-[0.90rem] font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center  text-[0.90rem] font-semibold lg:text-[1.2rem]"
               initial={{ x: -200, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
@@ -717,15 +750,19 @@ const Form = ({
             <div className="flex items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md  mr-2 mt-5 flex  items-end justify-center py-2  text-[14px] tracking-wider text-[#49111c] underline decoration-solid underline-offset-2 md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setSelectedEvent("")
                 }}
               >
                 <>
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
                   뒤로
-                  {/* <FontAwesomeIcon icon={faCaretLeft} /> */}
                 </>
               </motion.button>
 
@@ -738,7 +775,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -765,7 +811,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-5 flex items-center justify-center font-kr text-lg font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center  text-[1rem] text-lg font-semibold lg:text-[1.2rem]"
             >
               <FontAwesomeIcon
                 icon={faSackDollar}
@@ -832,14 +878,19 @@ const Form = ({
             <div className="flex items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setSliderPeopleNum(0)
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -852,7 +903,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -878,7 +938,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-5 flex items-center justify-center font-kr text-[1rem] font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center  text-[1rem] font-semibold lg:text-[1.2rem]"
             >
               <FontAwesomeIcon
                 icon={faBuilding}
@@ -891,28 +951,63 @@ const Form = ({
             <div className="flex flex-wrap justify-center">
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
-                initial={{ x: -100, opacity: 0 }}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
+                initial={{
+                  x: -100,
+                  opacity: 0,
+                }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
                   duration: 0.5,
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background: checkedOption === "실내" ? buttonBackground : "",
+                  color: checkedOption === "실내" ? "#fff" : "",
+                  fontWeight: checkedOption === "실내" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg  hover:bg-indigo-50 md:m-2 md:h-28  md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="실내"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("실내")
+                  }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">실내</span>
+                <span className="flex flex-col items-center justify-center  text-[14px] md:text-[16px]">
+                  {checkedOption === "실내" ? (
+                    <Image
+                      src="/images/icons/eventPlace/indoor-white.png"
+                      alt="indoor icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/indoor.png"
+                      alt="indoor icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  실내
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -920,22 +1015,53 @@ const Form = ({
                   delay: 0.04,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background: checkedOption === "야외" ? buttonBackground : "",
+                  color: checkedOption === "야외" ? "#fff" : "",
+                  fontWeight: checkedOption === "야외" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2 md:h-28 md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="야외"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("야외")
+                  }}
                 />
 
-                <span className="pl-2 text-[14px] md:text-[17px]">야외</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "야외" ? (
+                    <Image
+                      src="/images/icons/eventPlace/outdoor-white.png"
+                      alt="outdoor icon"
+                      width={45}
+                      height={45}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/outdoor.png"
+                      alt="outdoor icon"
+                      width={45}
+                      height={45}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  야외
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -943,21 +1069,51 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background:
+                    checkedOption === "체육관" ? buttonBackground : "",
+                  color: checkedOption === "체육관" ? "#fff" : "",
+                  fontWeight: checkedOption === "체육관" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2  md:h-28 md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="체육관"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("체육관")
+                  }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">체육관</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "체육관" ? (
+                    <Image
+                      src="/images/icons/eventPlace/gym-white.png"
+                      alt="gym icon"
+                      width={45}
+                      height={45}
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/gym.png"
+                      alt="gym icon"
+                      width={45}
+                      height={45}
+                    />
+                  )}
+                  체육관
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -965,21 +1121,53 @@ const Form = ({
                   delay: 0,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background:
+                    checkedOption === "연회장" ? buttonBackground : "",
+                  color: checkedOption === "연회장" ? "#fff" : "",
+                  fontWeight: checkedOption === "연회장" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2  md:h-28 md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="연회장"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("연회장")
+                  }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">연회장</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "연회장" ? (
+                    <Image
+                      src="/images/icons/eventPlace/banquet-white.png"
+                      alt="banquet icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/banquet.png"
+                      alt="banquet icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  연회장
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -987,21 +1175,52 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background: checkedOption === "호텔" ? buttonBackground : "",
+                  color: checkedOption === "호텔" ? "#fff" : "",
+                  fontWeight: checkedOption === "호텔" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2 md:h-28  md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="호텔"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("호텔")
+                  }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">호텔</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "호텔" ? (
+                    <Image
+                      src="/images/icons/eventPlace/hotel-white.png"
+                      alt="hotel icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/hotel.png"
+                      alt="hotel icon"
+                      width={40}
+                      height={40}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  호텔
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1009,21 +1228,52 @@ const Form = ({
                   delay: 0.04,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4 "
+                style={{
+                  background: checkedOption === "미정" ? buttonBackground : "",
+                  color: checkedOption === "미정" ? "#fff" : "",
+                  fontWeight: checkedOption === "미정" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2 md:h-28  md:w-28 xl:m-4 "
               >
                 <input
-                  style={{ accentColor: buttonBackground }}
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="미정"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setCheckedOption("미정")
+                  }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">미정</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "미정" ? (
+                    <Image
+                      src="/images/icons/eventPlace/unknown-white.png"
+                      alt="unknown icon"
+                      width={38}
+                      height={38}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/unknown.png"
+                      alt="unknown icon"
+                      width={38}
+                      height={38}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  미정
+                </span>
               </motion.label>
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1031,21 +1281,51 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-28   md:w-28 xl:m-4"
+                style={{
+                  background: checkedOption === "기타" ? buttonBackground : "",
+                  color: checkedOption === "기타" ? "#fff" : "",
+                  fontWeight: checkedOption === "기타" ? "600" : "",
+                }}
+                className="relative m-1 flex h-20  w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2  md:h-28 md:w-28 xl:m-4"
               >
                 <input
+                  style={{
+                    display: "none",
+                    visibility: "hidden",
+                  }}
                   type="radio"
                   required
                   name="event_place"
                   value="otherPlace"
-                  onChange={handleRadioChange}
+                  onChange={(e) => {
+                    handleRadioChange(e)
+                    setCheckedOption("기타")
+                  }}
                   placeholder="직접 입력"
-                  style={{ accentColor: buttonBackground }}
                 />
-                <span className="pl-2 text-[14px] md:text-[17px]">기타</span>
+                <span className="flex flex-col items-center justify-center text-[14px] md:text-[16px]">
+                  {checkedOption === "기타" ? (
+                    <Image
+                      src="/images/icons/eventPlace/custom-white.png"
+                      alt="custom input's icon"
+                      width={38}
+                      height={38}
+                      className="mb-[2px]"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/icons/eventPlace/custom.png"
+                      alt="custom input's icon"
+                      width={38}
+                      height={38}
+                      className="mb-[2px]"
+                    />
+                  )}
+                  기타
+                </span>
               </motion.label>
 
-              {showInputOtherPlace == "true" && (
+              {showInputOtherPlace === "true" && (
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
@@ -1066,7 +1346,8 @@ const Form = ({
             <div className="flex items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setSliderBudgetNum(0)
@@ -1074,7 +1355,11 @@ const Form = ({
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -1087,7 +1372,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -1114,7 +1408,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-5 flex items-center justify-center font-kr text-lg font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center  text-lg font-semibold lg:text-[1.2rem]"
             >
               <FontAwesomeIcon
                 icon={faChair}
@@ -1127,6 +1421,7 @@ const Form = ({
             <div className="flex flex-wrap justify-center">
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1134,7 +1429,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1152,6 +1447,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1159,7 +1455,7 @@ const Form = ({
                   delay: 0.04,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28  md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1177,6 +1473,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1184,7 +1481,7 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28  md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1203,6 +1500,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1210,7 +1508,7 @@ const Form = ({
                   delay: 0,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1226,6 +1524,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1233,7 +1532,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1250,6 +1549,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1257,7 +1557,7 @@ const Form = ({
                   delay: 0.04,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="cursor-pointerr relative m-1 flex h-16 w-[85px]  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="cursor-pointerr relative m-1 flex h-16 w-[85px]  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1274,6 +1574,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1281,7 +1582,7 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1298,6 +1599,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1305,7 +1607,7 @@ const Form = ({
                   delay: 0,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3 "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3 "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1320,6 +1622,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1327,7 +1630,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28  md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1344,6 +1647,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1351,7 +1655,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1366,6 +1670,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1373,7 +1678,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28  md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1388,6 +1693,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1395,7 +1701,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1412,6 +1718,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1419,7 +1726,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1436,6 +1743,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1443,7 +1751,7 @@ const Form = ({
                   delay: 0.06,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3  "
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3  "
               >
                 <input
                   style={{ accentColor: buttonBackground }}
@@ -1460,6 +1768,7 @@ const Form = ({
 
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
+                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -1467,7 +1776,7 @@ const Form = ({
                   delay: 0.04,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] hover:bg-indigo-50 md:m-2 md:h-20 md:w-28   md:justify-center xl:m-3"
+                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28  md:justify-center xl:m-3"
               >
                 <input
                   type="radio"
@@ -1488,7 +1797,7 @@ const Form = ({
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     placeholder="명기해주세요"
                     name="tool"
-                    onChange={handleCheckboxAccesories}
+                    onChange={handleCheckboxAccesoriesOther}
                   />
                 </div>
               )}
@@ -1497,14 +1806,19 @@ const Form = ({
             <div className="flex items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setEventVenue("")
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -1517,7 +1831,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -1543,7 +1866,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-5 flex items-center justify-center  font-kr text-lg font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center   text-lg font-semibold lg:text-[1.2rem]"
             >
               <FontAwesomeIcon
                 icon={faCalendarDays}
@@ -1576,14 +1899,19 @@ const Form = ({
             <div className="flex items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   selectedAccesories.length = 0
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -1596,7 +1924,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -1625,14 +1962,19 @@ const Form = ({
             <div className="flex w-full items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setEventDate(currentDate)
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -1645,7 +1987,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -1671,7 +2022,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-5 flex items-center justify-center  font-kr text-lg font-semibold lg:text-[22px]"
+              className="mb-5 flex items-center justify-center   text-lg font-semibold lg:text-[1.2rem]"
             >
               <FontAwesomeIcon
                 icon={faFileContract}
@@ -1690,9 +2041,17 @@ const Form = ({
                 delay: 0.02,
                 ease: [0.25, 1, 0.5, 1],
               }}
-              className="mt-10 w-full md:w-[70%]"
+              className="mt-10 flex w-full items-center justify-center md:w-[70%]"
             >
               {/* <label htmlFor="input2" className="block text-md font-medium text-[#49111c] ">이름</label> */}
+              <div className="mr-3">
+                <Image
+                  src="/images/icons/name.png"
+                  width={25}
+                  height={25}
+                  alt="Name icon"
+                />
+              </div>
               <input
                 className="block h-10 w-full  border-b-[1px]  border-slate-200  pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]"
                 placeholder="이름"
@@ -1711,31 +2070,40 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-7 mt-10 w-full md:w-[70%]"
+              className="mb-7 mt-10 w-full  md:w-[70%]"
             >
               {/* <label htmlFor="input2" className="block text-md font-medium text-[#49111c]">
                 전화번호
               </label> */}
+              <div className="flex items-center justify-center">
+                <div className="mr-3">
+                  <Image
+                    src="/images/icons/phone.png"
+                    width={25}
+                    height={25}
+                    alt="Phone icon"
+                  />
+                </div>
 
-              <input
-                type="tel"
-                id="input2"
-                name="phone_number"
-                required={true}
-                className={`phone_number_input block h-10 w-full border-b-[1px] border-slate-200 pr-3 text-[13px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]`}
-                // placeholder="전화번호 - 숫자만 입력"
-                placeholder="전화번호: 010 1234 5678"
-                //style={{'--placeholder-font-size' : '10px'}}
-                onChange={handlePhoneNumberChange}
-                pattern="^[0-9]{9,11}$" // Regular expression for 9 to 11 digits
-              />
-
+                <input
+                  type="tel"
+                  id="input2"
+                  name="phone_number"
+                  required={true}
+                  className={`phone_number_input block h-10 w-full border-b-[1px] border-slate-200 pr-3 text-[13px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]`}
+                  // placeholder="전화번호 - 숫자만 입력"
+                  placeholder="- 없이 숫아만 입력"
+                  //style={{'--placeholder-font-size' : '10px'}}
+                  onChange={handlePhoneNumberChange}
+                  pattern="^[0-9]{9,11}$" // Regular expression for 9 to 11 digits
+                />
+              </div>
               {phoneNumberError && (
                 <p
                   className={`${
                     phoneNumberError === "완벽해요!"
-                      ? "mt-1 text-[12px] text-green-900"
-                      : "mt-1 text-[12px] text-red-500"
+                      ? "ml-9 mt-1  text-[12px] text-green-900"
+                      : "ml-9  mt-1  text-[12px] text-red-500"
                   }`}
                 >
                   {phoneNumberError}
@@ -1743,10 +2111,18 @@ const Form = ({
               )}
             </motion.div>
 
-            <motion.div className="w-full md:w-[70%]">
+            <motion.div className="my-2 mt-10 flex w-full items-center justify-center  md:w-[70%]">
+              <div className="mr-3">
+                <Image
+                  src="/images/icons/note.png"
+                  width={25}
+                  height={25}
+                  alt="Notes icon"
+                />
+              </div>
               <input
                 type="text"
-                className=" my-2 mt-10 h-10 w-full border-b-[1px]  border-slate-200 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px] "
+                className="  h-10 w-full border-b-[1px]  border-slate-200 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px] "
                 placeholder="요청 사항"
                 name="message"
                 onChange={handleInputChange}
@@ -1756,14 +2132,19 @@ const Form = ({
             <div className="flex w-full items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border border-slate-100  py-2 text-[14px] tracking-wider text-[#49111c]  hover:bg-[#6161ff]/10 focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex items-center  justify-center py-2 text-[15px]  font-semibold tracking-wider underline  decoration-solid underline-offset-2  md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setEventAddress("")
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
@@ -1776,7 +2157,16 @@ const Form = ({
                         border: "1px solid #fff",
                       }
                     : {
-                        background: "#F1F5F9",
+                        background: `rgba(${parseInt(
+                          buttonBackground.slice(1, 3),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(3, 5),
+                          16
+                        )}, ${parseInt(
+                          buttonBackground.slice(5, 7),
+                          16
+                        )}, 0.3)`,
                         color: "#fff",
                         border: "1px solid #fff",
                       }
@@ -1805,7 +2195,7 @@ const Form = ({
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, type: "spring" }}
               >
-                <h1 className=" flex items-center justify-center text-lg font-semibold">
+                <h1 className=" flex items-center justify-center text-[1rem] font-semibold md:text-[1.2rem]">
                   이벤트 세부 정보를 확인하십시오{" "}
                 </h1>
               </motion.div>
@@ -1818,13 +2208,13 @@ const Form = ({
             </div>
 
             <div className="flex flex-col items-center justify-center xl:hidden">
-              {/* <h1 className='text-[60px] mb-10 font-[500] font-kr'>Congratulation! </h1> */}
+              {/* <h1 className='text-[60px] mb-10 font-[500] '>Congratulation! </h1> */}
 
               <motion.p
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-                className="m-1 mb-5 font-kr text-[1rem] font-bold md:m-5"
+                className="m-1 mb-5  text-[1rem] font-bold md:m-5"
               >
                 이벤트 계획이 준비되었습니다!
               </motion.p>
@@ -1905,7 +2295,8 @@ const Form = ({
             <div className="flex w-full items-center justify-center">
               <motion.button
                 type="button"
-                className="text-md focus:bg-blue mr-2 mt-5 h-[40px] w-[30%] max-w-md rounded-lg  border py-2  text-[14px] tracking-wider text-[#49111c] hover:bg-[#6161ff]/10  focus:outline-none md:w-[10%] md:text-[16px]"
+                style={{ color: buttonBackground }}
+                className="text-md  mr-7 mt-5 flex items-center  justify-center py-2 text-[15px]  font-semibold tracking-wider underline  decoration-solid underline-offset-2  md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   setCustomerName(""),
@@ -1914,15 +2305,22 @@ const Form = ({
                 }}
               >
                 <>
-                  <FontAwesomeIcon icon={faCaretLeft} />
+                  <FontAwesomeIcon
+                    icon={faCaretLeft}
+                    className="mr-1 text-[11px]"
+                  />{" "}
+                  뒤로
                 </>
               </motion.button>
 
               <motion.button
                 style={{ background: buttonBackground, color: "#fff" }}
-                onClick={handleNext}
+                onClick={() => {
+                  handleNext()
+                  router.push("/thank-you")
+                }}
                 type="submit"
-                className=" text-md focus:bg-blue mt-5 h-[41px] w-[40%]  max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider  text-[#49111c] focus:outline-none md:w-[20%] md:text-[16px]"
+                className=" text-md focus:bg-blue relative mt-5 h-[41px] w-[40%]  max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider  text-[#49111c] focus:outline-none md:w-[20%] md:text-[16px]"
                 draggable="false"
               >
                 <>
@@ -1931,50 +2329,6 @@ const Form = ({
               </motion.button>
             </div>
           </>
-        )}
-        {currentQuestion === 9 && (
-          <motion.div
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: [1.2, 1] }}
-            transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
-            className="absolute inset-1/2 mb-16 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center text-center text-[#49111c]"
-          >
-            <div>
-              {isExploding && (
-                <ConfettiExplosion
-                  force={0.6}
-                  duration={2000}
-                  particleCount={70}
-                  width={800}
-                />
-              )}
-            </div>
-            <h1 className="mb-10 w-[406px] font-kr text-4xl font-semibold md:text-6xl">
-              감사합니다!!!
-            </h1>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                delay: 0.5,
-                duration: 0.2,
-                type: "spring",
-                stiffness: 100,
-              }}
-              className="w-[400px]"
-            >
-              <p className="m-1 text-lg font-light md:text-[18px]">
-                귀하의 성공적 행사를 위해
-              </p>
-              <p className="m-1 text-lg font-light md:text-[18px]">
-                Catering 고수 전문가의
-              </p>
-              <p className="m-1 text-lg font-light md:text-[18px]">
-                견적을 보내드리겠습니다!!!
-              </p>
-            </motion.div>
-          </motion.div>
         )}
 
         <div
@@ -1988,3 +2342,98 @@ const Form = ({
 }
 
 export default Form
+
+// <div className="flex h-screen w-screen flex-col">
+//             <motion.div
+//               initial={{ scale: 0.8 }}
+//               whileInView={{ scale: [1.2, 1] }}
+//               transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
+//               className="absolute inset-1/2 mb-16 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center text-center text-[#49111c]"
+//             >
+//               <div>
+//                 {isExploding && (
+//                   <ConfettiExplosion
+//                     force={0.6}
+//                     duration={2000}
+//                     particleCount={70}
+//                     width={800}
+//                   />
+//                 )}
+//               </div>
+
+//               {/* <div className="">
+//               <Image
+//                 unoptimized={true}
+//                 layout={"responsive"}
+//                 src="/images/team-work.gif"
+//                 width={400}
+//                 height={300}
+//                 alt="Team working hard illustration"
+//                 className="absolute right-44 top-0"
+//               />
+//             </div> */}
+
+//               <h1 className="mb-10 w-[406px]  text-4xl font-semibold md:text-6xl">
+//                 감사합니다!!!
+//               </h1>
+
+//               <motion.div
+//                 initial={{ opacity: 0 }}
+//                 whileInView={{ opacity: 1 }}
+//                 transition={{
+//                   delay: 0.5,
+//                   duration: 0.2,
+//                   type: "spring",
+//                   stiffness: 100,
+//                 }}
+//                 className="w-[400px]"
+//               >
+//                 <p className="m-1 text-lg font-light md:text-[18px]">
+//                   귀하의 성공적 행사를 위해
+//                 </p>
+//                 <p className="m-1 text-lg font-light md:text-[18px]">
+//                   30년 실무경험과 전문성 있는
+//                 </p>
+//                 <p className="m-1 text-lg font-light md:text-[18px]">
+//                   Catering Food & Event 고수의
+//                 </p>
+//                 <p className="m-1 text-lg font-light md:text-[18px]">
+//                   견적을 보내드리겠습니다!!!
+//                 </p>
+//               </motion.div>
+//             </motion.div>
+
+//             <div className="absolute inset-1/2 flex w-full -translate-x-1/2 translate-y-0 transform justify-between p-4">
+//               <div className="address-info">
+//                 <p className="text-gray-600">Your Company Name</p>
+//                 <p className="text-gray-600">123 Main Street</p>
+//                 <p className="text-gray-600">City, Country</p>
+//               </div>
+//               <div className="social-media-icons space-x-4">
+//                 <a
+//                   href="https://facebook.com"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-blue-500 hover:text-blue-700"
+//                 >
+//                   <FontAwesomeIcon icon={faFacebook} size="2x" />
+//                 </a>
+//                 <a
+//                   href="https://twitter.com"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-blue-400 hover:text-blue-600"
+//                 >
+//                   <FontAwesomeIcon icon={faTwitter} size="2x" />
+//                 </a>
+//                 <a
+//                   href="https://instagram.com"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-pink-500 hover:text-pink-700"
+//                 >
+//                   <FontAwesomeIcon icon={faInstagram} size="2x" />
+//                 </a>
+//               </div>
+//             </div>
+//           </div>

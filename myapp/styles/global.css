@@ -1,74 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap');
+
+@import "./fonts.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap");
 body {
-    /* color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
     /* background: linear-gradient( to bottom, transparent, #FFFBF5, #FFFBEB);   #fffbff;*/
-    background-color: #fff;
-    overflow: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    /* #FFFBEB; */
-    /* overflow-y: hidden;  rgb(243, 243, 239);   #F9FCFB;   #1d040b;  */
-    /* -webkit-touch-callout: none;
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  /* #FFFBEB; */
+  /* overflow-y: hidden;  rgb(243, 243, 239);   #F9FCFB;   #1d040b;  */
+  /* -webkit-touch-callout: none;
 -webkit-user-select: none;
 -khtml-user-select: none;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none; */
 
-/* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
+  /* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
 }
 
-
-
 .phone_number_input {
-    --placeholder-size: 13px;
+  --placeholder-size: 13px;
 }
 
 .phone_number_input::placeholder {
-    font-size: var(--placeholder-size);
+  font-size: var(--placeholder-size);
 }
 
-
 datalist {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    writing-mode: horizontal-tb;
-    
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  writing-mode: horizontal-tb;
+}
 /* Adjust the size and opacity of the noise pattern as needed */
 
 .landing {
-    background-image: url("/images/bert-hall.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-color: #561421; */
+  background-image: url("/images/bert-hall.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: #561421; */
 }
 
 .steps-background {
-    /* background-image: url("/images/bert-wedd.jpeg");     #F9FCFB; */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #F9FCFB;
-    ;
+  /* background-image: url("/images/bert-wedd.jpeg");     #F9FCFB; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f9fcfb;
 }
-
-
-  
 
 /* .background-fade {
     background-color: transparent;
@@ -88,42 +83,42 @@ datalist {
 }  */
 
 @keyframes moveBgRow1 {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes moveBgRow2 {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes moveBgRow3 {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .animate-bg-row1 {
-    animation: moveBgRow1 50s linear infinite;
+  animation: moveBgRow1 50s linear infinite;
 }
 
 .animate-bg-row2 {
-    animation: moveBgRow2 25s linear infinite;
+  animation: moveBgRow2 25s linear infinite;
 }
 
 .animate-bg-row3 {
-    animation: moveBgRow3 30s linear infinite;
+  animation: moveBgRow3 30s linear infinite;
 }
 
 /* .datePicker {
@@ -136,118 +131,117 @@ datalist {
 } */
 
 .react-datepicker {
-    width: 100% !important;
-    height: 100% !important;
-    font-size: 16px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    border: 1px solid #eeeeee !important;
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 16px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  border: 1px solid #eeeeee !important;
 }
-.react-datepicker__year-read-view--down-arrow, .react-datepicker__month-read-view--down-arrow, .react-datepicker__month-year-read-view--down-arrow, .react-datepicker__navigation-icon::before {
-    border-color: #000000 !important;
-    height: 10px !important;
-
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker__navigation-icon::before {
+  border-color: #000000 !important;
+  height: 10px !important;
 }
-
 
 .react-datepicker__header {
-    background-color: #fff !important;
-    border-bottom: 1px solid #eeeeee !important;
+  background-color: #fff !important;
+  border-bottom: 1px solid #eeeeee !important;
 }
-
-
 
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker__time-name {
-    width: 3.05rem !important;
-    line-height: 2rem !important;
+  width: 3.05rem !important;
+  line-height: 2rem !important;
 }
 
 @media (max-width: 767px) {
-    .react-datepicker__day-name,
-    .react-datepicker__day,
-    .react-datepicker__time-name {
-        width: 1.5rem !important;
-        line-height: 1.9rem !important;
-    }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    width: 1.5rem !important;
+    line-height: 1.9rem !important;
+  }
 
-    .react-datepicker {
-        width: 100% !important;
-        font-size: 15px !important;
-        display: flex !important;
-        flex-direction: row !important;
-        
-    }
-    .react-datepicker__time-container {
-        height: 15rem !important;
-    }
-    .react-datepicker-time__header {
-        height: 3.37rem !important;
-    
-    }
-    
+  .react-datepicker {
+    width: 100% !important;
+    font-size: 15px !important;
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  .react-datepicker__time-container {
+    height: 15rem !important;
+  }
+  .react-datepicker-time__header {
+    height: 3.37rem !important;
+  }
 }
 
 .react-datepicker__month {
-    margin: 1.4rem !important;
-    text-align: center !important;
+  margin: 1.4rem !important;
+  text-align: center !important;
 }
 
 .react-datepicker__navigation-icon {
-    top: 12px !important;
+  top: 12px !important;
 }
 
 .react-datepicker__current-month,
 .react-datepicker-time__header,
 .react-datepicker-year-header {
-    font-size: 1.1rem !important;
+  font-size: 1.1rem !important;
 }
-
-
 
 .react-datepicker__time-container {
-    height: 20rem !important;
-    border-left: 1px solid #eeeeee !important;
-    
+  height: 20rem !important;
+  border-left: 1px solid #eeeeee !important;
 }
 .react-datepicker-time__header {
-    height: 3.47rem;
-
+  height: 3.47rem;
 }
 
-.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
-    background-color: #49111c !important;
-    color: #fff !important;
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  background-color: #49111c !important;
+  color: #fff !important;
 }
 
-
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected  {
-    background-color: #49111c !important;
-    color: #fff !important;
-    border-radius:  0.3rem !important;
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #49111c !important;
+  color: #fff !important;
+  border-radius: 0.3rem !important;
 }
 
 /*  range input datalist circles  */
 
 /* Custom CSS class for styling datalist options */
 .circle-options {
-    list-style-type: none; /* Remove the default list-style */
-    padding: 0; /* Remove default padding */
-    
-  }
-  
-  /* Style each option as a circle */
-  .circle-options option {
-    border-radius: 50%; /* Make each option a circle */
-    width: 5px; /* Adjust the size of the circle */
-    height: 5px; /* Adjust the size of the circle */
-    background-color: #007bff; /* Set the color of the circle */
-    margin-right: 0px; /* Adjust the spacing between circles */
-  }
-  
-  
+  list-style-type: none; /* Remove the default list-style */
+  padding: 0; /* Remove default padding */
+}
 
-
-
-
+/* Style each option as a circle */
+.circle-options option {
+  border-radius: 50%; /* Make each option a circle */
+  width: 5px; /* Adjust the size of the circle */
+  height: 5px; /* Adjust the size of the circle */
+  background-color: #007bff; /* Set the color of the circle */
+  margin-right: 0px; /* Adjust the spacing between circles */
+}

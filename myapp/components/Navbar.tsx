@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link href="/" className={`mx-1 text-xl font-bold   `}>
             <Image
               src="/images/logo.png"
-              width={120}
+              width={100}
               height={30}
               alt="logo image w-auto h-auto"
             />
@@ -91,22 +91,51 @@ const Navbar = () => {
               />{" "}
             </button>
           )}
+          <div className="flex w-[9%] items-center justify-between">
+            {currentRoute === "/form" ? (
+              <Link
+                href="/work"
+                className="mx-1 hidden h-5 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
+              >
+                워크스
+              </Link>
+            ) : currentRoute === "/work" ? (
+              <Link
+                href="/about"
+                className="mx-1 hidden h-5 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
+              >
+                대해
+              </Link>
+            ) : currentRoute === "/about" ? (
+              <Link
+                href="/form"
+                className="mx-1 hidden h-5 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
+              >
+                용지
+              </Link>
+            ) : (
+              <Link
+                href="/form"
+                className=" hidden h-5 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
+              ></Link>
+            )}
 
-          {currentRoute === "/form" ? (
-            <Link
-              href="/about"
-              className="mx-1 hidden h-10 w-10 text-[16px] font-semibold xl:block"
-            >
-              대해
-            </Link>
-          ) : (
-            <Link
-              href="/form"
-              className="mx-1 hidden h-10 w-10 text-[16px] font-semibold xl:block"
-            >
-              용지
-            </Link>
-          )}
+            {currentRoute === "/form" ? (
+              <Link
+                href="/about"
+                className="mx-1 hidden h-10 w-10 items-center justify-center text-[16px] font-semibold xl:flex"
+              >
+                대해
+              </Link>
+            ) : (
+              <Link
+                href="/form"
+                className="mx-1 hidden h-10 w-10 items-center justify-center text-[16px] font-semibold xl:flex"
+              >
+                용지
+              </Link>
+            )}
+          </div>
         </div>
       </motion.div>
       {isModalOpen && (

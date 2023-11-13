@@ -17,4 +17,3 @@ export const FingerFood = importAll(require.context('../public/images/real/finge
 
 
 
-// lkjdfjkdsklfjds 

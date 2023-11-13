@@ -173,26 +173,27 @@ const FormPage = () => {
 
   const [count, setCount] = useState<number>(0)
 
-  // const saveFormData = async () => {
-  //   try {
-  //     const res = await fetch(`http://127.0.0.1/:8000/api/customer_update/243242313`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formDataTransfered),
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-  //     console.log("this is example Data : ", JSON.stringify(formDataTransfered) )
-  //     setCount(1)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const saveFormData = async () => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/api/process_data`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDataTransfered),
+      })
+      const data = await res.json()
+      console.log(data)
+      console.log("this is example Data : ", JSON.stringify(formDataTransfered))
+      setCount(1)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // if(count === 0) {
-  // saveFormData(); }
+  if (count === 0 && isCurrentQuestion === 9) {
+    saveFormData()
+  }
 
   // post formDataTransferred to the backend and save it to the database
 
@@ -540,7 +541,7 @@ const FormPage = () => {
                         />
                         <input
                           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                          value={toolNamesArr}
+                          value={[toolNamesArr, formDataTransfered.customTool]}
                         ></input>
                       </motion.div>
                     </motion.div>

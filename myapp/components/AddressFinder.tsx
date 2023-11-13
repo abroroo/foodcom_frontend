@@ -87,7 +87,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
         initial={{ x: -200 }}
         whileInView={{ x: 0 }}
         transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-        className="mb-5 flex items-center justify-center font-kr text-[0.9rem] font-semibold lg:text-[22px]"
+        className="mb-5 flex items-center justify-center  text-[0.9rem] font-semibold lg:text-[1.2rem]"
       >
         <FontAwesomeIcon
           icon={faMapLocationDot}
