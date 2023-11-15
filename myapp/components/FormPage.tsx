@@ -1,3 +1,4 @@
+import { count } from "console"
 import React, { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import {
@@ -151,48 +152,74 @@ const FormPage = () => {
 
   const [ticket_number, setTicketNumber] = useState<string>("")
 
-  // const createNewCustomer = async () => {
-  // if (ticket_number === '') {
-  //   try {
-  //     const res = await fetch('http://127.0.0.1:8000/api/new_customer', {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     const data = await res.json();
-  //     console.log("Ticket Number: ", data);
-  //     setTicketNumber(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // };
+  const [countForCustomer, setCountForCustomer] = useState<number>(0)
+  const [countForProcess, setCountForProcess] = useState<number>(0)
+  const [countForPdf, setCountForPdf] = useState<number>(0)
+
+  const createNewCustomer = async () => {
+    if (ticket_number === "") {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/api/new_customer", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        const data = await res.json()
+        console.log("Ticket Number: ", data)
+        setTicketNumber(data.ticket_number)
+        setCountForCustomer(1)
+        console.log("Ticket Number in front End: ", ticket_number)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 
   // createNewCustomer();
 
-  const [count, setCount] = useState<number>(0)
-
   const saveFormData = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/process_data/243242313`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataTransfered),
-      })
+      const res = await fetch(
+        `http://127.0.0.1:8000/api/process_data/${ticket_number}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataTransfered),
+        }
+      )
       const data = await res.json()
-      console.log(data)
+      console.log("Response from backend: ", data)
       console.log("this is example Data : ", JSON.stringify(formDataTransfered))
-      setCount(1)
+      setCountForProcess(1)
     } catch (error) {
       console.log(error)
     }
   }
 
-  if (count === 0 && isCurrentQuestion === 9) {
+  const generatePdf = async () => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8000/api/generatepdf/${ticket_number}`,
+        {
+          method: "GET",
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  if (countForCustomer === 0 && isCurrentQuestion === 9) {
+    createNewCustomer()
+  }
+  if (countForCustomer === 1) {
     saveFormData()
+  }
+  if (countForProcess === 1) {
+    generatePdf()
   }
 
   // post formDataTransferred to the backend and save it to the database

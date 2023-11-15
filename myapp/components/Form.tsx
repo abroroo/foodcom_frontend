@@ -283,10 +283,10 @@ const Form = ({
       ...prevFormData,
       address: eventAddress,
       tool: selectedAccesories,
-      customTool: customTool,
+      //customTool: customTool,
       event_type: eventTypeOther || selectedEvent,
       date_rigistered: currentDate,
-      event_time: eventDate,
+      event_date: eventDate,
       meal_cost: sliderBudgetVal,
       event_place: eventVenue,
       name: customerName,
@@ -1801,7 +1801,7 @@ const Form = ({
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     placeholder="명기해주세요"
                     name="tool"
-                    onChange={handleCheckboxAccesoriesOther}
+                    onChange={handleCheckboxAccesories}
                   />
                 </div>
               )}
