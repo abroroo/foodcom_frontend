@@ -138,7 +138,11 @@ const Form = ({
   }
 
   // Handle changes in radio inputs and update the formData state
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target
     setFormData((prevFormData: any) => ({ ...prevFormData, [name]: value }))
     if (name === "people_count") {
@@ -351,7 +355,7 @@ const Form = ({
   return (
     <>
       <form
-        className="flex  h-full  w-full flex-col items-center  justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:p-32 "
+        className="flex  h-full  w-full flex-col items-center  justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-32 md:px-20"
         onSubmit={handleSubmit}
       >
         {/* Intro to Form */}
@@ -371,7 +375,7 @@ const Form = ({
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                 className="event_range_wrapper relative m-1 h-20 w-20 cursor-pointer select-none rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] shadow-lg hover:bg-gray-50 hover:text-[#F25287] peer-checked:border-[#F25287] 
-    peer-checked:text-[#F25287] md:m-2 md:h-32 md:w-32 md:text-[15px] xl:m-2"
+    peer-checked:text-[#F25287] md:m-2 md:h-32 md:w-32 md:text-[14px] xl:m-2"
               >
                 <input
                   type="checkbox"
@@ -735,7 +739,7 @@ const Form = ({
                   min="0"
                   max="1000"
                   step="10"
-                  className=" mb-10  mt-20 h-[1.5px] w-full cursor-pointer bg-slate-200"
+                  className=" mb-10 mt-20 h-[1.5px] w-full cursor-pointer bg-slate-200 "
                   value={sliderPeopleNum}
                   required
                   name="people_count"
@@ -2070,7 +2074,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
-              className="mb-7 mt-10 w-full  md:w-[70%]"
+              className=" mt-10 w-full  md:w-[70%]"
             >
               {/* <label htmlFor="input2" className="block text-md font-medium text-[#49111c]">
                 전화번호
@@ -2111,7 +2115,7 @@ const Form = ({
               )}
             </motion.div>
 
-            <motion.div className="my-2 mt-10 flex w-full items-center justify-center  md:w-[70%]">
+            <motion.div className="my-2 mt-10 flex w-full items-start justify-center  md:w-[70%]">
               <div className="mr-3">
                 <Image
                   src="/images/icons/note.png"
@@ -2120,13 +2124,15 @@ const Form = ({
                   alt="Notes icon"
                 />
               </div>
-              <input
-                type="text"
-                className="  h-10 w-full border-b-[1px]  border-slate-200 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px] "
+              <textarea
+                //type="textarea"
+                rows={3}
+                cols={30}
+                className=" w-full resize-y border-b-[1px]  border-slate-200 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px] "
                 placeholder="요청 사항"
                 name="message"
                 onChange={handleInputChange}
-              ></input>
+              ></textarea>
             </motion.div>
 
             <div className="flex w-full items-center justify-center">

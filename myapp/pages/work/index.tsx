@@ -413,7 +413,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           className="h-full w-full cursor-grab"
         >
           <SmoothScroll>
-            <motion.div className="inner-corousel relative flex overflow-y-hidden overflow-x-scroll">
+            <motion.div className="inner-corousel relative flex overflow-y-hidden">
               {(selectedEvent
                 ? eventImages[selectedEvent as keyof EventImages]
                 : Real
@@ -476,7 +476,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           whileTap={{ cursor: "grabbing" }}
           className="h-full w-full cursor-grab "
         >
-          <motion.div className="inner-corousel flex overflow-y-hidden overflow-x-scroll ">
+          <motion.div className="inner-corousel flex overflow-y-hidden ">
             {isMouseWithinHero && (
               <motion.div
                 id="cursor"

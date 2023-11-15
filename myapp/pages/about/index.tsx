@@ -24,7 +24,7 @@ const index: React.FC = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-center  overflow-y-scroll text-[16px] ">
+          <div className="flex flex-col justify-center   text-[16px] ">
             <motion.h1 className="mb-8 font-cormorant text-2xl font-bold">
               Food Communication Inc
             </motion.h1>
