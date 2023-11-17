@@ -22,15 +22,20 @@ interface GalleryProps {
 }
 
 type EventImages = {
-  wedding: any[] // Replace 'any[]' with the actual type of your images
-  festival: any[]
-  business: any[]
-  birthday: any[]
-  public: any[]
-  steak: any[]
-  fingerFood: any[]
-  real: any[]
+  wedding: string[] // Replace 'any[]' with the actual type of your images
+  festival: string[]
+  business: string[]
+  birthday: string[]
+  public: string[]
+  steak: string[]
+  fingerFood: string[]
+  real: string[]
   // Add more event types as needed
+}
+
+interface image {
+  imageSrc: string
+  id: number
 }
 
 const EventsModal: FC<GalleryProps> = ({ onClose }) => {
@@ -46,7 +51,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
-    visible: (i: any) => {
+    visible: (i: number) => {
       const delay = 1 + i * 0.5
       return {
         pathLength: 1,
@@ -417,43 +422,50 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               {(selectedEvent
                 ? eventImages[selectedEvent as keyof EventImages]
                 : Real
-              ).map((image: any, a: number) => {
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, x: -70 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.1,
-                      duration: 1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    viewport={{ once: true }}
-                    key={image.id}
-                    className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
-                  >
-                    <motion.p
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+              )
+                .slice() // Create a shallow copy of the array
+                .reverse() // Reverse the copied array
+                .map((image: image, a: number) => {
+                  // const reversedIndex =
+                  //   eventImages[selectedEvent as keyof EventImages].length -
+                  //   1 -
+                  //   a
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, x: -70 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.5,
+                        delay: 0.1,
                         duration: 1,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       viewport={{ once: true }}
-                      className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      key={image.id}
+                      className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
                     >
-                      0{a}
-                    </motion.p>
-                    <Image
-                      src={image.imageSrc}
-                      alt={selectedEvent || "default"}
-                      width={500}
-                      height={550}
-                      className="h-full w-full"
-                    />
-                  </motion.div>
-                )
-              })}
+                      <motion.p
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.5,
+                          duration: 1,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
+                        className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      >
+                        0{a}
+                      </motion.p>
+                      <Image
+                        src={image.imageSrc}
+                        alt={selectedEvent || "default"}
+                        width={500}
+                        height={550}
+                        className="h-full w-full"
+                      />
+                    </motion.div>
+                  )
+                })}
             </motion.div>
           </SmoothScroll>
         </motion.div>

@@ -93,7 +93,7 @@ const Form = ({
   const [showOtherToolInput, setShowOtherToolInput] = useState<string>("false")
 
   // other option handling
-  const handleRadioChange = (e: any) => {
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
     // Update the showInput state based on the radio option checked or unchecked
@@ -185,7 +185,9 @@ const Form = ({
     }
   }
 
-  const handlePhoneNumberChange = (event: any) => {
+  const handlePhoneNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { name, value } = event.target
 
     // Call the validation function and set the phoneNumber value
@@ -2348,98 +2350,3 @@ const Form = ({
 }
 
 export default Form
-
-// <div className="flex h-screen w-screen flex-col">
-//             <motion.div
-//               initial={{ scale: 0.8 }}
-//               whileInView={{ scale: [1.2, 1] }}
-//               transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
-//               className="absolute inset-1/2 mb-16 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center text-center text-[#49111c]"
-//             >
-//               <div>
-//                 {isExploding && (
-//                   <ConfettiExplosion
-//                     force={0.6}
-//                     duration={2000}
-//                     particleCount={70}
-//                     width={800}
-//                   />
-//                 )}
-//               </div>
-
-//               {/* <div className="">
-//               <Image
-//                 unoptimized={true}
-//                 layout={"responsive"}
-//                 src="/images/team-work.gif"
-//                 width={400}
-//                 height={300}
-//                 alt="Team working hard illustration"
-//                 className="absolute right-44 top-0"
-//               />
-//             </div> */}
-
-//               <h1 className="mb-10 w-[406px]  text-4xl font-semibold md:text-6xl">
-//                 감사합니다!!!
-//               </h1>
-
-//               <motion.div
-//                 initial={{ opacity: 0 }}
-//                 whileInView={{ opacity: 1 }}
-//                 transition={{
-//                   delay: 0.5,
-//                   duration: 0.2,
-//                   type: "spring",
-//                   stiffness: 100,
-//                 }}
-//                 className="w-[400px]"
-//               >
-//                 <p className="m-1 text-lg font-light md:text-[18px]">
-//                   귀하의 성공적 행사를 위해
-//                 </p>
-//                 <p className="m-1 text-lg font-light md:text-[18px]">
-//                   30년 실무경험과 전문성 있는
-//                 </p>
-//                 <p className="m-1 text-lg font-light md:text-[18px]">
-//                   Catering Food & Event 고수의
-//                 </p>
-//                 <p className="m-1 text-lg font-light md:text-[18px]">
-//                   견적을 보내드리겠습니다!!!
-//                 </p>
-//               </motion.div>
-//             </motion.div>
-
-//             <div className="absolute inset-1/2 flex w-full -translate-x-1/2 translate-y-0 transform justify-between p-4">
-//               <div className="address-info">
-//                 <p className="text-gray-600">Your Company Name</p>
-//                 <p className="text-gray-600">123 Main Street</p>
-//                 <p className="text-gray-600">City, Country</p>
-//               </div>
-//               <div className="social-media-icons space-x-4">
-//                 <a
-//                   href="https://facebook.com"
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="text-blue-500 hover:text-blue-700"
-//                 >
-//                   <FontAwesomeIcon icon={faFacebook} size="2x" />
-//                 </a>
-//                 <a
-//                   href="https://twitter.com"
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="text-blue-400 hover:text-blue-600"
-//                 >
-//                   <FontAwesomeIcon icon={faTwitter} size="2x" />
-//                 </a>
-//                 <a
-//                   href="https://instagram.com"
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="text-pink-500 hover:text-pink-700"
-//                 >
-//                   <FontAwesomeIcon icon={faInstagram} size="2x" />
-//                 </a>
-//               </div>
-//             </div>
-//           </div>

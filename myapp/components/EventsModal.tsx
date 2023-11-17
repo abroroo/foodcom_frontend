@@ -21,15 +21,20 @@ interface GalleryProps {
   onClose: () => void // Specify the type of onClose prop
 }
 
+interface image {
+  imageSrc: string
+  id: number
+}
+
 type EventImages = {
-  wedding: any[] // Replace 'any[]' with the actual type of your images
-  festival: any[]
-  business: any[]
-  birthday: any[]
-  public: any[]
-  steak: any[]
-  fingerFood: any[]
-  real: any[]
+  wedding: string[] // Replace 'any[]' with the actual type of your images
+  festival: string[]
+  business: string[]
+  birthday: string[]
+  public: string[]
+  steak: string[]
+  fingerFood: string[]
+  real: string[]
   // Add more event types as needed
 }
 
@@ -46,7 +51,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
-    visible: (i: any) => {
+    visible: (i: number) => {
       const delay = 1 + i * 0.5
       return {
         pathLength: 1,
@@ -114,12 +119,17 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
     // Add other event types and their image arrays here
   }
 
+  const handleButtonClick = (eventType: string) => {
+    setSelectedEvent(eventType)
+    console.log("Selected Event:", eventType)
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
-      transition={{ delay: 0, duartion: 1 }}
+      transition={{ delay: 0, duration: 0.3 }}
       className="fixed z-[110] mt-[84px] h-screen w-screen overflow-y-hidden bg-[#fff] px-5 pb-40"
     >
       {/* THis button */}
@@ -164,10 +174,10 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
       {/* Category buttons */}
 
-      <motion.div className="mx-16 mt-0 flex flex-wrap justify-between ">
+      <motion.div className="mx-5 mt-0 flex flex-wrap justify-between md:mx-16 ">
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.89, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -178,13 +188,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <button
               id="wedding"
-              onClick={() => {
-                setSelectedEvent("wedding"),
-                  console.log(
-                    "selectedEvent inside onClick of wedding",
-                    selectedEvent
-                  )
-              }}
+              onClick={() => handleButtonClick("wedding")}
               className="flex-start cursor-pointer"
               style={{ accentColor: "#F25287" }}
             />
@@ -206,7 +210,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.86, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -217,7 +221,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#2563EB" }}
               id="business"
-              onClick={() => setSelectedEvent("business")}
+              onClick={() => handleButtonClick("business")}
               className="flex-start "
             />
             <label
@@ -238,7 +242,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.83, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -249,7 +253,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#047857" }}
               id="public"
-              onClick={() => setSelectedEvent("public")}
+              onClick={() => handleButtonClick("public")}
               className="flex-start"
             />
             <label
@@ -270,7 +274,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -281,7 +285,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#7C3AED", alignSelf: "flex-start" }}
               id="festival"
-              onClick={() => setSelectedEvent("festival")}
+              onClick={() => handleButtonClick("festival")}
             />
             <label
               htmlFor="festival"
@@ -301,7 +305,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.83, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -312,7 +316,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#9D174D" }}
               id="birthday"
-              onClick={() => setSelectedEvent("birthday")}
+              onClick={() => handleButtonClick("birthday")}
               className="flex-start"
             />
             <label
@@ -333,7 +337,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.86, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -344,7 +348,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#FE0000", alignSelf: "flex-start" }}
               id="steak"
-              onClick={() => setSelectedEvent("steak")}
+              onClick={() => handleButtonClick("steak")}
             />
             <label
               htmlFor="steak"
@@ -373,7 +377,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
         <motion.div
           initial={{ opacity: 1, y: -75 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.89, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
           viewport={{ once: true }}
         >
@@ -384,7 +388,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               style={{ accentColor: "#F8B400", alignSelf: "flex-start" }}
               id="fingerFood"
-              onClick={() => setSelectedEvent("fingerFood")}
+              onClick={() => handleButtonClick("fingerFood")}
             />
             <label
               htmlFor="fingerFood"
@@ -426,47 +430,54 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           className="h-full w-full cursor-grab "
         >
           <SmoothScroll>
-            <motion.div className="inner-corousel relative flex overflow-y-hidden ">
+            <motion.div className="inner-corousel relative flex overflow-y-hidden">
               {(selectedEvent
                 ? eventImages[selectedEvent as keyof EventImages]
                 : Real
-              ).map((image: any, a: number) => {
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, x: -70 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.1,
-                      duration: 1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    viewport={{ once: true }}
-                    key={image.id}
-                    className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
-                  >
-                    <motion.p
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+              )
+                .slice() // Create a shallow copy of the array
+                .reverse() // Reverse the copied array
+                .map((image: image, a: number) => {
+                  // const reversedIndex =
+                  //   eventImages[selectedEvent as keyof EventImages].length -
+                  //   1 -
+                  //   a
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, x: -70 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.5,
+                        delay: 0.1,
                         duration: 1,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       viewport={{ once: true }}
-                      className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      key={image.id}
+                      className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
                     >
-                      0{a}
-                    </motion.p>
-                    <Image
-                      src={image.imageSrc}
-                      alt={selectedEvent || "default"}
-                      width={500}
-                      height={550}
-                      className="h-full w-full"
-                    />
-                  </motion.div>
-                )
-              })}
+                      <motion.p
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.5,
+                          duration: 1,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
+                        className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      >
+                        0{a}
+                      </motion.p>
+                      <Image
+                        src={image.imageSrc}
+                        alt={selectedEvent || "default"}
+                        width={500}
+                        height={550}
+                        className="h-full w-full"
+                      />
+                    </motion.div>
+                  )
+                })}
             </motion.div>
           </SmoothScroll>
         </motion.div>
@@ -489,7 +500,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           whileTap={{ cursor: "grabbing" }}
           className="h-full w-full cursor-grab "
         >
-          <motion.div className="inner-corousel flex overflow-y-hidden  ">
+          <motion.div className="inner-corousel flex overflow-y-hidden ">
             {isMouseWithinHero && (
               <motion.div
                 id="cursor"
