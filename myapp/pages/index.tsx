@@ -284,41 +284,51 @@ export default function Home() {
               className="loader_column_inner is-edge flex h-full flex-none flex-col items-stretch justify-between "
             >
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/bert-hall.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/bert-hall.jpeg"
                   alt="Image 1"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/rene.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/rene.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/bert-wedd.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/bert-wedd.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/africa.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/africa.jpeg"
                   alt="Image 4"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/brett.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/brett.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -333,41 +343,51 @@ export default function Home() {
               className="loader_column_inner is-reversed flex h-full flex-none flex-col items-stretch justify-between"
             >
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/govea.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/govea.jpeg"
                   alt="Image 1"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/trivet.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/trivet.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/naim.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/naim.jpeg"
                   alt="Image 3"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/pietro.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/pietro.jpeg"
                   alt="Image 4"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/skyline.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/skyline.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -382,17 +402,21 @@ export default function Home() {
               className="loader_column_inner is-centered flex h-full flex-none flex-col items-stretch justify-between"
             >
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/trivet.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/trivet.jpeg"
                   alt="Image 1"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/brett.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/brett.jpeg"
                   alt="Image 2"
                   onError={(e) => console.error("Image load error", e)}
                 />
@@ -407,23 +431,28 @@ export default function Home() {
                     delay: 2.2,
                     ease: [0.445, 0.05, 0.058, 0.96],
                   }}
-                  className="loader_img is-middle h-full w-full object-cover "
-                  src="images/optimized/ciling.jpeg"
+                  src="/images/optimized/ciling.jpeg"
+                  alt="animation-image"
+                  className="loader_Image is-middle h-full w-full object-cover "
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/africa.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/africa.jpeg"
                   alt="Image 4"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/rene.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/rene.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -438,41 +467,51 @@ export default function Home() {
               className="loader_column_inner is-reversed flex h-full flex-none flex-col items-stretch justify-between"
             >
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/bert-hall.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/bert-hall.jpeg"
                   alt="Image 1"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/skyline.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/skyline.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/govea.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/govea.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/bertelli.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/bertelli.jpeg"
                   alt="Image 4"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/naim.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/naim.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -487,41 +526,51 @@ export default function Home() {
               className="loader_column_inner is-edge flex h-full flex-none flex-col items-stretch justify-between"
             >
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/govea.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/govea.jpeg"
                   alt="Image 1"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/rene.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/rene.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/bert-hall.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/bert-hall.jpeg"
                   alt="Image 2"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/skyline.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/skyline.jpeg"
                   alt="Image 4"
                 />
               </div>
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
-                <img
-                  className="loader_img h-full w-full object-cover "
-                  src="images/optimized/brett.jpeg"
+                <Image
+                  width={400}
+                  height={300}
+                  className="loader_Image h-full w-full object-cover "
+                  src="/images/optimized/brett.jpeg"
                   alt="Image 5"
                 />
               </div>

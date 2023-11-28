@@ -32,7 +32,7 @@ const FormPage = () => {
     event: string,
     currentQuestion: number,
     formData: any
-  ) => {
+  ): void => {
     setParentButtonBackground(background)
     setEventType(event)
     setIsCurrentQuestion(currentQuestion)
@@ -50,7 +50,9 @@ const FormPage = () => {
   const [cursorY, setCursorY] = useState(0)
   const zoomFactor = 1.1
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ): void => {
     const imageElement = imageWrapperRef.current
     const cursorElement = cursorRef.current
 
@@ -71,11 +73,11 @@ const FormPage = () => {
     }
   }
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (): void => {
     setIsMouseWithinHero(true)
   }
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     setIsMouseWithinHero(false)
     // Remove blur and darkness when the cursor leaves the image
 
@@ -89,15 +91,19 @@ const FormPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const controls = useAnimation()
+  const router = useRouter()
 
-  const handleExploreClick = () => {
+  const handleExploreClick = async (): Promise<void> => {
     // Expand the circle to cover the entire screen
-    controls.start({ scale: [1, 50], opacity: [1, 0] }).then(() => {
-      setIsModalOpen(true)
-    })
+    // controls.start({ scale: [1, 50], opacity: [1, 0] }).then(() => {
+    //   setIsModalOpen(true)
+    // })
+
+    await controls.start({ scale: [1, 50], opacity: [1, 0] })
+    router.push("/work")
   }
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false)
     // Restore the circle's appearance when closing the modal
     controls.start({ scale: 1, opacity: 1 })
@@ -122,7 +128,7 @@ const FormPage = () => {
 
   // Footer color dynamic function
 
-  const getColor = (index: number) => {
+  const getColor = (index: number): string => {
     // Define color logic based on isCurrentQuestion
     if (isCurrentQuestion >= index) {
       return parentButtonBackground
@@ -132,7 +138,7 @@ const FormPage = () => {
 
   const [eventTypeOther, setEventTypeOther] = useState<string>("")
 
-  const onOtherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onOtherChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target
     setEventTypeOther(value)
   }
@@ -151,7 +157,6 @@ const FormPage = () => {
   const formattedEventTime = eventTime.toLocaleString("ko-KR", options)
 
   const [ticket_number, setTicketNumber] = useState<string>("")
-
   const [countForCustomer, setCountForCustomer] = useState<number>(0)
   const [countForProcess, setCountForProcess] = useState<number>(0)
   const [countForPdf, setCountForPdf] = useState<number>(0)
@@ -440,6 +445,9 @@ const FormPage = () => {
                           className="h-5 w-5 md:h-9 md:w-9  "
                         />
                         <input
+                          onChange={(e) => {
+                            setEventType(e.target.value)
+                          }}
                           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                           value={`${
                             formDataTransfered.event_type === "wedding"
@@ -990,12 +998,3 @@ const FormPage = () => {
 }
 
 export default FormPage
-
-{
-  /* <div className='flex flex-col items-center justify-center text-[#fff] text-lg'>
-<Link className='p-2' href="/work">최근 이벤트</Link>
-<Link className='p-2' href="/how">작동 방식</Link>
-<Link className='p-2' href="/about">스토리</Link>
-
-</div> */
-}

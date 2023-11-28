@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
 import DatePicker from "react-datepicker"
+import { DayPicker } from "react-day-picker"
 
 import AddressFinder from "./AddressFinder"
 
@@ -54,7 +55,7 @@ const Form = ({
 }: ChildComponentProps) => {
   // vars to store form data, not sure if needed
 
-  const [eventDate, setEventDate] = useState<Date | null>(new Date())
+  const [eventDate, setEventDate] = useState<Date>()
   const [eventAddress, setEventAddress] = useState("")
   const [customerName, setCustomerName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
@@ -73,7 +74,7 @@ const Form = ({
 
   const handleCheckboxAccesories = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ): void => {
     const { name, value } = event.target
     setSelectedAccesories((prevFormData: any) => [...prevFormData, value])
   }
@@ -93,7 +94,7 @@ const Form = ({
   const [showOtherToolInput, setShowOtherToolInput] = useState<string>("false")
 
   // other option handling
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target
 
     // Update the showInput state based on the radio option checked or unchecked
@@ -116,11 +117,11 @@ const Form = ({
   // next/previous  button handling
   const totalQuestions = 9
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     setCurrentQuestion(currentQuestion + 1)
   }
 
-  const handlePrevious = () => {
+  const handlePrevious = (): void => {
     setCurrentQuestion(currentQuestion - 1)
   }
 
@@ -142,7 +143,7 @@ const Form = ({
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  ): void => {
     const { name, value } = event.target
     setFormData((prevFormData: any) => ({ ...prevFormData, [name]: value }))
     if (name === "people_count") {
@@ -171,7 +172,7 @@ const Form = ({
 
   const [phoneNumberError, setPhoneNumberError] = useState("")
 
-  const validatePhoneNumber = (value: any) => {
+  const validatePhoneNumber = (value: string) => {
     const phoneNumberRegex = /\d{11}$/
 
     if (phoneNumberRegex.test(value)) {
@@ -187,7 +188,7 @@ const Form = ({
 
   const handlePhoneNumberChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ): void => {
     const { name, value } = event.target
 
     // Call the validation function and set the phoneNumber value
@@ -217,7 +218,7 @@ const Form = ({
   // Handle changes in range inputs
   const handleStartInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ): void => {
     const { value } = event.target
     setSliderBudgetValStart(parseInt(value))
     setSliderBudgetNum(parseInt(value))
@@ -279,6 +280,73 @@ const Form = ({
     //onButtonBackgroundChange(updatedButtonBackground, selectedEvent);
   }
 
+  // FOR DAY PICKER
+
+  const css = `
+  .my-selected:not([disabled]) { 
+    font-weight: bold; 
+    border: 2px solid currentColor;
+  }
+  .my-selected:hover:not([disabled]) { 
+    border-color: ${buttonBackground};
+    color: ${buttonBackground};
+  }
+  .my-today { 
+    font-weight: bold;
+    font-size: 100%; 
+    color: red;
+  }
+`
+
+  const [selected, setSelected] = React.useState<Date>()
+  const [timeValue, setTimeValue] = React.useState<string>("00:00")
+
+  const disabledDays = [{ from: new Date(2022, 4, 18), to: new Date() }]
+
+  const handleTimeChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ): void => {
+    const time = e.target.value
+    if (!selected) {
+      setTimeValue(time)
+      return
+    }
+    const [hours, minutes] = time.split(":").map((str) => parseInt(str, 10))
+    const newSelectedDate = new Date(
+      selected.getFullYear(),
+      selected.getMonth(),
+      selected.getDate(),
+      hours,
+      minutes
+    )
+    setSelected(newSelectedDate)
+    //setEventDate(newSelectedDate)
+    setTimeValue(time)
+  }
+
+  const handleDaySelect = (date: Date | undefined): void => {
+    if (!timeValue || !date) {
+      setSelected(date)
+      console.log("THis is date: ", date)
+      //setEventDate(date)
+      return
+    }
+    const [hours, minutes] = timeValue
+      .split(":")
+      .map((str) => parseInt(str, 10))
+    const newDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      hours,
+      minutes
+    )
+    setSelected(newDate)
+    setEventDate(newDate)
+  }
+
+  // END FOR DAY PICKER
+
   // Update formData whenever eventAddress changes
   useEffect(() => {
     setFormData((prevFormData: any) => ({
@@ -289,6 +357,7 @@ const Form = ({
       event_type: eventTypeOther || selectedEvent,
       date_rigistered: currentDate,
       event_date: eventDate,
+      //event_time: timeValue,
       meal_cost: sliderBudgetVal,
       event_place: eventVenue,
       name: customerName,
@@ -301,6 +370,7 @@ const Form = ({
     selectedEvent,
     currentDate,
     eventDate,
+    timeValue,
     sliderBudgetVal,
     eventVenue,
     customerName,
@@ -1887,7 +1957,7 @@ const Form = ({
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
               className=" flex w-[90%]  justify-between md:w-full "
             >
-              <DatePicker
+              {/* <DatePicker
                 showIcon
                 selected={eventDate}
                 onChange={(date) => setEventDate(date || new Date())}
@@ -1899,6 +1969,41 @@ const Form = ({
                 locale={ko} // Set the Korean locale
                 wrapperClassName="datePicker "
                 required
+              /> */}
+              <style>{css}</style>
+              <DayPicker
+                mode="single"
+                selected={selected}
+                onSelect={handleDaySelect}
+                locale={ko}
+                disabled={disabledDays}
+                styles={{
+                  caption: { color: `${buttonBackground}` },
+                }}
+                modifiersClassNames={{
+                  selected: "my-selected",
+                  today: "my-today",
+                }}
+                modifiersStyles={{
+                  disabled: { fontSize: "95%" },
+                }}
+                footer={
+                  <>
+                    <p>
+                      Pick a time:{" "}
+                      <input
+                        type="time"
+                        value={timeValue}
+                        onChange={handleTimeChange}
+                        className={`hover:bg-[${buttonBackground}] color-[${buttonBackground}]`}
+                      />
+                    </p>
+                    <p>
+                      Selected date:{" "}
+                      {selected ? selected.toLocaleString() : "none"}
+                    </p>
+                  </>
+                }
               />
             </motion.div>
 
@@ -1947,7 +2052,7 @@ const Form = ({
                 onClick={handleNext}
                 type="submit"
                 disabled={eventDate === currentDate ? true : false}
-                className=" text-md focus:bg-blue mt-5 h-[41px] w-[40%]  max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider  text-[#49111c] focus:outline-none md:w-[15%] md:text-[16px]"
+                className=" text-md focus:bg-blue mt-5 h-[41px] w-[40%]  max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider  text-[#49111c] focus:outline-none md:w-[25%] md:text-[16px]"
                 draggable="false"
               >
                 <>
@@ -1972,7 +2077,7 @@ const Form = ({
                 className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
-                  setEventDate(currentDate)
+                  setEventDate(new Date())
                 }}
               >
                 <>

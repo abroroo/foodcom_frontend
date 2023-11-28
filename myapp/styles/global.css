@@ -24,11 +24,11 @@ body {
   /* #FFFBEB; */
   /* overflow-y: hidden;  rgb(243, 243, 239);   #F9FCFB;   #1d040b;  */
   -webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   /* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
 }
@@ -119,6 +119,15 @@ datalist {
 
 .animate-bg-row3 {
   animation: moveBgRow3 30s linear infinite;
+}
+
+.rdp {
+  --rdp-cell-size: 55px !important; /* Size of the day cells. */
+}
+@media (max-width: 767px) {
+  .rdp {
+    --rdp-cell-size: 40px !important; /* Size of the day cells. */
+  }
 }
 
 /* .datePicker {

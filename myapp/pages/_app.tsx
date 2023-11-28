@@ -1,4 +1,5 @@
 import "../styles/global.css"
+import "react-day-picker/dist/style.css"
 
 import { useEffect } from "react"
 import type { AppProps } from "next/app"
