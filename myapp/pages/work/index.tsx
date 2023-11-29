@@ -411,6 +411,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
         className=" corousel mx-2  mt-2 overflow-hidden md:mx-16 md:mt-10"
       >
         <motion.div
+          ref={imageWrapperRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
