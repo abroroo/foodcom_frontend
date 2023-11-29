@@ -135,7 +135,7 @@ const FormPage = () => {
 
   // Assuming eventTime is in the format "2023-10-19T20:00:00.000Z"
   const eventDate = new Date(formDataTransfered.event_date)
-  const eventTime = formDataTransfered.event_time
+  //const eventTime = new Date(formDataTransfered.event_time)
   const options = {
     year: "numeric",
     month: "short",
@@ -153,7 +153,7 @@ const FormPage = () => {
 
   // as Month Day, hour:minute
   const formattedEventDate = eventDate.toLocaleString("ko-KR", options)
-  const formattedEventTime = eventTime.toLocaleString("ko-KR", options2)
+  // const formattedEventTime = eventTime.toLocaleString("ko-KR", options2)
 
   const [ticket_number, setTicketNumber] = useState<string>("")
   const [countForCustomer, setCountForCustomer] = useState<number>(0)
@@ -604,7 +604,9 @@ const FormPage = () => {
                         <input
                           className="my-2 ml-2 mt-1 block h-10 w-[100%] appearance-none border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                           value={[
-                            formattedEventDate + " " + formattedEventTime,
+                            formattedEventDate +
+                              " " +
+                              formDataTransfered.event_time,
                           ]}
                         ></input>
                       </motion.div>

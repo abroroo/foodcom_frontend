@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { set } from "date-fns"
 import { motion } from "framer-motion"
 
+import SmoothScroll from "../../components/Scrolling/SmoothScrollHorizontal"
 import {
   Birthday,
   Bussiness,
@@ -410,62 +411,63 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
         className=" corousel mx-2  mt-2 overflow-hidden md:mx-16 md:mt-10"
       >
         <motion.div
-          ref={imageWrapperRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           whileTap={{ cursor: "grabbing" }}
           className="h-full w-full cursor-grab"
         >
-          <motion.div className="inner-corousel relative flex overflow-y-hidden">
-            {(selectedEvent
-              ? eventImages[selectedEvent as keyof EventImages]
-              : Real
-            )
-              .slice() // Create a shallow copy of the array
-              .reverse() // Reverse the copied array
-              .map((image: image, a: number) => {
-                // const reversedIndex =
-                //   eventImages[selectedEvent as keyof EventImages].length -
-                //   1 -
-                //   a
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, x: -70 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.1,
-                      duration: 1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    viewport={{ once: true }}
-                    key={image.id}
-                    className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
-                  >
-                    <motion.p
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+          <SmoothScroll>
+            <motion.div className="inner-corousel relative flex overflow-y-hidden">
+              {(selectedEvent
+                ? eventImages[selectedEvent as keyof EventImages]
+                : Real
+              )
+                .slice() // Create a shallow copy of the array
+                .reverse() // Reverse the copied array
+                .map((image: image, a: number) => {
+                  // const reversedIndex =
+                  //   eventImages[selectedEvent as keyof EventImages].length -
+                  //   1 -
+                  //   a
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, x: -70 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.5,
+                        delay: 0.1,
                         duration: 1,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       viewport={{ once: true }}
-                      className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      key={image.id}
+                      className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
                     >
-                      0{a}
-                    </motion.p>
-                    <Image
-                      src={image.imageSrc}
-                      alt={selectedEvent || "default"}
-                      width={500}
-                      height={550}
-                      className="h-full w-full"
-                    />
-                  </motion.div>
-                )
-              })}
-          </motion.div>
+                      <motion.p
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.5,
+                          duration: 1,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
+                        className="mb-3 pl-[2px] text-[12px] font-semibold"
+                      >
+                        0{a}
+                      </motion.p>
+                      <Image
+                        src={image.imageSrc}
+                        alt={selectedEvent || "default"}
+                        width={500}
+                        height={550}
+                        className="h-full w-full"
+                      />
+                    </motion.div>
+                  )
+                })}
+            </motion.div>
+          </SmoothScroll>
         </motion.div>
       </motion.div>
 

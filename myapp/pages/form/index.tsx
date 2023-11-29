@@ -1,19 +1,16 @@
-import React from 'react'
-import { motion } from 'framer-motion';
+import React from "react"
+import { motion } from "framer-motion"
 
-import FormPage from '../../components/FormPage';
-import SmoothScroll from '../../components/Scolling/SmoothScroll';
+import FormPage from "../../components/FormPage"
+import SmoothScroll from "../../components/Scrolling/SmoothScroll"
 
 interface Props {}
 
 const index = () => {
   return (
-  <motion.div className=''>
- 
-  <FormPage />
-  
-  
-  </motion.div>
+    <motion.div className="">
+      <FormPage />
+    </motion.div>
   )
 }
 

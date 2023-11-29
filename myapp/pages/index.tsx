@@ -18,6 +18,7 @@ import {
 } from "framer-motion"
 
 import Navbar from "../components/Navbar"
+import SmoothScroll from "../components/Scrolling/SmoothScroll"
 
 export default function Home() {
   const router = useRouter()
