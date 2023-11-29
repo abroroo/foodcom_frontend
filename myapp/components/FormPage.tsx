@@ -12,7 +12,6 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import axios from "axios"
 import { motion, useAnimation } from "framer-motion"
 import { Dot, PartyPopper } from "lucide-react"
 
@@ -67,8 +66,6 @@ const FormPage = () => {
 
       // Apply blur and darkness to the image
       if (imageFirstParent.current) {
-        // imageFirstParent.current.style.backgroundSize = `${zoomFactor * 100}%`
-        // imageFirstParent.current.style.filter = " brightness(0.95) "
       }
     }
   }
@@ -82,8 +79,6 @@ const FormPage = () => {
     // Remove blur and darkness when the cursor leaves the image
 
     if (imageFirstParent.current) {
-      // imageFirstParent.current.style.backgroundSize = "100%"
-      // imageFirstParent.current.style.filter = "none"
     }
   }
 
@@ -94,11 +89,6 @@ const FormPage = () => {
   const router = useRouter()
 
   const handleExploreClick = async (): Promise<void> => {
-    // Expand the circle to cover the entire screen
-    // controls.start({ scale: [1, 50], opacity: [1, 0] }).then(() => {
-    //   setIsModalOpen(true)
-    // })
-
     await controls.start({ scale: [1, 50], opacity: [1, 0] })
     router.push("/work")
   }
@@ -144,17 +134,26 @@ const FormPage = () => {
   }
 
   // Assuming eventTime is in the format "2023-10-19T20:00:00.000Z"
-  const eventTime = new Date(formDataTransfered.event_time)
+  const eventDate = new Date(formDataTransfered.event_date)
+  const eventTime = formDataTransfered.event_time
   const options = {
     year: "numeric",
     month: "short",
     day: "numeric",
+    // hour: "numeric",
+    //minute: "numeric",
+  } as Intl.DateTimeFormatOptions
+  const options2 = {
+    // year: "numeric",
+    //month: "short",
+    // day: "numeric",
     hour: "numeric",
     minute: "numeric",
   } as Intl.DateTimeFormatOptions
 
   // as Month Day, hour:minute
-  const formattedEventTime = eventTime.toLocaleString("ko-KR", options)
+  const formattedEventDate = eventDate.toLocaleString("ko-KR", options)
+  const formattedEventTime = eventTime.toLocaleString("ko-KR", options2)
 
   const [ticket_number, setTicketNumber] = useState<string>("")
   const [countForCustomer, setCountForCustomer] = useState<number>(0)
@@ -604,7 +603,9 @@ const FormPage = () => {
                         />
                         <input
                           className="my-2 ml-2 mt-1 block h-10 w-[100%] appearance-none border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                          value={formattedEventTime}
+                          value={[
+                            formattedEventDate + " " + formattedEventTime,
+                          ]}
                         ></input>
                       </motion.div>
                     </motion.div>
@@ -991,8 +992,6 @@ const FormPage = () => {
           </motion.div>
         )}
       </div>
-
-      {isModalOpen && <EventsModal onClose={handleCloseModal} />}
     </div>
   )
 }

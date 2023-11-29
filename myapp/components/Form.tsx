@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-import DatePicker from "react-datepicker"
 import { DayPicker } from "react-day-picker"
 
 import AddressFinder from "./AddressFinder"
@@ -9,11 +8,6 @@ import AddressFinder from "./AddressFinder"
 import "react-datepicker/dist/react-datepicker.css"
 
 import Image from "next/image"
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
 import {
   faBuilding,
   faCalendarDays,
@@ -45,7 +39,7 @@ interface ChildComponentProps {
     background: string,
     eventType: string,
     currentQuestion: number,
-    fomrData: any
+    formData: any
   ) => void
 }
 
@@ -307,42 +301,19 @@ const Form = ({
     e
   ): void => {
     const time = e.target.value
-    if (!selected) {
+    if (eventDate) {
       setTimeValue(time)
       return
     }
-    const [hours, minutes] = time.split(":").map((str) => parseInt(str, 10))
-    const newSelectedDate = new Date(
-      selected.getFullYear(),
-      selected.getMonth(),
-      selected.getDate(),
-      hours,
-      minutes
-    )
-    setSelected(newSelectedDate)
-    //setEventDate(newSelectedDate)
-    setTimeValue(time)
   }
 
   const handleDaySelect = (date: Date | undefined): void => {
-    if (!timeValue || !date) {
+    if (date) {
       setSelected(date)
       console.log("THis is date: ", date)
-      //setEventDate(date)
+      setEventDate(date)
       return
     }
-    const [hours, minutes] = timeValue
-      .split(":")
-      .map((str) => parseInt(str, 10))
-    const newDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      hours,
-      minutes
-    )
-    setSelected(newDate)
-    setEventDate(newDate)
   }
 
   // END FOR DAY PICKER
@@ -357,7 +328,7 @@ const Form = ({
       event_type: eventTypeOther || selectedEvent,
       date_rigistered: currentDate,
       event_date: eventDate,
-      //event_time: timeValue,
+      event_time: timeValue,
       meal_cost: sliderBudgetVal,
       event_place: eventVenue,
       name: customerName,
@@ -620,22 +591,6 @@ const Form = ({
                     height={50}
                     className="mb-2 h-10 w-10 md:h-[50px] md:w-[50px]"
                   />
-                  {/* <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#FE0000"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-beef mb-2 h-10 w-10 md:h-[48px] md:w-[48px]"
-                  >
-                    <circle cx="12.5" cy="8.5" r="2.5" />
-                    <path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z" />
-                    <path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5" />
-                  </svg> */}
                   스테이크 행사
                 </label>
               </motion.div>
@@ -660,22 +615,6 @@ const Form = ({
                   htmlFor="fingerFood"
                   className="absolute inset-0 flex flex-col items-center justify-center"
                 >
-                  {/* <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#F8B400"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-dessert mb-2 h-10 w-10 md:h-[48px] md:w-[48px]"
-                  >
-                    <circle cx="12" cy="2" r="1" />
-                    <path d="M10.2 3.2C5.5 4 2 8.1 2 13a2 2 0 0 0 4 0v-1a2 2 0 0 1 4 0v4a2 2 0 0 0 4 0v-4a2 2 0 0 1 4 0v1a2 2 0 0 0 4 0c0-4.9-3.5-9-8.2-9.8" />
-                    <path d="M3.2 14.8a9 9 0 0 0 17.6 0" />
-                  </svg> */}
                   <Image
                     src="/images/icons/fingerfood.png"
                     alt="Finger food icon"
@@ -1957,23 +1896,10 @@ const Form = ({
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
               className=" flex w-[90%]  justify-between md:w-full "
             >
-              {/* <DatePicker
-                showIcon
-                selected={eventDate}
-                onChange={(date) => setEventDate(date || new Date())}
-                minDate={new Date()}
-                inline
-                showTimeSelect
-                timeIntervals={60}
-                timeCaption="행사 시간"
-                locale={ko} // Set the Korean locale
-                wrapperClassName="datePicker "
-                required
-              /> */}
               <style>{css}</style>
               <DayPicker
                 mode="single"
-                selected={selected}
+                selected={eventDate}
                 onSelect={handleDaySelect}
                 locale={ko}
                 disabled={disabledDays}
@@ -1990,7 +1916,7 @@ const Form = ({
                 footer={
                   <>
                     <p>
-                      Pick a time:{" "}
+                      시간 선택하기:{" "}
                       <input
                         type="time"
                         value={timeValue}
@@ -1998,10 +1924,9 @@ const Form = ({
                         className={`hover:bg-[${buttonBackground}] color-[${buttonBackground}]`}
                       />
                     </p>
-                    <p>
-                      Selected date:{" "}
-                      {selected ? selected.toLocaleString() : "none"}
-                    </p>
+                    {/* <p>
+                      선택일자: {selected ? selected.toLocaleString() : "none"}
+                    </p> */}
                   </>
                 }
               />

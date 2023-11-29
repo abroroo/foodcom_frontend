@@ -18,8 +18,10 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   setEventAddress,
   buttonBackground,
 }) => {
+  const kakao_api_key = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY
+
   const [loading, error] = useKakaoLoader({
-    appkey: "88fa5e46979c83c2b9f77cf0c4da1025",
+    appkey: `${kakao_api_key}`,
     libraries: ["clusterer", "drawing", "services"],
   })
 
