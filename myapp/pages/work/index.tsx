@@ -171,11 +171,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             <button
               id="wedding"
               onClick={() => {
-                setSelectedEvent("wedding"),
-                  console.log(
-                    "selectedEvent inside onClick of wedding",
-                    selectedEvent
-                  )
+                setSelectedEvent("wedding")
+                // console.log(
+                //   "selectedEvent inside onClick of wedding",
+                //   selectedEvent
+                //)
               }}
               className="flex-start cursor-pointer"
               style={{ accentColor: "#F25287" }}

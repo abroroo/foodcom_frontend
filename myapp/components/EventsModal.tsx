@@ -120,7 +120,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 
   const handleButtonClick = (eventType: string) => {
     setSelectedEvent(eventType)
-    console.log("Selected Event:", eventType)
+    //console.log("Selected Event:", eventType)
   }
 
   return (

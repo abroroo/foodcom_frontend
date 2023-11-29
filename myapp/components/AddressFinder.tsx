@@ -54,7 +54,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   const handleAddressSelect = (place: any, index: number) => {
     setSelectedItemIndex(index)
     setSelectedAddress(place) // Pass the entire place object
-    console.log("This is selectedAddress: ", selectedAddress)
+    //console.log("This is selectedAddress: ", selectedAddress)
     setCenter({
       lat: place.y,
       lng: place.x,

@@ -36,7 +36,7 @@ const FormPage = () => {
     setEventType(event)
     setIsCurrentQuestion(currentQuestion)
     setFormDataTransfered(formData)
-    console.log("This is formDataTransfered to FromPage: ", formDataTransfered)
+    // console.log("This is formDataTransfered to FromPage: ", formDataTransfered)
   }
 
   // Circle Following Mouse pointer effect
@@ -170,10 +170,10 @@ const FormPage = () => {
           },
         })
         const data = await res.json()
-        console.log("Ticket Number: ", data)
+        // console.log("Ticket Number: ", data)
         setTicketNumber(data.ticket_number)
         setCountForCustomer(1)
-        console.log("Ticket Number in front End: ", ticket_number)
+        //console.log("Ticket Number in front End: ", ticket_number)
       } catch (error) {
         console.log(error)
       }
@@ -195,8 +195,8 @@ const FormPage = () => {
         }
       )
       const data = await res.json()
-      console.log("Response from backend: ", data)
-      console.log("this is example Data : ", JSON.stringify(formDataTransfered))
+      // console.log("Response from backend: ", data)
+      // console.log("this is example Data : ", JSON.stringify(formDataTransfered))
       setCountForProcess(1)
     } catch (error) {
       console.log(error)
