@@ -2,6 +2,7 @@ import { count } from "console"
 import React, { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import {
+  faAnglesRight,
   faBuilding,
   faCalendarDays,
   faChair,
@@ -76,6 +77,7 @@ const FormPage = () => {
 
   const handleMouseLeave = (): void => {
     setIsMouseWithinHero(false)
+
     // Remove blur and darkness when the cursor leaves the image
 
     if (imageFirstParent.current) {
@@ -310,7 +312,10 @@ const FormPage = () => {
 
         {/* RIGHT HALF */}
 
-        <div id="rightDiv" className="hidden h-screen w-[40%]   xl:flex   ">
+        <div
+          id="rightDiv"
+          className="z-[200] hidden h-screen w-[40%]  xl:flex   "
+        >
           <div className="flex h-full w-full flex-col items-center justify-center overflow-y-hidden ">
             {/* <ScrollingTable /> */}
 
@@ -334,8 +339,8 @@ const FormPage = () => {
                     initial={{
                       opacity: 0,
                       scale: 0.5,
-                      x: cursorX - 40,
-                      y: cursorY - 50,
+                      x: cursorX - 45,
+                      y: cursorY - 55,
                     }} // Add a slight delay and position the cursor below
                     animate={
                       isModalOpen
@@ -343,16 +348,12 @@ const FormPage = () => {
                         : {
                             scale: 1,
                             opacity: 1,
-                            x: cursorX - 40,
-                            y: cursorY - 50,
+                            x: cursorX - 45,
+                            y: cursorY - 55,
                           }
                     }
                     exit={{ opacity: 0, scale: 0.5 }} // Optional exit animation
-                    transition={
-                      isModalOpen
-                        ? { duration: 0.2, ease: [0.16, 1, 0.3, 1] }
-                        : { duration: 0.3 }
-                    }
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     style={{
                       width: "90px",
                       height: "90px",
@@ -361,9 +362,14 @@ const FormPage = () => {
                       position: "absolute",
                       zIndex: 100,
                     }}
-                    className="absolute flex cursor-pointer items-center justify-center text-[11px] font-semibold leading-relaxed"
+                    className=" absolute flex cursor-pointer items-center justify-center text-[14px] font-bold  leading-relaxed"
                   >
-                    {isModalOpen ? " " : "EXPLORE"}
+                    보기{" "}
+                    {/* <FontAwesomeIcon
+                      className="ml-1 h-[8px] w-[8px]"
+                      icon={faAnglesRight}
+                      shake
+                    /> */}
                   </motion.div>
                 )}
                 {isCurrentQuestion < 1 && (
@@ -391,7 +397,9 @@ const FormPage = () => {
                           : imageSources[eventType]
                       }
                       style={{ width: 450, height: 450 }}
-                      className="mb-[5px] mr-[5px] rounded brightness-110"
+                      className={`mb-[5px] mr-[5px] rounded brightness-110 ${
+                        isMouseWithinHero ? " blur-[1px]" : "blur-none"
+                      }`}
                     />
                   </motion.div>
                 )}
@@ -424,7 +432,7 @@ const FormPage = () => {
             </div>
 
             {isCurrentQuestion >= 1 && isCurrentQuestion !== 9 && (
-              <div className="hidden h-full w-full flex-col items-center justify-center xl:flex">
+              <div className=" hidden h-full w-full flex-col items-center justify-center xl:flex">
                 <div className="flex items-center justify-between">
                   {isCurrentQuestion >= 1 && (
                     <motion.div className=" flex items-center justify-between p-2">
@@ -713,285 +721,287 @@ const FormPage = () => {
         </div>
 
         {isCurrentQuestion < 9 && (
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.3,
-              type: "spring",
-              bounce: 0.3,
-            }}
-            className="absolute bottom-0 left-0 z-[100] h-12 w-screen border border-slate-100 drop-shadow-2xl md:bottom-0 md:h-20 md:w-[100vw] "
-          >
-            <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-32">
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 0 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 0 ? getColor(0) : "transparent",
-                    color: isCurrentQuestion === 0 ? "#fff" : getColor(0),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <PartyPopper className="h-5 w-5 md:h-9 md:w-9  " />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(0) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 0 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(1) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700   md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 1 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 1 ? getColor(1) : "transparent",
-                    color: isCurrentQuestion === 1 ? "#fff" : getColor(1),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faUserGroup}
-                    className="h-5 w-5 md:h-8 md:w-8 "
+          <div className="absolute hidden  h-screen w-screen md:block ">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.3,
+                type: "spring",
+                bounce: 0.3,
+              }}
+              className=" fixed bottom-0 z-[100] h-12 w-full border border-slate-100 drop-shadow-2xl md:h-20 "
+            >
+              <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-32">
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 0 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 0 ? getColor(0) : "transparent",
+                      color: isCurrentQuestion === 0 ? "#fff" : getColor(0),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <PartyPopper className="h-5 w-5 md:h-9 md:w-9  " />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(0) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 0 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(1) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 1 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(2) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 2 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 2 ? getColor(2) : "transparent",
-                    color: isCurrentQuestion === 2 ? "#fff" : getColor(2),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faSackDollar}
-                    className="h-5 w-5 md:h-8 md:w-8 "
+                </div>
+                <hr
+                  style={{ background: getColor(1) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700   md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 1 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 1 ? getColor(1) : "transparent",
+                      color: isCurrentQuestion === 1 ? "#fff" : getColor(1),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faUserGroup}
+                      className="h-5 w-5 md:h-8 md:w-8 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(1) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 1 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(2) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 2 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(3) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 3 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 3 ? getColor(3) : "transparent",
-                    color: isCurrentQuestion === 3 ? "#fff" : getColor(3),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faBuilding}
-                    className="h-5 w-5 md:h-9 md:w-9 "
+                </div>
+                <hr
+                  style={{ background: getColor(2) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 2 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 2 ? getColor(2) : "transparent",
+                      color: isCurrentQuestion === 2 ? "#fff" : getColor(2),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faSackDollar}
+                      className="h-5 w-5 md:h-8 md:w-8 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(2) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 2 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(3) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 3 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(4) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 4 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 4 ? getColor(4) : "transparent",
-                    color: isCurrentQuestion === 4 ? "#fff" : getColor(4),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faChair}
-                    className="h-5 w-5 md:h-9 md:w-9 "
+                </div>
+                <hr
+                  style={{ background: getColor(3) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 3 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 3 ? getColor(3) : "transparent",
+                      color: isCurrentQuestion === 3 ? "#fff" : getColor(3),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faBuilding}
+                      className="h-5 w-5 md:h-9 md:w-9 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(3) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 3 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(4) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 4 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(5) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 5 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 5 ? getColor(5) : "transparent",
-                    color: isCurrentQuestion === 5 ? "#fff" : getColor(5),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faCalendarDays}
-                    className="h-5 w-5 md:h-9 md:w-9 "
+                </div>
+                <hr
+                  style={{ background: getColor(4) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 4 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 4 ? getColor(4) : "transparent",
+                      color: isCurrentQuestion === 4 ? "#fff" : getColor(4),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faChair}
+                      className="h-5 w-5 md:h-9 md:w-9 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(4) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 4 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(5) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 5 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(6) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 6 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 6 ? getColor(6) : "transparent",
-                    color: isCurrentQuestion === 6 ? "#fff" : getColor(6),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faMapLocationDot}
-                    className="h-5 w-5 md:h-9 md:w-9 "
+                </div>
+                <hr
+                  style={{ background: getColor(5) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 5 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 5 ? getColor(5) : "transparent",
+                      color: isCurrentQuestion === 5 ? "#fff" : getColor(5),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faCalendarDays}
+                      className="h-5 w-5 md:h-9 md:w-9 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(5) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 5 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(6) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 6 ? "block" : "hidden"
-                  } `}
-                />
-              </div>
-              <hr
-                style={{ background: getColor(7) }}
-                className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
-              ></hr>
-              <div className="flex flex-col items-center ">
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{
-                    y: isCurrentQuestion === 7 ? -20 : 0,
-                    backgroundColor:
-                      isCurrentQuestion === 7 ? getColor(7) : "transparent",
-                    color: isCurrentQuestion === 7 ? "#fff" : getColor(7),
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    type: "spring",
-                    bounce: 0.1,
-                    stiffness: 220,
-                  }}
-                  className="rounded-md p-2"
-                >
-                  <FontAwesomeIcon
-                    icon={faFileContract}
-                    className="h-5 w-5 md:h-9 md:w-9 "
+                </div>
+                <hr
+                  style={{ background: getColor(6) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 6 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 6 ? getColor(6) : "transparent",
+                      color: isCurrentQuestion === 6 ? "#fff" : getColor(6),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faMapLocationDot}
+                      className="h-5 w-5 md:h-9 md:w-9 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(6) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 6 ? "block" : "hidden"
+                    } `}
                   />
-                </motion.div>
-                <Dot
-                  style={{ color: getColor(7) }}
-                  size="30px"
-                  className={`-translate-y-6 transform ${
-                    isCurrentQuestion === 7 ? "block" : "hidden"
-                  } `}
-                />
+                </div>
+                <hr
+                  style={{ background: getColor(7) }}
+                  className="mx-auto hidden h-5 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-1  md:w-28"
+                ></hr>
+                <div className="flex flex-col items-center ">
+                  <motion.div
+                    initial={{ y: 0 }}
+                    animate={{
+                      y: isCurrentQuestion === 7 ? -20 : 0,
+                      backgroundColor:
+                        isCurrentQuestion === 7 ? getColor(7) : "transparent",
+                      color: isCurrentQuestion === 7 ? "#fff" : getColor(7),
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0.1,
+                      stiffness: 220,
+                    }}
+                    className="rounded-md p-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faFileContract}
+                      className="h-5 w-5 md:h-9 md:w-9 "
+                    />
+                  </motion.div>
+                  <Dot
+                    style={{ color: getColor(7) }}
+                    size="30px"
+                    className={`-translate-y-6 transform ${
+                      isCurrentQuestion === 7 ? "block" : "hidden"
+                    } `}
+                  />
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
       </div>
     </div>

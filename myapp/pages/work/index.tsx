@@ -402,21 +402,46 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             </label>
           </motion.div>
         </motion.div>
+        {/* <motion.div
+          initial={{ opacity: 0, y: -75 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
+          viewport={{ once: true }}
+          className=" mt-1 flex w-full  justify-center text-[12px]  md:mt-3 md:text-[14px]"
+        >
+          스크롤
+          <motion.div
+            initial={{ x: -10, opacity: 0 }}
+            transition={{
+              repeat: Infinity,
+              duration: 1,
+              delay: 0,
+              repeatDelay: 0,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            animate={{ x: 10, opacity: [0, 1, 0] }}
+            className="ml-2 "
+          >
+            {" "}
+            <FontAwesomeIcon className=" h-3 w-6" icon={faArrowRight} />
+          </motion.div>
+        </motion.div> */}
       </motion.div>
+
       <motion.div
         initial={{ opacity: 1, scale: 0.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 1, ease: [0.32, 0, 0.24, 1] }}
         viewport={{ once: true }}
-        className=" corousel mx-2  mt-2 overflow-hidden md:mx-16 md:mt-10"
+        className=" corousel z-[200]  mx-2  mt-2 overflow-hidden md:mx-16 md:mt-0"
       >
         <motion.div
           ref={imageWrapperRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          whileTap={{ cursor: "grabbing" }}
-          className="h-full w-full cursor-grab"
+          // whileTap={{ cursor: "grabbing" }}
+          className="  h-full w-full cursor-grab"
         >
           <SmoothScroll>
             <motion.div className="inner-corousel relative flex overflow-y-hidden">
@@ -479,14 +504,14 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5, ease: [0.4, 0.18, 0, 1.03] }}
         viewport={{ once: true }}
-        className=" corousel mx-16    overflow-hidden"
+        className=" corousel z-[200]  mx-16  overflow-hidden"
       >
         <motion.div
           ref={imageWrapperRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          whileTap={{ cursor: "grabbing" }}
+          // whileTap={{ cursor: "grabbing" }}
           className="h-full w-full cursor-grab "
         >
           <motion.div className="inner-corousel flex overflow-y-hidden ">
@@ -516,9 +541,9 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                 }}
                 exit={{ opacity: 0, scale: 0.5 }} // Optional exit animation
                 transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
-                className=" flex flex-col  items-center justify-center rounded-full pt-3 text-[15px] text-[#49111c]"
+                className=" flex flex-col items-center justify-center rounded-full pt-3 text-[15px] font-semibold text-[#49111c]"
               >
-                Scroll
+                스크롤
                 <motion.div
                   initial={{ x: -10, opacity: 0 }}
                   transition={{
@@ -531,7 +556,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                   animate={{ x: 10, opacity: [0, 1, 0] }}
                 >
                   <FontAwesomeIcon
-                    className="text-[16px]"
+                    className=" h-[14px] w-6"
                     icon={faArrowRight}
                   />
                 </motion.div>
@@ -540,6 +565,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
         </motion.div>
       </motion.div>
+      {/* End of Circle */}
     </motion.div>
   )
 }

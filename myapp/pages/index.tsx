@@ -152,12 +152,12 @@ export default function Home() {
               </motion.svg>
               <FontAwesomeIcon
                 icon={faSpoon}
-                className="-rotate-45 text-[23px]"
+                className=" h-16 w-6 -rotate-45 "
               />
               <FontAwesomeIcon
                 icon={faUtensils}
                 flip="horizontal"
-                className="text-[30px]"
+                className="h-16 w-7 "
               />
 
               <motion.svg
@@ -287,6 +287,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/bert-hall.jpeg"
                   alt="Image 1"
@@ -297,6 +298,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/rene.jpeg"
                   alt="Image 2"
@@ -307,6 +309,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/bert-wedd.jpeg"
                   alt="Image 2"
@@ -317,6 +320,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/africa.jpeg"
                   alt="Image 4"
@@ -327,6 +331,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/brett.jpeg"
                   alt="Image 5"
@@ -346,6 +351,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/govea.jpeg"
                   alt="Image 1"
@@ -356,6 +362,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/trivet.jpeg"
                   alt="Image 2"
@@ -366,6 +373,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/naim.jpeg"
                   alt="Image 3"
@@ -376,6 +384,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/pietro.jpeg"
                   alt="Image 4"
@@ -386,6 +395,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/skyline.jpeg"
                   alt="Image 5"
@@ -405,6 +415,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/trivet.jpeg"
                   alt="Image 1"
@@ -415,6 +426,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/brett.jpeg"
                   alt="Image 2"
@@ -441,6 +453,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/africa.jpeg"
                   alt="Image 4"
@@ -451,6 +464,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/rene.jpeg"
                   alt="Image 5"
@@ -470,6 +484,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/bert-hall.jpeg"
                   alt="Image 1"
@@ -480,6 +495,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/skyline.jpeg"
                   alt="Image 2"
@@ -490,6 +506,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/govea.jpeg"
                   alt="Image 2"
@@ -500,6 +517,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/bertelli.jpeg"
                   alt="Image 4"
@@ -510,6 +528,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/naim.jpeg"
                   alt="Image 5"
@@ -529,6 +548,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/govea.jpeg"
                   alt="Image 1"
@@ -539,6 +559,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/rene.jpeg"
                   alt="Image 2"
@@ -549,6 +570,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/bert-hall.jpeg"
                   alt="Image 2"
@@ -559,6 +581,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/skyline.jpeg"
                   alt="Image 4"
@@ -569,6 +592,7 @@ export default function Home() {
                 <Image
                   width={400}
                   height={300}
+                  priority={true}
                   className="loader_Image h-full w-full object-cover "
                   src="/images/optimized/brett.jpeg"
                   alt="Image 5"

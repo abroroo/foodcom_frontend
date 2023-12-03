@@ -156,9 +156,9 @@ const Form = ({
 
     try {
       // Perform your API request or any other necessary actions
-      console.log("Form Data!")
-      console.log(JSON.stringify(formData))
-      console.log(formData)
+      // console.log("Form Data!")
+      // console.log(JSON.stringify(formData))
+      // console.log(formData)
     } catch (error) {
       console.error(error)
     }
@@ -310,7 +310,7 @@ const Form = ({
   const handleDaySelect = (date: Date | undefined): void => {
     if (date) {
       setSelected(date)
-      console.log("THis is date: ", date)
+      // console.log("THis is date: ", date)
       setEventDate(date)
       return
     }
@@ -324,7 +324,7 @@ const Form = ({
       ...prevFormData,
       address: eventAddress,
       tool: selectedAccesories,
-      //customTool: customTool,
+      customTool: customTool,
       event_type: eventTypeOther || selectedEvent,
       date_rigistered: currentDate,
       event_date: eventDate,
@@ -356,19 +356,6 @@ const Form = ({
     tool: selectedAccesories,
   })
 
-  // Assuming eventTime is in the format "2023-10-19T20:00:00.000Z"
-  const eventTime = new Date(formData.event_time)
-  const options = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  } as Intl.DateTimeFormatOptions
-
-  // as Month Day, hour:minute
-  const formattedEventTime = eventTime.toLocaleString("ko-KR", options)
-
   // Animation for the checkboxes in the all questions exept the first one
   const checkboxAnimationsGeneral = {
     scale: [1.15, 1.25, 1],
@@ -394,6 +381,57 @@ const Form = ({
 
   // For chnaging backgroundcolor of checked option
   const [checkedOption, setCheckedOption] = useState("")
+
+  // FOR SHOWING DATA IN CONFIRMATION PAGE MOBILE VIEW
+  const formattedDate = new Intl.DateTimeFormat("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(eventDate)
+
+  const toolNames: {
+    [key: number]: string
+    1: string
+    2: string
+    3: string
+    4: string
+    5: string
+    6: string
+    7: string
+    8: string
+    9: string
+    10: string
+    11: string
+    12: string
+    13: string
+    14: string
+  } = {
+    1: "사각 테이블",
+    2: "원탁테이블",
+    3: "스텐딩 테이블",
+    4: "의자",
+    5: "의자커버",
+    6: "자바라 텐트 (3m * 6m)",
+    7: "몽골텐트 (5m * 5m)",
+    8: "단상",
+    9: "기본음향",
+    10: "무대",
+    11: "진행",
+    12: "마스터 밴드",
+    13: "플래카드",
+    14: "필요없는",
+  }
+
+  let toolNamesArr: string[] = []
+
+  if (currentQuestion >= 5) {
+    toolNamesArr = formData.tool.map((tool: number) => {
+      return toolNames[tool]
+    })
+    toolNamesArr = toolNamesArr.map((tool: string) => {
+      return "  " + tool
+    })
+  }
 
   return (
     <>
@@ -724,16 +762,17 @@ const Form = ({
               <motion.div
                 id="tickmarks"
                 style={iconPositionForPeopleNum}
-                className="absolute w-24 -translate-x-[39%] transform  text-center "
+                className="absolute w-24 -translate-x-[42%] transform text-center  md:-translate-x-[39%] "
               >
                 <FontAwesomeIcon
                   style={{ color: buttonBackground }}
                   icon={faPerson}
-                  className="h-9 w-9"
+                  className="h-9 w-24 md:w-24"
                 />
                 <div className="flex items-center justify-center text-[18px] font-semibold">
                   {" "}
-                  {sliderPeopleNum}{" "}
+                  {sliderPeopleNum}
+                  <span className="ml-1 text-[16px]">명</span>
                 </div>
               </motion.div>
 
@@ -756,9 +795,7 @@ const Form = ({
                   name="people_count"
                   onChange={handleInputChange}
                 ></motion.input>
-                <p className="-translate-y-1.5 translate-x-4 transform text-[20px] font-bold">
-                  명
-                </p>
+                {/* <p className="-translate-y-1.5 translate-x-8 transform text-[20px] font-bold md:translate-x-4"></p> */}
               </motion.div>
             </div>
 
@@ -775,7 +812,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2 "
                   />{" "}
                   뒤로
                 </>
@@ -903,7 +940,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -1372,7 +1409,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -1777,7 +1814,7 @@ const Form = ({
                   onChange={handleCheckboxAccesories}
                 />
                 <span className="pl-1 text-[12px] md:text-[15px]">
-                  필요없는
+                  필요없음
                 </span>
               </motion.label>
 
@@ -1831,7 +1868,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -1945,7 +1982,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -2008,7 +2045,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -2180,7 +2217,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>
@@ -2245,7 +2282,7 @@ const Form = ({
               />
             </div>
 
-            <div className="flex flex-col items-center justify-center xl:hidden">
+            <div className="flex w-full flex-col items-center justify-center xl:hidden">
               {/* <h1 className='text-[60px] mb-10 font-[500] '>Congratulation! </h1> */}
 
               <motion.p
@@ -2267,7 +2304,7 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="items-between flex w-full flex-col  justify-center rounded border p-5 px-4 text-[0.8rem]  font-bold shadow-md"
+                className="items-between flex w-full flex-col  justify-center  p-5 px-4 text-[0.8rem]  font-bold "
               >
                 <div className="flex items-start justify-between">
                   <p>이벤트 유형: </p>{" "}
@@ -2289,7 +2326,9 @@ const Form = ({
                 <div className="flex items-start justify-between">
                   {" "}
                   <p>이벤트 날짜: </p>
-                  <span className="pl-1 font-light">{formattedEventTime}</span>
+                  <span className="pl-1 font-light">
+                    {formattedDate + " " + formData.event_time}
+                  </span>
                 </div>
                 <div className="flex items-start justify-between">
                   {" "}
@@ -2302,7 +2341,7 @@ const Form = ({
                   {" "}
                   <p>Tools: </p>
                   <span className="pl-1 font-light">
-                    {formData.tool.join(", ")}
+                    {toolNamesArr + " " + formData.customTool}
                   </span>
                 </div>
                 <div className="flex items-start justify-between">
@@ -2345,7 +2384,7 @@ const Form = ({
                 <>
                   <FontAwesomeIcon
                     icon={faCaretLeft}
-                    className="mr-1 text-[11px]"
+                    className="mr-1 h-5 w-2"
                   />{" "}
                   뒤로
                 </>

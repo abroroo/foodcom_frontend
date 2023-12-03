@@ -70,7 +70,7 @@ const Navbar = () => {
               src="/images/logo.png"
               width={100}
               height={30}
-              alt="logo image w-auto h-auto"
+              alt="logo image "
             />
           </Link>
 
@@ -78,16 +78,16 @@ const Navbar = () => {
             <button onClick={handleMenuClick} className="block xl:hidden">
               <FontAwesomeIcon
                 icon={faXmark}
-                size="lg"
-                className="text-[20px] text-[#49111c]"
+                //size="lg"
+                className="h-8 w-4 text-[#49111c]"
               />
             </button>
           ) : (
             <button onClick={handleMenuClick} className="block xl:hidden">
               <FontAwesomeIcon
                 icon={faBars}
-                className="text-[#49111c] md:text-[#49111c]"
-                size="lg"
+                className="h-8 w-4 text-[#49111c] md:text-[#49111c]"
+                //size="lg"
               />{" "}
             </button>
           )}
@@ -120,49 +120,37 @@ const Navbar = () => {
             <Link
               href="/form"
               onClick={() => setIsModalOpen(false)}
-              className="my-3 rounded-md border  px-2 leading-relaxed md:border-none"
+              className={`my-4  border-0 border-b-[1px]  px-2 leading-relaxed md:border-none ${
+                isCurrentPage("/form")
+                  ? "hidden text-white"
+                  : "block text-[#49111c]"
+              }`}
             >
-              <p
-                className={`my-3 ${
-                  isCurrentPage("/form")
-                    ? "hidden text-white"
-                    : "block text-[#49111c]"
-                }`}
-              >
-                계획 행사
-              </p>
+              <p className={`my-0 `}>계획 행사</p>
             </Link>
 
             <Link
               href="/work"
               onClick={() => setIsModalOpen(false)}
-              className=" my-3 rounded-md border  px-2 leading-relaxed md:border-none"
+              className={` my-4 border-0 border-b-[1px]  px-2 leading-relaxed md:border-none ${
+                isCurrentPage("/work")
+                  ? "hidden text-white"
+                  : "block text-[#49111c]"
+              }`}
             >
-              <p
-                className={`my-3 ${
-                  isCurrentPage("/work")
-                    ? "hidden text-white"
-                    : "block text-[#49111c]"
-                }`}
-              >
-                최근 이벤트
-              </p>
+              <p className={`my-0`}>최근 이벤트</p>
             </Link>
 
             <Link
               href="/about"
               onClick={() => setIsModalOpen(false)}
-              className=" my-3 rounded-md border  px-2 leading-relaxed md:border-none"
+              className={` my-4 border-0 border-b-[1px]  px-2 leading-relaxed md:border-none ${
+                isCurrentPage("/about")
+                  ? "hidden text-white"
+                  : "block text-[#49111c]"
+              }`}
             >
-              <p
-                className={`my-3 ${
-                  isCurrentPage("/about")
-                    ? "hidden text-white"
-                    : "block text-[#49111c]"
-                }`}
-              >
-                푸드컴 대해
-              </p>
+              <p className={`my-0 `}>푸드컴 대해</p>
             </Link>
           </div>
         </motion.div>

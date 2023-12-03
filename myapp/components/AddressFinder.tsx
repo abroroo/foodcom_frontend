@@ -20,10 +20,10 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
 }) => {
   const kakao_api_key = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY
 
-  const [loading, error] = useKakaoLoader({
-    appkey: `${kakao_api_key}`,
-    libraries: ["clusterer", "drawing", "services"],
-  })
+  // const [loading, error] = useKakaoLoader({
+  //   appkey: `${kakao_api_key}`,
+  //   libraries: ["clusterer", "drawing", "services"],
+  // })
 
   const [addressQuery, setAddressQuery] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any[]>([])
@@ -124,7 +124,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
                 transition={{ duration: 0.2, type: "spring", bounce: 0.25 }}
                 key={`${index}-${place.address_name}`} // Use a unique key
                 onClick={() => handleAddressSelect(place, index)}
-                className="search-result mb-2 w-full cursor-pointer rounded-lg border-b p-2 shadow-sm hover:bg-slate-50 md:mx-[2px] md:mb-3 md:w-[49%]"
+                className="search-result mb-2 flex w-full cursor-pointer items-center justify-start rounded-lg border-b p-2 shadow-sm hover:bg-slate-50 md:mx-[2px] md:mb-3 md:w-[49%]"
                 style={
                   selectedItemIndex === index
                     ? {
@@ -138,6 +138,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
                 <FontAwesomeIcon
                   style={{ color: buttonBackground }}
                   icon={faLocationDot}
+                  className="mr-1 h-8 w-4"
                 />{" "}
                 {place.address_name}
               </motion.li>
