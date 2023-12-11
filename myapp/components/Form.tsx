@@ -689,7 +689,7 @@ const Form = ({
                     width="54"
                     height="54"
                     src="/images/icons/other.png"
-                    alt="birthday"
+                    alt="other"
                     className="mb-2 h-10 w-10 md:h-[54px] md:w-[54px]"
                   />
                   키타 행사
@@ -2308,7 +2308,23 @@ const Form = ({
               >
                 <div className="flex items-start justify-between">
                   <p>이벤트 유형: </p>{" "}
-                  <span className="pl-1 font-light">{formData.event_type}</span>
+                  <span className="pl-1 font-light">
+                    {formData.event_type === "wedding"
+                      ? " 스몰웨딩, 야외결혼"
+                      : formData.event_type === "business"
+                      ? "기업 이벤트"
+                      : formData.event_type === "public"
+                      ? "사회 단체행사"
+                      : formData.event_type === "festival"
+                      ? "기관, 축제등"
+                      : formData.event_type === "birthday"
+                      ? "가족 개인행사"
+                      : formData.event_type === "steak"
+                      ? "스테이크 행사"
+                      : formData.event_type === "fingerFood"
+                      ? "핑거푸드"
+                      : ""}
+                  </span>
                 </div>
                 <div className="flex items-start justify-between">
                   <p>출석인원: </p>{" "}
@@ -2320,7 +2336,7 @@ const Form = ({
                   <p>식비: </p>{" "}
                   <span className="pl-1 font-light">
                     {formData.meal_cost} 원 ||{" "}
-                    {formData.meal_cost * formData.people_count}
+                    {formData.meal_cost * formData.people_count} 원
                   </span>{" "}
                 </div>
                 <div className="flex items-start justify-between">
