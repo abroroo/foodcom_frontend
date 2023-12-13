@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import Image from "next/image"
 import {
   faFacebook,
@@ -173,8 +173,10 @@ const index: React.FC = () => {
                       모든 문의나 도움이 필요한 경우, 카카오톡을 통해 저희에게
                       연락하실 수 있습니다
                     </p>
+
+                    <div id="kakaotalk-sharing-btn"></div>
                     <a
-                      href="https://qr.kakao.com/chat/hw6556"
+                      href="https://open.kakao.com/chat/openlink/chat/hw6556"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-2 inline-block text-blue-500 hover:underline"

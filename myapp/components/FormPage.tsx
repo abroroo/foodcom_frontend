@@ -165,7 +165,7 @@ const FormPage = () => {
   const createNewCustomer = async () => {
     if (ticket_number === "") {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/new_customer", {
+        const res = await fetch("http://localhost:8000/api/new_customer", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -187,7 +187,7 @@ const FormPage = () => {
   const saveFormData = async () => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:8000/api/process_data/${ticket_number}`,
+        `http://localhost:8000/api/process_data/${ticket_number}`,
         {
           method: "POST",
           headers: {
@@ -208,7 +208,7 @@ const FormPage = () => {
   const generatePdf = async () => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:8000/api/generatepdf/${ticket_number}`,
+        `http://localhost:8000/api/generatepdf/${ticket_number}`,
         {
           method: "GET",
         }
@@ -227,29 +227,6 @@ const FormPage = () => {
   if (countForProcess === 1) {
     generatePdf()
   }
-
-  // post formDataTransferred to the backend and save it to the database
-
-  // useEffect(() => {
-  //   const saveFormData = async () => {
-  //     try {
-  //       const res = await fetch(`http://127.0.0.1:8000/api/customer_update/243242313`, {
-  //         method: 'PUT',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(dataExample),
-  //       });
-  //       const data = await res.json();
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   if (isCurrentQuestion === 8) {
-  //     saveFormData();
-  //   }
-  // })
 
   const toolNames: {
     [key: number]: string

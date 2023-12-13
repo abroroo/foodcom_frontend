@@ -44,6 +44,7 @@ img-src 'self' data: *;
           type="text/javascript"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakao_api_key}&libraries=services,clusterer`}
         ></script>
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
       </footer>
     </Html>
   )
