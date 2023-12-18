@@ -172,7 +172,7 @@ const FormPage = () => {
           },
         })
         const data = await res.json()
-        // console.log("Ticket Number: ", data)
+        console.log("Ticket Number: ", data)
         setTicketNumber(data.ticket_number)
         setCountForCustomer(1)
         //console.log("Ticket Number in front End: ", ticket_number)
@@ -197,8 +197,8 @@ const FormPage = () => {
         }
       )
       const data = await res.json()
-      // console.log("Response from backend: ", data)
-      // console.log("this is example Data : ", JSON.stringify(formDataTransfered))
+      console.log("Response from backend: ", data)
+      console.log("this is example Data : ", JSON.stringify(formDataTransfered))
       setCountForProcess(1)
     } catch (error) {
       console.log(error)

@@ -326,7 +326,7 @@ const Form = ({
       tool: selectedAccesories,
       customTool: customTool,
       event_type: eventTypeOther || selectedEvent,
-      date_rigistered: currentDate,
+      //date_rigistered: currentDate,
       event_date: eventDate,
       event_time: timeValue,
       meal_cost: sliderBudgetVal,
