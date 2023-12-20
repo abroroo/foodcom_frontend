@@ -28,7 +28,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <>
       <Head>
-        {/* <meta charSet="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
@@ -36,27 +36,23 @@ const App = ({ Component, pageProps, router }: AppProps) => {
 
         <meta
           name="description"
-          content="A brief description of your page's content."
-        /> */}
-        {/* <meta name="keywords" content="keyword1, keyword2, keyword3" />
-        <meta name="author" content="Your Name" />
+          content="전주 최고의 케이터링 회사  푸드컴 맞춤형 메뉴, 맛있는 음식, 친절한 서비스. 파티, 회의, 결혼식 등 각종 행사에 완벽한 출장요리 서비스 제공."
+        />
+        <meta
+          name="keywords"
+          content="케이터링, 출장요리, 배달요리, 케이터링,  맞춤형 메뉴, 무료 견적, 파티, 회의, 결혼식, 고급 식재료, 합리적인 가격, 신속한 배달, 친절한 서비스, 다양한 메뉴, [음식 종류] 케이터링, 홈파티 케이터링, 기업 케이터링"
+        />
+        <meta name="language" content="ko, en" />
+
+        <meta name="author" content="FoodCom" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
         />
 
-        <meta
-          property="og:title"
-          content="FoodCom, custom catering service platform "
-        />
-        <meta
-          property="og:description"
-          content="푸드컴 , 30여년 동안 고객님과 함께 오래 기억에 남는 순간을 만들어 추억해
-              왔습니다. 푸드컴은 소중한 순간에 기억에 남을 만한 순간을 소중히
-              간직하고 싶습니다. 또한 창립 이후, 푸드산업 및 이벤트산업 내에서
-              신뢰할 수 있는 이름이 "
-        />
-        <meta property="og:image" content="" />
+        <meta property="og:title" content="푸드컴 - 케이터링 서비스" />
+
+        <meta property="og:image" content="푸드컴 - 케이터링 서비스" />
 
         <link
           rel="icon"
@@ -70,9 +66,10 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           sizes="32x32"
           href="/favicon-32x32.png"
         />
-        <link rel="icon" type="image/ico" href="/favicon.ico" /> */}
 
-        {/* <link rel="canonical" href="https://푸드컴.co.kr" /> */}
+        <link rel="icon" href="/manifest/icon-192x192.png" />
+        <link rel="canonical" href="https://푸드컴.com" />
+        <title>푸드컴 - 케이터링 서비스</title>
       </Head>
 
       <motion.div
