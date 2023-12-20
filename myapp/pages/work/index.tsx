@@ -431,30 +431,6 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               </label>
             </motion.div>
           </motion.div>
-          {/* <motion.div
-          initial={{ opacity: 0, y: -75 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-          viewport={{ once: true }}
-          className=" mt-1 flex w-full  justify-center text-[12px]  md:mt-3 md:text-[14px]"
-        >
-          스크롤
-          <motion.div
-            initial={{ x: -10, opacity: 0 }}
-            transition={{
-              repeat: Infinity,
-              duration: 1,
-              delay: 0,
-              repeatDelay: 0,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            animate={{ x: 10, opacity: [0, 1, 0] }}
-            className="ml-2 "
-          >
-            {" "}
-            <FontAwesomeIcon className=" h-3 w-6" icon={faArrowRight} />
-          </motion.div>
-        </motion.div> */}
         </motion.div>
 
         <motion.div
