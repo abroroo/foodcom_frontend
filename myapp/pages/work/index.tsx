@@ -153,17 +153,21 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0 }}
         transition={{ delay: 0, duartion: 1 }}
-        className="fixed z-[110] w-full "
+        className=" z-[110] h-full w-full "
       >
-        <h1 className=" text-md flex w-full items-center justify-center font-monts font-semibold text-[#49111c] md:text-xl">
-          이벤트를 클릭하십시오
-        </h1>
-
         {/* Category buttons */}
 
-        <motion.div className="mx-2 mt-2 flex flex-wrap justify-between overflow-y-scroll md:mx-16 md:mt-5">
+        <motion.div className="mx-2 mt-2 flex flex-wrap  justify-between  md:mx-16 md:mt-5">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
+            className=" text-md m-5 flex w-full items-center justify-center bg-transparent font-monts font-semibold text-[#49111c] md:text-xl"
+          >
+            이벤트를 클릭하십시오
+          </motion.h1>
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.89,
@@ -174,8 +178,8 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#F25287] peer-checked:border-[#F25287]  peer-checked:text-[#F25287] md:m-2 md:h-16 md:w-[10rem] 
-    md:text-[15px] xl:m-2  "
+              className="event_range_wrapper  relative m-1 h-10 w-[6rem] rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#F25287]  peer-checked:border-[#F25287] peer-checked:text-[#F25287] md:m-2 md:h-16 
+    md:w-[10rem] md:text-[15px] xl:m-2 "
             >
               <button
                 id="wedding"
@@ -186,19 +190,19 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                   //   selectedEvent
                   //)
                 }}
-                className="flex-start cursor-pointer"
+                className="flex-start "
                 style={{ accentColor: "#F25287" }}
               />
               <label
                 htmlFor="wedding"
-                className="absolute inset-0 flex flex-row items-center justify-center "
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <Image
                   width="40"
                   height="40"
                   src="/images/icons/wedding.png"
                   alt="wedding"
-                  className="mx-1 h-7 w-7 md:mx-2 md:h-[40px] md:w-[40px]"
+                  className="mx-1 h-7 w-7 cursor-pointer md:mx-2 md:h-[40px] md:w-[40px]"
                 />
                 가족 개인
               </label>
@@ -206,7 +210,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.86,
@@ -217,7 +221,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem]  cursor-pointer select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB]   peer-checked:text-[#2563EB] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className="event_range_wrapper relative m-1 h-10 w-[6rem]   select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB]   peer-checked:text-[#2563EB] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
             >
               <button
                 style={{ accentColor: "#2563EB" }}
@@ -227,7 +231,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="business"
-                className="absolute inset-0 flex flex-row items-center justify-center "
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <Image
                   width="40"
@@ -242,7 +246,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.83,
@@ -263,7 +267,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="public"
-                className="absolute inset-0 flex flex-row items-center justify-center "
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center "
               >
                 <Image
                   width="40"
@@ -278,7 +282,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
             viewport={{ once: true }}
@@ -294,7 +298,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="festival"
-                className="absolute inset-0 flex flex-row items-center justify-center"
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <Image
                   width="40"
@@ -309,7 +313,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.83,
@@ -330,7 +334,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="birthday"
-                className="absolute inset-0 flex flex-row items-center justify-center "
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <Image
                   width="40"
@@ -345,7 +349,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.86,
@@ -365,7 +369,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="steak"
-                className="absolute inset-0 flex flex-row items-center justify-center"
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -389,7 +393,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: -75 }}
+            initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.89,
@@ -409,7 +413,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               />
               <label
                 htmlFor="fingerFood"
-                className="absolute inset-0 flex flex-row items-center justify-center"
+                className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -710,7 +710,7 @@ const FormPage = () => {
               }}
               className=" fixed bottom-0 z-[100] h-12 w-full border border-slate-100 drop-shadow-2xl md:h-20 "
             >
-              <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-32">
+              <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-16">
                 <div className="flex flex-col items-center ">
                   <motion.div
                     initial={{ y: 0 }}

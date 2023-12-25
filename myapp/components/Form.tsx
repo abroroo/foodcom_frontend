@@ -1455,7 +1455,7 @@ const Form = ({
         {/* Event accessory */}
 
         {currentQuestion === 4 && (
-          <div className=" mx-auto  mb-0 w-full md:m-0 ">
+          <div className=" mx-auto  mb-0 flex h-full w-full  flex-col justify-center md:m-0">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -1470,7 +1470,7 @@ const Form = ({
               필요한 품목을 고르세요
             </motion.h4>
 
-            <div className="flex flex-wrap justify-center">
+            <div className="grid grid-cols-3 justify-center md:flex md:flex-wrap">
               <motion.label
                 whileTap={checkboxAnimationsGeneral}
                 whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
@@ -1913,7 +1913,7 @@ const Form = ({
 
         {/* Event Date */}
         {currentQuestion === 5 && (
-          <div className="mb-10 md:m-0">
+          <div className="mt-5">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -2092,7 +2092,7 @@ const Form = ({
         {currentQuestion === 7 && (
           <div className="mx-auto flex w-full flex-col items-center justify-center">
             <motion.h1
-              initial={{ x: -100, opacity: 0 }}
+              initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
               className="mb-5 flex items-center justify-center   text-lg font-semibold lg:text-[1.2rem]"
@@ -2107,7 +2107,7 @@ const Form = ({
 
             {/* Name */}
             <motion.div
-              initial={{ x: -100, opacity: 0 }}
+              initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
                 duration: 0.2,
@@ -2140,7 +2140,7 @@ const Form = ({
 
             {/* Phone number */}
             <motion.div
-              initial={{ x: -100, opacity: 0 }}
+              initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
               className=" mt-10 w-full  md:w-[70%]"
@@ -2304,7 +2304,7 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="items-between flex w-full flex-col  justify-center  p-5 px-4 text-[0.8rem]  font-bold "
+                className="items-between flex w-full flex-col justify-center  p-5  px-4 text-[0.8rem] font-bold  md:w-[50%] "
               >
                 <div className="flex items-start justify-between">
                   <p>이벤트 유형: </p>{" "}
@@ -2355,7 +2355,7 @@ const Form = ({
                 </div>
                 <div className="flex items-start justify-between">
                   {" "}
-                  <p>Tools: </p>
+                  <p>필요한 품목: </p>
                   <span className="pl-1 font-light">
                     {toolNamesArr + " " + formData.customTool}
                   </span>
