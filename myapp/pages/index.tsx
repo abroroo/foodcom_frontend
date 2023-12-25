@@ -257,7 +257,12 @@ export default function Home() {
                   // transition={{}}
                   className="ml-2 "
                 >
-                  <FontAwesomeIcon bounce icon={faBellConcierge} />
+                  <FontAwesomeIcon
+                    icon={faBellConcierge}
+                    className="h-5 w-5"
+                    bounce
+                    animation-duration="2s"
+                  />
                 </motion.div>
               </motion.button>
             </Link>
