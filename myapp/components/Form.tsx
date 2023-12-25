@@ -692,7 +692,7 @@ const Form = ({
                     alt="other"
                     className="mb-2 h-10 w-10 md:h-[54px] md:w-[54px]"
                   />
-                  키타 행사
+                  기타 행사
                 </label>
               </motion.div>
 
