@@ -1973,7 +1973,7 @@ const Form = ({
               <motion.button
                 type="button"
                 style={{ color: buttonBackground }}
-                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[10%] md:text-[15px]"
+                className="text-md  mr-7 mt-5 flex  items-center justify-center py-2  text-[15px] font-semibold tracking-wider  underline decoration-solid underline-offset-2 md:w-[15%] md:text-[15px]"
                 onClick={() => {
                   setCurrentQuestion(currentQuestion - 1)
                   selectedAccesories.length = 0

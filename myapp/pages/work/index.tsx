@@ -496,7 +496,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                           alt={selectedEvent || "default"}
                           width={500}
                           height={550}
-                          className="h-full w-full"
+                          className="object-cover"
                         />
                       </motion.div>
                     )
