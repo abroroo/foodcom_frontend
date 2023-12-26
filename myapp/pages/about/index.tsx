@@ -281,7 +281,7 @@ const index: React.FC = () => {
               <div className="w-full bg-[#49111c]/90 p-4 text-center text-[15px] text-[#fff] ">
                 © 2024
                 <a className="p-1 text-[#fff]/90" href="http://manchan.co.kr/">
-                  FoodCom <br className="block md:hidden " />
+                  FoodCom. <br className="block md:hidden " />
                   All Rights Reserved
                 </a>
               </div>
@@ -294,46 +294,3 @@ const index: React.FC = () => {
 }
 
 export default index
-
-{
-  /* <div className="my-5 flex w-full justify-between  py-2 text-[12px] text-[#49111c] md:text-[13px]">
-              <div className="address-info flex ">
-                <div className="flex flex-col items-start justify-center">
-                  <p className="">
-                    © 2024, FoodCom Inc. <br className="block md:hidden " />
-                    1577-4405, 063-247-3030
-                  </p>
-                  <p className="">
-                    55014 | 전주시 덕진구 <br className="block md:hidden " />{" "}
-                    진버들7길 21(우아동2가)
-                  </p>
-                </div>
-              </div>
-              <div className="social-media-icons flex items-center justify-center space-x-4 text-sm">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#49111c] hover:text-blue-700"
-                >
-                  <FontAwesomeIcon icon={faFacebook} size="lg" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#49111c] hover:text-blue-600"
-                >
-                  <FontAwesomeIcon icon={faTwitter} size="lg" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#49111c] hover:text-pink-700"
-                >
-                  <FontAwesomeIcon icon={faInstagram} size="lg" />
-                </a>
-              </div>
-            </div> */
-}
