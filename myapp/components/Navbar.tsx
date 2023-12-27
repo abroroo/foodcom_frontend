@@ -97,14 +97,14 @@ const Navbar = () => {
               href="/about"
               className="mx-1 hidden h-10 w-10 items-center justify-center text-[16px] font-semibold xl:flex"
             >
-              대해
+              소개
             </Link>
           ) : (
             <Link
               href="/form"
-              className="mx-1 hidden h-10 w-10 items-center justify-center text-[16px] font-semibold xl:flex"
+              className="mx-1 hidden h-10 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
             >
-              용지
+              처음으로
             </Link>
           )}
         </div>
@@ -126,7 +126,7 @@ const Navbar = () => {
                   : "block text-[#49111c]"
               }`}
             >
-              <p className={`my-0 `}>계획 행사</p>
+              <p className={`my-0 `}>처음으로</p>
             </Link>
 
             <Link
@@ -138,7 +138,7 @@ const Navbar = () => {
                   : "block text-[#49111c]"
               }`}
             >
-              <p className={`my-0`}>최근 이벤트</p>
+              <p className={`my-0`}>행사사진 구경</p>
             </Link>
 
             <Link
@@ -150,7 +150,7 @@ const Navbar = () => {
                   : "block text-[#49111c]"
               }`}
             >
-              <p className={`my-0 `}>푸드컴 대해</p>
+              <p className={`my-0 `}>푸드컴 소개</p>
             </Link>
           </div>
         </motion.div>

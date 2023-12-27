@@ -92,15 +92,18 @@ const index = () => {
         </motion.div>
       </motion.div>
 
-      <div className="absolute bottom-0 w-full flex-col   p-4 text-[10px] text-[#49111c] md:text-[13px]">
+      <div className="absolute bottom-0 w-full flex-col   p-4 text-[11px] text-[#49111c] md:text-[13px]">
         <hr className="mb-4 w-full" />
         <div className="flex justify-between">
           <div className="address-info flex ">
             <a
               href="https://푸드컴.com"
-              className="flex flex-col items-start justify-center font-semibold"
+              className="flex flex-col items-start justify-center "
             >
-              <p className="">© 2024, FoodCom</p>
+              <p className="">
+                © 2024, FoodCom. <br className="block md:hidden" /> All Rights
+                Reserved
+              </p>
             </a>
           </div>
           <div className="social-media-icons flex items-center justify-center space-x-4 text-sm">

@@ -436,7 +436,7 @@ const Form = ({
   return (
     <>
       <form
-        className="flex  h-full  w-full flex-col items-center  justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-32 md:px-20"
+        className="flex  h-full  w-full flex-col items-center  justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20"
         onSubmit={handleSubmit}
       >
         {/* Intro to Form */}
@@ -1455,7 +1455,7 @@ const Form = ({
         {/* Event accessory */}
 
         {currentQuestion === 4 && (
-          <div className=" mx-auto  mb-0 flex h-full w-full  flex-col justify-center md:m-0">
+          <div className="   mx-auto mb-0 flex h-full  w-full flex-col justify-center md:m-0">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -1913,7 +1913,7 @@ const Form = ({
 
         {/* Event Date */}
         {currentQuestion === 5 && (
-          <div className="mt-5">
+          <div className=" date-div  mt-5 flex w-full flex-col">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -1931,7 +1931,7 @@ const Form = ({
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
-              className=" flex w-[90%]  justify-between md:w-full "
+              className="  flex  items-center justify-center md:w-full"
             >
               <style>{css}</style>
               <DayPicker

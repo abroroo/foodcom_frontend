@@ -124,9 +124,26 @@ datalist {
 .rdp {
   --rdp-cell-size: 55px !important; /* Size of the day cells. */
 }
+
+@media (max-height: 900px) {
+  .rdp {
+    --rdp-cell-size: 50px !important; /* Size of the day cells. */
+  }
+}
+@media (max-height: 800px) {
+  .rdp {
+    --rdp-cell-size: 45px !important; /* Size of the day cells. */
+  }
+  .date-div {
+    overflow-y: scroll;
+  }
+}
 @media (max-width: 767px) {
   .rdp {
     --rdp-cell-size: 40px !important; /* Size of the day cells. */
+  }
+  .date-div {
+    overflow-y: visible;
   }
 }
 /*  range input datalist circles  */

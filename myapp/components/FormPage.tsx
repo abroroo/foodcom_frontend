@@ -3,10 +3,12 @@ import React, { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import {
   faAnglesRight,
+  faArrowRightToBracket,
   faBuilding,
   faCalendarDays,
   faChair,
   faFileContract,
+  faImage,
   faMapLocationDot,
   faPerson,
   faSackDollar,
@@ -341,7 +343,10 @@ const FormPage = () => {
                     }}
                     className=" absolute flex cursor-pointer items-center justify-center text-[14px] font-bold  leading-relaxed"
                   >
-                    보기{" "}
+                    <FontAwesomeIcon
+                      className="h-5 w-5 text-[#49111c]"
+                      icon={faArrowRightToBracket}
+                    />{" "}
                     {/* <FontAwesomeIcon
                       className="ml-1 h-[8px] w-[8px]"
                       icon={faAnglesRight}
@@ -363,10 +368,14 @@ const FormPage = () => {
                       eventType === "birthday" ||
                       eventType === "fingerFood" ||
                       eventType === "steak"
-                        ? "flex cursor-pointer"
+                        ? "flex cursor-pointer flex-col"
                         : "hidden"
                     }
                   >
+                    <p className="mb-3 flex w-[98%] justify-start text-sm">
+                      {" "}
+                      행사사진 구경하기
+                    </p>
                     <motion.img
                       src={
                         eventType === ""
@@ -375,7 +384,9 @@ const FormPage = () => {
                       }
                       style={{ width: 450, height: 450 }}
                       className={`mb-[5px] mr-[5px] rounded brightness-110 ${
-                        isMouseWithinHero ? " blur-[1px]" : "blur-none"
+                        isMouseWithinHero
+                          ? " scale-[102%] duration-700"
+                          : "scale-100 duration-700"
                       }`}
                     />
                   </motion.div>
@@ -435,7 +446,7 @@ const FormPage = () => {
                           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                           value={`${
                             formDataTransfered.event_type === "wedding"
-                              ? "가쪽 개인행사"
+                              ? "스몰웨딩, 야외결혼"
                               : formDataTransfered.event_type === "business"
                               ? "기업 이벤트"
                               : formDataTransfered.event_type === "public"
@@ -443,7 +454,7 @@ const FormPage = () => {
                               : formDataTransfered.event_type === "festival"
                               ? "기관, 축제등"
                               : formDataTransfered.event_type === "birthday"
-                              ? "스몰웨딩, 야외결혼"
+                              ? "가족 개인행사"
                               : formDataTransfered.event_type === "fingerFood"
                               ? "핑거푸드"
                               : formDataTransfered.event_type === "steak"

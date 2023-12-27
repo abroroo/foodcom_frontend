@@ -1,5 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons"
 import { faArrowRight, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { set } from "date-fns"
@@ -147,25 +152,17 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
   }, [])
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center  overflow-y-scroll bg-[#fff] px-5  pt-[84px] md:overflow-y-hidden">
+    <div className="flex h-screen w-screen flex-col items-center justify-center  overflow-y-scroll bg-[#fff] px-5  pt-[84px] ">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0 }}
         transition={{ delay: 0, duartion: 1 }}
-        className=" z-[110] h-full w-full "
+        className="  z-[110] h-full w-full"
       >
         {/* Category buttons */}
 
-        <motion.div className="mx-2 mt-2 flex flex-wrap  justify-between  md:mx-16 md:mt-5">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-            className=" text-md m-5 flex w-full items-center justify-center bg-transparent font-monts font-semibold text-[#49111c] md:text-xl"
-          >
-            이벤트를 클릭하십시오
-          </motion.h1>
+        <motion.div className="mx-2 mt-2 flex flex-wrap  justify-between  md:mx-10 md:mt-5">
           <motion.div
             initial={{ opacity: 1, y: -45 }}
             animate={{ opacity: 1, y: 0 }}
@@ -178,8 +175,12 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper  relative m-1 h-10 w-[6rem] rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#F25287]  peer-checked:border-[#F25287] peer-checked:text-[#F25287] md:m-2 md:h-16 
-    md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper  relative m-1 h-10 w-[6rem] rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50 hover:text-[#F25287]  peer-checked:border-[#F25287] peer-checked:text-[#F25287] md:m-2 md:h-16 
+              md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "wedding"
+                  ? "    border-[1.5px] border-[#F25287] text-[#F25287] shadow-xl"
+                  : "  "
+              } `}
             >
               <button
                 id="wedding"
@@ -221,7 +222,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem]   select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB]   peer-checked:text-[#2563EB] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem]   select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50 hover:text-[#2563EB] peer-checked:border-[#2563EB]   peer-checked:text-[#2563EB] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "business"
+                  ? "    border-[1.5px] border-[#2563EB] text-[#2563EB] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#2563EB" }}
@@ -257,7 +262,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#047857] peer-checked:border-[#047857] peer-checked:text-[#047857] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2"
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#047857] peer-checked:border-[#047857] peer-checked:text-[#047857] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "public"
+                  ? "    border-[1.5px] border-[#047857] text-[#047857] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#047857" }}
@@ -289,7 +298,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50  hover:text-[#7C3AED] peer-checked:border-[#7C3AED] peer-checked:text-[#7C3AED] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50  hover:text-[#7C3AED] peer-checked:border-[#7C3AED] peer-checked:text-[#7C3AED] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "festival"
+                  ? "    border-[1.5px] border-[#7C3AED] text-[#7C3AED] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#7C3AED", alignSelf: "flex-start" }}
@@ -324,7 +337,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#9D174D] peer-checked:border-[#9D174D] peer-checked:text-[#9D174D] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#9D174D] peer-checked:border-[#9D174D] peer-checked:text-[#9D174D] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "birthday"
+                  ? "    border-[1.5px] border-[#9D174D] text-[#9D174D] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#9D174D" }}
@@ -360,7 +377,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#FE0000] peer-checked:border-[#FE0000] peer-checked:text-[#FE0000] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#FE0000] peer-checked:border-[#FE0000] peer-checked:text-[#FE0000] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "steak"
+                  ? "    border-[1.5px] border-[#FE0000] text-[#FE0000] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#FE0000", alignSelf: "flex-start" }}
@@ -404,7 +425,11 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           >
             <motion.div
               whileTap={checkboxAnimations}
-              className="event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[12px] text-[#49111c] hover:bg-gray-50  hover:text-[#F8B400] peer-checked:border-[#F8B400] peer-checked:text-[#F8B400] md:m-2 md:h-16 md:w-[10rem] md:text-[15px] xl:m-2 "
+              className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg  border text-[12px]   text-[#49111c] hover:bg-gray-50  hover:text-[#F8B400] peer-checked:text-[#F8B400] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                selectedEvent === "fingerFood"
+                  ? "    border-[1.5px] border-[#F8B400] text-[#F8B400] shadow-xl"
+                  : "  "
+              }`}
             >
               <button
                 style={{ accentColor: "#F8B400", alignSelf: "flex-start" }}
@@ -435,6 +460,14 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               </label>
             </motion.div>
           </motion.div>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
+            className=" text-md m-1 flex w-full items-center justify-end bg-transparent  font-monts text-gray-600"
+          >
+            *이벤트를 클릭하세요
+          </motion.h1>
         </motion.div>
 
         <motion.div
@@ -442,7 +475,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 1, ease: [0.32, 0, 0.24, 1] }}
           viewport={{ once: true }}
-          className=" corousel z-[200]  mx-2  mt-2 overflow-hidden md:mx-16 md:mt-0"
+          className=" corousel z-[200]  mx-2  mt-2 overflow-hidden md:mx-10 md:mt-0"
         >
           <motion.div
             ref={imageWrapperRef}
@@ -453,7 +486,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
             className="  h-full w-full cursor-grab"
           >
             <SmoothScroll>
-              <motion.div className="inner-corousel relative flex overflow-y-hidden">
+              <motion.div className="inner-corousel relative flex overflow-y-hidden ">
                 {(selectedEvent
                   ? eventImages[selectedEvent as keyof EventImages]
                   : Real
@@ -467,11 +500,10 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                     //   a
                     return (
                       <motion.div
-                        initial={{ opacity: 0, x: -70 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         transition={{
-                          delay: 0.1,
-                          duration: 1,
+                          duration: 0.3,
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         viewport={{ once: true }}
@@ -496,7 +528,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                           alt={selectedEvent || "default"}
                           width={500}
                           height={550}
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </motion.div>
                     )
