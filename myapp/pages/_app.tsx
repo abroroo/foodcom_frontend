@@ -34,9 +34,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
         />
 
+        <meta name="naver-site-verification" content="" />
+
         <meta
           name="description"
-          content="전주 최고의 케이터링 회사  푸드컴 맞춤형 메뉴, 맛있는 음식, 친절한 서비스. 파티, 회의, 결혼식 등 각종 행사에 완벽한 출장요리 서비스 제공."
+          content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
         />
         <meta
           name="keywords"
@@ -53,7 +55,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <meta property="og:title" content="푸드컴 - 케이터링 서비스" />
 
         <meta property="og:image" content="푸드컴 - 케이터링 서비스" />
-
+        <meta
+          property="og:description"
+          content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
+        />
+        <meta property="og:url" content="https://푸드컴.com"></meta>
         <link
           rel="icon"
           type="image/png"
