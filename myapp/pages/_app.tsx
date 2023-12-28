@@ -34,7 +34,10 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
         />
 
-        <meta name="naver-site-verification" content="" />
+        <meta
+          name="naver-site-verification"
+          content="38c3a4d914672bc96ef1afc4832dbb98687ba697"
+        />
 
         <meta
           name="description"
