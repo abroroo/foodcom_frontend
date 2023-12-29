@@ -57,12 +57,18 @@ const App = ({ Component, pageProps, router }: AppProps) => {
 
         <meta property="og:title" content="푸드컴 - 케이터링 서비스" />
 
-        <meta property="og:image" content="푸드컴 - 케이터링 서비스" />
         <meta
           property="og:description"
           content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
         />
         <meta property="og:url" content="https://푸드컴.com"></meta>
+        <meta property="og:type" content="website" />
+        <meta property="og:auther" content="푸드컴" />
+        <meta property="og:site_name" content="푸드컴" />
+        <meta
+          property="og:image"
+          content="https://res.opengraph.xyz/2c2c6737-47d4-4459-9969-e711eb48394c/v1/xn--hy1bw80c81d.com/%ED%91%B8%EB%93%9C%EC%BB%B4%20-%20%EC%BC%80%EC%9D%B4%ED%84%B0%EB%A7%81%20%EC%84%9C%EB%B9%84%EC%8A%A4/%EC%A0%84%EC%A3%BC%EC%9D%98%20%ED%91%B8%EB%93%9C%EC%BB%B4%20-%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EC%BC%80%EC%9D%B4%ED%84%B0%EB%A7%81%20%EC%84%9C%EB%B9%84%EC%8A%A4.%20%EB%A7%9E%EC%B6%A4%ED%98%95%20%EB%A9%94%EB%89%B4%EC%99%80%20%EC%B9%9C%EC%A0%88%ED%95%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A1%9C%20%ED%9A%8C%EC%82%AC%20%ED%96%89%EC%82%AC%EB%B6%80%ED%84%B0%20%EA%B2%B0%ED%98%BC%EC%8B%9D%EA%B9%8C%EC%A7%80%20%EC%99%84%EB%B2%BD%ED%95%98%EA%B2%8C%20%EC%A7%80%EC%9B%90%ED%95%A9%EB%8B%88%EB%8B%A4/https%3A%2F%2Fopengraph.b-cdn.net%2Fproduction%2Fdocuments%2F5c465eae-8daa-40ab-a4d3-2c6de2afe850.png%3Ftoken%3DGunVgWWAMYBcgIyxSMNZQ4sBa7ArmSiSBLYiOx64a9w%26height%3D728%26width%3D1200%26expires%3D33239807652/og.png"
+        ></meta>
         <link
           rel="icon"
           type="image/png"
