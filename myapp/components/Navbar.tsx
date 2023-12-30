@@ -138,7 +138,7 @@ const Navbar = () => {
                   : "block text-[#49111c]"
               }`}
             >
-              <p className={`my-0`}>행사사진 구경</p>
+              <p className={`my-0`}>행사사진</p>
             </Link>
 
             <Link

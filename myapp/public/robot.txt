@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://푸드컴.com/sitemap.xml

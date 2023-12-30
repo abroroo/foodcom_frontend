@@ -707,7 +707,7 @@ const Form = ({
                     type="text"
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     name="event_type"
-                    placeholder="명기해주세요"
+                    placeholder="직접입력"
                     onChange={handleInputChange}
                   />
                 </motion.div>
@@ -1388,7 +1388,7 @@ const Form = ({
                     type="text"
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     name="event_place"
-                    placeholder="명기해주세요"
+                    placeholder="직접입력"
                     onChange={handleInputChange}
                   />
                 </motion.div>
@@ -1455,7 +1455,7 @@ const Form = ({
         {/* Event accessory */}
 
         {currentQuestion === 4 && (
-          <div className="   mx-auto mb-0 flex h-full  w-full flex-col justify-center md:m-0">
+          <div className=" date-div  mx-auto mb-0 flex h-full  w-full flex-col justify-center md:m-0">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -1847,7 +1847,7 @@ const Form = ({
                   <input
                     type="text"
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                    placeholder="명기해주세요"
+                    placeholder="직접입력"
                     name="tool"
                     onChange={handleCheckboxAccesories}
                   />
