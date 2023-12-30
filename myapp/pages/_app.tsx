@@ -51,7 +51,8 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <meta property="og:image" content="https://푸드컴.com/ogimage.jpeg" />{" "}
         <meta property="og:type" content="website" />
-        <meta property="og:auther" content="푸드컴" />
+        <meta name="author" content="푸드컴" />
+        <meta property="og:locale" content="ko_KR" />
         <meta property="og:site_name" content="푸드컴" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="푸드컴.com" />
