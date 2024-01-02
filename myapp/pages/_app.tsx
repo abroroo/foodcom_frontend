@@ -49,7 +49,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           property="og:description"
           content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
         />
-        <meta property="og:image" content="https://푸드컴.com/ogimage.jpeg" />{" "}
+        <meta
+          property="og:image"
+          content="https://xn--hy1bw80c81d.com/ogimage.jpeg"
+        />{" "}
+        <meta property="og:image" content="https://푸드컴.com/ogimage.jpeg" />
         <meta property="og:type" content="website" />
         <meta name="author" content="푸드컴" />
         <meta property="og:locale" content="ko_KR" />

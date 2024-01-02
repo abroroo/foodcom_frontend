@@ -121,12 +121,13 @@ export default function Home() {
               ease: [0.445, 0.05, 0.058, 0.96],
             }}
           >
-            <h1 className="mt-[50px] flex flex-col rounded-md px-2  font-kr  text-[25px] font-[900]  leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[50px]">
+            <h1 className="font-zermatt mt-[50px] flex flex-col rounded-md  px-2  text-[25px]  font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[60px]">
               <span className=" flex items-center justify-center ">
                 음식이 필요한 모든행사
               </span>{" "}
               <span className="flex items-center justify-center">
-                * 푸드, 이벤트 견적 플랫폼 *
+                <span className="mx-3 font-kr md:mx-7">*</span> 푸드, 이벤트
+                견적 플랫폼 <span className="mx-3 font-kr md:mx-7">*</span>
               </span>
             </h1>
 
@@ -193,7 +194,7 @@ export default function Home() {
               viewport={{ once: true }}
               className=" flex flex-col items-center justify-center p-5 pb-0 font-light md:px-7  xl:px-10 "
             >
-              <p className="text-[18px]  leading-relaxed text-[#49111c]/90  md:text-[20px] ">
+              <p className="font-zermatt text-[18px] leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
                   30년경력 실무 전문가들의

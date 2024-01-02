@@ -102,7 +102,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/form"
-              className="mx-1 hidden h-10 w-16 items-center justify-center text-[16px] font-semibold xl:flex"
+              className="mx-1 hidden h-10 w-24 items-center justify-center text-[16px] font-semibold xl:flex"
             >
               처음으로
             </Link>

@@ -436,14 +436,14 @@ const Form = ({
   return (
     <>
       <form
-        className="flex  h-full  w-full flex-col items-center  justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20"
+        className=" flex  h-full w-full flex-col items-center justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20"
         onSubmit={handleSubmit}
       >
         {/* Intro to Form */}
 
         {currentQuestion === 0 && (
           <div className="flex flex-col items-center justify-center">
-            <h1 className="font-NexonGothic flex items-center  justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
+            <h1 className=" flex items-center  justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
               <PartyPopper
                 style={{ color: buttonBackground }}
                 className="mr-2 h-9 w-9"
