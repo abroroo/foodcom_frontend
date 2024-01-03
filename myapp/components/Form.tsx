@@ -56,6 +56,7 @@ const Form = ({
   const [customerMessage, setCustomerMessage] = useState("")
   const [eventVenue, setEventVenue] = useState("")
   const router = useRouter()
+  const [eventOtherType, setEventOtherType] = useState("")
   // ...
 
   // const currentDate = new Date(); // Get the current date and time
@@ -146,6 +147,8 @@ const Form = ({
       setSliderBudgetNum(parseInt(value))
     } else if (name === "event_place") {
       setEventVenue(value)
+    } else if (name === "event_type") {
+      setEventOtherType(value)
     } else if (name === "name") {
       setCustomerName(value)
     }
@@ -325,7 +328,7 @@ const Form = ({
       address: eventAddress,
       tool: selectedAccesories,
       customTool: customTool,
-      event_type: eventTypeOther || selectedEvent,
+      event_type: eventOtherType || selectedEvent,
       //date_rigistered: currentDate,
       event_date: eventDate,
       event_time: timeValue,
@@ -1849,7 +1852,7 @@ const Form = ({
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     placeholder="직접입력"
                     name="tool"
-                    onChange={handleCheckboxAccesories}
+                    onChange={handleCheckboxAccesoriesOther}
                   />
                 </div>
               )}
