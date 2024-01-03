@@ -1,3 +1,5 @@
+import fs from "fs"
+import path from "path"
 import React, { FC, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import {
@@ -8,22 +10,22 @@ import {
 import { faArrowRight, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { set } from "date-fns"
+import { de } from "date-fns/locale"
 import { motion } from "framer-motion"
 
 import SmoothScroll from "../../components/Scrolling/SmoothScrollHorizontal"
-import {
-  Birthday,
-  Bussiness,
-  Festival,
-  FingerFood,
-  Public,
-  Real,
-  Steak,
-  Wedding,
-} from "../../utils/images"
 
 interface GalleryProps {
-  onClose: () => void // Specify the type of onClose prop
+  onClose: () => void
+  weddingImages: any
+  birthdayImages: any
+  steakImages: any
+  fingerFoodImages: any
+  outsideImages: any
+  publicImages: any
+  businessImages: any
+  festivalImages: any
+  defaultImages: any // Specify the type of onClose prop
 }
 
 type EventImages = {
@@ -43,17 +45,18 @@ interface image {
   id: number
 }
 
-const EventsModal: FC<GalleryProps> = ({ onClose }) => {
-  // const [widthReal, setWidthReal] = useState(0);
-  // const recentSlider = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   const slider = recentSlider.current;
-  //   if (slider) {
-  //     setWidthReal(slider.scrollWidth - slider.offsetWidth);
-  //   }
-  // }, []);
-
+const EventsModal: FC<GalleryProps> = ({
+  onClose,
+  weddingImages,
+  birthdayImages,
+  steakImages,
+  fingerFoodImages,
+  outsideImages,
+  publicImages,
+  businessImages,
+  festivalImages,
+  defaultImages,
+}) => {
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: number) => {
@@ -112,15 +115,15 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
   const [selectedEvent, setSelectedEvent] = useState<string>("")
 
   const eventImages = {
-    default: Real,
-    wedding: Wedding,
-    festival: Festival,
-    business: Bussiness,
-    birthday: Birthday,
-    public: Public,
-    steak: Steak,
-    fingerFood: FingerFood,
-    real: Real,
+    default: defaultImages,
+    wedding: weddingImages,
+    festival: festivalImages,
+    business: businessImages,
+    birthday: birthdayImages,
+    public: publicImages,
+    steak: steakImages,
+    fingerFood: fingerFoodImages,
+    real: defaultImages,
 
     // Add other event types and their image arrays here
   }
@@ -205,7 +208,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                   alt="wedding"
                   className="mx-1 h-7 w-7 cursor-pointer md:mx-2 md:h-[40px] md:w-[40px]"
                 />
-                가족 개인
+                스몰웨딩
               </label>
             </motion.div>
           </motion.div>
@@ -360,7 +363,7 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
                   alt="birthday"
                   className="mx-1 h-7 w-7 md:mx-2 md:h-[40px] md:w-[40px]"
                 />
-                <span className="flex">스몰웨딩</span>
+                <span className="flex">가족 개인</span>
               </label>
             </motion.div>
           </motion.div>
@@ -489,10 +492,10 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
               <motion.div className="inner-corousel relative flex overflow-y-hidden ">
                 {(selectedEvent
                   ? eventImages[selectedEvent as keyof EventImages]
-                  : Real
+                  : defaultImages
                 )
-                  .slice() // Create a shallow copy of the array
-                  .reverse() // Reverse the copied array
+                  // .slice() // Create a shallow copy of the array
+                  // .reverse() // Reverse the copied array
                   .map((image: image, a: number) => {
                     // const reversedIndex =
                     //   eventImages[selectedEvent as keyof EventImages].length -
@@ -613,3 +616,158 @@ const EventsModal: FC<GalleryProps> = ({ onClose }) => {
 }
 
 export default EventsModal
+
+export async function getServerSideProps() {
+  //wedding
+  const weddingImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "wedding"
+  )
+  const weddingImages = fs
+    .readdirSync(weddingImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/wedding/${fileName}`,
+    }))
+
+  // birthday
+  const birthdayImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "birthday"
+  )
+  const birthdayImages = fs
+    .readdirSync(birthdayImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/birthday/${fileName}`,
+    }))
+
+  // festival
+  const festivalImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "festival"
+  )
+  const festivalImages = fs
+    .readdirSync(festivalImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/festival/${fileName}`,
+    }))
+
+  //public
+
+  const publicImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "publicc"
+  )
+  const publicImages = fs
+    .readdirSync(publicImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/publicc/${fileName}`,
+    }))
+
+  //bussiness
+
+  const businessImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "bussiness"
+  )
+  const businessImages = fs
+    .readdirSync(businessImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/bussiness/${fileName}`,
+    }))
+
+  //outside
+
+  const outsideImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "outside"
+  )
+  const outsideImages = fs
+    .readdirSync(outsideImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/outside/${fileName}`,
+    }))
+
+  //fingerFood
+  const fingerFoodImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "fingerFood"
+  )
+  const fingerFoodImages = fs
+    .readdirSync(fingerFoodImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/fingerFood/${fileName}`,
+    }))
+
+  //steak
+
+  const steakImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "steak"
+  )
+  const steakImages = fs.readdirSync(steakImagesDirectory).map((fileName) => ({
+    id: fileName,
+    imageSrc: `/images/real/steak/${fileName}`,
+  }))
+
+  // default
+  const defaultImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "steak"
+  )
+  const defaultImages = fs
+    .readdirSync(defaultImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/default/${fileName}`,
+    }))
+
+  return {
+    props: {
+      weddingImages,
+      birthdayImages,
+      steakImages,
+      fingerFoodImages,
+      outsideImages,
+      publicImages,
+      businessImages,
+      festivalImages,
+      defaultImages,
+
+      // ... other image categories
+    },
+  }
+}
