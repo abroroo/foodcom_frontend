@@ -37,11 +37,11 @@ const index: React.FC = () => {
         />
         <meta name="twitter:image" content="/images/about_pic.jpeg" />
       </Head>
-      <motion.div className="  flex  h-screen  w-screen flex-col items-center justify-evenly  overflow-scroll bg-[#fff]  pb-10 pt-20 font-outfit  text-[#49111c]">
+      <motion.div className="  flex  h-screen  w-screen flex-col items-center justify-evenly  overflow-scroll bg-[#fff]  pt-20  font-outfit text-[#49111c]  ">
         {/* flex flex-col items-center justify-center  overflow-scroll*/}
-        <main className="   h-full w-full     md:w-[90%]">
+        <main className="   h-full w-full   md:w-[90%]">
           {/* md:mt-[13rem] mt-32  */}
-          <div className="grid h-full w-full  grid-flow-row  auto-rows-max grid-cols-1 content-between gap-8 lg:grid-cols-2">
+          <div className="grid h-full w-full  grid-flow-row  auto-rows-max grid-cols-1 content-between gap-8  lg:grid-cols-2">
             <div className="flex h-full w-full justify-center">
               <div className="block  xl:fixed ">
                 <Image
@@ -227,7 +227,7 @@ const index: React.FC = () => {
               </div>
             </div>
 
-            <div className="   w-full flex-col text-[11px]  text-[#49111c] md:w-[90vw]  md:text-[13px] ">
+            <div className="   w-full flex-col   text-[11px] text-[#49111c] md:w-[90vw]   md:text-[13px]">
               <hr className="mb-3 w-full xl:mb-0" />
               <div className="flex justify-between px-2 pb-2 md:p-4">
                 <div className="address-info flex ">
