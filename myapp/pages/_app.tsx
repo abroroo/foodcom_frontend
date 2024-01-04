@@ -39,8 +39,12 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <title>푸드컴 - 케이터링 서비스</title>
         <meta
-          name="description"
+          property="description"
           content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
+        />
+        <meta
+          name="keywords"
+          content="케이터링 서비스, 푸드컴, 맞춤형 메뉴, 결혼식 케이터링, 회사 행사 케이터링, 친절한 서비스"
         />
         <meta property="og:url" content="https://푸드컴.com" />
         <meta property="og:type" content="website" />
@@ -81,14 +85,13 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <link rel="icon" href="/manifest/icon-192x192.png" />
         <link rel="canonical" href="https://푸드컴.com" />
-        <title>푸드컴 - 케이터링 서비스</title>
       </Head>
 
       <motion.div
         // initial={{opacity: 0, y: -100, }}
         // animate={navLoader}
         // transition={{duration: 1, delay: 2.7 }}
-        style={{ display: isHomePage ? "none" : "block" }}
+        style={{ display: isHomePage ? "none" : "flex" }}
       >
         <Navbar />
       </motion.div>

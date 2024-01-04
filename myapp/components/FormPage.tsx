@@ -199,8 +199,8 @@ const FormPage = () => {
         }
       )
       const data = await res.json()
-      // console.log("Response from backend: ", data)
-      // console.log("this is example Data : ", JSON.stringify(formDataTransfered))
+      //console.log("Response from backend: ", data)
+      console.log("this is example Data : ", JSON.stringify(formDataTransfered))
       setCountForProcess(1)
     } catch (error) {
       console.log(error)
@@ -377,6 +377,7 @@ const FormPage = () => {
                       행사사진 구경하기
                     </p>
                     <motion.img
+                      alt="행사사진"
                       src={
                         eventType === ""
                           ? "images/real/festival.jpg"
@@ -709,7 +710,7 @@ const FormPage = () => {
         </div>
 
         {isCurrentQuestion < 9 && (
-          <div className="absolute hidden  h-screen w-screen md:block ">
+          <div className="absolute hidden  h-screen w-screen bg-white md:block ">
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -719,7 +720,7 @@ const FormPage = () => {
                 type: "spring",
                 bounce: 0.3,
               }}
-              className=" fixed bottom-0 z-[100] h-12 w-full border border-slate-100 drop-shadow-2xl md:h-20 "
+              className=" fixed bottom-0 z-[100] h-12 w-full border border-slate-100 drop-shadow-2xl md:h-[4.5rem] "
             >
               <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-16">
                 <div className="flex flex-col items-center ">

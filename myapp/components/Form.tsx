@@ -148,6 +148,7 @@ const Form = ({
     } else if (name === "event_place") {
       setEventVenue(value)
     } else if (name === "event_type") {
+      console.log("event type: ", value)
       setEventOtherType(value)
     } else if (name === "name") {
       setCustomerName(value)
@@ -704,14 +705,14 @@ const Form = ({
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-                  className="mt-3 flex items-end justify-center md:hidden"
+                  className="mt-3 flex items-end justify-center xl:hidden"
                 >
                   <input
                     type="text"
                     className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
                     name="event_type"
                     placeholder="직접입력"
-                    onChange={handleInputChange}
+                    onChange={(e) => handleInputChange(e)}
                   />
                 </motion.div>
               )}
@@ -796,7 +797,7 @@ const Form = ({
                   value={sliderPeopleNum}
                   required
                   name="people_count"
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange(e)}
                 ></motion.input>
                 {/* <p className="-translate-y-1.5 translate-x-8 transform text-[20px] font-bold md:translate-x-4"></p> */}
               </motion.div>
@@ -2274,7 +2275,7 @@ const Form = ({
                 transition={{ duration: 1, type: "spring" }}
               >
                 <h1 className=" flex items-center justify-center text-[1rem] font-semibold md:text-[1.2rem]">
-                  이벤트 세부 정보를 확인하십시오{" "}
+                  이벤트 세부 정보를 확인하세요{" "}
                 </h1>
               </motion.div>
               <Image
@@ -2297,7 +2298,7 @@ const Form = ({
                 이벤트 계획이 준비되었습니다!
               </motion.p>
               <h3 className="mb-2 py-1 text-sm text-slate-400 md:py-4">
-                이벤트 세부 정보를 확인하십시오{" "}
+                이벤트 세부 정보를 확인하세요{" "}
               </h3>
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
@@ -2307,7 +2308,7 @@ const Form = ({
                   delay: 0.02,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className="items-between flex w-full flex-col justify-center  p-5  px-4 text-[0.8rem] font-bold  md:w-[50%] "
+                className="items-between flex w-full flex-col justify-center  px-2 py-5 text-[0.8rem] font-bold md:w-[50%]  md:px-4 "
               >
                 <div className="flex items-start justify-between">
                   <p>이벤트 유형: </p>{" "}
@@ -2326,7 +2327,7 @@ const Form = ({
                       ? "스테이크 행사"
                       : formData.event_type === "fingerFood"
                       ? "핑거푸드"
-                      : ""}
+                      : eventOtherType}
                   </span>
                 </div>
                 <div className="flex items-start justify-between">

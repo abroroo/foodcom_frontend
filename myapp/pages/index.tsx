@@ -121,7 +121,7 @@ export default function Home() {
               ease: [0.445, 0.05, 0.058, 0.96],
             }}
           >
-            <h1 className="font-zermatt mt-[50px] flex flex-col rounded-md  px-2  text-[25px]  font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[60px]">
+            <h1 className="mt-[50px] flex flex-col rounded-md px-2  font-zermatt  text-[25px]  font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[50px]">
               <span className=" flex items-center justify-center ">
                 음식이 필요한 모든행사
               </span>{" "}
@@ -442,6 +442,7 @@ export default function Home() {
 
               <div className="loader_image-wrap relative h-[100vh] w-[100vw] overflow-hidden ">
                 <motion.img
+                  alt="background-image"
                   initial={{ scale: 1.5 }}
                   animate={isMiddle}
                   transition={{
@@ -450,7 +451,6 @@ export default function Home() {
                     ease: [0.445, 0.05, 0.058, 0.96],
                   }}
                   src="/images/optimized/ciling.jpeg"
-                  alt="animation-image"
                   className="loader_Image is-middle h-full w-full object-cover "
                 />
               </div>
