@@ -148,7 +148,6 @@ const Form = ({
     } else if (name === "event_place") {
       setEventVenue(value)
     } else if (name === "event_type") {
-      console.log("event type: ", value)
       setEventOtherType(value)
     } else if (name === "name") {
       setCustomerName(value)
@@ -446,7 +445,7 @@ const Form = ({
         {/* Intro to Form */}
 
         {currentQuestion === 0 && (
-          <div className="flex flex-col items-center justify-center">
+          <div className="date-div mt-16 flex flex-col items-center justify-center  md:mt-0  ">
             <h1 className=" flex items-center  justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
               <PartyPopper
                 style={{ color: buttonBackground }}
@@ -455,7 +454,7 @@ const Form = ({
               어떤 행사를 계획하고 계십니까?
             </h1>
 
-            <div className="mt-5 flex  flex-wrap justify-between md:mt-4">
+            <div className=" mt-5  flex flex-wrap justify-between md:mt-4">
               <motion.div
                 whileTap={checkboxAnimations}
                 whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
@@ -989,7 +988,7 @@ const Form = ({
 
         {/* Event Venue */}
         {currentQuestion === 3 && (
-          <div className=" mx-auto w-full ">
+          <div className=" mx-auto mt-16 w-full md:mt-0">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -1459,7 +1458,7 @@ const Form = ({
         {/* Event accessory */}
 
         {currentQuestion === 4 && (
-          <div className=" date-div  mx-auto mb-0 flex h-full  w-full flex-col justify-center md:m-0">
+          <div className=" date-div tool-div mx-auto mb-0 mt-16 flex h-full w-full  flex-col justify-center  md:mt-0 ">
             <motion.h4
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}

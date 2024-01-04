@@ -59,7 +59,7 @@ export const generatePdf = async (ticket_number) => {
       throw new Error("Failed to generate PDF.");
     }
 
-    // Handle the PDF generation as needed, e.g., downloading or displaying the PDF
+
   } catch (error) {
     console.log("Error in generatePdf:", error);
     throw error;

@@ -130,12 +130,13 @@ datalist {
     --rdp-cell-size: 50px !important; /* Size of the day cells. */
   }
 }
-@media (max-height: 800px) {
+@media (max-height: 800px) and (max-width: 767px) {
   .rdp {
     --rdp-cell-size: 45px !important; /* Size of the day cells. */
   }
   .date-div {
     overflow-y: scroll;
+    margin-top: 128px;
   }
 }
 @media (max-width: 767px) {
@@ -146,6 +147,14 @@ datalist {
     overflow-y: visible;
   }
 }
+
+@media (max-height: 800px) and (min-width: 1200px) {
+  .tool-div {
+    padding-top: 128px;
+    overflow-y: scroll;
+  }
+}
+
 /*  range input datalist circles  */
 
 /* Custom CSS class for styling datalist options */
