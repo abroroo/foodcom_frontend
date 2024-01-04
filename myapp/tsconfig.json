@@ -24,6 +24,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/kakaoMap.js", "utils/kakaoMap.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "utils/kakaoMap.js",
+    "utils/kakaoMap.d.ts",
+    "components/fetchFunctions/fetchFunctions.js"
+  ],
   "exclude": ["node_modules"]
 }

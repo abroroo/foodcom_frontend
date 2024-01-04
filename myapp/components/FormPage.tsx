@@ -1,5 +1,5 @@
 import { count } from "console"
-import React, { useEffect, useRef, useState } from "react"
+import React, { use, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import {
   faAnglesRight,
@@ -18,7 +18,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion, useAnimation } from "framer-motion"
 import { Dot, PartyPopper } from "lucide-react"
 
-import EventsModal from "./EventsModal"
+import {
+  createNewCustomer,
+  generatePdf,
+  saveFormData,
+} from "./fetchFunctions/fetchFunctions"
 import Form from "./Form"
 
 const FormPage = () => {
@@ -28,7 +32,7 @@ const FormPage = () => {
   const [isCurrentQuestion, setIsCurrentQuestion] = useState<number>(0)
   const [formDataTransfered, setFormDataTransfered] = useState<any>({})
 
-  // Callback function to update the parent's button background
+  // CALLBACK FUNCTION TO UPDATE THE PARENT'S BUTTON BACKGROUND
   const handleButtonBackgroundChange = (
     background: string,
     event: string,
@@ -42,7 +46,7 @@ const FormPage = () => {
     // console.log("This is formDataTransfered to FromPage: ", formDataTransfered)
   }
 
-  // Circle Following Mouse pointer effect
+  // CIRCLE FOLLOWING MOUSE POINTER EFFECT
 
   const cursorRef = useRef<HTMLDivElement>(null)
   const imageWrapperRef = useRef<HTMLDivElement>(null)
@@ -86,24 +90,22 @@ const FormPage = () => {
     }
   }
 
-  // MODAL OPEN CLOSE HANDALING
+  // 'EVENT IMAGES EXPLORE' ROUTING HANDALING
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const controls = useAnimation()
+
   const router = useRouter()
 
   const handleExploreClick = async (): Promise<void> => {
-    await controls.start({ scale: [1, 50], opacity: [1, 0] })
     router.push("/work")
   }
 
   const handleCloseModal = (): void => {
     setIsModalOpen(false)
     // Restore the circle's appearance when closing the modal
-    controls.start({ scale: 1, opacity: 1 })
   }
 
-  // IMAGE ANIMATION ENTRANCE AND EXIT IN THE HERO PAGE
+  // dynamic image sources for each event type
   // Define a type for image sources
   type ImageSources = {
     [key: string]: string
@@ -120,7 +122,7 @@ const FormPage = () => {
     other: "",
   }
 
-  // Footer color dynamic function
+  // FUNCTION to CHANGE PROGRESS ICONS' COLOR  DYNAMICALLY
 
   const getColor = (index: number): string => {
     // Define color logic based on isCurrentQuestion
@@ -158,77 +160,6 @@ const FormPage = () => {
   // as Month Day, hour:minute
   const formattedEventDate = eventDate.toLocaleString("ko-KR", options)
   // const formattedEventTime = eventTime.toLocaleString("ko-KR", options2)
-
-  const [ticket_number, setTicketNumber] = useState<string>("")
-  const [countForCustomer, setCountForCustomer] = useState<number>(0)
-  const [countForProcess, setCountForProcess] = useState<number>(0)
-  const [countForPdf, setCountForPdf] = useState<number>(0)
-
-  const createNewCustomer = async () => {
-    if (ticket_number === "") {
-      try {
-        const res = await fetch("https://api.food-c.co.kr/api/new_customer", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        const data = await res.json()
-        //console.log("Ticket Number: ", data)
-        setTicketNumber(data.ticket_number)
-        setCountForCustomer(1)
-        //console.log("Ticket Number in front End: ", ticket_number)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  }
-
-  // createNewCustomer();
-
-  const saveFormData = async () => {
-    try {
-      const res = await fetch(
-        `https://api.food-c.co.kr/api/process_data/${ticket_number}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formDataTransfered),
-        }
-      )
-      const data = await res.json()
-      //console.log("Response from backend: ", data)
-      console.log("this is example Data : ", JSON.stringify(formDataTransfered))
-      setCountForProcess(1)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const generatePdf = async () => {
-    try {
-      const res = await fetch(
-        `https://api.food-c.co.kr/api/generatepdf/${ticket_number}`,
-        {
-          method: "GET",
-        }
-      )
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  if (countForCustomer === 0 && isCurrentQuestion === 9) {
-    createNewCustomer()
-  }
-  if (countForCustomer === 1) {
-    saveFormData()
-  }
-  if (countForProcess === 1) {
-    generatePdf()
-  }
 
   const toolNames: {
     [key: number]: string
@@ -273,6 +204,59 @@ const FormPage = () => {
       return "  " + tool
     })
   }
+
+  // INTERACTING WITH BACKEND
+  const [ticketNumber, setTicketNumber] = useState<string | null>(null)
+  const [formDataSaved, setFormDataSaved] = useState<boolean>(false)
+  const [pdfGenerated, setPdfGenerated] = useState<boolean>(false)
+
+  //  Get ticket number from backend
+  useEffect(() => {
+    const fetchTicketNumber = async () => {
+      if (!ticketNumber && isCurrentQuestion === 9) {
+        try {
+          const newTicketNumber = await createNewCustomer()
+          setTicketNumber(newTicketNumber)
+        } catch (error) {
+          console.error("Error fetching ticket number:", error)
+        }
+      }
+    }
+
+    fetchTicketNumber()
+  }, [isCurrentQuestion, ticketNumber])
+
+  //  Save form data to backend
+  useEffect(() => {
+    const sendFormData = async () => {
+      if (ticketNumber && !formDataSaved) {
+        try {
+          await saveFormData(ticketNumber, formDataTransfered)
+          setFormDataSaved(true)
+        } catch (error) {
+          console.error("Error saving form data:", error)
+        }
+      }
+    }
+
+    sendFormData()
+  }, [ticketNumber, formDataTransfered, formDataSaved])
+
+  //  Generate PDF
+  useEffect(() => {
+    const createPdf = async () => {
+      if (formDataSaved && !pdfGenerated) {
+        try {
+          await generatePdf(ticketNumber)
+          setPdfGenerated(true)
+        } catch (error) {
+          console.error("Error generating PDF:", error)
+        }
+      }
+    }
+
+    createPdf()
+  }, [formDataSaved, pdfGenerated, ticketNumber])
 
   return (
     <div className="flex h-screen w-screen overflow-y-hidden">
