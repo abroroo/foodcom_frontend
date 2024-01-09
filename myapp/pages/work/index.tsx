@@ -766,7 +766,7 @@ export async function getServerSideProps() {
     "public",
     "images",
     "real",
-    "steak"
+    "default"
   )
   const defaultImages = fs
     .readdirSync(defaultImagesDirectory)
