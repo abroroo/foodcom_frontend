@@ -133,10 +133,11 @@ const FormPage = () => {
   }
 
   const [eventTypeOther, setEventTypeOther] = useState<string>("")
+  const [desktopOtherType, setDesktopOtherType] = useState<string>("")
 
   const onOtherChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target
-    setEventTypeOther(value)
+    setDesktopOtherType(value)
   }
 
   // Assuming eventTime is in the format "2023-10-19T20:00:00.000Z"
@@ -272,6 +273,7 @@ const FormPage = () => {
           <Form
             onButtonBackgroundChange={handleButtonBackgroundChange}
             eventTypeOther={eventTypeOther}
+            desktopOtherType={desktopOtherType}
           />
         </div>
 
@@ -399,7 +401,6 @@ const FormPage = () => {
                       type="text"
                       className="mt-1 block w-full appearance-none border-0 border-b-2 border-gray-200 px-0.5 focus:border-black focus:outline-none focus:ring-0 active:border-[#49111c]"
                       placeholder=""
-                      value={eventTypeOther}
                       onChange={onOtherChange}
                     />
                   </motion.div>
@@ -446,7 +447,7 @@ const FormPage = () => {
                               ? "핑거푸드"
                               : formDataTransfered.event_type === "steak"
                               ? "스테이크 행사"
-                              : eventTypeOther
+                              : desktopOtherType
                           } `}
                         ></input>
                       </motion.div>

@@ -35,6 +35,7 @@ import ConfettiExplosion from "react-confetti-explosion"
 
 interface ChildComponentProps {
   eventTypeOther: string
+  desktopOtherType: string
   onButtonBackgroundChange: (
     background: string,
     eventType: string,
@@ -46,6 +47,7 @@ interface ChildComponentProps {
 const Form = ({
   onButtonBackgroundChange,
   eventTypeOther,
+  desktopOtherType,
 }: ChildComponentProps) => {
   // vars to store form data, not sure if needed
 
@@ -328,7 +330,7 @@ const Form = ({
       address: eventAddress,
       tool: selectedAccesories,
       customTool: customTool,
-      event_type: eventOtherType || selectedEvent,
+      event_type: eventOtherType || desktopOtherType || selectedEvent,
       //date_rigistered: currentDate,
       event_date: eventDate,
       event_time: timeValue,
