@@ -33,7 +33,7 @@ export const saveFormData = async (ticket_number, formData) => {
         body: JSON.stringify(formData),
       }
     );
-    console.log('Sent data to backedn: ', formData)
+    // console.log('Sent data to backedn: ', formData)
     if (!res.ok) {
       throw new Error("Failed to save form data.");
     }
