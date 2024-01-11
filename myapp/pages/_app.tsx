@@ -37,6 +37,10 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           name="naver-site-verification"
           content="38c3a4d914672bc96ef1afc4832dbb98687ba697"
         />
+        <meta
+          name="naver-site-verification"
+          content="3579026e60b7019d9c6aa776edcd38baedc6311f"
+        />
         <title>푸드컴 - 케이터링 서비스</title>
         <meta
           property="description"

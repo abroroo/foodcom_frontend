@@ -178,7 +178,6 @@ const FormPage = () => {
     12: string
     13: string
     14: string
-    15: string
   } = {
     1: "사각 테이블",
     2: "원탁테이블",
@@ -194,7 +193,6 @@ const FormPage = () => {
     12: "마스터 밴드",
     13: "플래카드",
     14: "필요없는",
-    15: "추가금액",
   }
 
   let toolNamesArr: string[] = []

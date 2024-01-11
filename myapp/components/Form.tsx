@@ -410,7 +410,6 @@ const Form = ({
     12: string
     13: string
     14: string
-    15: string
   } = {
     1: "사각 테이블",
     2: "원탁테이블",
@@ -426,7 +425,6 @@ const Form = ({
     12: "마스터 밴드",
     13: "플래카드",
     14: "필요없는",
-    15: "추가금액",
   }
 
   let toolNamesArr: string[] = []
@@ -1474,7 +1472,14 @@ const Form = ({
                 style={{ color: buttonBackground }}
                 className="mr-2 h-9 w-9"
               />
-              필요한 품목을 고르세요
+              <span className="flex flex-col items-center justify-center">
+                귀 행사에 필요한 품목을 고르세요
+                <br />
+                <p className="text-sm text-slate-600">* 별도 품목입니다 </p>
+                <p className="text-sm text-slate-600">
+                  ( 행사에 따라 서비스 품목 있습니다 ){" "}
+                </p>
+              </span>
             </motion.h4>
 
             <div className="grid grid-cols-3 justify-center md:flex md:flex-wrap">
@@ -1797,31 +1802,6 @@ const Form = ({
                 />
                 <span className="pl-1 text-[12px] md:text-[15px]">
                   플래카드
-                </span>
-              </motion.label>
-
-              <motion.label
-                whileTap={checkboxAnimationsGeneral}
-                whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
-                initial={{ x: -100, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.06,
-                  ease: [0.25, 1, 0.5, 1],
-                }}
-                className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20  md:w-28 md:justify-center xl:m-3  "
-              >
-                <input
-                  style={{ accentColor: buttonBackground }}
-                  type="checkbox"
-                  required
-                  name="tool"
-                  value={15}
-                  onChange={handleCheckboxAccesories}
-                />
-                <span className="pl-1 text-[12px] md:text-[15px]">
-                  추가금액
                 </span>
               </motion.label>
 
