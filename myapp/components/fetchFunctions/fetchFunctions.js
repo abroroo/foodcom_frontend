@@ -2,7 +2,7 @@
 
 export const createNewCustomer = async () => {
   try {
-    const res = await fetch("http://localhost:8000/api/new_customer", {
+    const res = await fetch("https://api.food-c.co.kr/api/new_customer", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const createNewCustomer = async () => {
 export const saveFormData = async (ticket_number, formData) => {
   try {
     const res = await fetch(
-      `http://localhost:8000/api/process_data/${ticket_number}`,
+      `https://api.food-c.co.kr/api/process_data/${ticket_number}`,
       {
         method: "POST",
         headers: {
@@ -49,7 +49,7 @@ export const saveFormData = async (ticket_number, formData) => {
 export const generatePdf = async (ticket_number) => {
   try {
     const res = await fetch(
-      `http://localhost:8000/api/generatepdf/${ticket_number}`,
+      `https://api.food-c.co.kr/api/generatepdf/${ticket_number}`,
       {
         method: "GET",
       }

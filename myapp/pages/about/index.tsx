@@ -207,7 +207,7 @@ const index: React.FC = () => {
                             의:
                           </span>{" "}
                           <span className="ml-1 flex flex-col items-start">
-                            1577-4405 | (063)247-3030
+                            1577-4405 | (063)231-6556
                           </span>
                         </p>
                         <p className="mb-1">
@@ -216,10 +216,16 @@ const index: React.FC = () => {
                             href="mailto:hw3030@naver.com"
                             className=" hover:underline"
                           >
-                            hw3030@naver.com
+                            contact@푸드컴.com
                           </a>
                         </p>
-                        <p className="">전주시 덕진구 진버들7길 21 (55014)</p>
+                        <p className="mb-1">
+                          <span className="w-12 font-semibold">
+                            사업자등록번호:
+                          </span>{" "}
+                          10-4280-8418
+                        </p>
+                        <p className="">전주시 완산구 간납로 4 (55014)</p>
                       </div>
                     </div>
                   </div>

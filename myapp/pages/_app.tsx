@@ -43,7 +43,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <title>푸드컴 - 케이터링 서비스</title>
         <meta
-          property="description"
+          name="description"
           content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
         />
         <meta
@@ -54,7 +54,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="푸드컴 - 케이터링 서비스" />
         <meta
-          property="og:description"
+          name="og:description"
           content="전주의 푸드컴 - 최고의 케이터링 서비스. 맞춤형 메뉴와 친절한 서비스로 회사 행사부터 결혼식까지 완벽하게 지원합니다"
         />
         <meta
