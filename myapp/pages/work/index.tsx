@@ -512,49 +512,56 @@ const EventsModal: FC<GalleryProps> = ({
                   {(selectedEvent
                     ? eventImages[selectedEvent as keyof EventImages]
                     : defaultImages
-                  )
-                    // .slice() // Create a shallow copy of the array
-                    // .reverse() // Reverse the copied array
-                    .map((image: image, a: number) => {
-                      // const reversedIndex =
-                      //   eventImages[selectedEvent as keyof EventImages].length -
-                      //   1 -
-                      //   a
-                      return (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
+                  ).map((image: image, index: number) => {
+                    const reverseIndex =
+                      (selectedEvent
+                        ? eventImages[selectedEvent as keyof EventImages]
+                        : defaultImages
+                      ).length -
+                      1 -
+                      index
+
+                    const reversedImage = (
+                      selectedEvent
+                        ? eventImages[selectedEvent as keyof EventImages]
+                        : defaultImages
+                    )[reverseIndex]
+
+                    return (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{
+                          duration: 0.3,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
+                        key={reversedImage.id}
+                        className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
+                      >
+                        <motion.p
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           transition={{
-                            duration: 0.3,
+                            delay: 0.5,
+                            duration: 1,
                             ease: [0.22, 1, 0.36, 1],
                           }}
                           viewport={{ once: true }}
-                          key={image.id}
-                          className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
+                          className="mb-3 pl-[2px] text-[12px] font-semibold"
                         >
-                          <motion.p
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: 0.5,
-                              duration: 1,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                            viewport={{ once: true }}
-                            className="mb-3 pl-[2px] text-[12px] font-semibold"
-                          >
-                            0{a}
-                          </motion.p>
-                          <Image
-                            src={image.imageSrc}
-                            alt={selectedEvent || "default"}
-                            width={500}
-                            height={550}
-                            className="object-contain"
-                          />
-                        </motion.div>
-                      )
-                    })}
+                          0{reverseIndex}
+                        </motion.p>
+                        <Image
+                          src={reversedImage.imageSrc}
+                          alt={selectedEvent || "default"}
+                          width={500}
+                          height={550}
+                          className="object-contain"
+                        />
+                      </motion.div>
+                    )
+                  })}
                 </motion.div>
               </SmoothScroll>
             </motion.div>
