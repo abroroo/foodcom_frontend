@@ -550,7 +550,7 @@ const EventsModal: FC<GalleryProps> = ({
                           viewport={{ once: true }}
                           className="mb-3 pl-[2px] text-[12px] font-semibold"
                         >
-                          0{reverseIndex}
+                          0{index}
                         </motion.p>
                         <Image
                           src={reversedImage.imageSrc}
