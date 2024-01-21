@@ -27,7 +27,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    working_directory: ~/myapp/myapp
+    working_directory: ~/
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
