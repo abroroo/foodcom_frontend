@@ -5,7 +5,7 @@ jobs:
   test-node:
     # Install node dependencies and run tests
     executor: node/default
-    working_directory: ~/
+    working_directory: ~/foodcom_frontend/myapp
     environment:
       JEST_JUNIT_OUTPUT_DIR: ./test-results/
     steps:
@@ -28,7 +28,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    working_directory: ~/
+    working_directory: ~/foodcom_frontend/myapp
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
@@ -66,7 +66,7 @@ jobs:
   preview_deployment:
     docker:
       - image: cimg/node:18.19.0
-    working_directory: ~/
+    working_directory: ~/foodcom_frontend/myapp
     steps:
       - checkout
       - run:
@@ -92,7 +92,7 @@ jobs:
   production_deployment:
     docker:
       - image: cimg/node:18.19.0
-    working_directory: ~/
+    working_directory: ~/foodcom_frontend/myapp
     steps:
       - checkout
       - run:
