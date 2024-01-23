@@ -5,3 +5,5 @@ The frontend was built with Next.js, and the backend was built with Django.
 We've also integrated a Telegram bot that notifies FoodCom of any new requests and allows for no-code management of all images on the website. It's running on AWS LightSail.
 
 ## Key Idea
+
+### The sections 
