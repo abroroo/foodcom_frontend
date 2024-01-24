@@ -7,3 +7,7 @@ We've also integrated a Telegram bot that notifies FoodCom of any new requests a
 ## Key Idea
 
 ### The sections 
+
+It includes a quiteionarie like options for booking catering service from Foodcom, fisrt you need to specify type of event you are hosting, 
+then amount of guests, then preferable budget per person, then event venue, then additional tools like chair, tent or music sepakers, etc. and then you should enter the address of the venue, then personal information such as phone number, name and optional note. As you do that, representative of Foodcom will reach out and specify needed menu content and in advance payment. Then you don't ahve to worry about 
+catering nad food at tyour event since Foodcom will take care of everything. 
