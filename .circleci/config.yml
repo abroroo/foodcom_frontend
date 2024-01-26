@@ -27,7 +27,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    working_directory: ~/project/myapp/
+    # working_directory: ~/project/myapp/
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
@@ -41,7 +41,7 @@ jobs:
       - run:
           name: List all files in current directory
           command: |
-            ls
+            cd myapp && ls && npm install
       - node/install-packages:
           pkg-manager: npm
       - run:
@@ -53,19 +53,19 @@ jobs:
           command: cd myapp && npm run build
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
-          command: mkdir -p ~/artifacts
+          command: cd myapp && mkdir -p ~/artifacts
       # Copy output to artifacts dir
       - run:
           name: Copy artifacts
-          command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
+          command: cd myapp && cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
       - store_artifacts:
-          path: ~/artifacts
+          path: ~/myapp/artifacts
           destination: node-build
 
   preview_deployment:
     docker:
       - image: cimg/node:18.19.0
-    working_directory: ~/project/myapp/
+    # working_directory: ~/project/myapp/
     steps:
       - checkout
       - run:
@@ -75,39 +75,39 @@ jobs:
             echo "VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID"
       - run:
           name: Install Vercel CLI
-          command: npm install vercel@latest
+          command: cd myapp && npm install vercel@latest
       - run:
           name: Pull Vercel Environment Information
-          command: npx vercel pull --yes --environment=preview --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel pull --yes --environment=preview --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
       - run:
           name: Build Project Artifacts
-          command: npx vercel build --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel build --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
       - run:
           name: Deploy Project Artifacts to Vercel
-          command: npx vercel deploy --prebuilt --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel deploy --prebuilt --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
   production_deployment:
     docker:
       - image: cimg/node:18.19.0
-    working_directory: ~/project/myapp/
+    # working_directory: ~/project/myapp/
     steps:
       - checkout
       - run:
           name: Install Vercel CLI
-          command: npm install vercel@latest
+          command: cd myapp && npm install vercel@latest
       - run:
           name: Pull Vercel Environment Information
-          command: npx vercel pull --yes --environment=production --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel pull --yes --environment=production --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
       - run:
           name: Build Project Artifacts
-          command: npx vercel build --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel build --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
       - run:
           name: Deploy Project Artifacts to Vercel
-          command: npx vercel deploy --prebuilt --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+          command: cd myapp && npx vercel deploy --prebuilt --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
 
 workflows:
   build-and-test:
