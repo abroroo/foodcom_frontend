@@ -1,0 +1,105 @@
+version: 2.1
+orbs:
+  node: circleci/node@5
+jobs:
+  build-node:
+    # Builds node project
+    executor: node/default
+    # working_directory: ~/project/myapp/
+    environment:
+      VERCEL_ORG_ID: $VERCEL_ORG_ID
+      VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+      NEXT_PUBLIC_KAKAO_REST_API_KEY: $NEXT_PUBLIC_KAKAO_REST_API_KEY
+    steps:
+      - checkout
+      - run:
+          name: Log Current Directory
+          command: |
+            pwd
+      - run:
+          name: List all files in current directory
+          command: |
+            cd myapp && ls && npm install
+      # - node/install-packages:
+      #     pkg-manager: npm
+      - run:
+          name: Print node install help instructions
+          command: |-
+            echo "Node build has failed"
+          when: on_fail
+      - run:
+          command: cd myapp && npm run build
+      - run:
+          name: Create the ~/artifacts directory if it doesn't exist
+          command: cd myapp && mkdir -p ~/artifacts
+      # Copy output to artifacts dir
+      - run:
+          name: Copy artifacts
+          command: cd myapp && cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
+      - store_artifacts:
+          path: ~/myapp/artifacts
+          destination: node-build
+
+  preview_deployment:
+    docker:
+      - image: cimg/node:18.19.0
+    # working_directory: ~/project/myapp/
+    steps:
+      - checkout
+      - run:
+          name: Debug Print
+          command: |
+            echo "VERCEL_ORG_ID: $VERCEL_ORG_ID"
+            echo "VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID"
+      - run:
+          name: Install Vercel CLI
+          command: cd myapp && npm install vercel@latest
+      - run:
+          name: Pull Vercel Environment Information
+          command: cd myapp && npx vercel pull --yes --environment=preview --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+
+      - run:
+          name: Build Project Artifacts
+          command: cd myapp && npx vercel build --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+
+      - run:
+          name: Deploy Project Artifacts to Vercel
+          command: cd myapp && npx vercel deploy --prebuilt --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+  #  should set up for Amazon Lightsail, but for now its for Vercel production at foodcom.vercel.app
+  production_deployment:
+    docker:
+      - image: cimg/node:18.19.0
+    # working_directory: ~/project/myapp/
+    steps:
+      - checkout
+      - run:
+          name: Install Vercel CLI
+          command: cd myapp && npm install vercel@latest
+      - run:
+          name: Pull Vercel Environment Information
+          command: cd myapp && npx vercel pull --yes --environment=production --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+
+      - run:
+          name: Build Project Artifacts
+          command: cd myapp && npx vercel build --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+
+      - run:
+          name: Deploy Project Artifacts to Vercel
+          command: cd myapp && npx vercel deploy --prebuilt --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
+
+workflows:
+  build-and-test:
+    jobs:
+      - build-node
+      - preview_deployment:
+          requires:
+            - build-node
+          filters:
+            branches:
+              ignore: /main/
+      - production_deployment:
+          requires:
+            - build-node
+          filters:
+            branches:
+              only: /main/
