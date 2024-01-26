@@ -4,7 +4,7 @@ orbs:
 
 jobs:
   test-node:
-    executor: node/default
+    executor: cimg/node:18.19.0
     environment:
       JEST_JUNIT_OUTPUT_DIR: ./test-results/
     steps:
@@ -25,7 +25,7 @@ jobs:
           path: ./test-results/
 
   build-node:
-    executor: node/default
+    executor: cimg/node:18.19.0
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
