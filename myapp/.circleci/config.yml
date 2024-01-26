@@ -1,9 +1,9 @@
 version: 2.1
 orbs:
   node: circleci/node@5
+
 jobs:
   test-node:
-    # Install node dependencies and run tests
     executor: node/default
     environment:
       JEST_JUNIT_OUTPUT_DIR: ./test-results/
@@ -25,21 +25,20 @@ jobs:
           path: ./test-results/
 
   build-node:
-    # Builds node project
     executor: node/default
-    working_directory: ~/fooodcom_frontend/myapp
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
       NEXT_PUBLIC_KAKAO_REST_API_KEY: $NEXT_PUBLIC_KAKAO_REST_API_KEY
     steps:
-      - checkout
+      - checkout:
+          path: ~/fooodcom_frontend/myapp
       - run:
           name: Log Current Directory
           command: |
             pwd
       - run:
-          name: List all files in current directory
+          name: List all files in the current directory
           command: |
             ls
       - node/install-packages:
@@ -54,7 +53,6 @@ jobs:
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
-      # Copy output to artifacts dir
       - run:
           name: Copy artifacts
           command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
@@ -65,9 +63,9 @@ jobs:
   preview_deployment:
     docker:
       - image: cimg/node:18.19.0
-    # working_directory: ./myapp
     steps:
-      - checkout
+      - checkout:
+          path: ~/fooodcom_frontend/myapp
       - run:
           name: Debug Print
           command: |
@@ -79,11 +77,9 @@ jobs:
       - run:
           name: Pull Vercel Environment Information
           command: npx vercel pull --yes --environment=preview --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
-
       - run:
           name: Build Project Artifacts
           command: npx vercel build --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
-
       - run:
           name: Deploy Project Artifacts to Vercel
           command: npx vercel deploy --prebuilt --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
@@ -91,20 +87,18 @@ jobs:
   production_deployment:
     docker:
       - image: cimg/node:18.19.0
-    # working_directory: ./myapp
     steps:
-      - checkout
+      - checkout:
+          path: ~/fooodcom_frontend/myapp
       - run:
           name: Install Vercel CLI
           command: npm install vercel@latest
       - run:
           name: Pull Vercel Environment Information
           command: npx vercel pull --yes --environment=production --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
-
       - run:
           name: Build Project Artifacts
           command: npx vercel build --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
-
       - run:
           name: Deploy Project Artifacts to Vercel
           command: npx vercel deploy --prebuilt --prod --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
@@ -112,10 +106,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      # - test-node
       - build-node
-        # requires:
-        #   - test-node
       - preview_deployment:
           requires:
             - build-node
