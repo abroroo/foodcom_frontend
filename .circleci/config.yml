@@ -27,7 +27,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    #working_directory: /home/circleci/myapp/
+    working_directory: /home/circleci/project/myapp/
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
@@ -41,9 +41,9 @@ jobs:
       - run:
           name: List all files in current directory
           command: |
-            cd myapp && npm install && ls
-      # - node/install-packages:
-      #     pkg-manager: npm
+            ls
+      - node/install-packages:
+          pkg-manager: npm
       - run:
           name: Print node install help instructions
           command: |-
