@@ -41,7 +41,7 @@ jobs:
       - run:
           name: List all files in current directory
           command: |
-            ls
+            cd myapp && ls
       - node/install-packages:
           pkg-manager: npm
       - run:
