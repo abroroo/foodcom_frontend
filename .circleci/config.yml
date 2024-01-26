@@ -2,28 +2,6 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
-    environment:
-      JEST_JUNIT_OUTPUT_DIR: ./test-results/
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Print node install help instructions
-          command: |-
-            echo "Jest tests have failed"
-          when: on_fail
-      - run:
-          command: npm install jest-junit
-      - run:
-          name: Run tests
-          command: npm run test --ci --runInBand --reporters=default --reporters=jest-junit
-      - store_test_results:
-          path: ./test-results/
-
   build-node:
     # Builds node project
     executor: node/default
@@ -112,10 +90,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      # - test-node
       - build-node
-        # requires:
-        #   - test-node
       - preview_deployment:
           requires:
             - build-node
