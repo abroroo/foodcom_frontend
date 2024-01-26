@@ -27,7 +27,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    app-dir: ~/project/myapp/
+    working_directory: ~/project/myapp/
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
@@ -65,7 +65,7 @@ jobs:
   preview_deployment:
     docker:
       - image: cimg/node:18.19.0
-    app-dir: ~/project/myapp/
+    working_directory: ~/project/myapp/
     steps:
       - checkout
       - run:
@@ -91,7 +91,7 @@ jobs:
   production_deployment:
     docker:
       - image: cimg/node:18.19.0
-    app-dir: ~/project/myapp/
+    working_directory: ~/project/myapp/
     steps:
       - checkout
       - run:
