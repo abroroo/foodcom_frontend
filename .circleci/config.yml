@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Deploy Project Artifacts to Vercel
           command: cd myapp && npx vercel deploy --prebuilt --token=$CIRCLECI_VERCEL_TOKEN_FOR_FOODCOM
-
+  #  should set up for Amazon Lightsail, but for now its for Vercel production at foodcom.vercel.app
   production_deployment:
     docker:
       - image: cimg/node:18.19.0
