@@ -27,7 +27,7 @@ jobs:
   build-node:
     # Builds node project
     executor: node/default
-    working_directory: /home/circleci/project/myapp/
+    # working_directory: /home/circleci/project/myapp/
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
@@ -41,16 +41,16 @@ jobs:
       - run:
           name: List all files in current directory
           command: |
-            ls
-      - node/install-packages:
-          pkg-manager: npm
+            cd myapp && ls && npm run install
+      # - node/install-packages:
+      #     pkg-manager: npm
       - run:
           name: Print node install help instructions
           command: |-
             echo "Node build has failed"
           when: on_fail
       - run:
-          command: npm run build
+          command: cd myapp && npm run build
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
