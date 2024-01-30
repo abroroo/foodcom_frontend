@@ -37,7 +37,7 @@ const index = () => {
         />
         <meta
           property="og:image"
-          content="이미지 URL (당신의 회사나 서비스를 대표하는 이미지 URL)"
+          content="https://food-c.co.kr/formImage.jpg"
         />
         <meta property="og:url" content="https://푸드컴.com/form" />
 

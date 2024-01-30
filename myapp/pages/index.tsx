@@ -121,13 +121,33 @@ export default function Home() {
               ease: [0.445, 0.05, 0.058, 0.96],
             }}
           >
-            <h1 className="mt-[50px] flex flex-col rounded-md px-2  font-zermatt  text-[25px]  font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[50px]">
-              <span className=" flex items-center justify-center ">
-                음식이 필요한 모든행사
+            <h1 className=" mt-[50px] flex flex-col rounded-md    px-2  font-zermatt text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
+              <span className=" flex  items-center justify-center ">
+                가족{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
+                기업{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
+                단체{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>
+                축제{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
+                기획행사 <br />
               </span>{" "}
+              <span className="ml-2 flex items-center justify-center ">
+                {" "}
+                <span className="mx-3   font-kr md:mx-5">
+                  *
+                </span> 전문서비스{" "}
+                <span className="mx-3  font-kr md:mx-5">*</span>
+              </span>
               <span className="flex items-center justify-center">
-                <span className="mx-3 font-kr md:mx-7">*</span> 푸드, 이벤트
-                견적 플랫폼 <span className="mx-3 font-kr md:mx-7">*</span>
+                출장푸드{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>
+                이벤트{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
+                행사대행{" "}
+                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
+                랜탈
               </span>
             </h1>
 
@@ -194,7 +214,7 @@ export default function Home() {
               viewport={{ once: true }}
               className=" flex flex-col items-center justify-center p-5 pb-0 font-light md:px-7  xl:px-10 "
             >
-              <p className="font-zermatt text-[18px] leading-relaxed text-[#49111c]/90  md:text-[22px] ">
+              <p className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
                   30년경력 실무 전문가들의
@@ -210,9 +230,9 @@ export default function Home() {
                 </span>
                 <span className="flex items-center justify-center">
                   {" "}
-                  최고의 서비스로 만족을 드립니다.{" "}
+                  최고의 서비스로 만족을 드립니다{" "}
                 </span>
-                <span className="flex items-center justify-center font-kalam font-semibold">
+                <span className="flex items-center justify-center font-kalam font-semibold text-[#49111c]">
                   {" "}
                   Food Communication{" "}
                 </span>

@@ -23,14 +23,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* #FFFBEB; */
   /* overflow-y: hidden;  rgb(243, 243, 239);   #F9FCFB;   #1d040b;  */
+
+  /* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
+}
+
+.text-non-selectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  /* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
 }
 
 .phone_number_input {

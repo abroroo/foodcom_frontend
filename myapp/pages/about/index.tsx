@@ -202,28 +202,28 @@ const index: React.FC = () => {
                       <div className="mt-2">
                         <p className="mb-1 flex">
                           <span className="w-6 font-bold">문</span>
-                          <span className="flex w-7 justify-end font-bold">
+                          <span className="flex w-6 justify-end font-bold">
                             {" "}
                             의:
                           </span>{" "}
                           <span className="ml-1 flex flex-col items-start">
-                            1577-4405 | (063)231-6556
+                            010-4280-8418 | (063)231-6556
                           </span>
                         </p>
                         <p className="mb-1">
-                          <span className="w-12 font-semibold">e-mail:</span>{" "}
+                          <span className="w-12 font-bold">e-mail:</span>{" "}
                           <a
                             href="mailto:hw3030@naver.com"
                             className=" hover:underline"
                           >
-                            contact@푸드컴.com
+                            info@푸드컴.com
                           </a>
                         </p>
                         <p className="mb-1">
                           <span className="w-12 font-semibold">
                             사업자등록번호:
                           </span>{" "}
-                          10-4280-8418
+                          628-88-02779
                         </p>
                         <p className="">전주시 완산구 간납로 4 (55014)</p>
                       </div>
@@ -262,7 +262,7 @@ const index: React.FC = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/pudeukeomeuchuljangsigsa.ibenteu"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#49111c] hover:text-blue-700"
@@ -270,7 +270,8 @@ const index: React.FC = () => {
                     <FontAwesomeIcon icon={faFacebook} className="h-5 w-5" />
                   </a>
                   <a
-                    href="https://naver.com"
+                    target="_blank"
+                    href="https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%ED%91%B8%EB%93%9C%EC%BB%B4&oquery=%ED%91%B8%EB%93%9C%EC%BB%B4&tqi=ikmv1lqVOZossajMI4wssssss%2Fs-258546"
                     className="mr-9 text-[#49111c] hover:text-green-700"
                   >
                     <svg
@@ -284,7 +285,7 @@ const index: React.FC = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/foodcom_event/?igsh=MWpuZGxzZm1kbjVpbw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#49111c] hover:text-pink-700"

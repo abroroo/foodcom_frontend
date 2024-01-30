@@ -260,7 +260,7 @@ const FormPage = () => {
   }, [formDataSaved, pdfGenerated, ticketNumber])
 
   return (
-    <div className="flex h-screen w-screen overflow-y-hidden">
+    <div className=" text-non-selectable flex h-screen w-screen overflow-y-hidden">
       <div className=" flex w-full flex-col md:flex-row  ">
         {/* LEFT HALF */}
 
