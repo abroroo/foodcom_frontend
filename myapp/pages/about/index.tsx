@@ -55,7 +55,7 @@ const index: React.FC = () => {
             </div>
             <div className="flex h-full flex-col justify-end   ">
               <div className="flex  flex-col  overflow-x-hidden px-5 text-[16px]">
-                <motion.h1 className="mb-8 font-cormorant text-2xl font-bold">
+                <motion.h1 className="mb-8 font-pt text-2xl font-bold">
                   Food Communication Inc
                 </motion.h1>
 

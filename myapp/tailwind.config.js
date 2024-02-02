@@ -13,8 +13,10 @@ module.exports = {
             'caveat': ['Caveat', 'cursive'],
             'kr': ['Noto Serif KR', 'serif'],
             'cormorant': ['Cormorant Garamond', 'serif'],
-            'zermatt': ['zermatt', 'sans-serif'],
             'NexonGothic': ['NexonGothic', 'sans-serif'],
+            'pt': ['PT Sans', 'sans-serif'],
+            'dmSerif': ['DM Serif Display', 'serif'],
+            'goblin': ['Goblin One', 'serif'],
         }
     },
 

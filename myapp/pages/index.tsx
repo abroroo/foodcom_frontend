@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import {
   faBellConcierge,
+  faPhone,
+  faPhoneVolume,
   faPlus,
   faSpoon,
   faUtensils,
@@ -98,7 +100,7 @@ export default function Home() {
         {/*  Title Text Start */}
 
         <motion.div
-          className=" landing_loader absolute z-[100] flex h-[100vh] w-[100vw] flex-col items-center justify-center overflow-y-scroll bg-[#fff]/90 p-10 md:items-center md:px-10"
+          className=" landing_loader absolute z-[100] flex h-[100vh] w-[100vw] flex-col items-center justify-center overflow-y-scroll bg-[#fff]/90 p-5 leading-7 md:items-center  md:px-10"
           initial={{ opacity: 0 }}
           animate={landingLoader}
           transition={{
@@ -122,25 +124,25 @@ export default function Home() {
             }}
           >
             <h1 className=" mt-[50px] flex flex-col rounded-md    px-2  font-zermatt text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
-              <span className=" flex  items-center justify-center ">
-                가족{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
-                기업{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
-                단체{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>
-                축제{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
-                기획행사 <br />
-              </span>{" "}
-              <span className="ml-2 flex items-center justify-center ">
+              {/* <span className=" flex  items-center justify-center ">
+                출장식사가 필요한 행사의 모든것
+              </span> */}
+              <motion.div className="flex items-center justify-center">
+                <Image
+                  src="/images/heroImage.jpg"
+                  width={300}
+                  height={60}
+                  alt="푸드컴 케이터링 서비스 사진"
+                  className="h-[80px] w-[200px] scale-x-125 object-fill md:h-[160px] md:w-[300px]"
+                />
+              </motion.div>
+              <span className="  ml-2 flex items-center justify-center text-[30px] font-[900] md:text-[40px]">
                 {" "}
-                <span className="mx-3   font-kr md:mx-5">
-                  *
-                </span> 전문서비스{" "}
-                <span className="mx-3  font-kr md:mx-5">*</span>
+                {/* <span className="mx-3  font-kr font-bold md:mx-5">*</span>{" "} */}
+                Catering Service{" "}
+                {/* <span className="mx-3  font-kr md:mx-5">*</span> */}
               </span>
-              <span className="flex items-center justify-center">
+              <span className=" flex items-center justify-center text-[20px] md:text-[28px]">
                 출장푸드{" "}
                 <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>
                 이벤트{" "}
@@ -151,7 +153,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <div className="mt-5 flex items-center justify-center text-[#49111c]  ">
+            <div className=" flex items-center justify-center text-[#49111c]  ">
               <motion.svg
                 width="170"
                 height="40"
@@ -212,38 +214,49 @@ export default function Home() {
                 bounce: 0,
               }}
               viewport={{ once: true }}
-              className=" flex flex-col items-center justify-center p-5 pb-0 font-light md:px-7  xl:px-10 "
+              className=" flex flex-col items-center justify-center p-0 font-light  md:px-7  xl:px-10 "
             >
               <p className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
-                  30년경력 실무 전문가들의
+                  전북특별자치도 30년경력 실무 전문가들의
                 </span>{" "}
-                <span> 고객이 원하는 맞춤형 무료견적 플랫폼</span>{" "}
+                <span className="flex items-center justify-center">
+                  {" "}
+                  고객 맞춤형 무료견적 플랫폼입니다
+                </span>{" "}
                 <span className="flex flex-col items-center justify-center">
-                  <span className="flex items-center justify-center md:hidden">
-                    가족. 기업. 단체등 식사에서
-                  </span>{" "}
                   <span className="flex items-center justify-center md:hidden">
                     이벤트까지 30년 경력의 전문가들이{" "}
                   </span>
                 </span>
-                <span className="flex items-center justify-center">
-                  {" "}
-                  최고의 서비스로 만족을 드립니다{" "}
+                <span className=" leading-8">
+                  <span className=" mt-5 flex items-center justify-center font-kr text-[20px] font-[900]">
+                    {" "}
+                    최고의 서비스로 만족을 드리는{" "}
+                  </span>
+                  <span className="flex items-center justify-center font-kalam font-semibold tracking-wide  text-[#49111c]">
+                    {" "}
+                    Food Communication{" "}
+                  </span>
+                  <span className="flex items-center justify-center font-kr text-[20px] font-bold">
+                    푸드컴
+                  </span>
                 </span>
-                <span className="flex items-center justify-center font-kalam font-semibold text-[#49111c]">
-                  {" "}
-                  Food Communication{" "}
+                <span className="mt-3 flex items-center justify-center font-dm text-[18px] font-bold">
+                  <FontAwesomeIcon
+                    className="mr-2 h-[18px] w-[18px] font-pt"
+                    icon={faPhoneVolume}
+                  />{" "}
+                  10-4280-8418
                 </span>
-                <span className="flex items-center justify-center">푸드컴</span>
               </p>
             </motion.div>
           </motion.div>
 
           <motion.div
             whileTap={startButtonAnimations}
-            initial={{ y: 70, opacity: 0 }}
+            initial={{ y: 60, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{
               delay: 4,
@@ -252,7 +265,7 @@ export default function Home() {
               bounce: 0,
             }}
             viewport={{ once: true }}
-            className=" mb-28 mt-5 flex w-full items-center justify-center md:mt-10"
+            className=" mb-28 mt-3 flex w-full items-center justify-center md:mt-5"
           >
             <Link
               className="flex  items-start justify-center p-0 xl:px-5  "
