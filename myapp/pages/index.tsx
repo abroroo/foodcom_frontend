@@ -123,7 +123,7 @@ export default function Home() {
               ease: [0.445, 0.05, 0.058, 0.96],
             }}
           >
-            <h1 className=" mt-[50px] flex flex-col rounded-md    px-2  font-zermatt text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
+            <h1 className=" font-zermatt mt-[50px] flex flex-col    rounded-md  px-2 text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
               {/* <span className=" flex  items-center justify-center ">
                 출장식사가 필요한 행사의 모든것
               </span> */}
@@ -225,11 +225,6 @@ export default function Home() {
                   {" "}
                   고객 맞춤형 무료견적 플랫폼입니다
                 </span>{" "}
-                <span className="flex flex-col items-center justify-center">
-                  <span className="flex items-center justify-center md:hidden">
-                    이벤트까지 30년 경력의 전문가들이{" "}
-                  </span>
-                </span>
                 <span className=" leading-8">
                   <span className=" mt-5 flex items-center justify-center font-kr text-[20px] font-[900]">
                     {" "}
