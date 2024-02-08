@@ -134,9 +134,6 @@ export default function Home() {
             }}
           >
             <h1 className=" font-zermatt mt-[50px] flex flex-col    rounded-md  px-2 text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
-              {/* <span className=" flex  items-center justify-center ">
-                출장식사가 필요한 행사의 모든것
-              </span> */}
               <motion.div className="flex items-center justify-center">
                 <Link href="/work">
                   <Image
@@ -144,39 +141,28 @@ export default function Home() {
                     width={300}
                     height={60}
                     alt="푸드컴 케이터링 서비스 사진"
-                    className="h-[120px] w-[200px] scale-x-125 object-fill md:h-[160px] md:w-[300px]"
+                    className="h-[120px] w-[230px] scale-x-125 object-fill md:h-[160px] md:w-[300px]"
                   />
-                  {/* <motion.p className=" mt-1  flex   items-center justify-center">
-                    <span className="flex w-[70%] animate-ping items-center justify-center rounded-sm text-[12px] transition-colors duration-[2000] ">
-                      행사사진,자료실 (클릭)
-                    </span>
-                  </motion.p> */}
                 </Link>
               </motion.div>
               <span className="  ml-2 flex items-center justify-center text-[30px] font-[900] md:text-[40px]">
                 {" "}
-                {/* <span className="mx-3  font-kr font-bold md:mx-5">*</span>{" "} */}
                 Catering Service{" "}
-                {/* <span className="mx-3  font-kr md:mx-5">*</span> */}
               </span>
             </h1>
             <div className="flex w-full items-center justify-center ">
               <Link
-                className="mx-2  flex items-start justify-center p-0 md:mx-0 xl:px-5"
+                className="mx-2  flex items-start justify-center p-0 md:mx-2 xl:px-5"
                 href="/about"
               >
                 <motion.button
                   whileTap={checkboxAnimations}
                   whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   style={{
-                    // width: 150,
-                    // height: 65,
                     borderRadius: 10,
                     cursor: "pointer",
                   }}
-                  //transition={{ type: "spring", stiffness: 400, damping: 100 }}
                   className={`z-20 flex h-[60px] w-[130px] flex-row items-center  justify-center  bg-gradient-to-r from-[#D71313] to-[#900C3F] text-[16px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:from-pink-500 hover:to-yellow-500   md:h-[65px] md:w-[150px] md:px-1`}
-                  //whileTap={{ scale: [1, 1.1, 1] }}
                   onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
                   onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
@@ -190,7 +176,7 @@ export default function Home() {
                       repeat: Infinity,
                       duration: 0.5,
                       delay: 0.5,
-                      //repeatType: "reverse",
+
                       repeatDelay: 1,
                     }}
                     className="  mr-1"
@@ -202,13 +188,11 @@ export default function Home() {
               </Link>
 
               <Link
-                className="mx-2 flex  items-start justify-center p-0 md:mx-0 xl:px-5 "
+                className="mx-2 flex  items-start justify-center p-0 md:mx-2 xl:px-5 "
                 href="/work"
               >
                 <motion.button
                   style={{
-                    // width: 150,
-                    // height: 65,
                     borderRadius: 10,
                     cursor: "pointer",
                   }}
@@ -229,7 +213,6 @@ export default function Home() {
                       repeat: Infinity,
                       duration: 0.5,
 
-                      //repeatType: "reverse",
                       repeatDelay: 1,
                     }}
                     className="  "
@@ -341,8 +324,7 @@ export default function Home() {
                     className="mr-2 h-[18px] w-[18px] font-pt"
                     icon={faPhoneVolume}
                   />{" "}
-                  <a href="tel:+10-4280-8418"></a>
-                  10-4280-8418
+                  <a href="tel:010-4280-8418">10-4280-8418</a>
                 </span>
               </div>
             </motion.div>
