@@ -26,6 +26,7 @@ interface GalleryProps {
   publicImages: any
   businessImages: any
   festivalImages: any
+  dosirakImages: any
   defaultImages: any // Specify the type of onClose prop
 }
 
@@ -37,6 +38,7 @@ type EventImages = {
   public: string[]
   steak: string[]
   fingerFood: string[]
+  dosirak: string[]
   real: string[]
   // Add more event types as needed
 }
@@ -56,6 +58,7 @@ const EventsModal: FC<GalleryProps> = ({
   publicImages,
   businessImages,
   festivalImages,
+  dosirakImages,
   defaultImages,
 }) => {
   const draw = {
@@ -124,6 +127,7 @@ const EventsModal: FC<GalleryProps> = ({
     public: publicImages,
     steak: steakImages,
     fingerFood: fingerFoodImages,
+    dosirak: dosirakImages,
     real: defaultImages,
 
     // Add other event types and their image arrays here
@@ -482,6 +486,46 @@ const EventsModal: FC<GalleryProps> = ({
                 </label>
               </motion.div>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 1, y: -45 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.8,
+                duration: 1,
+                ease: [0.4, 0.18, 0, 1.03],
+              }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                whileTap={checkboxAnimations}
+                className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50  hover:text-[#3C0753] peer-checked:border-[#3C0753] peer-checked:text-[#3C0753] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                  selectedEvent === "dosirak"
+                    ? "    border-[1.5px] border-[#3C0753] text-[#3C0753] shadow-xl"
+                    : "  "
+                }`}
+              >
+                <button
+                  style={{ accentColor: "#3C0753", alignSelf: "flex-start" }}
+                  id="dosirak"
+                  onClick={() => setSelectedEvent("dosirak")}
+                />
+                <label
+                  htmlFor="dosirak"
+                  className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
+                >
+                  <Image
+                    width="40"
+                    height="40"
+                    src="/images/icons/dosirak.png"
+                    alt="dosirak"
+                    className="mx-1 h-7 w-7 md:mx-2 md:h-[40px] md:w-[40px]"
+                  />
+                  도시락
+                </label>
+              </motion.div>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -767,6 +811,22 @@ export async function getServerSideProps() {
     imageSrc: `/images/real/steak/${fileName}`,
   }))
 
+  //dosirak
+
+  const dosirakImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "dosirak"
+  )
+  const dosirakImages = fs
+    .readdirSync(dosirakImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/dosirak/${fileName}`,
+    }))
+
   // default
   const defaultImagesDirectory = path.join(
     process.cwd(),
@@ -792,6 +852,7 @@ export async function getServerSideProps() {
       publicImages,
       businessImages,
       festivalImages,
+      dosirakImages,
       defaultImages,
 
       // ... other image categories
