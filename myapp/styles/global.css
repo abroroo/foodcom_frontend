@@ -177,3 +177,67 @@ datalist {
   background-color: #007bff; /* Set the color of the circle */
   margin-right: 0px; /* Adjust the spacing between circles */
 }
+
+.marquee {
+  height: 27px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee div {
+  display: block;
+  width: 200%;
+  height: 27px;
+  position: absolute;
+  overflow: hidden;
+  -webkit-animation: marquee 10s linear infinite;
+  animation: marquee 10s linear infinite;
+  background: linear-gradient(
+    to right,
+    red,
+    indigo,
+    green,
+    orange,
+    red,
+    blue,
+    #49111c,
+    red
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+  font-size: 20px;
+  /* padding-top: 1px; */
+  letter-spacing: 2px;
+}
+@media (max-width: 767px) {
+  .marquee span {
+    width: 50%;
+    font-size: 18px;
+    /* padding-top: 1px; */
+    letter-spacing: 1px;
+  }
+}
+@-webkit-keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}

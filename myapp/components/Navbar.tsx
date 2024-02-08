@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import {
   faArrowRight,
+  faArrowRightToBracket,
   faBars,
   faBellConcierge,
   faFilePen,
@@ -29,6 +30,16 @@ const Navbar = () => {
 
   const handleMenuClick = () => {
     setIsModalOpen(!isModalOpen)
+  }
+
+  const [isHovered, setIsHovered] = useState(false)
+
+  // Animation for the checkboxes in the first question
+  const checkboxAnimations = {
+    scale: [1.1, 1.2, 1],
+    transition: {
+      duration: 0.2,
+    },
   }
 
   // MODAL CONTENT BASED ON SCREEN SIZE CONFIGURATION
@@ -57,7 +68,7 @@ const Navbar = () => {
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
+        transition={{ delay: 0.8, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
         className="fixed z-[100]  w-screen bg-[#fff] p-2  font-outfit  shadow-inner xl:p-0"
       >
         <div
@@ -74,22 +85,48 @@ const Navbar = () => {
             />
           </Link>
 
-          {isModalOpen ? (
-            <button onClick={handleMenuClick} className="block xl:hidden">
-              <FontAwesomeIcon
-                icon={faXmark}
-                //size="lg"
-                className="h-8 w-4 text-[#49111c]"
-              />
-            </button>
+          {currentRoute === "/form" ? (
+            <div className="">
+              {" "}
+              {isModalOpen ? (
+                <button onClick={handleMenuClick} className="block xl:hidden">
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    //size="lg"
+                    className="h-8 w-4 text-[#49111c]"
+                  />
+                </button>
+              ) : (
+                <button onClick={handleMenuClick} className="block xl:hidden">
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    className="h-8 w-4 text-[#49111c] "
+                    //size="lg"
+                  />{" "}
+                </button>
+              )}{" "}
+            </div>
           ) : (
-            <button onClick={handleMenuClick} className="block xl:hidden">
-              <FontAwesomeIcon
-                icon={faBars}
-                className="h-8 w-4 text-[#49111c] md:text-[#49111c]"
-                //size="lg"
-              />{" "}
-            </button>
+            <div className="hidden">
+              {" "}
+              {isModalOpen ? (
+                <button onClick={handleMenuClick} className="block xl:hidden">
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    //size="lg"
+                    className="h-8 w-4 text-[#49111c]"
+                  />
+                </button>
+              ) : (
+                <button onClick={handleMenuClick} className="block xl:hidden">
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    className="h-8 w-4 text-[#49111c] "
+                    //size="lg"
+                  />{" "}
+                </button>
+              )}{" "}
+            </div>
           )}
 
           {currentRoute === "/form" ? (
@@ -101,14 +138,54 @@ const Navbar = () => {
             </Link>
           ) : (
             <Link
+              className="mx-2  flex items-center justify-center p-0 md:mx-0 xl:p-1"
               href="/form"
-              className="mx-1 hidden h-10 w-24 items-center justify-center text-[16px] font-semibold xl:flex"
             >
-              처음으로
+              <motion.button
+                whileTap={checkboxAnimations}
+                style={{
+                  cursor: "pointer",
+                }}
+                className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
+                onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+              >
+                <div
+                  // initial={{rotate: 0}}
+                  // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
+                  // transition={{}}
+                  className=" flex items-center justify-center "
+                >
+                  <span className="flex items-center justify-center pt-1">
+                    회사상담
+                  </span>
+                  <motion.div
+                    initial={{ rotate: 0 }}
+                    whileInView={{
+                      //scale: [1, 1.05, 1.2, 1.05, 1],
+                      rotate: [0, 10, 0, -10, 0],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 0.5,
+
+                      //repeatType: "reverse",
+                      repeatDelay: 1,
+                    }}
+                    className="  ml-2"
+                  >
+                    <FontAwesomeIcon
+                      icon={faArrowRightToBracket}
+                      className=" h-3 w-3  md:h-4 md:w-4"
+                    />
+                  </motion.div>
+                </div>
+              </motion.button>
             </Link>
           )}
         </div>
       </motion.div>
+
       {isModalOpen && (
         <motion.div //xl:w-[60vw]
           className="fixed inset-0 z-[99] flex w-full items-center justify-center  bg-white "
@@ -117,18 +194,6 @@ const Navbar = () => {
           exit={{ opacity: 0 }}
         >
           <div className="flex flex-col items-center text-[40px] font-bold md:text-[60px] xl:hidden">
-            <Link
-              href="/form"
-              onClick={() => setIsModalOpen(false)}
-              className={`my-4  border-0 border-b-[1px]  px-2 leading-relaxed md:border-none ${
-                isCurrentPage("/form")
-                  ? "hidden text-white"
-                  : "block text-[#49111c]"
-              }`}
-            >
-              <p className={`my-0 `}>처음으로</p>
-            </Link>
-
             <Link
               href="/work"
               onClick={() => setIsModalOpen(false)}

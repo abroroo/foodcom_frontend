@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import {
   faBellConcierge,
+  faImage,
   faPhone,
   faPhoneVolume,
   faPlus,
@@ -18,6 +19,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion"
+import { ChefHat, Image as LucideImage, MountainSnow } from "lucide-react"
 
 import Navbar from "../components/Navbar"
 import SmoothScroll from "../components/Scrolling/SmoothScroll"
@@ -94,6 +96,14 @@ export default function Home() {
   const yPostionDiv = useTransform(scrollY, [0, 500], [0, 200])
   const yPostionDivText = useTransform(scrollY, [0, 400], [0, -200])
 
+  // Animation for the checkboxes in the first question
+  const checkboxAnimations = {
+    scale: [1.1, 1.2, 1],
+    transition: {
+      duration: 0.2,
+    },
+  }
+
   return (
     <>
       <motion.main className="loader fixed flex h-[100vh] w-[100vw] items-center justify-center leading-relaxed">
@@ -128,13 +138,20 @@ export default function Home() {
                 출장식사가 필요한 행사의 모든것
               </span> */}
               <motion.div className="flex items-center justify-center">
-                <Image
-                  src="/images/heroImage.jpg"
-                  width={300}
-                  height={60}
-                  alt="푸드컴 케이터링 서비스 사진"
-                  className="h-[80px] w-[200px] scale-x-125 object-fill md:h-[160px] md:w-[300px]"
-                />
+                <Link href="/work">
+                  <Image
+                    src="/images/heroImage.jpg"
+                    width={300}
+                    height={60}
+                    alt="푸드컴 케이터링 서비스 사진"
+                    className="h-[120px] w-[200px] scale-x-125 object-fill md:h-[160px] md:w-[300px]"
+                  />
+                  {/* <motion.p className=" mt-1  flex   items-center justify-center">
+                    <span className="flex w-[70%] animate-ping items-center justify-center rounded-sm text-[12px] transition-colors duration-[2000] ">
+                      행사사진,자료실 (클릭)
+                    </span>
+                  </motion.p> */}
+                </Link>
               </motion.div>
               <span className="  ml-2 flex items-center justify-center text-[30px] font-[900] md:text-[40px]">
                 {" "}
@@ -142,16 +159,90 @@ export default function Home() {
                 Catering Service{" "}
                 {/* <span className="mx-3  font-kr md:mx-5">*</span> */}
               </span>
-              <span className=" flex items-center justify-center text-[20px] md:text-[28px]">
-                출장푸드{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>
-                이벤트{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
-                행사대행{" "}
-                <span className="mx-2 h-4 w-[1.5px] bg-[#49111c] md:h-7  md:w-[2px]"></span>{" "}
-                랜탈
-              </span>
             </h1>
+            <div className="flex w-full items-center justify-center ">
+              <Link
+                className="mx-2  flex items-start justify-center p-0 md:mx-0 xl:px-5"
+                href="/about"
+              >
+                <motion.button
+                  whileTap={checkboxAnimations}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  style={{
+                    // width: 150,
+                    // height: 65,
+                    borderRadius: 10,
+                    cursor: "pointer",
+                  }}
+                  //transition={{ type: "spring", stiffness: 400, damping: 100 }}
+                  className={`z-20 flex h-[60px] w-[130px] flex-row items-center  justify-center  bg-gradient-to-r from-[#D71313] to-[#900C3F] text-[16px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:from-pink-500 hover:to-yellow-500   md:h-[65px] md:w-[150px] md:px-1`}
+                  //whileTap={{ scale: [1, 1.1, 1] }}
+                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                >
+                  <motion.div
+                    initial={{ y: 0, scale: 1 }}
+                    whileInView={{
+                      scale: [1, 1.05, 1, 1.05, 1],
+                      y: [0, -5, 0, -5, 0],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 0.5,
+                      delay: 0.5,
+                      //repeatType: "reverse",
+                      repeatDelay: 1,
+                    }}
+                    className="  mr-1"
+                  >
+                    <ChefHat />
+                  </motion.div>
+                  회사소개{" "}
+                </motion.button>
+              </Link>
+
+              <Link
+                className="mx-2 flex  items-start justify-center p-0 md:mx-0 xl:px-5 "
+                href="/work"
+              >
+                <motion.button
+                  style={{
+                    // width: 150,
+                    // height: 65,
+                    borderRadius: 10,
+                    cursor: "pointer",
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 100 }}
+                  className={`z-20 flex h-[60px] w-[130px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[16px] font-semibold  leading-relaxed text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500   md:h-[65px] md:w-[150px] md:px-1`}
+                  whileTap={checkboxAnimations}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                >
+                  <motion.div
+                    initial={{ rotate: 0, scale: 1 }}
+                    whileInView={{
+                      scale: [1, 1.2, 1, 1.2, 1],
+                      rotate: [0, 10, 0, -10, 0],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 0.5,
+
+                      //repeatType: "reverse",
+                      repeatDelay: 1,
+                    }}
+                    className="  "
+                  >
+                    <LucideImage className="h-6 w-6" />
+                  </motion.div>
+
+                  <span className="ml-2 flex flex-col ">
+                    <span>행사사진</span> <span>자료실</span>
+                  </span>
+                </motion.button>
+              </Link>
+            </div>
 
             <div className=" flex items-center justify-center text-[#49111c]  ">
               <motion.svg
@@ -216,7 +307,7 @@ export default function Home() {
               viewport={{ once: true }}
               className=" flex flex-col items-center justify-center p-0 font-light  md:px-7  xl:px-10 "
             >
-              <p className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
+              <div className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
                   전북특별자치도 30년경력 실무 전문가들의
@@ -225,15 +316,22 @@ export default function Home() {
                   {" "}
                   고객 맞춤형 무료견적 플랫폼입니다
                 </span>{" "}
+                <div className="sheet center middle">
+                  <div className="tile" style={{ transform: "none" }}>
+                    <div
+                      className="copy center black"
+                      style={{ width: "100% !important" }}
+                    >
+                      <div className="marquee mb-2 font-bold">
+                        <div>
+                          <span>출장푸드 | 이벤트 | 행사대행 | 랜탈 |</span>
+                          <span>출장푸드 | 이벤트 | 행사대행 | 랜탈 |</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <span className=" leading-8">
-                  <span className=" mt-5 flex items-center justify-center font-kr text-[20px] font-[900]">
-                    {" "}
-                    최고의 서비스로 만족을 드리는{" "}
-                  </span>
-                  <span className="flex items-center justify-center font-kalam font-semibold tracking-wide  text-[#49111c]">
-                    {" "}
-                    Food Communication{" "}
-                  </span>
                   <span className="flex items-center justify-center font-kr text-[20px] font-bold">
                     푸드컴
                   </span>
@@ -243,9 +341,10 @@ export default function Home() {
                     className="mr-2 h-[18px] w-[18px] font-pt"
                     icon={faPhoneVolume}
                   />{" "}
+                  <a href="tel:+10-4280-8418"></a>
                   10-4280-8418
                 </span>
-              </p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -261,41 +360,7 @@ export default function Home() {
             }}
             viewport={{ once: true }}
             className=" mb-28 mt-3 flex w-full items-center justify-center md:mt-5"
-          >
-            <Link
-              className="flex  items-start justify-center p-0 xl:px-5  "
-              href="/form"
-            >
-              <motion.button
-                style={{
-                  width: 140,
-                  height: 51,
-                  borderRadius: 3,
-                  cursor: "pointer",
-                }}
-                //transition={{ type: "spring", stiffness: 400, damping: 100 }}
-                className={`z-20 flex flex-row items-center justify-center  border bg-[#900C3F] text-[20px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:bg-[#900C3F]/80 md:px-10`}
-                //whileTap={{ scale: [1, 1.1, 1] }}
-                onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
-              >
-                START{" "}
-                <motion.div
-                  // initial={{rotate: 0}}
-                  // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
-                  // transition={{}}
-                  className="ml-2 "
-                >
-                  <FontAwesomeIcon
-                    icon={faBellConcierge}
-                    className="h-5 w-5"
-                    bounce
-                    animation-duration="2s"
-                  />
-                </motion.div>
-              </motion.button>
-            </Link>
-          </motion.div>
+          ></motion.div>
         </motion.div>
 
         {/* Title Text End */}

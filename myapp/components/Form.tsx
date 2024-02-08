@@ -688,16 +688,16 @@ const Form = ({
                 />
                 <label
                   htmlFor="otherEventType"
-                  className="absolute inset-0 flex flex-col items-center justify-center "
+                  className="absolute inset-0 flex flex-col items-center justify-center text-[11px] md:text-[15px]"
                 >
                   <Image
                     width="54"
                     height="54"
                     src="/images/icons/other.png"
                     alt="other"
-                    className="mb-2 h-10 w-10 md:h-[54px] md:w-[54px]"
+                    className="mb-1 h-9 w-9  md:h-[54px] md:w-[54px]"
                   />
-                  기타 행사
+                  도시락.기타 행사
                 </label>
               </motion.div>
 

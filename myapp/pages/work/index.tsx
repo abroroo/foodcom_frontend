@@ -486,9 +486,9 @@ const EventsModal: FC<GalleryProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-              className=" text-md m-1 flex w-full items-center justify-end bg-transparent  font-monts text-gray-600"
+              className=" text-md m-1 flex w-full items-center justify-start bg-transparent  font-monts text-gray-600"
             >
-              *이벤트를 클릭하세요
+              * 이벤트를 클릭하세요
             </motion.h1>
           </motion.div>
 
