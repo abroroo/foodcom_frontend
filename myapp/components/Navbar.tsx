@@ -3,12 +3,22 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import {
+  faAnglesUp,
   faArrowRight,
+  faArrowRightFromBracket,
   faArrowRightToBracket,
+  faArrowTurnUp,
+  faArrowUpFromBracket,
+  faArrowUpRightFromSquare,
+  faArrowUpShortWide,
+  faArrowUpWideShort,
   faBars,
   faBellConcierge,
   faFilePen,
   faListCheck,
+  faPenToSquare,
+  faSquareCheck,
+  faTurnUp,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -156,13 +166,11 @@ const Navbar = () => {
                   // transition={{}}
                   className=" flex items-center justify-center "
                 >
-                  <span className="flex items-center justify-center pt-1">
-                    회사상담
-                  </span>
                   <motion.div
-                    initial={{ rotate: 0 }}
+                    initial={{ rotate: 0, scale: 1, y: 0 }}
                     whileInView={{
-                      //scale: [1, 1.05, 1.2, 1.05, 1],
+                      scale: [1, 1.05, 1, 1.05, 1],
+                      y: [0, -5, 0, -5, 0],
                       rotate: [0, 10, 0, -10, 0],
                     }}
                     transition={{
@@ -170,15 +178,18 @@ const Navbar = () => {
                       duration: 0.5,
 
                       //repeatType: "reverse",
-                      repeatDelay: 1,
+                      repeatDelay: 1.5,
                     }}
-                    className="  ml-2"
+                    className="  mr-2"
                   >
                     <FontAwesomeIcon
-                      icon={faArrowRightToBracket}
+                      icon={faPenToSquare}
                       className=" h-3 w-3  md:h-4 md:w-4"
                     />
                   </motion.div>
+                  <span className="flex items-center justify-center pt-1 font-bold">
+                    회사상담
+                  </span>
                 </div>
               </motion.button>
             </Link>
