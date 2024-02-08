@@ -48,8 +48,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         ></meta>
         <meta
           name="description"
-          content="푸드컴 - 전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다
-.30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
+          content="푸드컴 - 전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다. 30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
         />
         <meta
           name="keywords"
@@ -65,8 +64,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <meta
           name="og:description"
-          content="푸드컴 - 전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다
-.30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
+          content="푸드컴 - 전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다. 30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
         />
         <meta property="og:image" content="https://food-c.co.kr/seoImage.jpg" />{" "}
         <meta property="og:type" content="website" />
@@ -82,8 +80,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <meta
           name="twitter:description"
-          content="푸드컴ㅡ전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다
-.30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
+          content="푸드컴 - 전북특별자치도 최고의 출장food/이벤트 전문 플렛폼 입니다. 30년실무경력을 바탕으로 가족.기업.단체행사부터 축제.기념.커뮤니티행사까지 최고의 서비스로 지원해 드리는 출장행사전문 food-com입니다"
         />
         <meta name="twitter:image" content="" />
         <link
