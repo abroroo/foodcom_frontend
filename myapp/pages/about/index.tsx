@@ -206,8 +206,10 @@ const index: React.FC = () => {
                             {" "}
                             의:
                           </span>{" "}
-                          <span className="ml-1 flex flex-col items-start">
-                            010-4280-8418 | (063)231-6556
+                          <span className="ml-1 flex flex-col items-start  md:flex-row">
+                            <a href="tel:010-4280-8418">010-4280-8418</a>{" "}
+                            <span className=" mx-2 hidden md:block">|</span>
+                            <a href="tel:063-231-6556">(063)231-6556</a>
                           </span>
                         </p>
                         <p className="mb-1">

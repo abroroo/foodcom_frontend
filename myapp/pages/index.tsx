@@ -189,7 +189,7 @@ export default function Home() {
 
               <Link
                 className="mx-2 flex  items-start justify-center p-0 md:mx-2 xl:px-5 "
-                href="/image"
+                href="/work"
               >
                 <motion.button
                   style={{

@@ -551,8 +551,8 @@ const EventsModal: FC<GalleryProps> = ({
               // whileTap={{ cursor: "grabbing" }}
               className="  h-full w-full cursor-grab"
             >
-              <div className=" p-2 sm:p-8">
-                <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
+              <SmoothScroll>
+                <motion.div className="inner-corousel relative flex overflow-y-hidden ">
                   {(selectedEvent
                     ? eventImages[selectedEvent as keyof EventImages]
                     : defaultImages
@@ -572,17 +572,42 @@ const EventsModal: FC<GalleryProps> = ({
                     )[reverseIndex]
 
                     return (
-                      <Image
-                        src={reversedImage.imageSrc}
-                        alt={selectedEvent || "default"}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{
+                          duration: 0.3,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
                         key={reversedImage.id}
-                        width={500}
-                        height={550}
-                      />
+                        className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
+                      >
+                        <motion.p
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{
+                            delay: 0.5,
+                            duration: 1,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                          viewport={{ once: true }}
+                          className="mb-3 pl-[2px] text-[12px] font-semibold"
+                        >
+                          0{index}
+                        </motion.p>
+                        <Image
+                          src={reversedImage.imageSrc}
+                          alt={selectedEvent || "default"}
+                          width={500}
+                          height={550}
+                          className="object-contain"
+                        />
+                      </motion.div>
                     )
                   })}
-                </div>
-              </div>
+                </motion.div>
+              </SmoothScroll>
             </motion.div>
           </motion.div>
 

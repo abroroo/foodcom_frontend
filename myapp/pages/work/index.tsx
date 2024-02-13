@@ -537,8 +537,8 @@ const EventsModal: FC<GalleryProps> = ({
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, scale: 0.7 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 1, y: 90 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1, ease: [0.32, 0, 0.24, 1] }}
             viewport={{ once: true }}
             className=" corousel z-[200]  mx-2  mt-2 overflow-hidden md:mx-10 md:mt-0"
@@ -552,134 +552,43 @@ const EventsModal: FC<GalleryProps> = ({
               className="  h-full w-full cursor-grab"
             >
               <SmoothScroll>
-                <motion.div className="inner-corousel relative flex overflow-y-hidden ">
-                  {(selectedEvent
-                    ? eventImages[selectedEvent as keyof EventImages]
-                    : defaultImages
-                  ).map((image: image, index: number) => {
-                    const reverseIndex =
-                      (selectedEvent
-                        ? eventImages[selectedEvent as keyof EventImages]
-                        : defaultImages
-                      ).length -
-                      1 -
-                      index
+                <div className=" p-2 sm:p-2">
+                  <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
+                    {(selectedEvent
+                      ? eventImages[selectedEvent as keyof EventImages]
+                      : defaultImages
+                    ).map((image: image, index: number) => {
+                      const reverseIndex =
+                        (selectedEvent
+                          ? eventImages[selectedEvent as keyof EventImages]
+                          : defaultImages
+                        ).length -
+                        1 -
+                        index
 
-                    const reversedImage = (
-                      selectedEvent
-                        ? eventImages[selectedEvent as keyof EventImages]
-                        : defaultImages
-                    )[reverseIndex]
+                      const reversedImage = (
+                        selectedEvent
+                          ? eventImages[selectedEvent as keyof EventImages]
+                          : defaultImages
+                      )[reverseIndex]
 
-                    return (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.3,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                        viewport={{ once: true }}
-                        key={reversedImage.id}
-                        className="pointer-events-none min-h-[550px] min-w-[500px] p-3"
-                      >
-                        <motion.p
-                          initial={{ opacity: 0, y: 15 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{
-                            delay: 0.5,
-                            duration: 1,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          viewport={{ once: true }}
-                          className="mb-3 pl-[2px] text-[12px] font-semibold"
-                        >
-                          0{index}
-                        </motion.p>
+                      return (
                         <Image
                           src={reversedImage.imageSrc}
                           alt={selectedEvent || "default"}
+                          key={reversedImage.id}
                           width={500}
                           height={550}
-                          className="object-contain"
                         />
-                      </motion.div>
-                    )
-                  })}
-                </motion.div>
+                      )
+                    })}
+                  </div>
+                </div>
               </SmoothScroll>
             </motion.div>
           </motion.div>
 
           {/* Outside Events  */}
-
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0, duration: 0.5, ease: [0.4, 0.18, 0, 1.03] }}
-            viewport={{ once: true }}
-            className=" corousel z-[200]  mx-16  overflow-hidden"
-          >
-            <motion.div
-              ref={imageWrapperRef}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              // whileTap={{ cursor: "grabbing" }}
-              className="h-full w-full cursor-grab "
-            >
-              <motion.div className="inner-corousel flex overflow-y-hidden ">
-                {isMouseWithinHero && (
-                  <motion.div
-                    id="cursor"
-                    ref={cursorRef}
-                    style={{
-                      width: "90px",
-                      height: "90px",
-                      backgroundColor: "white",
-                      borderRadius: "50%",
-                      position: "absolute",
-                      zIndex: 100,
-                    }}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.5,
-                      x: cursorX - 40,
-                      y: cursorY - 95,
-                    }} // Add a slight delay and position the cursor below
-                    animate={{
-                      scale: 1,
-                      opacity: 1,
-                      x: cursorX - 40,
-                      y: cursorY - 95,
-                    }}
-                    exit={{ opacity: 0, scale: 0.5 }} // Optional exit animation
-                    transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
-                    className=" flex flex-col items-center justify-center rounded-full pt-3 text-[15px] font-semibold text-[#49111c]"
-                  >
-                    스크롤
-                    <motion.div
-                      initial={{ x: -10, opacity: 0 }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 1,
-                        delay: 0,
-                        repeatDelay: 0,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      animate={{ x: 10, opacity: [0, 1, 0] }}
-                    >
-                      <FontAwesomeIcon
-                        className=" h-[14px] w-6"
-                        icon={faArrowRight}
-                      />
-                    </motion.div>
-                  </motion.div>
-                )}
-              </motion.div>
-            </motion.div>
-          </motion.div>
-          {/* End of Circle */}
         </motion.div>
       </div>
     </>
