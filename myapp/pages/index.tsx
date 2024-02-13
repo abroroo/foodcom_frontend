@@ -189,7 +189,7 @@ export default function Home() {
 
               <Link
                 className="mx-2 flex  items-start justify-center p-0 md:mx-2 xl:px-5 "
-                href="/work"
+                href="/image"
               >
                 <motion.button
                   style={{
@@ -370,7 +370,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/bert-hall.jpeg"
+                  src="/images/ptimized2/photo0.jpeg"
                   alt="Image 1"
                 />
               </div>
@@ -381,7 +381,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/rene.jpeg"
+                  src="/images/optimized2/photo1.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -392,7 +392,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/bert-wedd.jpeg"
+                  src="/images/optimized2/photo2.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -403,7 +403,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/africa.jpeg"
+                  src="/images/optimized2/photo3.jpeg"
                   alt="Image 4"
                 />
               </div>
@@ -414,7 +414,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/brett.jpeg"
+                  src="/images/optimized2/photo4.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -434,7 +434,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/govea.jpeg"
+                  src="/images/optimized2/photo5.jpeg"
                   alt="Image 1"
                 />
               </div>
@@ -445,7 +445,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/trivet.jpeg"
+                  src="/images/optimized2/photo6.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -456,7 +456,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/naim.jpeg"
+                  src="/images/optimized2/photo7.jpeg"
                   alt="Image 3"
                 />
               </div>
@@ -467,7 +467,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/pietro.jpeg"
+                  src="/images/optimized2/photo8.jpeg"
                   alt="Image 4"
                 />
               </div>
@@ -478,7 +478,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/skyline.jpeg"
+                  src="/images/optimized2/photo9.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -498,7 +498,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/trivet.jpeg"
+                  src="/images/optimized2/photo10.jpeg"
                   alt="Image 1"
                 />
               </div>
@@ -509,7 +509,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/brett.jpeg"
+                  src="/images/optimized2/photo11.jpeg"
                   alt="Image 2"
                   onError={(e) => console.error("Image load error", e)}
                 />
@@ -536,7 +536,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/africa.jpeg"
+                  src="/images/optimized2/photo12.jpeg"
                   alt="Image 4"
                 />
               </div>
@@ -547,7 +547,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/rene.jpeg"
+                  src="/images/optimized2/photo13.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -567,7 +567,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/bert-hall.jpeg"
+                  src="/images/ptimized2/photo0.jpeg"
                   alt="Image 1"
                 />
               </div>
@@ -578,7 +578,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/skyline.jpeg"
+                  src="/images/optimized2/photo14.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -589,7 +589,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/govea.jpeg"
+                  src="/images/optimized2/photo15.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -600,7 +600,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/bertelli.jpeg"
+                  src="/images/optimized2/photo16.jpeg"
                   alt="Image 4"
                 />
               </div>
@@ -611,7 +611,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/naim.jpeg"
+                  src="/images/optimized2/photo17.jpeg"
                   alt="Image 5"
                 />
               </div>
@@ -631,7 +631,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/govea.jpeg"
+                  src="/images/optimized2/photo18.jpeg"
                   alt="Image 1"
                 />
               </div>
@@ -642,7 +642,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/rene.jpeg"
+                  src="/images/optimized2/photo19.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -653,7 +653,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/bert-hall.jpeg"
+                  src="/images/ptimized2/photo0.jpeg"
                   alt="Image 2"
                 />
               </div>
@@ -664,7 +664,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/skyline.jpeg"
+                  src="/images/optimized2/photo5.jpeg"
                   alt="Image 4"
                 />
               </div>
@@ -675,7 +675,7 @@ export default function Home() {
                   height={300}
                   priority={true}
                   className="loader_Image h-full w-full object-cover "
-                  src="/images/optimized/brett.jpeg"
+                  src="/images/optimized2/photo3.jpeg"
                   alt="Image 5"
                 />
               </div>
