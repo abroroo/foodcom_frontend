@@ -115,7 +115,7 @@ const index = () => {
                 className="flex flex-col items-start justify-center "
               >
                 <p className="">
-                  © 2024 FoodCom. <br className="block md:hidden" /> All Rights
+                  © FoodCom. <br className="block md:hidden" /> All Rights
                   Reserved
                 </p>
               </a>

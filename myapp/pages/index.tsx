@@ -141,7 +141,9 @@ export default function Home() {
                     width={300}
                     height={60}
                     alt="푸드컴 케이터링 서비스 사진"
+                    priority={true}
                     className="h-[140px] w-[230px] scale-x-125 object-fill md:h-[180px] md:w-[300px]"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
               </motion.div>

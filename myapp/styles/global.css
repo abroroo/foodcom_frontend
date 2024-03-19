@@ -4,30 +4,12 @@
 
 @import "./fonts.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Goblin+One&display=swap");
 body {
-  /* color: rgb(var(--foreground-rgb));
-    /* background: linear-gradient( to bottom, transparent, #FFFBF5, #FFFBEB);   #fffbff;*/
   background-color: #fff;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  /* #FFFBEB; */
-  /* overflow-y: hidden;  rgb(243, 243, 239);   #F9FCFB;   #1d040b;  */
-
-  /* font-family: 'NanumGothic', "Malgun Gothic", 'dotum', '돋움', sans-serif; */
 }
 
 .text-non-selectable {
@@ -70,23 +52,6 @@ datalist {
   background-size: cover;
   background-color: #f9fcfb;
 }
-
-/* .background-fade {
-    background-color: transparent;
-    animation: fillUpBackground 1s ease forwards;
-    rgb(243, 243, 239);
-}
-
-@keyframes fillUpBackground {
-    from {
-        background-color: transparent;
-        transform: translateY(100%);
-    }
-    to {
-        background-color: white;
-        transform: translateY(0);
-    }
-}  */
 
 @keyframes moveBgRow1 {
   0% {

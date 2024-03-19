@@ -441,6 +441,7 @@ const Form = ({
   return (
     <>
       <form
+        name="event_form"
         className="text-non-selectable flex  h-full w-full flex-col items-center justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20"
         onSubmit={handleSubmit}
       >
