@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react"
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -20,9 +21,6 @@ import {
   useTransform,
 } from "framer-motion"
 import { ChefHat, Image as LucideImage, MountainSnow } from "lucide-react"
-
-import Navbar from "../components/Navbar"
-import SmoothScroll from "../components/Scrolling/SmoothScroll"
 
 export default function Home() {
   const router = useRouter()
@@ -106,6 +104,32 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title> 푸드컴 - 30년 전통의 푸드 서비스</title>
+        <meta
+          name="description"
+          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+        />
+        <meta
+          name="keywords"
+          content="푸드컴, Food Communication Inc, 푸드 서비스, 이벤트 서비스, 푸드컴 연중무휴, 푸드컴 연락처, 푸드컴 이메일, 푸드컴 주소"
+        />
+        <meta property="og:title" content="Food Communication Inc | 푸드컴" />
+        <meta
+          property="og:description"
+          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+        />
+        <meta property="og:image" content="/images/heroImage.jpg" />
+        <meta property="og:url" content="https://푸드컴.com/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Food Communication Inc | 푸드컴" />
+        <meta
+          name="twitter:description"
+          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+        />
+        <meta name="twitter:image" content="/images/heroImage.jpg" />
+      </Head>
+
       <motion.main className="loader fixed flex h-[100vh] w-[100vw] items-center justify-center leading-relaxed">
         {/*  Title Text Start */}
 
@@ -684,6 +708,29 @@ export default function Home() {
             </motion.div>
           </div>
         </motion.div>
+        <div className="absolute bottom-0 left-0 -z-50">
+          <a
+            href="https://open.kakao.com/chat/openlink/chat/hw6556"
+            className=" text-[#49111c] hover:text-yellow-300"
+          />
+          <a
+            href="https://www.facebook.com/pudeukeomeuchuljangsigsa.ibenteu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#49111c] hover:text-blue-700"
+          />
+          <a
+            target="_blank"
+            href="https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%ED%91%B8%EB%93%9C%EC%BB%B4&oquery=%ED%91%B8%EB%93%9C%EC%BB%B4&tqi=ikmv1lqVOZossajMI4wssssss%2Fs-258546"
+            className="mr-9 text-[#49111c] hover:text-green-700"
+          />
+          <a
+            href="https://www.instagram.com/foodcom_event/?igsh=MWpuZGxzZm1kbjVpbw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#49111c] hover:text-pink-700"
+          />
+        </div>
       </motion.main>
     </>
   )
