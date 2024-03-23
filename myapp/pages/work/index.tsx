@@ -530,9 +530,12 @@ const EventsModal: FC<GalleryProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-              className=" text-md m-1 flex w-full items-center justify-start bg-transparent  font-monts text-gray-600"
+              className=" m-1  flex w-full flex-col items-center justify-center bg-transparent font-monts text-sm  text-[#cf4646]      md:flex-row md:text-lg"
             >
-              * 이벤트를 클릭하세요
+              <span className="mr-0 md:mr-1">
+                manchan.foodcom은 혼이담긴 노력으로{" "}
+              </span>
+              <span>성공을 만들어 드립니다</span>
             </motion.h1>
           </motion.div>
 

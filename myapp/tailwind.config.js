@@ -17,6 +17,10 @@ module.exports = {
             'pt': ['PT Sans', 'sans-serif'],
             'dmSerif': ['DM Serif Display', 'serif'],
             'goblin': ['Goblin One', 'serif'],
+            'kaushan': ['Kaushan Script', 'cursive'],
+            'rozha': ['Rozha One', 'serif'],
+            'chonburi': ['Chonburi', 'serif'],
+            'abril': ['Abril Fatface', 'serif'],
         }
     },
 

@@ -157,7 +157,7 @@ export default function Home() {
               ease: [0.445, 0.05, 0.058, 0.96],
             }}
           >
-            <h1 className=" font-zermatt mt-[50px] flex flex-col    rounded-md  px-2 text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
+            <h1 className=" font-zermatt mt-[50px] flex flex-col rounded-md    px-2 text-[20px] font-bold leading-relaxed text-[#49111c] md:mt-[100px] md:px-5 md:text-[35px] xl:text-[45px]">
               <motion.div className="flex items-center justify-center">
                 <Link href="/work">
                   <Image
@@ -171,9 +171,9 @@ export default function Home() {
                   />
                 </Link>
               </motion.div>
-              <span className="  ml-2 flex items-center justify-center text-[30px] font-[900] md:text-[40px]">
-                {" "}
-                Catering Service{" "}
+              <span className="   mb-2 flex flex-col items-center justify-center py-0 text-[20px] font-[900] md:text-[30px]">
+                <span className=" py-0">MAN CHAN * FOODCOM</span>{" "}
+                <span className="font-kaushan py-0">Catering Service</span>
               </span>
             </h1>
             <div className="flex w-full items-center justify-center ">
@@ -252,7 +252,11 @@ export default function Home() {
                 </motion.button>
               </Link>
             </div>
-
+            <div className="font-zermatt mt-2 text-[18px] font-normal leading-relaxed  text-[#49111c]/90 md:text-[22px] ">
+              <span className="flex items-center justify-center">
+                행사 성공을 원하시면 클릭하세요
+              </span>
+            </div>
             <div className=" flex items-center justify-center text-[#49111c]  ">
               <motion.svg
                 width="170"
@@ -319,11 +323,11 @@ export default function Home() {
               <div className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
-                  전북특별자치도 30년경력 실무 전문가들의
+                  30년경력 실무전문가와 파트너쉽으로
                 </span>{" "}
                 <span className="flex items-center justify-center">
                   {" "}
-                  고객 맞춤형 무료견적 플랫폼입니다
+                  귀하의 행사를 완성하세요
                 </span>{" "}
                 <div className="sheet center middle">
                   <div className="tile" style={{ transform: "none" }}>
@@ -340,12 +344,15 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <span className=" leading-8">
+                {/* <span className=" leading-8">
                   <span className="flex items-center justify-center font-kr text-[20px] font-bold">
                     푸드컴
                   </span>
-                </span>
+                </span> */}
                 <span className="mt-3 flex items-center justify-center font-dm text-[18px] font-bold">
+                  <span className="mr-2 flex items-center justify-center font-kr text-[20px] font-bold">
+                    푸드컴
+                  </span>
                   <FontAwesomeIcon
                     className="mr-2 h-[18px] w-[18px] font-pt"
                     icon={faPhoneVolume}

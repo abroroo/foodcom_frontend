@@ -196,11 +196,24 @@ const index: React.FC = () => {
                 <div className="mx-auto  max-w-4xl p-8">
                   <div className="grid grid-cols-1 gap-4 ">
                     <div className="rounded bg-white p-4 shadow-md">
-                      <h3 className=" text-xl font-semibold">연중무휴</h3>
-                      <p className="">24시간 상담 가능</p>
+                      <div className="copyright">
+                        회사명 : 만찬외식이벤트 | 대표이사 : 한 웅 |
+                        사업자등록번호 : 418-02-26812
+                        <br />
+                        주소 : (55014) 전주시 덕진구 진버들7길 21(우아동2가) |
+                        TEL : 1577-4405, 063-247-3030 | FAX : 063-247-3938
+                        <br />
+                        COPYRIGHT© 2024 MANCHAN FOOD. ALL RIGHTS RESERVED.
+                        <br />
+                      </div>
+                      {/* <h3 className=" text-xl font-semibold">연중무휴</h3>
+                      <p className="">24시간 상담 가능</p> */}
 
-                      <div className="mt-2">
-                        <p className="mb-1 flex">
+                      <div className="">
+                        <p>
+                          푸드컴 628-88-02779 / 24시간상담-플렛폼 063-231-6556
+                        </p>
+                        {/* <p className="mb-1 flex">
                           <span className="w-6 font-bold">문</span>
                           <span className="flex w-6 justify-end font-bold">
                             {" "}
@@ -211,23 +224,23 @@ const index: React.FC = () => {
                             <span className=" mx-2 hidden md:block">|</span>
                             <a href="tel:063-231-6556">(063)231-6556</a>
                           </span>
-                        </p>
+                        </p> */}
                         <p className="mb-1">
-                          <span className="w-12 font-bold">e-mail:</span>{" "}
+                          <span className="w-12 ">E-mail:</span>{" "}
                           <a
                             href="mailto:hw3030@naver.com"
                             className=" hover:underline"
                           >
-                            info@푸드컴.com
+                            hw3030@naver.com
                           </a>
                         </p>
-                        <p className="mb-1">
+                        {/* <p className="mb-1">
                           <span className="w-12 font-semibold">
                             사업자등록번호:
                           </span>{" "}
                           628-88-02779
                         </p>
-                        <p className="">전주시 완산구 간납로 4 (55014)</p>
+                        <p className="">전주시 완산구 간납로 4 (55014)</p> */}
                       </div>
                     </div>
                   </div>
