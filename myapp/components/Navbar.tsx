@@ -147,52 +147,100 @@ const Navbar = () => {
               소개
             </Link>
           ) : (
-            <Link
-              className="mx-2  flex items-center justify-center p-0 md:mx-0 xl:p-1"
-              href="/form"
-            >
-              <motion.button
-                whileTap={checkboxAnimations}
-                style={{
-                  cursor: "pointer",
-                }}
-                className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
-                onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+            <div className="flex flex-row ">
+              <Link
+                className="mx-2  flex items-center justify-center p-0 md:mx-0 xl:p-1"
+                href="/form"
               >
-                <div
-                  // initial={{rotate: 0}}
-                  // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
-                  // transition={{}}
-                  className=" flex items-center justify-center "
+                <motion.button
+                  whileTap={checkboxAnimations}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
+                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
-                  <motion.div
-                    initial={{ rotate: 0, scale: 1, y: 0 }}
-                    whileInView={{
-                      scale: [1, 1.05, 1, 1.05, 1],
-                      y: [0, -5, 0, -5, 0],
-                      rotate: [0, 10, 0, -10, 0],
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 0.5,
-
-                      //repeatType: "reverse",
-                      repeatDelay: 1.5,
-                    }}
-                    className="  mr-2"
+                  <div
+                    // initial={{rotate: 0}}
+                    // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
+                    // transition={{}}
+                    className=" flex items-center justify-center "
                   >
-                    <FontAwesomeIcon
-                      icon={faPenToSquare}
-                      className=" h-3 w-3  md:h-4 md:w-4"
-                    />
-                  </motion.div>
-                  <span className="flex items-center justify-center pt-1 font-bold">
-                    회사상담
-                  </span>
-                </div>
-              </motion.button>
-            </Link>
+                    <motion.div
+                      initial={{ rotate: 0, scale: 1, y: 0 }}
+                      whileInView={{
+                        scale: [1, 1.05, 1, 1.05, 1],
+                        y: [0, -5, 0, -5, 0],
+                        rotate: [0, 10, 0, -10, 0],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 0.5,
+
+                        //repeatType: "reverse",
+                        repeatDelay: 1.5,
+                      }}
+                      className="  mr-2"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        className=" h-3 w-3  md:h-4 md:w-4"
+                      />
+                    </motion.div>
+                    <span className="flex items-center justify-center pt-1 font-bold">
+                      회사상담
+                    </span>
+                  </div>
+                </motion.button>
+              </Link>
+              <Link
+                className="mx-2  flex items-center justify-center p-0 md:mx-0 xl:p-1"
+                href="http://manchan.fordining.kr/"
+              >
+                <motion.button
+                  whileTap={checkboxAnimations}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#3a900c] to-[rgb(48,121,6)] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
+                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                >
+                  <div
+                    // initial={{rotate: 0}}
+                    // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
+                    // transition={{}}
+                    className=" flex items-center justify-center "
+                  >
+                    <motion.div
+                      initial={{ rotate: 0, scale: 1, y: 0 }}
+                      whileInView={{
+                        scale: [1, 1.05, 1, 1.05, 1],
+                        y: [0, -5, 0, -5, 0],
+                        rotate: [0, 10, 0, -10, 0],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 0.5,
+
+                        //repeatType: "reverse",
+                        repeatDelay: 1.5,
+                      }}
+                      className="  mr-2"
+                    >
+                      {/* <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        className=" h-3 w-3  md:h-4 md:w-4"
+                      /> */}
+                    </motion.div>
+                    <span className="flex items-center justify-center pt-1 font-bold">
+                      더 알아보기
+                    </span>
+                  </div>
+                </motion.button>
+              </Link>
+            </div>
           )}
         </div>
       </motion.div>
