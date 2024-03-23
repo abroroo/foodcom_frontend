@@ -337,8 +337,8 @@ export default function Home() {
                     >
                       <div className="marquee mb-2 font-bold">
                         <div>
-                          <span>출장푸드 | 이벤트 | 행사대행 | 랜탈 |</span>
-                          <span>출장푸드 | 이벤트 | 행사대행 | 랜탈 |</span>
+                          <span>출장푸드 | 행사대행 | 랜탈 </span>
+                          <span>출장푸드 | 행사대행 | 랜탈 </span>
                         </div>
                       </div>
                     </div>
