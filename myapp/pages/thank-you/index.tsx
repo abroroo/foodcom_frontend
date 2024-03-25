@@ -115,8 +115,9 @@ const index = () => {
                 className="flex flex-col items-start justify-center "
               >
                 <p className="">
-                  © FoodCom. <br className="block md:hidden" /> All Rights
-                  Reserved
+                  COPYRIGHT© 2024 MANCHAN FOOD.{" "}
+                  <br className="block md:hidden" />
+                  ALL RIGHTS RESERVED.
                 </p>
               </a>
             </div>
