@@ -73,26 +73,6 @@ const Navbar = () => {
     }
   }, [])
 
-  // learn more button href dynamic link
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth <= 767)
-    }
-
-    window.addEventListener("resize", checkIsMobile)
-
-    checkIsMobile()
-
-    return () => window.removeEventListener("resize", checkIsMobile)
-  }, [])
-
-  // Define the href based on the device type
-  const hrefForLearnMoreBtn = isMobile
-    ? "http://manchan.fordining.kr/"
-    : "http://manchan.co.kr"
-
   return (
     <>
       <motion.div
@@ -216,7 +196,7 @@ const Navbar = () => {
               </Link>
               <Link
                 className="mx-2  flex items-center justify-center p-0 md:mx-0 xl:p-1"
-                href={hrefForLearnMoreBtn}
+                href="http://manchan.fordining.kr/"
               >
                 <motion.button
                   whileTap={checkboxAnimations}
