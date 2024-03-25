@@ -166,14 +166,14 @@ export default function Home() {
                     height={60}
                     alt="푸드컴 케이터링 서비스 사진"
                     priority={true}
-                    className="h-[140px] w-[230px] scale-x-125 object-fill md:h-[180px] md:w-[300px]"
+                    className="h-[130px] w-[220px] scale-x-125 object-fill md:h-[180px] md:w-[300px]"
                     style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
               </motion.div>
               <span className="   mb-2 flex flex-col items-center justify-center py-0 text-[20px] font-[900] md:text-[30px]">
                 <span className=" py-0">MAN CHAN * FOODCOM</span>{" "}
-                <span className="font-kaushan py-0">Catering Service</span>
+                <span className="py-0 font-kaushan">Catering Service</span>
               </span>
             </h1>
             <div className="flex w-full items-center justify-center ">

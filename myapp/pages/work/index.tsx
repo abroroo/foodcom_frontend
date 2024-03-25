@@ -27,6 +27,7 @@ interface GalleryProps {
   businessImages: any
   festivalImages: any
   dosirakImages: any
+  ventureImages: any
   defaultImages: any // Specify the type of onClose prop
 }
 
@@ -39,6 +40,7 @@ type EventImages = {
   steak: string[]
   fingerFood: string[]
   dosirak: string[]
+  venture: string[]
   real: string[]
   // Add more event types as needed
 }
@@ -59,6 +61,7 @@ const EventsModal: FC<GalleryProps> = ({
   businessImages,
   festivalImages,
   dosirakImages,
+  ventureImages,
   defaultImages,
 }) => {
   const draw = {
@@ -128,6 +131,7 @@ const EventsModal: FC<GalleryProps> = ({
     steak: steakImages,
     fingerFood: fingerFoodImages,
     dosirak: dosirakImages,
+    venture: ventureImages,
     real: defaultImages,
 
     // Add other event types and their image arrays here
@@ -526,16 +530,56 @@ const EventsModal: FC<GalleryProps> = ({
               </motion.div>
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 1, y: -45 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.8,
+                duration: 1,
+                ease: [0.4, 0.18, 0, 1.03],
+              }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                whileTap={checkboxAnimations}
+                className={`event_range_wrapper relative m-1 h-10 w-[6rem] cursor-pointer select-none rounded-lg border text-[11px] text-[#49111c] hover:bg-gray-50  hover:text-[#11009E] peer-checked:border-[#11009E] peer-checked:text-[#3C0753] md:m-2 md:h-16 md:min-w-[9rem] md:text-[15px] xl:m-2 ${
+                  selectedEvent === "venture"
+                    ? "    border-[1.5px] border-[#11009E] text-[#11009E] shadow-xl"
+                    : "  "
+                }`}
+              >
+                <button
+                  style={{ accentColor: "#11009E", alignSelf: "flex-start" }}
+                  id="venture"
+                  onClick={() => setSelectedEvent("venture")}
+                />
+                <label
+                  htmlFor="venture"
+                  className="absolute inset-0 flex cursor-pointer flex-row items-center justify-center"
+                >
+                  <Image
+                    width="40"
+                    height="40"
+                    src="/images/icons/venture.png"
+                    alt="협력업체.행사장소"
+                    className="mx-1 h-7 w-7 md:mx-2 md:h-[40px] md:w-[40px]"
+                  />
+                  협력업체
+                  <br />
+                  행사장소
+                </label>
+              </motion.div>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-              className=" m-1  flex w-full flex-col items-center justify-center bg-transparent font-monts text-sm  text-[#3a900c]      md:flex-row md:text-xl"
+              className=" mx-1 my-4 mt-4  flex w-full flex-col items-center justify-center bg-transparent font-monts text-sm  font-bold leading-relaxed text-[#3a900c]  antialiased md:mt-10 md:flex-row md:text-2xl"
             >
               <span className="mr-0 md:mr-1">
-                manchan.foodcom은 혼이담긴 노력으로{" "}
+                Manchan:Foodcom은 혼이담긴 노력으로{" "}
               </span>
-              <span>성공을 만들어 드립니다</span>
+              <span className="">성공을 만들어 드립니다</span>
             </motion.h1>
           </motion.div>
 
@@ -739,6 +783,21 @@ export async function getServerSideProps() {
       imageSrc: `/images/real/dosirak/${fileName}`,
     }))
 
+  //venture
+  const ventureImagesDirectory = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "real",
+    "venture"
+  )
+  const ventureImages = fs
+    .readdirSync(ventureImagesDirectory)
+    .map((fileName) => ({
+      id: fileName,
+      imageSrc: `/images/real/venture/${fileName}`,
+    }))
+
   // default
   const defaultImagesDirectory = path.join(
     process.cwd(),
@@ -765,6 +824,7 @@ export async function getServerSideProps() {
       businessImages,
       festivalImages,
       dosirakImages,
+      ventureImages,
       defaultImages,
 
       // ... other image categories
