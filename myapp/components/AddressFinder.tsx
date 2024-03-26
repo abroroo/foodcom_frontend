@@ -96,7 +96,8 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
           style={{ color: buttonBackground }}
           className="mr-2 h-9 w-9"
         />{" "}
-        행사 예정 지역을 선택해주세요
+        행사예정 지역이나 주소지를 <br className="block md:hidden" />
+        입력하여 선택해주세요
       </motion.h1>
       <motion.div
         initial={{ x: -200 }}

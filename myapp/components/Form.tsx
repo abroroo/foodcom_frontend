@@ -1939,7 +1939,7 @@ const Form = ({
                 style={{ color: buttonBackground }}
                 className="mr-2 h-9 w-9"
               />
-              행사 예상 시간을 선택해주세요
+              행사일자, 예상 시간을 선택해주세요
             </motion.h4>
             <motion.div
               initial={{ x: -100, opacity: 0 }}
@@ -2305,7 +2305,7 @@ const Form = ({
                 transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                 className="m-1 mb-5  text-[1rem] font-bold md:m-5"
               >
-                귀하를 위해 성공하는 파트너가 되겠습니다
+                귀 행사를 위해 최고의 파트너가 되겠습니다
               </motion.p>
               <h3 className="mb-2 py-1 text-sm text-slate-400 md:py-4">
                 요청하신 세부정보를 확인하세요

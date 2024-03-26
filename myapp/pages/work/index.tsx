@@ -574,12 +574,14 @@ const EventsModal: FC<GalleryProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1, ease: [0.4, 0.18, 0, 1.03] }}
-              className=" mx-1 my-4 mt-4  flex w-full flex-col items-center justify-center bg-transparent font-monts text-sm  font-bold leading-relaxed text-[#3a900c]  antialiased md:mt-10 md:flex-row md:text-2xl"
+              className=" mx-1 my-4 mt-4  flex w-full flex-col items-center justify-center bg-transparent font-monts text-sm  font-bold leading-relaxed text-[#F99417]  antialiased md:mt-10 md:flex-row md:text-2xl"
             >
               <span className="mr-0 md:mr-1">
-                Manchan:Foodcom은 혼이담긴 노력으로{" "}
+                Manchan.Foodcom은 혼이담긴 노력으로{" "}
               </span>
-              <span className="">성공을 만들어 드립니다</span>
+              <span className="">
+                고객님 행사의 성공을 위해 최선을 다하겠습니다
+              </span>
             </motion.h1>
           </motion.div>
 

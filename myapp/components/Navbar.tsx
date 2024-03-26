@@ -203,7 +203,7 @@ const Navbar = () => {
                   style={{
                     cursor: "pointer",
                   }}
-                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#3a900c] to-[rgb(48,121,6)] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
+                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#F99417] to-[rgb(245,146,47)] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
                   onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
                   onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >

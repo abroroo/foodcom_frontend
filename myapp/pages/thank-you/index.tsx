@@ -6,6 +6,7 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
+import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import ConfettiExplosion from "react-confetti-explosion"
@@ -93,14 +94,21 @@ const index = () => {
             }}
             className=" flex w-full  flex-col  items-center justify-center px-2 font-NexonGothic text-lg  font-light md:text-[20px]"
           >
-            <p className=" m-0 md:m-1 ">
-              귀하의 성공적 행사를 위해 <br className="block md:hidden " /> 30년
-              실무경험과 전문성 있는
-            </p>
+            <p className=" m-0 md:m-1 ">귀하의 성공적 행사를 위해</p>
 
             <p className="m-0 md:m-1 ">
               Catering Food & Event <br className="block md:hidden " /> 고수의
               견적을 보내드리겠습니다!!!
+            </p>
+
+            <p className="m-0 flex md:m-1 ">
+              {" "}
+              &#91; 신뢰의 견적을 위해{" "}
+              <FontAwesomeIcon
+                className="ml-2 mr-1 h-[18px] w-[18px] font-pt"
+                icon={faPhoneVolume}
+              />{" "}
+              가능 하셔야 합니다 &#93;
             </p>
             <p className="m-1  "></p>
           </motion.div>

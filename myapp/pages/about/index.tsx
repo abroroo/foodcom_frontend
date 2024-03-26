@@ -203,8 +203,7 @@ const index: React.FC = () => {
                         <br />
                         주소 : (55014) 전주시 덕진구 진버들7길 21(우아동2가){" "}
                         <br />
-                        TEL : 1577-4405, 063-247-3030{" "}
-                        <br className="block md:hidden" />
+                        TEL : 1577-4405 <br className="block md:hidden" />
                         FAX : 063-247-3938
                         {/* <br />
                         COPYRIGHT© 2024 MANCHAN FOOD. ALL RIGHTS RESERVED.
@@ -216,8 +215,9 @@ const index: React.FC = () => {
                       <div className="">
                         <p>
                           푸드컴 628-88-02779 /{" "}
-                          <br className="block md:hidden" /> 24시간상담-플렛폼
-                          063-231-6556
+                          <br className="block md:hidden" /> 24시간상담-플렛폼{" "}
+                          <br />
+                          010 4280 8418 | 063-231-6556
                         </p>
                         {/* <p className="mb-1 flex">
                           <span className="w-6 font-bold">문</span>

@@ -254,7 +254,7 @@ export default function Home() {
             </div>
             <div className="font-zermatt mt-2 text-[18px] font-normal leading-relaxed  text-[#49111c]/90 md:text-[22px] ">
               <span className="flex items-center justify-center">
-                행사 성공을 원하시면 클릭하세요
+                행사 성공을 원하십니까!
               </span>
             </div>
             <div className=" flex items-center justify-center text-[#49111c]  ">
@@ -323,7 +323,7 @@ export default function Home() {
               <div className="font-zermatt text-[18px] font-normal leading-relaxed text-[#49111c]/90  md:text-[22px] ">
                 {" "}
                 <span className="  flex items-center justify-center">
-                  30년경력 실무전문가와 파트너쉽으로
+                  30년경력 실무전문가와 파트너가 되어
                 </span>{" "}
                 <span className="flex items-center justify-center">
                   {" "}
