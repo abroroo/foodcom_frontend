@@ -441,6 +441,7 @@ const Form = ({
   return (
     <>
       <form
+        autoComplete="off"
         name="event_form"
         className="text-non-selectable flex  h-full w-full flex-col items-center justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20"
         onSubmit={handleSubmit}
@@ -2140,7 +2141,7 @@ const Form = ({
               </div>
               <input
                 className="block h-10 w-full  border-b-[1px]  border-slate-200  pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]"
-                placeholder="이름"
+                placeholder="직접 입력해 주세요"
                 type="text"
                 id="name"
                 name="name"
@@ -2178,7 +2179,7 @@ const Form = ({
                   required={true}
                   className={`phone_number_input block h-10 w-full border-b-[1px] border-slate-200 pr-3 text-[13px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]`}
                   // placeholder="전화번호 - 숫자만 입력"
-                  placeholder="- 없이 숫아만 입력"
+                  placeholder="- 없이 숫아만 직접 입력해 주세요 "
                   //style={{'--placeholder-font-size' : '10px'}}
                   onChange={handlePhoneNumberChange}
                   pattern="^[0-9]{9,11}$" // Regular expression for 9 to 11 digits
