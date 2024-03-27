@@ -117,7 +117,7 @@ export default function Home() {
           name="keywords"
           content="푸드컴, 만찬, 만찬외식, 전북출장뷔페, 행사이벤트, 행사서비스, 출장, 통돼지, 전주출장부페, 출장케이터링, 단체도시락"
         />
-        <meta property="og:title" content="Food Communication Inc | 푸드컴" />
+        <meta property="og:title" content="만찬 | 푸드컴" />
         <meta
           property="og:description"
           content="만찬_푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
