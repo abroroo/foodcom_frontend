@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import {
   faBellConcierge,
   faImage,
+  faPenToSquare,
   faPhone,
   faPhoneVolume,
   faPlus,
@@ -106,7 +107,6 @@ export default function Home() {
     <>
       <Head>
         <title>
-          {" "}
           만찬_푸드컴 - FOOD명품플렛폼, 출장푸드전문회사, 도시락, 행사대행.
         </title>
         <meta
@@ -181,7 +181,7 @@ export default function Home() {
             </h1>
             <div className="flex w-full items-center justify-center ">
               <Link
-                className="mx-2  flex items-start justify-center p-0 md:mx-2 xl:px-5"
+                className="mx-2  flex items-start justify-center p-0 md:mx-1 xl:px-5"
                 href="/about"
               >
                 <motion.button
@@ -191,7 +191,7 @@ export default function Home() {
                     borderRadius: 10,
                     cursor: "pointer",
                   }}
-                  className={`z-20 flex h-[60px] w-[130px] flex-row items-center  justify-center  bg-gradient-to-r from-[#D71313] to-[#900C3F] text-[16px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:from-pink-500 hover:to-yellow-500   md:h-[65px] md:w-[150px] md:px-1`}
+                  className={`z-20 flex h-[60px] w-[110px] flex-row items-center  justify-center  bg-gradient-to-r from-[#D71313] to-[#900C3F] text-[16px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:from-pink-500 hover:to-yellow-500   md:h-[65px] md:w-[130px] md:px-1`}
                   onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
                   onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
@@ -217,7 +217,7 @@ export default function Home() {
               </Link>
 
               <Link
-                className="mx-2 flex  items-start justify-center p-0 md:mx-2 xl:px-5 "
+                className="mx-2 flex  items-start justify-center p-0 md:mx-1 xl:px-5 "
                 href="/work"
               >
                 <motion.button
@@ -226,7 +226,7 @@ export default function Home() {
                     cursor: "pointer",
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 100 }}
-                  className={`z-20 flex h-[60px] w-[130px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[16px] font-semibold  leading-relaxed text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500   md:h-[65px] md:w-[150px] md:px-1`}
+                  className={`z-20 flex h-[60px] w-[110px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[16px] font-semibold  leading-relaxed text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500   md:h-[65px] md:w-[130px] md:px-1`}
                   whileTap={checkboxAnimations}
                   whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
@@ -252,6 +252,45 @@ export default function Home() {
                   <span className="ml-2 flex flex-col ">
                     <span>행사사진</span> <span>자료실</span>
                   </span>
+                </motion.button>
+              </Link>
+              <Link
+                className="mx-2 flex  items-start justify-center p-0 md:mx-1 xl:px-5 "
+                href="/form"
+              >
+                <motion.button
+                  style={{
+                    borderRadius: 10,
+                    cursor: "pointer",
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 100 }}
+                  className={`z-20 flex h-[60px] w-[110px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold leading-relaxed  text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500 md:h-[65px]   md:w-[130px] md:px-1 md:text-[16px]`}
+                  whileTap={checkboxAnimations}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
+                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                >
+                  <motion.div
+                    initial={{ rotate: 0, scale: 1 }}
+                    whileInView={{
+                      scale: [1, 1.2, 1, 1.2, 1],
+                      rotate: [0, 10, 0, -10, 0],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 0.5,
+
+                      repeatDelay: 1,
+                    }}
+                    className="  "
+                  >
+                    <FontAwesomeIcon
+                      icon={faPenToSquare}
+                      className=" h-3 w-3  md:h-4 md:w-4"
+                    />
+                  </motion.div>
+
+                  <span className="ml-2 flex flex-col ">견적요청하기</span>
                 </motion.button>
               </Link>
             </div>
