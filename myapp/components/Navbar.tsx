@@ -157,7 +157,7 @@ const Navbar = () => {
                   style={{
                     cursor: "pointer",
                   }}
-                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
+                  className={`z-20 flex h-[40px] w-[90px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[12px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[120px] md:text-[16px]`}
                   onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
                   onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
@@ -189,7 +189,7 @@ const Navbar = () => {
                       />
                     </motion.div>
                     <span className="flex items-center justify-center pt-1 font-bold">
-                      회사상담
+                      견적요청하기
                     </span>
                   </div>
                 </motion.button>

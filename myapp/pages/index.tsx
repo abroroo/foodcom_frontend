@@ -105,27 +105,30 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title> 푸드컴 - 30년 전통의 푸드 서비스</title>
+        <title>
+          {" "}
+          만찬_푸드컴 - FOOD명품플렛폼, 출장푸드전문회사, 도시락, 행사대행.
+        </title>
         <meta
           name="description"
-          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+          content="만찬_푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
         />
         <meta
           name="keywords"
-          content="푸드컴, Food Communication Inc, 푸드 서비스, 이벤트 서비스, 푸드컴 연중무휴, 푸드컴 연락처, 푸드컴 이메일, 푸드컴 주소"
+          content="푸드컴, 만찬, 만찬외식, 전북출장뷔페, 행사이벤트, 행사서비스, 출장, 통돼지, 전주출장부페, 출장케이터링, 단체도시락"
         />
         <meta property="og:title" content="Food Communication Inc | 푸드컴" />
         <meta
           property="og:description"
-          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+          content="만찬_푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
         />
         <meta property="og:image" content="/images/heroImage.jpg" />
         <meta property="og:url" content="https://푸드컴.com/" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Food Communication Inc | 푸드컴" />
+        <meta name="twitter:title" content="만찬 | 푸드컴" />
         <meta
           name="twitter:description"
-          content="푸드컴 - 1994년 창립 이후, 30년간 고객과 함께하는 전통의 푸드 서비스를 제공합니다. 특별한 순간과 이벤트를 위한 푸드 컨설팅 및 서비스."
+          content="만찬_푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
         />
         <meta name="twitter:image" content="/images/heroImage.jpg" />
       </Head>
@@ -351,13 +354,13 @@ export default function Home() {
                 </span> */}
                 <span className="mt-3 flex items-center justify-center font-dm text-[18px] font-bold">
                   <span className="mr-2 flex items-center justify-center font-kr text-[20px] font-bold">
-                    푸드컴
+                    만찬_푸드컴
                   </span>
                   <FontAwesomeIcon
                     className="mr-2 h-[18px] w-[18px] font-pt"
                     icon={faPhoneVolume}
                   />{" "}
-                  <a href="tel:010-4280-8418">10-4280-8418</a>
+                  <a href="tel:1577-4405">1577-4405</a>
                 </span>
               </div>
             </motion.div>
