@@ -279,6 +279,7 @@ export default function Home() {
                     transition={{
                       repeat: Infinity,
                       duration: 0.5,
+                      delay: 0.5,
 
                       repeatDelay: 1,
                     }}
@@ -286,7 +287,7 @@ export default function Home() {
                   >
                     <FontAwesomeIcon
                       icon={faPenToSquare}
-                      className=" h-3 w-3  md:h-4 md:w-4"
+                      className=" h-5 w-5  md:h-5 md:w-5"
                     />
                   </motion.div>
 
