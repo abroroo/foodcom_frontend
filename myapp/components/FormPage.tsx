@@ -244,20 +244,20 @@ const FormPage = () => {
   }, [ticketNumber, formDataTransfered, formDataSaved])
 
   //  Generate PDF
-  useEffect(() => {
-    const createPdf = async () => {
-      if (formDataSaved && !pdfGenerated) {
-        try {
-          await generatePdf(ticketNumber)
-          setPdfGenerated(true)
-        } catch (error) {
-          console.error("Error generating PDF:", error)
-        }
-      }
-    }
+  // useEffect(() => {
+  //   const createPdf = async () => {
+  //     if (formDataSaved && !pdfGenerated) {
+  //       try {
+  //         await generatePdf(ticketNumber)
+  //         setPdfGenerated(true)
+  //       } catch (error) {
+  //         console.error("Error generating PDF:", error)
+  //       }
+  //     }
+  //   }
 
-    createPdf()
-  }, [formDataSaved, pdfGenerated, ticketNumber])
+  //   createPdf()
+  // }, [formDataSaved, pdfGenerated, ticketNumber])
 
   return (
     <div className=" text-non-selectable flex h-screen w-screen overflow-y-hidden">
