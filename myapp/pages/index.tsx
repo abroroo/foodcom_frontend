@@ -1,27 +1,17 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import {
-  faBellConcierge,
-  faImage,
   faPenToSquare,
-  faPhone,
   faPhoneVolume,
-  faPlus,
   faSpoon,
   faUtensils,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  AnimatePresence,
-  motion,
-  useAnimation,
-  useScroll,
-  useTransform,
-} from "framer-motion"
-import { ChefHat, Image as LucideImage, MountainSnow } from "lucide-react"
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion"
+import { ChefHat, Image as LucideImage } from "lucide-react"
 
 export default function Home() {
   const router = useRouter()
@@ -70,7 +60,6 @@ export default function Home() {
   }
 
   // Animation for lines
-
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: number) => {
@@ -89,7 +78,6 @@ export default function Home() {
   // Opacity Animation for the landing page up section
 
   const { scrollY } = useScroll()
-
   const imageOpacity = useTransform(scrollY, [0, 200], [1, 0])
   const scaleHero = useTransform(scrollY, [0, 650], [1, 0.9])
   const yPostionDiv = useTransform(scrollY, [0, 500], [0, 200])
@@ -192,8 +180,8 @@ export default function Home() {
                     cursor: "pointer",
                   }}
                   className={`z-20 flex h-[60px] w-[110px] flex-row items-center  justify-center  bg-gradient-to-r from-[#D71313] to-[#900C3F] text-[16px] font-semibold leading-relaxed text-[#fff] shadow-sm hover:from-pink-500 hover:to-yellow-500   md:h-[65px] md:w-[130px] md:px-1`}
-                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                  onHoverStart={() => setIsHovered(true)}
+                  onHoverEnd={() => setIsHovered(false)}
                 >
                   <motion.div
                     initial={{ y: 0, scale: 1 }}
@@ -229,8 +217,8 @@ export default function Home() {
                   className={`z-20 flex h-[60px] w-[110px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[16px] font-semibold  leading-relaxed text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500   md:h-[65px] md:w-[130px] md:px-1`}
                   whileTap={checkboxAnimations}
                   whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                  onHoverStart={() => setIsHovered(true)}
+                  onHoverEnd={() => setIsHovered(false)}
                 >
                   <motion.div
                     initial={{ rotate: 0, scale: 1 }}
@@ -267,8 +255,8 @@ export default function Home() {
                   className={`z-20 flex h-[60px] w-[110px] flex-row  items-center justify-center  bg-gradient-to-r    from-[#900C3F] to-[#D71313] text-[14px] font-semibold leading-relaxed  text-[#fff] shadow-sm hover:from-yellow-500 hover:to-pink-500 md:h-[65px]   md:w-[130px] md:px-1 md:text-[16px]`}
                   whileTap={checkboxAnimations}
                   whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
+                  onHoverStart={() => setIsHovered(true)}
+                  onHoverEnd={() => setIsHovered(false)}
                 >
                   <motion.div
                     initial={{ rotate: 0, scale: 1 }}
@@ -387,11 +375,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                {/* <span className=" leading-8">
-                  <span className="flex items-center justify-center font-kr text-[20px] font-bold">
-                    푸드컴
-                  </span>
-                </span> */}
                 <span className="mt-3 flex items-center justify-center font-dm text-[18px] font-bold">
                   <span className="mr-2 flex items-center justify-center font-kr text-[20px] font-bold">
                     만찬_푸드컴

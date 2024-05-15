@@ -3,7 +3,6 @@ import Head from "next/head"
 import { motion } from "framer-motion"
 
 import FormPage from "../../components/FormPage"
-import SmoothScroll from "../../components/Scrolling/SmoothScroll"
 
 interface Props {}
 
@@ -12,7 +11,6 @@ const index = () => {
     <>
       {" "}
       <Head>
-        {/* Basic Meta Tags */}
         <meta charSet="UTF-8" />
         <title>이벤트 케이터링 서비스 요청 페이지</title>
         <meta
@@ -56,7 +54,6 @@ const index = () => {
           content="이미지 URL (당신의 회사나 서비스를 대표하는 이미지 URL)"
         />
 
-        {/* Canonical URL */}
         <link rel="canonical" href="https://푸드컴.com/form" />
       </Head>
       <motion.div className="">

@@ -1,11 +1,7 @@
-import React, { use, useEffect, useState } from "react"
+import React from "react"
 import Head from "next/head"
 import Image from "next/image"
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 
@@ -41,9 +37,7 @@ const index: React.FC = () => {
         <meta name="twitter:image" content="/images/about_pic.jpeg" />
       </Head>
       <motion.div className="  flex  h-screen  w-screen flex-col items-center justify-evenly  overflow-scroll bg-[#fff]  pt-20  font-outfit text-[#49111c]  ">
-        {/* flex flex-col items-center justify-center  overflow-scroll*/}
         <main className="   h-full w-full   md:w-[90%]">
-          {/* md:mt-[13rem] mt-32  */}
           <div className="grid h-full w-full  grid-flow-row  auto-rows-max grid-cols-1 content-between gap-8  lg:grid-cols-2">
             <div className="flex h-full w-full justify-center">
               <div className="block  xl:fixed ">
@@ -208,13 +202,7 @@ const index: React.FC = () => {
                         <br />
                         TEL : 1577-4405 <br className="block md:hidden" />
                         FAX : 063-247-3938
-                        {/* <br />
-                        COPYRIGHT© 2024 MANCHAN FOOD. ALL RIGHTS RESERVED.
-                        <br /> */}
                       </div>
-                      {/* <h3 className=" text-xl font-semibold">연중무휴</h3>
-                      <p className="">24시간 상담 가능</p> */}
-
                       <div className="">
                         <p>
                           푸드컴 628-88-02779 /{" "}
@@ -222,18 +210,6 @@ const index: React.FC = () => {
                           <br />
                           010 4280 8418 | 063-231-6556
                         </p>
-                        {/* <p className="mb-1 flex">
-                          <span className="w-6 font-bold">문</span>
-                          <span className="flex w-6 justify-end font-bold">
-                            {" "}
-                            의:
-                          </span>{" "}
-                          <span className="ml-1 flex flex-col items-start  md:flex-row">
-                            <a href="tel:010-4280-8418">010-4280-8418</a>{" "}
-                            <span className=" mx-2 hidden md:block">|</span>
-                            <a href="tel:063-231-6556">(063)231-6556</a>
-                          </span>
-                        </p> */}
                         <p className="mb-1">
                           <span className="w-12 ">E-mail:</span>{" "}
                           <a
@@ -243,13 +219,6 @@ const index: React.FC = () => {
                             hw3030@naver.com
                           </a>
                         </p>
-                        {/* <p className="mb-1">
-                          <span className="w-12 font-semibold">
-                            사업자등록번호:
-                          </span>{" "}
-                          628-88-02779
-                        </p>
-                        <p className="">전주시 완산구 간납로 4 (55014)</p> */}
                       </div>
                     </div>
                   </div>

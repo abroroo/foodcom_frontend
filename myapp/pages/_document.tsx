@@ -1,8 +1,4 @@
-import { randomBytes } from "crypto"
-import { useEffect } from "react"
-import Document, { Head, Html, Main, NextScript } from "next/document"
-
-//import Head from 'next/head';
+import { Head, Html, Main, NextScript } from "next/document"
 
 const MyDocument = () => {
   const kakao_api_key =

@@ -3,15 +3,10 @@ import "react-day-picker/dist/style.css"
 
 import { useEffect } from "react"
 import type { AppProps } from "next/app"
-import Document, { Html, Main, NextScript } from "next/document"
 import Head from "next/head"
-import { useRouter } from "next/router"
-import Script from "next/script"
 import { AnimatePresence, motion, useAnimation } from "framer-motion"
 
 import Navbar from "../components/Navbar"
-import SmoothScroll from "../components/Scrolling/SmoothScroll"
-import SmoothScrollSimple from "../components/Scrolling/SmoothScrollSimple"
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const currentRoute = router.route
@@ -99,12 +94,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <link rel="canonical" href="https://푸드컴.com" />
       </Head>
 
-      <motion.div
-        // initial={{opacity: 0, y: -100, }}
-        // animate={navLoader}
-        // transition={{duration: 1, delay: 2.7 }}
-        style={{ display: isHomePage ? "none" : "flex" }}
-      >
+      <motion.div style={{ display: isHomePage ? "none" : "flex" }}>
         <Navbar />
       </motion.div>
 
@@ -125,9 +115,6 @@ const App = ({ Component, pageProps, router }: AppProps) => {
               x: 0,
               y: 0,
               transition: {
-                // type: 'spring',
-                // stiffness: 230,
-                // damping: 50,
                 ease: [0.83, 0, 0.17, 1],
                 duration: 0.6,
               },
