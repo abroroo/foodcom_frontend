@@ -14,24 +14,16 @@ import {
   faCaretLeft,
   faCaretRight,
   faChair,
-  faChevronLeft,
-  faChevronRight,
   faEnvelopeCircleCheck,
   faFileContract,
   faPerson,
   faSackDollar,
   faUserGroup,
-  faUsers,
-  faWallet,
   faWonSign,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { setHours, setMinutes } from "date-fns" // Import the functions
-
-import { tr } from "date-fns/locale"
 import ko from "date-fns/locale/ko"
-import { Link, PartyPopper, Users, Wallet } from "lucide-react"
-import ConfettiExplosion from "react-confetti-explosion"
+import { PartyPopper } from "lucide-react"
 
 interface ChildComponentProps {
   eventTypeOther: string
@@ -49,8 +41,6 @@ const Form = ({
   eventTypeOther,
   desktopOtherType,
 }: ChildComponentProps) => {
-  // vars to store form data, not sure if needed
-
   const [eventDate, setEventDate] = useState<Date>()
   const [eventAddress, setEventAddress] = useState("")
   const [customerName, setCustomerName] = useState("")
@@ -59,10 +49,6 @@ const Form = ({
   const [eventVenue, setEventVenue] = useState("")
   const router = useRouter()
   const [eventOtherType, setEventOtherType] = useState("")
-  // ...
-
-  // const currentDate = new Date(); // Get the current date and time
-  // const updatedDate = setHours(setMinutes(currentDate, 30), 17);
 
   const [currentDate, setCurrentDate] = useState<Date | null>(new Date())
 
@@ -123,16 +109,12 @@ const Form = ({
   }
 
   // Number People Range Input Handling
-
   const [sliderPeopleNum, setSliderPeopleNum] = useState(0)
   const [sliderBudgetVal, setSliderBudgetNum] = useState(0)
+
   // Calculate the position of the icon based on sliderValue
   const iconPositionForPeopleNum = {
     left: `${(sliderPeopleNum / 1000) * 94}%`, // Adjust this based on your layout
-  }
-
-  const iconPositionForBudget = {
-    left: `${(sliderBudgetVal / 150000) * 100}%`, // Adjust this based on your layout
   }
 
   // Handle changes in radio inputs and update the formData state
@@ -160,10 +142,6 @@ const Form = ({
     e.preventDefault()
 
     try {
-      // Perform your API request or any other necessary actions
-      // console.log("Form Data!")
-      // console.log(JSON.stringify(formData))
-      // console.log(formData)
     } catch (error) {
       console.error(error)
     }
@@ -199,20 +177,12 @@ const Form = ({
     setPhoneNumber(validatedPhoneNumber)
   }
 
-  // Confetti Animation
-  const [isExploding, setIsExploding] = useState(false)
-
   const [sliderBudgetValStart, setSliderBudgetValStart] = useState(0)
-  // const [sliderBudgetValEnd, setSliderBudgetValEnd] = useState(100000); // Initial end value
 
   // Calculate the position of the icons based on slider values
   const iconPositionStart = {
     left: `${(sliderBudgetValStart / 100000) * 105}%`, // Adjust this based on your layout
   }
-
-  // const iconPositionEnd = {
-  //   left: `${(sliderBudgetValEnd / 80000) * 78}%`, // Adjust this based on your layout
-  // };
 
   // Handle changes in range inputs
   const handleStartInputChange = (
@@ -221,20 +191,13 @@ const Form = ({
     const { value } = event.target
     setSliderBudgetValStart(parseInt(value))
     setSliderBudgetNum(parseInt(value))
-
-    // // Ensure that the start value is less than or equal to the end value
-    // if (parseInt(value) >= sliderBudgetValEnd) {
-    //   setSliderBudgetValEnd(parseInt(value) + 5000); // Adjust the step value as needed
-    // }
   }
 
-  // background chnage Event
-
+  // background change Event
   const [selectedEvent, setSelectedEvent] = useState("")
   const [buttonBackground, setButtonBackground] = useState("#F1F5F9")
 
   useEffect(() => {
-    // Initialize the buttonBackground state on the client-side
     let initialButtonBackground = "#F1F5F9"
     if (selectedEvent === "wedding") initialButtonBackground = "#F25287"
     else if (selectedEvent === "festival") initialButtonBackground = "#7C3AED"
@@ -252,11 +215,6 @@ const Form = ({
       currentQuestion,
       formData
     )
-    if (currentQuestion === 9) {
-      setIsExploding(true)
-    } else {
-      setIsExploding(false)
-    }
   }, [selectedEvent, currentQuestion])
 
   const handleCheckboxChange = (value: string) => {
@@ -274,13 +232,9 @@ const Form = ({
     else if (value !== `${eventTypeOther}`) updatedButtonBackground = "#C05621"
 
     setButtonBackground(updatedButtonBackground)
-
-    // Call the callback function from the parent with the updated buttonBackground value
-    //onButtonBackgroundChange(updatedButtonBackground, selectedEvent);
   }
 
   // FOR DAY PICKER
-
   const css = `
   .my-selected:not([disabled]) { 
     font-weight: bold; 
@@ -297,7 +251,6 @@ const Form = ({
   }
 `
 
-  const [selected, setSelected] = React.useState<Date>()
   const [timeValue, setTimeValue] = React.useState<string>("00:00")
 
   const disabledDays = [{ from: new Date(2022, 4, 18), to: new Date() }]
@@ -314,8 +267,6 @@ const Form = ({
 
   const handleDaySelect = (date: Date | undefined): void => {
     if (date) {
-      setSelected(date)
-      // console.log("THis is date: ", date)
       setEventDate(date)
       return
     }
@@ -331,7 +282,6 @@ const Form = ({
       tool: selectedAccesories,
       customTool: customTool,
       event_type: eventOtherType || desktopOtherType || selectedEvent,
-      //date_rigistered: currentDate,
       event_date: eventDate,
       event_time: timeValue,
       meal_cost: sliderBudgetVal,
@@ -354,9 +304,8 @@ const Form = ({
     customerMessage,
   ])
 
-  // Initialize state to store the selected options for each question
+  // to store the selected options for each question
   const [formData, setFormData] = useState<any>({
-    // initial date value
     address: eventAddress,
     tool: selectedAccesories,
   })
@@ -364,13 +313,6 @@ const Form = ({
   // Animation for the checkboxes in the all questions exept the first one
   const checkboxAnimationsGeneral = {
     scale: [1.15, 1.25, 1],
-    transition: {
-      duration: 0.2,
-    },
-  }
-
-  const checkboxAnimationsSecondary = {
-    scale: [1, 1.2, 1],
     transition: {
       duration: 0.2,
     },
@@ -447,7 +389,6 @@ const Form = ({
         onSubmit={handleSubmit}
       >
         {/* Intro to Form */}
-
         {currentQuestion === 0 && (
           <div className=" mt-16 flex flex-col items-center justify-center  md:mt-0  ">
             <h1 className=" flex items-center  justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
@@ -802,7 +743,6 @@ const Form = ({
                   name="people_count"
                   onChange={(e) => handleInputChange(e)}
                 ></motion.input>
-                {/* <p className="-translate-y-1.5 translate-x-8 transform text-[20px] font-bold md:translate-x-4"></p> */}
               </motion.div>
             </div>
 
@@ -1975,9 +1915,6 @@ const Form = ({
                         className={`hover:bg-[${buttonBackground}] color-[${buttonBackground}]`}
                       />
                     </p>
-                    {/* <p>
-                      선택일자: {selected ? selected.toLocaleString() : "none"}
-                    </p> */}
                   </>
                 }
               />
@@ -2130,7 +2067,6 @@ const Form = ({
               }}
               className="mt-10 flex w-full items-center justify-center md:w-[70%]"
             >
-              {/* <label htmlFor="input2" className="block text-md font-medium text-[#49111c] ">이름</label> */}
               <div className="mr-3">
                 <Image
                   src="/images/icons/name.png"
@@ -2146,8 +2082,6 @@ const Form = ({
                 id="name"
                 name="name"
                 onChange={handleInputChange}
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
                 required
               />
             </motion.div>
@@ -2159,9 +2093,6 @@ const Form = ({
               transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
               className=" mt-10 w-full  md:w-[70%]"
             >
-              {/* <label htmlFor="input2" className="block text-md font-medium text-[#49111c]">
-                전화번호
-              </label> */}
               <div className="flex items-center justify-center">
                 <div className="mr-3">
                   <Image
@@ -2178,9 +2109,7 @@ const Form = ({
                   name="phone_number"
                   required={true}
                   className={`phone_number_input block h-10 w-full border-b-[1px] border-slate-200 pr-3 text-[13px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px]`}
-                  // placeholder="전화번호 - 숫자만 입력"
                   placeholder="- 없이 숫아만 직접 입력해 주세요 "
-                  //style={{'--placeholder-font-size' : '10px'}}
                   onChange={handlePhoneNumberChange}
                   pattern="^[0-9]{9,11}$" // Regular expression for 9 to 11 digits
                 />
@@ -2208,7 +2137,6 @@ const Form = ({
                 />
               </div>
               <textarea
-                //type="textarea"
                 rows={3}
                 cols={30}
                 className=" w-full resize-y border-b-[1px]  border-slate-200 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[15px] "
@@ -2297,8 +2225,6 @@ const Form = ({
             </div>
 
             <div className="flex w-full flex-col items-center justify-center xl:hidden">
-              {/* <h1 className='text-[60px] mb-10 font-[500] '>Congratulation! </h1> */}
-
               <motion.p
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}

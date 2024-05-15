@@ -53,7 +53,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   const handleAddressSelect = (place: any, index: number) => {
     setSelectedItemIndex(index)
     setSelectedAddress(place) // Pass the entire place object
-    //console.log("This is selectedAddress: ", selectedAddress)
+
     setCenter({
       lat: place.y,
       lng: place.x,
@@ -63,9 +63,6 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
 
   const handleSubmitAddress = () => {
     if (selectedAddress) {
-      const { lat, lng } = selectedAddress // Extract lat and lng
-      const exactAddress = `${lat}, ${lng}` // Format the address as needed
-      // console.log('Selected Address:', exactAddress);
       setEventAddress(selectedAddress.address_name)
     } else {
       alert("Please select an address from the suggestions.")
@@ -75,11 +72,9 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   const handleMapClick = (map: any, mouseEvent: any) => {
     // Create a new InfoWindow object
     const newInfoWindow = new window.kakao.maps.InfoWindow({
-      content: addressQuery, // Use addressQuery here or the appropriate variable
+      content: addressQuery,
       position: selectedAddress.latLng,
     })
-
-    // setInfoWindow(newInfoWindow); // Uncomment this if needed
   }
 
   return (
@@ -152,7 +147,6 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
           className="h-[200px] w-full border md:h-[300px]"
           center={center}
           level={3}
-          //onClick={handleMapClick}
           onClick={(_target, mouseEvent) => {
             setCenter({
               lat: mouseEvent.latLng.getLat(),
