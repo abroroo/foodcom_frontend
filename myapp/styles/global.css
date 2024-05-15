@@ -35,14 +35,14 @@ datalist {
   justify-content: space-between;
   writing-mode: horizontal-tb;
 }
-/* Adjust the size and opacity of the noise pattern as needed */
+
 
 .landing {
   background-image: url("/images/bert-hall.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: #561421; */
+
 }
 
 .steps-background {
@@ -93,7 +93,7 @@ datalist {
 }
 
 .rdp {
-  --rdp-cell-size: 55px !important; /* Size of the day cells. */
+  --rdp-cell-size: 55px !important;
 }
 
 @media (max-height: 900px) {
@@ -126,7 +126,7 @@ datalist {
   }
 }
 
-/*  range input datalist circles  */
+
 
 /* Custom CSS class for styling datalist options */
 .circle-options {
@@ -178,14 +178,12 @@ datalist {
   float: left;
   width: 50%;
   font-size: 20px;
-  /* padding-top: 1px; */
   letter-spacing: 2px;
 }
 @media (max-width: 767px) {
   .marquee span {
     width: 50%;
     font-size: 18px;
-    /* padding-top: 1px; */
     letter-spacing: 1px;
   }
 }
