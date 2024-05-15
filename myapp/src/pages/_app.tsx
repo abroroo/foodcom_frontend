@@ -1,4 +1,4 @@
-import "../styles/global.css"
+import "@/styles/global.css"
 import "react-day-picker/dist/style.css"
 
 import { useEffect } from "react"
@@ -6,7 +6,7 @@ import type { AppProps } from "next/app"
 import Head from "next/head"
 import { AnimatePresence, motion, useAnimation } from "framer-motion"
 
-import Navbar from "../components/Navbar"
+import Navbar from "@/components/Navbar"
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const currentRoute = router.route
