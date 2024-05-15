@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Head from "next/head"
-import Image from "next/image"
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
@@ -67,18 +62,6 @@ const index = () => {
               width={800}
             />
           )}
-
-          {/* <div className="">
-      <Image
-        unoptimized={true}
-        layout={"responsive"}
-        src="/images/team-work.gif"
-        width={400}
-        height={300}
-        alt="Team working hard illustration"
-        className="absolute right-44 top-0"
-      />
-    </div> */}
 
           <h1 className="font-NexonGothicBold mb-5 w-full text-5xl font-bold md:mb-10 md:text-8xl">
             감사합니다!!!

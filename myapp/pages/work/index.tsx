@@ -19,11 +19,11 @@ interface GalleryProps {
   festivalImages: any
   dosirakImages: any
   ventureImages: any
-  defaultImages: any // Specify the type of onClose prop
+  defaultImages: any
 }
 
 type EventImages = {
-  wedding: string[] // Replace 'any[]' with the actual type of your images
+  wedding: string[]
   festival: string[]
   business: string[]
   birthday: string[]
@@ -79,13 +79,9 @@ const EventsModal: FC<GalleryProps> = ({
     dosirak: dosirakImages,
     venture: ventureImages,
     real: defaultImages,
-
-    // Add other event types and their image arrays here
   }
 
   // Horizontal scroll of inner-carousel while scrolling vertically
-
-  // Scroll-related state
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handleVerticalScroll = () => {

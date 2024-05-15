@@ -1,11 +1,9 @@
 import React, { ChangeEvent, useState } from "react"
 import {
   faLocationDot,
-  faMagnifyingGlass,
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { set } from "date-fns"
 import { motion } from "framer-motion"
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk"
 
@@ -20,10 +18,11 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
 }) => {
   const kakao_api_key = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY
 
-  // const [loading, error] = useKakaoLoader({
-  //   appkey: `${kakao_api_key}`,
-  //   libraries: ["clusterer", "drawing", "services"],
-  // })
+  //TODO: gotta check if it works for AWS  before merge into main
+  const [loading, error] = useKakaoLoader({
+    appkey: `${kakao_api_key}`,
+    libraries: ["clusterer", "drawing", "services"],
+  })
 
   const [addressQuery, setAddressQuery] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any[]>([])
