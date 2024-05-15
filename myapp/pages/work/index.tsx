@@ -53,52 +53,9 @@ const EventsModal: FC<GalleryProps> = ({
   ventureImages,
   defaultImages,
 }) => {
-  const draw = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: (i: number) => {
-      const delay = 1 + i * 0.5
-      return {
-        pathLength: 1,
-        opacity: 1,
-        transition: {
-          pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-          opacity: { delay, duration: 0.01 },
-        },
-      }
-    },
-  }
-
   // following cursor cirlce
 
-  const cursorRef = useRef<HTMLDivElement>(null)
   const imageWrapperRef = useRef<HTMLDivElement>(null)
-  const [isMouseWithinHero, setIsMouseWithinHero] = useState(false)
-  const [cursorX, setCursorX] = useState(800)
-  const [cursorY, setCursorY] = useState(200)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const imageElement = imageWrapperRef.current
-    const cursorElement = cursorRef.current
-
-    if (imageElement && cursorElement) {
-      const imageRect = imageElement.getBoundingClientRect()
-
-      const x = e.clientX - imageRect.left
-      const y = e.clientY - imageRect.top
-
-      // Set the cursor's position based on the mouse position within the image with a slight delay
-      setCursorX(x)
-      setCursorY(y)
-    }
-  }
-
-  const handleMouseEnter = () => {
-    setIsMouseWithinHero(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsMouseWithinHero(false)
-  }
 
   // Animation for the checkboxes in the first question
   const checkboxAnimations = {
@@ -583,10 +540,6 @@ const EventsModal: FC<GalleryProps> = ({
           >
             <motion.div
               ref={imageWrapperRef}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              // whileTap={{ cursor: "grabbing" }}
               className="  h-full w-full cursor-grab"
             >
               <SmoothScroll>
