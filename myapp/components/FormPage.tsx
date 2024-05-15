@@ -1,26 +1,22 @@
-import { count } from "console"
-import React, { use, useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import {
-  faAnglesRight,
   faArrowRightToBracket,
   faBuilding,
   faCalendarDays,
   faChair,
   faFileContract,
-  faImage,
   faMapLocationDot,
   faPerson,
   faSackDollar,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import { Dot, PartyPopper } from "lucide-react"
 
 import {
   createNewCustomer,
-  generatePdf,
   saveFormData,
 } from "./fetchFunctions/fetchFunctions"
 import Form from "./Form"
@@ -43,7 +39,6 @@ const FormPage = () => {
     setEventType(event)
     setIsCurrentQuestion(currentQuestion)
     setFormDataTransfered(formData)
-    // console.log("This is formDataTransfered to FromPage: ", formDataTransfered)
   }
 
   // CIRCLE FOLLOWING MOUSE POINTER EFFECT
@@ -83,17 +78,13 @@ const FormPage = () => {
 
   const handleMouseLeave = (): void => {
     setIsMouseWithinHero(false)
-
     // Remove blur and darkness when the cursor leaves the image
-
     if (imageFirstParent.current) {
     }
   }
 
   // 'EVENT IMAGES EXPLORE' ROUTING HANDALING
-
   const [isModalOpen, setIsModalOpen] = useState(false)
-
   const router = useRouter()
 
   const handleExploreClick = async (): Promise<void> => {
@@ -102,11 +93,9 @@ const FormPage = () => {
 
   const handleCloseModal = (): void => {
     setIsModalOpen(false)
-    // Restore the circle's appearance when closing the modal
   }
 
   // dynamic image sources for each event type
-  // Define a type for image sources
   type ImageSources = {
     [key: string]: string
   }
@@ -123,9 +112,7 @@ const FormPage = () => {
   }
 
   // FUNCTION to CHANGE PROGRESS ICONS' COLOR  DYNAMICALLY
-
   const getColor = (index: number): string => {
-    // Define color logic based on isCurrentQuestion
     if (isCurrentQuestion >= index) {
       return parentButtonBackground
     }
@@ -142,25 +129,18 @@ const FormPage = () => {
 
   // Assuming eventTime is in the format "2023-10-19T20:00:00.000Z"
   const eventDate = new Date(formDataTransfered.event_date)
-  //const eventTime = new Date(formDataTransfered.event_time)
   const options = {
     year: "numeric",
     month: "short",
     day: "numeric",
-    // hour: "numeric",
-    //minute: "numeric",
   } as Intl.DateTimeFormatOptions
   const options2 = {
-    // year: "numeric",
-    //month: "short",
-    // day: "numeric",
     hour: "numeric",
     minute: "numeric",
   } as Intl.DateTimeFormatOptions
 
   // as Month Day, hour:minute
   const formattedEventDate = eventDate.toLocaleString("ko-KR", options)
-  // const formattedEventTime = eventTime.toLocaleString("ko-KR", options2)
 
   const toolNames: {
     [key: number]: string
@@ -243,22 +223,6 @@ const FormPage = () => {
     sendFormData()
   }, [ticketNumber, formDataTransfered, formDataSaved])
 
-  //  Generate PDF
-  // useEffect(() => {
-  //   const createPdf = async () => {
-  //     if (formDataSaved && !pdfGenerated) {
-  //       try {
-  //         await generatePdf(ticketNumber)
-  //         setPdfGenerated(true)
-  //       } catch (error) {
-  //         console.error("Error generating PDF:", error)
-  //       }
-  //     }
-  //   }
-
-  //   createPdf()
-  // }, [formDataSaved, pdfGenerated, ticketNumber])
-
   return (
     <div className=" text-non-selectable flex h-screen w-screen overflow-y-hidden">
       <div className=" flex w-full flex-col md:flex-row  ">
@@ -276,7 +240,6 @@ const FormPage = () => {
         </div>
 
         {/* RIGHT HALF */}
-
         <div
           id="rightDiv"
           className="z-[200] hidden h-screen w-[40%]  xl:flex   "
@@ -306,7 +269,7 @@ const FormPage = () => {
                       scale: 0.5,
                       x: cursorX - 45,
                       y: cursorY - 55,
-                    }} // Add a slight delay and position the cursor below
+                    }}
                     animate={
                       isModalOpen
                         ? { scale: 400, opacity: 1 }
@@ -317,7 +280,7 @@ const FormPage = () => {
                             y: cursorY - 55,
                           }
                     }
-                    exit={{ opacity: 0, scale: 0.5 }} // Optional exit animation
+                    exit={{ opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     style={{
                       width: "90px",
@@ -333,11 +296,6 @@ const FormPage = () => {
                       className="h-5 w-5 text-[#49111c]"
                       icon={faArrowRightToBracket}
                     />{" "}
-                    {/* <FontAwesomeIcon
-                      className="ml-1 h-[8px] w-[8px]"
-                      icon={faAnglesRight}
-                      shake
-                    /> */}
                   </motion.div>
                 )}
                 {isCurrentQuestion < 1 && (

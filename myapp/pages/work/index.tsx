@@ -5,8 +5,6 @@ import Head from "next/head"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
-import SmoothScroll from "../../components/Scrolling/SmoothScrollHorizontal"
-
 interface GalleryProps {
   onClose: () => void
   weddingImages: any
@@ -538,40 +536,38 @@ const EventsModal: FC<GalleryProps> = ({
               ref={imageWrapperRef}
               className="  h-full w-full cursor-grab"
             >
-              <SmoothScroll>
-                <div className=" p-2 sm:p-2">
-                  <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
-                    {(selectedEvent
-                      ? eventImages[selectedEvent as keyof EventImages]
-                      : defaultImages
-                    ).map((image: image, index: number) => {
-                      const reverseIndex =
-                        (selectedEvent
-                          ? eventImages[selectedEvent as keyof EventImages]
-                          : defaultImages
-                        ).length -
-                        1 -
-                        index
+              <div className=" p-2 sm:p-2">
+                <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
+                  {(selectedEvent
+                    ? eventImages[selectedEvent as keyof EventImages]
+                    : defaultImages
+                  ).map((image: image, index: number) => {
+                    const reverseIndex =
+                      (selectedEvent
+                        ? eventImages[selectedEvent as keyof EventImages]
+                        : defaultImages
+                      ).length -
+                      1 -
+                      index
 
-                      const reversedImage = (
-                        selectedEvent
-                          ? eventImages[selectedEvent as keyof EventImages]
-                          : defaultImages
-                      )[reverseIndex]
+                    const reversedImage = (
+                      selectedEvent
+                        ? eventImages[selectedEvent as keyof EventImages]
+                        : defaultImages
+                    )[reverseIndex]
 
-                      return (
-                        <Image
-                          src={reversedImage.imageSrc}
-                          alt={selectedEvent || "default"}
-                          key={reversedImage.id}
-                          width={500}
-                          height={550}
-                        />
-                      )
-                    })}
-                  </div>
+                    return (
+                      <Image
+                        src={reversedImage.imageSrc}
+                        alt={selectedEvent || "default"}
+                        key={reversedImage.id}
+                        width={500}
+                        height={550}
+                      />
+                    )
+                  })}
                 </div>
-              </SmoothScroll>
+              </div>
             </motion.div>
           </motion.div>
 

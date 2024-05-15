@@ -3,22 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import {
-  faAnglesUp,
-  faArrowRight,
-  faArrowRightFromBracket,
-  faArrowRightToBracket,
-  faArrowTurnUp,
-  faArrowUpFromBracket,
-  faArrowUpRightFromSquare,
-  faArrowUpShortWide,
-  faArrowUpWideShort,
   faBars,
-  faBellConcierge,
-  faFilePen,
-  faListCheck,
   faPenToSquare,
-  faSquareCheck,
-  faTurnUp,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -30,7 +16,6 @@ const Navbar = () => {
   const router = useRouter()
 
   const currentRoute = router.route
-  const isRegisterPage = currentRoute === "/form"
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -41,8 +26,6 @@ const Navbar = () => {
   const handleMenuClick = () => {
     setIsModalOpen(!isModalOpen)
   }
-
-  const [isHovered, setIsHovered] = useState(false)
 
   // Animation for the checkboxes in the first question
   const checkboxAnimations = {
@@ -57,7 +40,6 @@ const Navbar = () => {
   // State to track the screen size
   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-  // Function to check the screen size
   const checkScreenSize = () => {
     setIsSmallScreen(window.innerWidth < 1280) // You can adjust the breakpoint as needed
   }
@@ -102,7 +84,6 @@ const Navbar = () => {
                 <button onClick={handleMenuClick} className="block xl:hidden">
                   <FontAwesomeIcon
                     icon={faXmark}
-                    //size="lg"
                     className="h-8 w-4 text-[#49111c]"
                   />
                 </button>
@@ -158,15 +139,8 @@ const Navbar = () => {
                     cursor: "pointer",
                   }}
                   className={`z-20 flex h-[40px] w-[105px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#900C3F] to-[#D71313] px-2 text-[12px]  font-semibold leading-relaxed text-[#fff]  hover:from-pink-500    hover:to-yellow-500 md:h-[50px] md:w-[135px] md:text-[16px]`}
-                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
-                  <div
-                    // initial={{rotate: 0}}
-                    // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
-                    // transition={{}}
-                    className=" flex items-center justify-center "
-                  >
+                  <div className=" flex items-center justify-center ">
                     <motion.div
                       initial={{ rotate: 0, scale: 1, y: 0 }}
                       whileInView={{
@@ -177,8 +151,6 @@ const Navbar = () => {
                       transition={{
                         repeat: Infinity,
                         duration: 0.5,
-
-                        //repeatType: "reverse",
                         repeatDelay: 1.5,
                       }}
                       className="  mr-2"
@@ -204,15 +176,8 @@ const Navbar = () => {
                     cursor: "pointer",
                   }}
                   className={`z-20 flex h-[40px] w-[105px] flex-row items-center justify-center rounded-lg bg-gradient-to-r    from-[#F99417] to-[rgb(245,146,47)] text-[14px] font-semibold  leading-relaxed text-[#fff] hover:from-pink-500  hover:to-yellow-500    md:h-[50px] md:w-[135px] md:text-[16px]`}
-                  onHoverStart={() => setIsHovered(true)} // Set isHovered to true when hovering starts
-                  onHoverEnd={() => setIsHovered(false)} // Set isHovered to false when hovering ends
                 >
-                  <div
-                    // initial={{rotate: 0}}
-                    // animate={isHovered ? {rotate: [ -15, 15, -15, 0]} : {}}
-                    // transition={{}}
-                    className=" flex items-center justify-center "
-                  >
+                  <div className=" flex items-center justify-center ">
                     <motion.div
                       initial={{ rotate: 0, scale: 1, y: 0 }}
                       whileInView={{
@@ -223,17 +188,10 @@ const Navbar = () => {
                       transition={{
                         repeat: Infinity,
                         duration: 0.5,
-
-                        //repeatType: "reverse",
                         repeatDelay: 1.5,
                       }}
                       className="  "
-                    >
-                      {/* <FontAwesomeIcon
-                        icon={faPenToSquare}
-                        className=" h-3 w-3  md:h-4 md:w-4"
-                      /> */}
-                    </motion.div>
+                    ></motion.div>
                     <span className="flex items-center justify-center pt-1 font-bold">
                       더 알아보기
                     </span>
@@ -246,7 +204,7 @@ const Navbar = () => {
       </motion.div>
 
       {isModalOpen && (
-        <motion.div //xl:w-[60vw]
+        <motion.div
           className="fixed inset-0 z-[99] flex w-full items-center justify-center  bg-white "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

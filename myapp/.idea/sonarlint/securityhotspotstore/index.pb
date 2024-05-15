@@ -32,3 +32,13 @@ C
 components/Form.tsx,5/5/556a08033610205a889ea4b7dde4564d81dee203
 G
 components/FormPage.tsx,8/1/81b622135c0e4551f6e1fa2dba5b9e5a05d9dbad
+E
+components/Loader.tsx,f/7/f7d18b40bb5fbe7825024b343c6f21fe81d58987
+E
+components/Navbar.tsx,a/5/a578c7e8c33c7f24400807e00a74617aec18284b
+[
++components/fetchFunctions/fetchFunctions.js,1/3/1331e08bf234880a43bbcd9edc4b9f831192269b
+U
+%components/Scrolling/SmoothScroll.tsx,7/e/7eaa67357d25056071f1d2351f729793e71d9535
+_
+/components/Scrolling/SmoothScrollHorizontal.tsx,e/8/e8d650869df29fb0d01d104d305e78019766ceef

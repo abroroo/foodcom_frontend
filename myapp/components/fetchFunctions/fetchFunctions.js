@@ -7,19 +7,19 @@ export const createNewCustomer = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
 
     if (!res.ok) {
-      throw new Error("Failed to fetch new customer.");
+      throw new Error("Failed to fetch new customer.")
     }
 
-    const data = await res.json();
-    return data.ticket_number; // return ticket number
+    const data = await res.json()
+    return data.ticket_number
   } catch (error) {
-    console.log("Error in createNewCustomer:", error);
-    throw error; // Propagate the error for handling in the component
+    console.log("Error in createNewCustomer:", error)
+    throw error
   }
-};
+}
 
 export const saveFormData = async (ticket_number, formData) => {
   try {
@@ -32,19 +32,17 @@ export const saveFormData = async (ticket_number, formData) => {
         },
         body: JSON.stringify(formData),
       }
-    );
-    // console.log('Sent data to backedn: ', formData)
+    )
     if (!res.ok) {
-      throw new Error("Failed to save form data.");
+      throw new Error("Failed to save form data.")
     }
 
-    const data = await res.json();
-    //console.log("Response from backend:", data);
+    const data = await res.json()
   } catch (error) {
-    console.log("Error in saveFormData:", error);
-    throw error;
+    console.log("Error in saveFormData:", error)
+    throw error
   }
-};
+}
 
 export const generatePdf = async (ticket_number) => {
   try {
@@ -53,15 +51,13 @@ export const generatePdf = async (ticket_number) => {
       {
         method: "GET",
       }
-    );
+    )
 
     if (!res.ok) {
-      throw new Error("Failed to generate PDF.");
+      throw new Error("Failed to generate PDF.")
     }
-
-
   } catch (error) {
-    console.log("Error in generatePdf:", error);
-    throw error;
+    console.log("Error in generatePdf:", error)
+    throw error
   }
-};
+}
