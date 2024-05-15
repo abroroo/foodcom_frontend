@@ -42,12 +42,10 @@ interface image {
 }
 
 const EventsModal: FC<GalleryProps> = ({
-  onClose,
   weddingImages,
   birthdayImages,
   steakImages,
   fingerFoodImages,
-  outsideImages,
   publicImages,
   businessImages,
   festivalImages,
