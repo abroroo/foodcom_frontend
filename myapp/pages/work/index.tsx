@@ -3,15 +3,6 @@ import path from "path"
 import React, { FC, useEffect, useRef, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
-import { faArrowRight, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { set } from "date-fns"
-import { de } from "date-fns/locale"
 import { motion } from "framer-motion"
 
 import SmoothScroll from "../../components/Scrolling/SmoothScrollHorizontal"
@@ -162,7 +153,7 @@ const EventsModal: FC<GalleryProps> = ({
       window.removeEventListener("scroll", handleVerticalScroll)
     }
   }, [])
-
+  // This is work section
   return (
     <>
       <Head>
