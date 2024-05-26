@@ -4,6 +4,7 @@ import { BudgetQuestion } from "@/components/Form/Question2/BudgetQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
 import { NumberOfPeopleQuestion } from "./Question1/NumberOfPeopleQuestion"
+import { VenueQuestion } from "./Question3/VenueQuestion"
 
 const Form = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -33,9 +34,12 @@ const Form = () => {
             handlePrevious={handlePrevious}
           />
         )}
-        {/*{currentQuestion === 3 && (*/}
-        {/*  <Question3 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
-        {/*)}*/}
+        {currentQuestion === 3 && (
+          <VenueQuestion
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+          />
+        )}
         {/*{currentQuestion === 4 && (*/}
         {/*  <Question4 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
         {/*)}*/}
