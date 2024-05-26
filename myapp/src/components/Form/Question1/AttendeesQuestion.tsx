@@ -7,17 +7,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-interface NumberOfPeopleQuestionProps {
+interface AttendeesQuestionProps {
   handleNext: () => void
   handlePrevious: () => void
 }
 interface EventAttendeeFormType {
   people_count: number
 }
-export const NumberOfPeopleQuestion = ({
+export const AttendeesQuestion = ({
   handleNext,
   handlePrevious,
-}: NumberOfPeopleQuestionProps) => {
+}: AttendeesQuestionProps) => {
   const { selectedEventColor, updateFormData } = useGlobalForm()
   const {
     register,

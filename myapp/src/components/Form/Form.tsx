@@ -3,7 +3,7 @@ import { EventTypeQuestion } from "@/components/Form/Question0/EventTypeQuestion
 import { BudgetQuestion } from "@/components/Form/Question2/BudgetQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
-import { NumberOfPeopleQuestion } from "./Question1/NumberOfPeopleQuestion"
+import { AttendeesQuestion } from "./Question1/AttendeesQuestion"
 import { VenueQuestion } from "./Question3/VenueQuestion"
 
 const Form = () => {
@@ -23,7 +23,7 @@ const Form = () => {
       <div className="text-non-selectable flex h-full w-full flex-col items-center justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20">
         {currentQuestion === 0 && <EventTypeQuestion handleNext={handleNext} />}
         {currentQuestion === 1 && (
-          <NumberOfPeopleQuestion
+          <AttendeesQuestion
             handleNext={handleNext}
             handlePrevious={handlePrevious}
           />
