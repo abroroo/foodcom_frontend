@@ -31,13 +31,22 @@ export const GlobalFormProvider: FC<GlobalFormProviderProps> = ({
   children,
 }) => {
   const [formData, setFormData] = useState<FormDataType>({})
+  const [selectedEventColor, setSelectedEventColor] =
+    useState<string>("#F1F5F9")
 
   const updateFormData = (data: FormDataType) => {
     setFormData((prevData) => ({ ...prevData, ...data }))
   }
 
   return (
-    <GlobalFormContext.Provider value={{ formData, updateFormData }}>
+    <GlobalFormContext.Provider
+      value={{
+        formData,
+        updateFormData,
+        selectedEventColor,
+        setSelectedEventColor,
+      }}
+    >
       {children}
     </GlobalFormContext.Provider>
   )

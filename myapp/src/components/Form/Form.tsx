@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { EventTypeQuestion } from "@/components/Form/Question0/EventTypeQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
+import { NumberOfPeopleQuestion } from "./Question1/NumberOfPeopleQuestion"
+
 const Form = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const totalQuestions = 9
@@ -18,9 +20,12 @@ const Form = () => {
     <GlobalFormProvider>
       <div className="text-non-selectable flex h-full w-full flex-col items-center justify-center overflow-y-scroll bg-opacity-[0.98] p-10 md:overflow-y-hidden md:p-28 md:px-20">
         {currentQuestion === 0 && <EventTypeQuestion handleNext={handleNext} />}
-        {/*{currentQuestion === 1 && (*/}
-        {/*  <Question1 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
-        {/*)}*/}
+        {currentQuestion === 1 && (
+          <NumberOfPeopleQuestion
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+          />
+        )}
         {/*{currentQuestion === 2 && (*/}
         {/*  <Question2 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
         {/*)}*/}

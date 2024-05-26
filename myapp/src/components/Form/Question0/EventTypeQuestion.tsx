@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { NextButton } from "@/components/Button/NextButton"
 // context / hooks / constants
 import { useGlobalForm } from "@/context/GlobalFormContext"
@@ -16,13 +16,18 @@ interface EventTypeQuestionProps {
 }
 
 interface EventFormType {
-  event_type?: string
-  event_type_other?: string
+  event_type: string
+  event_other_value?: string
 }
 
 export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
-  const { register, handleSubmit, watch } = useForm()
-  const { formData, updateFormData } = useGlobalForm()
+  const { register, handleSubmit, watch } = useForm<EventFormType>()
+  const {
+    formData,
+    updateFormData,
+    selectedEventColor,
+    setSelectedEventColor,
+  } = useGlobalForm()
   const selectedEvent = watch("event_type", formData.event_type || "")
 
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
@@ -30,10 +35,19 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
     handleNext()
   }
 
-  const selectedEventData = eventsData.find(
-    (event) => event.value === selectedEvent
-  )
-  const selectedEventColor = selectedEventData?.color || "#F1F5F9"
+  useEffect(() => {
+    const selectedEventData = eventsData.find(
+      (event) => event.value === selectedEvent
+    )
+    if (selectedEventData) {
+      setSelectedEventColor(selectedEventData.color)
+    }
+  }, [selectedEvent, setSelectedEventColor])
+
+  // const selectedEventData = eventsData.find(
+  //   (event) => event.value === selectedEvent
+  // )
+  // const selectedEventColor = selectedEventData?.color || "#F1F5F9"
 
   return (
     <form
