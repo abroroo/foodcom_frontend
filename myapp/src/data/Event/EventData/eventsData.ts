@@ -4,6 +4,13 @@ import { eventIconUrls } from "../EventIcons/eventIconUrls"
 
 export const eventsData: EventDataType[] = [
   {
+    id: "wedding",
+    value: "wedding",
+    iconSrc: eventIconUrls.wedding,
+    label: "스몰웨딩, 야외결혼",
+    color: "#F25287",
+  },
+  {
     id: "business",
     value: "business",
     iconSrc: eventIconUrls.business,
@@ -32,12 +39,13 @@ export const eventsData: EventDataType[] = [
     color: "#9D174D",
   },
   {
-    id: "wedding",
-    value: "wedding",
-    iconSrc: eventIconUrls.wedding,
-    label: "스몰웨딩, 야외결혼",
-    color: "#F25287",
+    id: "fingerFood",
+    value: "fingerFood",
+    iconSrc: eventIconUrls.fingerFood,
+    label: "핑거푸드",
+    color: "#F8B400",
   },
+
   {
     id: "steak",
     value: "steak",
@@ -45,13 +53,7 @@ export const eventsData: EventDataType[] = [
     label: "스테이크 행사",
     color: "#FE0000",
   },
-  {
-    id: "fingerFood",
-    value: "fingerFood",
-    iconSrc: eventIconUrls.fingerFood,
-    label: "핑거푸드",
-    color: "#F8B400",
-  },
+
   {
     id: "otherEvent",
     value: "",

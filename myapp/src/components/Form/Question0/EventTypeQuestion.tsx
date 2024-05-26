@@ -2,7 +2,7 @@ import React from "react"
 import { NextButton } from "@/components/Button/NextButton"
 // context / hooks / constants
 import { useGlobalForm } from "@/context/GlobalFormContext"
-import { eventsData } from "@/data/Event/EventTypes/eventTypesData"
+import { eventsData } from "@/data/Event/EventData/eventsData"
 //media
 import { motion } from "framer-motion"
 import { PartyPopper } from "lucide-react"
@@ -57,7 +57,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
             register={register}
           />
         ))}
-        {selectedEvent === "otherEventType" && (
+        {selectedEvent === "otherEvent" && (
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
