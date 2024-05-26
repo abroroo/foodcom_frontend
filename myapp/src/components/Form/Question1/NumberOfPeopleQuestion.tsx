@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { NextButton } from "@/components/Button/NextButton"
+import { PreviousButton } from "@/components/Button/PreviousButton"
 import { useGlobalForm } from "@/context/GlobalFormContext"
 import { faPerson, faUserGroup } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -85,7 +86,13 @@ export const NumberOfPeopleQuestion = ({
           ></motion.input>
         </motion.div>
       </div>
-      <NextButton color={selectedEventColor} />
+      <div className="flex items-center justify-center">
+        <PreviousButton
+          handlePrevious={handlePrevious}
+          color={selectedEventColor}
+        />
+        <NextButton color={selectedEventColor} />
+      </div>
     </form>
   )
 }

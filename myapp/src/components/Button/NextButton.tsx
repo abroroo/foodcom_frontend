@@ -8,7 +8,7 @@ interface NextButtonProps {
 }
 export const NextButton = ({ color }: NextButtonProps) => {
   return (
-    <div className="flex w-full items-center justify-center">
+    <>
       <motion.button
         style={{
           background: color,
@@ -24,6 +24,6 @@ export const NextButton = ({ color }: NextButtonProps) => {
       >
         다음 <FontAwesomeIcon icon={faCaretRight} />
       </motion.button>
-    </div>
+    </>
   )
 }
