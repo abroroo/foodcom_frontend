@@ -1,6 +1,6 @@
 // Define the interface for an event type
 export interface EventDataType {
-  key: EventKeysType
+  id: EventKeysType
   value: string
   iconSrc: string
   label: string

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { EventTypeQuestion } from "@/components/Form/Question0/EventTypeQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
-export const Form = () => {
+const Form = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const totalQuestions = 9
 
@@ -44,3 +44,5 @@ export const Form = () => {
     </GlobalFormProvider>
   )
 }
+
+export default Form

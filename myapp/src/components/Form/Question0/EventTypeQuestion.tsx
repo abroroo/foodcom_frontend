@@ -43,7 +43,8 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
         {/* Map over event types here */}
         {eventsData.map((event) => (
           <EventsCheckbox
-            key={event.value}
+            key={event.id}
+            id={event.id}
             value={event.value}
             iconSrc={event.iconSrc}
             label={event.label}

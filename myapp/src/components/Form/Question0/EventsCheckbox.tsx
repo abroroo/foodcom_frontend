@@ -3,7 +3,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 interface EventsCheckboxProps {
-  key: string
+  id: string
   value: string
   label: string
   iconSrc: string
@@ -12,7 +12,7 @@ interface EventsCheckboxProps {
 }
 
 export const EventsCheckbox = ({
-  key,
+  id,
   value,
   label,
   iconSrc,
@@ -28,7 +28,7 @@ export const EventsCheckbox = ({
       <input
         type="radio"
         value={value}
-        id={value}
+        id={id}
         {...register("event_type")}
         checked={selectedEvent === value}
         className="hidden"
