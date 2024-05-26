@@ -1,10 +1,9 @@
 import React from "react"
+import { NextButton } from "@/components/Button/NextButton"
 // context / hooks / constants
 import { useGlobalForm } from "@/context/GlobalFormContext"
 import { eventsData } from "@/data/Event/EventTypes/eventTypesData"
 //media
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { PartyPopper } from "lucide-react"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -31,6 +30,11 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
     handleNext()
   }
 
+  const selectedEventData = eventsData.find(
+    (event) => event.value === selectedEvent
+  )
+  const selectedEventColor = selectedEventData?.color || "#F1F5F9"
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -47,6 +51,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
             id={event.id}
             value={event.value}
             iconSrc={event.iconSrc}
+            color={event.color}
             label={event.label}
             selectedEvent={selectedEvent}
             register={register}
@@ -68,15 +73,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
           </motion.div>
         )}
       </div>
-      <div className="flex w-full items-center justify-center">
-        <motion.button
-          type="submit"
-          className="text-md focus:bg-blue mt-5 h-[41px] w-[40%] max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider text-[#49111c] focus:outline-none md:w-[15%] md:text-[16px]"
-          draggable="false"
-        >
-          다음 <FontAwesomeIcon icon={faCaretRight} />
-        </motion.button>
-      </div>
+      <NextButton color={selectedEventColor} />
     </form>
   )
 }

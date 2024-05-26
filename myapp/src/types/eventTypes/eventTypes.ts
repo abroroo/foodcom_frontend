@@ -4,6 +4,7 @@ export interface EventDataType {
   value: string
   iconSrc: string
   label: string
+  color: string
 }
 
 // Define the type for the keys of the eventTypes object
