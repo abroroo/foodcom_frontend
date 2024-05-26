@@ -19,7 +19,12 @@ export const NumberOfPeopleQuestion = ({
   handlePrevious,
 }: NumberOfPeopleQuestionProps) => {
   const { selectedEventColor, updateFormData } = useGlobalForm()
-  const { register, handleSubmit, watch } = useForm<EventAttendeeFormType>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<EventAttendeeFormType>()
   const [sliderPeopleNum, setSliderPeopleNum] = useState(0)
 
   const iconPositionForPeopleNum = {
@@ -80,11 +85,21 @@ export const NumberOfPeopleQuestion = ({
             step="10"
             className=" mb-10 mt-20 h-[1.5px] w-full cursor-pointer bg-slate-200 "
             value={sliderPeopleNum}
-            required
-            {...register("people_count")}
+            {...register("people_count", {
+              required: "이 필드는 필수입니다",
+              min: {
+                value: 1,
+                message: "이벤트 참석자는 0 보다 커야 합니다",
+              },
+            })}
             onChange={(e) => setSliderPeopleNum(parseInt(e.target.value, 10))}
           ></motion.input>
         </motion.div>
+        {errors.people_count && (
+          <div className="text-center text-sm text-red-500">
+            {errors.people_count.message}
+          </div>
+        )}
       </div>
       <div className="flex items-center justify-center">
         <PreviousButton

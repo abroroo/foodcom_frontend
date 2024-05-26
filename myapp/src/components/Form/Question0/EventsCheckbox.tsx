@@ -39,7 +39,9 @@ export const EventsCheckbox = ({
         type="radio"
         value={value}
         id={id}
-        {...register("event_type")}
+        {...register("event_type", {
+          required: "이벤트 유형을 선택하거나 직접 등록해 주세요",
+        })}
         checked={selectedEvent === value}
         className="hidden"
       />

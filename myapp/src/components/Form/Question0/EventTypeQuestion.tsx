@@ -21,7 +21,12 @@ interface EventFormType {
 }
 
 export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
-  const { register, handleSubmit, watch } = useForm<EventFormType>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<EventFormType>()
   const {
     formData,
     updateFormData,
@@ -43,11 +48,6 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
       setSelectedEventColor(selectedEventData.color)
     }
   }, [selectedEvent, setSelectedEventColor])
-
-  // const selectedEventData = eventsData.find(
-  //   (event) => event.value === selectedEvent
-  // )
-  // const selectedEventColor = selectedEventData?.color || "#F1F5F9"
 
   return (
     <form
@@ -87,6 +87,11 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
           </motion.div>
         )}
       </div>
+      {errors.event_type && (
+        <div className="text-center text-sm text-red-500">
+          {errors.event_type.message}
+        </div>
+      )}
       <NextButton color={selectedEventColor} />
     </form>
   )
