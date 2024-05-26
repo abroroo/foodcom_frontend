@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { NextButton } from "@/components/Button/NextButton"
 // context / hooks / constants
 import { useGlobalForm } from "@/context/GlobalFormContext"
-import { eventsData } from "@/data/Event/EventData/eventsData"
+import { EventsConfig } from "@/data/Event/EventData/EventsConfig"
 //media
 import { motion } from "framer-motion"
 import { PartyPopper } from "lucide-react"
@@ -41,7 +41,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
   }
 
   useEffect(() => {
-    const selectedEventData = eventsData.find(
+    const selectedEventData = EventsConfig.find(
       (event) => event.value === selectedEvent
     )
     if (selectedEventData) {
@@ -59,7 +59,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
       </h1>
       <div className="mt-5 flex flex-wrap justify-between md:mt-4">
         {/* Map over event types here */}
-        {eventsData.map((event) => (
+        {EventsConfig.map((event) => (
           <EventsCheckbox
             key={event.id}
             id={event.id}

@@ -2,7 +2,7 @@ import { EventDataType } from "@/types/eventTypes/eventTypes"
 
 import { eventIconUrls } from "../EventIcons/eventIconUrls"
 
-export const eventsData: EventDataType[] = [
+export const EventsConfig: EventDataType[] = [
   {
     id: "wedding",
     value: "wedding",
