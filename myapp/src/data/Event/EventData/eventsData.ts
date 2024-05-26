@@ -56,7 +56,7 @@ export const eventsData: EventDataType[] = [
 
   {
     id: "otherEvent",
-    value: "",
+    value: "otherEvent",
     iconSrc: eventIconUrls.otherEvent,
     label: "도시락.기타 행사",
     color: "#C05621",

@@ -62,13 +62,13 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-            className="mt-3 flex items-end justify-center xl:hidden"
+            className="mt-3 flex items-end justify-center "
           >
             <input
               type="text"
               className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px] border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
               placeholder="직접입력"
-              {...register("event_type_other")}
+              {...register("event_other_value")}
             />
           </motion.div>
         )}
