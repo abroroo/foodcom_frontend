@@ -29,7 +29,7 @@ export const AccessoriesQuestion = ({
 
   const onSubmit: SubmitHandler<AccessoriesFormType> = (data) => {
     // remove 키타
-    if (data.tool.includes("14")) {
+    if (data.tool.length > 0 && data.tool.includes("14")) {
       data.tool = data.tool.filter((item) => item !== "14")
     }
     updateFormData(data)
