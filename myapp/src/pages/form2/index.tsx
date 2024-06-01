@@ -56,7 +56,7 @@ const index = () => {
 
         <link rel="canonical" href="https://푸드컴.com/form" />
       </Head>
-      <motion.div className="">
+      <motion.div className="h-[100%]">
         <From />
       </motion.div>
     </>

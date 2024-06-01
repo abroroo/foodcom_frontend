@@ -5,8 +5,9 @@ import { motion } from "framer-motion"
 
 interface NextButtonProps {
   color: string
+  disabled?: boolean
 }
-export const NextButton = ({ color }: NextButtonProps) => {
+export const NextButton = ({ color, disabled }: NextButtonProps) => {
   return (
     <>
       <motion.button
@@ -15,9 +16,7 @@ export const NextButton = ({ color }: NextButtonProps) => {
           color: "#fff",
           border: "1px solid #fff",
         }}
-        // disabled={
-        //     selectedEvent !== "" || eventTypeOther !== "" ? false : true
-        // }
+        disabled={disabled}
         type="submit"
         className="text-md focus:bg-blue mt-5 h-[41px] w-[40%] max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider text-[#49111c] focus:outline-none md:w-[15%] md:text-[16px]"
         draggable="false"
