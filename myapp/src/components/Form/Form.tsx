@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { EventTypeQuestion } from "@/components/Form/Question0/EventTypeQuestion"
 import { BudgetQuestion } from "@/components/Form/Question2/BudgetQuestion"
 import { AccessoriesQuestion } from "@/components/Form/Question4/AccessoriesQuestion"
+import { DateQuestion } from "@/components/Form/Question5/DateQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
 import { AttendeesQuestion } from "./Question1/AttendeesQuestion"
@@ -47,9 +48,12 @@ const Form = () => {
             handlePrevious={handlePrevious}
           />
         )}
-        {/*{currentQuestion === 5 && (*/}
-        {/*  <Question5 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
-        {/*)}*/}
+        {currentQuestion === 5 && (
+          <DateQuestion
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+          />
+        )}
         {/*{currentQuestion === 6 && (*/}
         {/*  <Question6 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
         {/*)}*/}
