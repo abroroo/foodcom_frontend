@@ -22,7 +22,6 @@ export const AttendeesQuestion = ({
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<EventAttendeeFormType>()
   const [sliderPeopleNum, setSliderPeopleNum] = useState(0)

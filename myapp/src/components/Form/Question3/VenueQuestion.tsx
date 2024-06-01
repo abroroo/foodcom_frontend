@@ -71,7 +71,7 @@ export const VenueQuestion = ({
         ))}
       </div>
 
-      {selectedVenue === "custom" && (
+      {selectedVenue === "기타" && (
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
