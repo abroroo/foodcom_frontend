@@ -1,76 +1,98 @@
-import React, { useState } from "react"
+import React from "react"
+import { NextButton } from "@/components/Button/NextButton"
+import { PreviousButton } from "@/components/Button/PreviousButton"
+import { AccessoriesCheckbox } from "@/components/Form/Question4/AccessoriesCheckbox"
+import { useGlobalForm } from "@/context/GlobalFormContext"
+import { toolConfig } from "@/data/Accessories/AccessoriesConfig"
+import { faChair } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { motion } from "framer-motion"
+import { SubmitHandler, useForm } from "react-hook-form"
 
-const toolNames: {
-  [key: number]: string
-  1: string
-  2: string
-  3: string
-  4: string
-  5: string
-  6: string
-  7: string
-  8: string
-  9: string
-  10: string
-  11: string
-  12: string
-  13: string
-  14: string
-} = {
-  1: "사각 테이블",
-  2: "원탁테이블",
-  3: "스텐딩 테이블",
-  4: "의자",
-  5: "의자커버",
-  6: "자바라 텐트 (3m * 6m)",
-  7: "몽골텐트 (5m * 5m)",
-  8: "단상",
-  9: "기본음향",
-  10: "무대",
-  11: "진행",
-  12: "마스터 밴드",
-  13: "플래카드",
-  14: "필요없는",
+interface AccessoriesQuestionProps {
+  handleNext: () => void
+  handlePrevious: () => void
 }
 
-type AccessoriesQuestionProps = {
-  formData: any
+type AccessoriesFormType = {
+  tool: string[]
+  customTool?: string
 }
-export const AccessoriesQuestion = ({ formData }: AccessoriesQuestionProps) => {
-  const [selectedAccesories, setSelectedAccesories] = useState<string[]>([])
-  const [sliderPeopleNum, setSliderPeopleNum] = useState(0)
-  const [customTool, setCustomTool] = useState<string>("")
+export const AccessoriesQuestion = ({
+  handleNext,
+  handlePrevious,
+}: AccessoriesQuestionProps) => {
+  const { formData, updateFormData, selectedEventColor } = useGlobalForm()
+  const { register, handleSubmit, watch } = useForm<AccessoriesFormType>()
 
-  const [showOtherToolInput, setShowOtherToolInput] = useState<string>("false")
+  const selectedTool = watch("tool", formData.tool || "")
 
-  let toolNamesArr: string[] = []
-
-  if (0 >= 5) {
-    toolNamesArr = formData.tool.map((tool: number) => {
-      return toolNames[tool]
-    })
-    toolNamesArr = toolNamesArr.map((tool: string) => {
-      return "  " + tool
-    })
+  const onSubmit: SubmitHandler<AccessoriesFormType> = (data) => {
+    // remove 키타
+    if (data.tool.includes("14")) {
+      data.tool = data.tool.filter((item) => item !== "14")
+    }
+    updateFormData(data)
+    handleNext()
   }
 
-  const handleCheckboxAccesories = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const { name, value } = event.target
-    setSelectedAccesories((prevFormData: any) => [...prevFormData, value])
-  }
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className=" date-div tool-div mx-auto mb-0 mt-16 flex h-full w-full  flex-col justify-center  md:mt-0 "
+    >
+      <motion.h4
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+        className="mb-5 flex items-center justify-center  text-lg font-semibold lg:text-[1.2rem]"
+      >
+        <FontAwesomeIcon
+          icon={faChair}
+          style={{ color: selectedEventColor }}
+          className="mr-2 h-9 w-9"
+        />
+        <span className="flex flex-col items-center justify-center">
+          귀 행사에 필요한 품목을 고르세요
+          <br />
+          <p className="text-sm text-slate-600">* 별도 품목입니다 </p>
+          <p className="text-sm text-slate-600">
+            ( 행사에 따라 서비스 품목 있습니다 ){" "}
+          </p>
+        </span>
+      </motion.h4>
 
-  const handleCheckboxAccesoriesOther = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { value } = event.target
-    setCustomTool(value)
-  }
+      <div className="flex flex-wrap justify-center">
+        {toolConfig.map((tool) => (
+          <AccessoriesCheckbox
+            key={tool.id}
+            value={tool.value}
+            label={tool.label}
+            color={selectedEventColor}
+            register={register}
+            selectedTool={selectedTool}
+          />
+        ))}
+      </div>
 
-  const iconPositionForPeopleNum = {
-    left: `${(sliderPeopleNum / 1000) * 94}%`,
-  }
+      {selectedTool.includes("14") && (
+        <div className="mt-3 flex items-end justify-center pb-2">
+          <input
+            type="text"
+            className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
+            placeholder="직접입력"
+            {...register("customTool")}
+          />
+        </div>
+      )}
 
-  return <div>AccessoriesQuestion</div>
+      <div className="flex items-center justify-center">
+        <PreviousButton
+          handlePrevious={handlePrevious}
+          color={selectedEventColor}
+        />
+        <NextButton color={selectedEventColor} />
+      </div>
+    </form>
+  )
 }

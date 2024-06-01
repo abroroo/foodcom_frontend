@@ -37,8 +37,13 @@ export const BudgetQuestion = ({
   }
 
   const onSubmit: SubmitHandler<BudgetFormType> = (data) => {
-    if (data.meal_cost >= budgetConfig.min) {
-      updateFormData(data)
+    const updatedData = {
+      ...data,
+      meal_cost: Number(data.meal_cost), // Convert meal_cost to a number
+    }
+
+    if (updatedData.meal_cost >= budgetConfig.min) {
+      updateFormData(updatedData)
       handleNext()
     }
   }
