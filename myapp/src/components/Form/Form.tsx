@@ -4,6 +4,7 @@ import { BudgetQuestion } from "@/components/Form/Question2/BudgetQuestion"
 import { AccessoriesQuestion } from "@/components/Form/Question4/AccessoriesQuestion"
 import { DateQuestion } from "@/components/Form/Question5/DateQuestion"
 import { AddressQuestion } from "@/components/Form/Question6/AddressQuestion"
+import { HostContactQuestion } from "@/components/Form/Question7/HostContactQuestion"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
 import { AttendeesQuestion } from "./Question1/AttendeesQuestion"
@@ -61,9 +62,12 @@ const Form = () => {
             handlePrevious={handlePrevious}
           />
         )}
-        {/*{currentQuestion === 7 && (*/}
-        {/*  <Question7 handleNext={handleNext} handlePrevious={handlePrevious} />*/}
-        {/*)}*/}
+        {currentQuestion === 7 && (
+          <HostContactQuestion
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+          />
+        )}
         {/*{currentQuestion === 8 && <Question8 handleNext={handleNext} />}*/}
       </div>
     </GlobalFormProvider>
