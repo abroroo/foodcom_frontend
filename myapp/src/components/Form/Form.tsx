@@ -7,20 +7,24 @@ import { AddressQuestion } from "@/components/Form/Question6/AddressQuestion"
 import { HostContactQuestion } from "@/components/Form/Question7/HostContactQuestion"
 import { ConfirmationSectionMobile } from "@/components/Form/Question8/ConfirmationSectionMobile"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
+import { useGlobalState } from "@/context/GlobalStateContext"
 
 import { AttendeesQuestion } from "./Question1/AttendeesQuestion"
 import { VenueQuestion } from "./Question3/VenueQuestion"
 
 const Form = () => {
+  const { setCurrentStep } = useGlobalState()
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const totalQuestions = 9
 
   const handleNext = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion + 1)
+    setCurrentStep(currentQuestion)
   }
 
   const handlePrevious = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion - 1)
+    setCurrentStep(currentQuestion)
   }
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { NextButton } from "@/components/Button/NextButton"
 // context / hooks / constants
 import { useGlobalForm } from "@/context/GlobalFormContext"
+import { useGlobalState } from "@/context/GlobalStateContext"
 import { EventsConfig } from "@/data/Event/EventData/EventsConfig"
 //media
 import { motion } from "framer-motion"
@@ -34,7 +35,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
     setSelectedEventColor,
   } = useGlobalForm()
   const selectedEvent = watch("event_type", formData.event_type || "")
-
+  const { setThemeColor } = useGlobalState()
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
     updateFormData(data)
     handleNext()
@@ -46,6 +47,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
     )
     if (selectedEventData) {
       setSelectedEventColor(selectedEventData.color)
+      setThemeColor(selectedEventData.color)
     }
   }, [selectedEvent, setSelectedEventColor])
 
