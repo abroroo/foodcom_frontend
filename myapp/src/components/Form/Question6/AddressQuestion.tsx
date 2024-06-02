@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { NextButton } from "@/components/Button/NextButton"
 import { PreviousButton } from "@/components/Button/PreviousButton"
 import { useGlobalForm } from "@/context/GlobalFormContext"
@@ -22,14 +22,13 @@ export const AddressQuestion = ({
   const { register, handleSubmit, setValue, watch } = useForm<AddressFormType>()
 
   const { formData, updateFormData, selectedEventColor } = useGlobalForm()
-  const selectedAddress = watch("address", formData.address || " ")
-  console.log(
-    "This is the selected address: ",
-    selectedAddress,
-    selectedAddress.length > 0
-  )
-
+  const selectedAddress = watch("address", formData.address || "")
+  const [showErrorMessage, setShowErrorMessage] = useState(false)
   const onSubmit: SubmitHandler<AddressFormType> = (data) => {
+    if (selectedAddress.length === 0) {
+      setShowErrorMessage(true) // Show error message if address is not selected
+      return // Prevent submission if address is not selected
+    }
     updateFormData(data)
     handleNext()
   }
@@ -48,11 +47,13 @@ export const AddressQuestion = ({
           handlePrevious={handlePrevious}
           color={selectedEventColor}
         />
-        <NextButton
-          color={selectedEventColor}
-          disabled={selectedAddress.length === 0} // TODO: has to disable if address is not selected
-        />
+        <NextButton color={selectedEventColor} />
       </div>
+      {showErrorMessage && selectedAddress.length === 0 && (
+        <p className="mt-2 text-center text-sm text-red-500">
+          주서를 선택해주세요.
+        </p>
+      )}
     </form>
   )
 }

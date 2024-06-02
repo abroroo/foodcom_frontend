@@ -27,7 +27,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
     appkey: `${kakao_api_key}`,
     libraries: ["clusterer", "drawing", "services"],
   })
-
+  const [addressSelected, setAddressSelected] = useState<boolean>(false)
   const [addressQuery, setAddressQuery] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any[]>([])
   const [selectedAddress, setSelectedAddress] = useState<any | null>(null)
@@ -42,6 +42,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value
     setAddressQuery(query)
+    setAddressSelected(false)
     const ps = new window.kakao.maps.services.Geocoder()
     ps.addressSearch(query, placesSearchCB)
   }
@@ -59,14 +60,18 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
     }
   }
 
-  const handleAddressSelect = (place: any, index: number) => {
-    setSelectedItemIndex(index)
+  const handleAddressSelect = (place: any) => {
+    // Modify the parameter
     setSelectedAddress(place)
     setCenter({
       lat: place.y,
       lng: place.x,
     })
-    setEventAddress("address", place.address_name)
+
+    if (place) {
+      // Check if place is truthy before calling setEventAddress
+      setEventAddress("address", place.address_name, { shouldValidate: true })
+    }
   }
 
   const handleMapClick = (_target: any, mouseEvent: any) => {
@@ -112,7 +117,6 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
               <SearchResult
                 key={`${index}-${place.address_name}`}
                 place={place}
-                index={index}
                 selected={selectedItemIndex === index}
                 onClick={handleAddressSelect}
                 buttonBackground={buttonBackground}
