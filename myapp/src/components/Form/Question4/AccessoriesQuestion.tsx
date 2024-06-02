@@ -16,7 +16,7 @@ interface AccessoriesQuestionProps {
 
 type AccessoriesFormType = {
   tool: string[]
-  customTool?: string
+  customTool: string
 }
 export const AccessoriesQuestion = ({
   handleNext,
@@ -34,6 +34,9 @@ export const AccessoriesQuestion = ({
     }
     if (!data.tool) {
       data.tool = []
+    }
+    if (!data.customTool) {
+      data.customTool = ""
     }
     updateFormData(data)
     handleNext()
