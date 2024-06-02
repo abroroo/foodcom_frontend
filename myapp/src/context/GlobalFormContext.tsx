@@ -37,9 +37,6 @@ export const GlobalFormProvider: FC<GlobalFormProviderProps> = ({
   const updateFormData = (data: FormDataType) => {
     setFormData((prevData) => ({ ...prevData, ...data }))
   }
-  React.useEffect(() => {
-    console.log("This is the form data: ", formData)
-  }, [formData])
   return (
     <GlobalFormContext.Provider
       value={{

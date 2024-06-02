@@ -5,7 +5,7 @@ import { AccessoriesQuestion } from "@/components/Form/Question4/AccessoriesQues
 import { DateQuestion } from "@/components/Form/Question5/DateQuestion"
 import { AddressQuestion } from "@/components/Form/Question6/AddressQuestion"
 import { HostContactQuestion } from "@/components/Form/Question7/HostContactQuestion"
-import { ConfirmationSectionDesktop } from "@/components/Form/Question8/ConfirmationSectionDesktop"
+import { ConfirmationSectionMobile } from "@/components/Form/Question8/ConfirmationSectionMobile"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 
 import { AttendeesQuestion } from "./Question1/AttendeesQuestion"
@@ -70,7 +70,7 @@ const Form = () => {
           />
         )}
         {currentQuestion === 8 && (
-          <ConfirmationSectionDesktop handlePrevious={handlePrevious} />
+          <ConfirmationSectionMobile handlePrevious={handlePrevious} />
         )}
       </div>
     </GlobalFormProvider>

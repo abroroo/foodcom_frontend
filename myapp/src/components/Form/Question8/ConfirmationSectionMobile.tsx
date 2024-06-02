@@ -21,7 +21,7 @@ const EventDetail = ({ label, value }: { label: string; value: string }) => (
   </div>
 )
 
-export const ConfirmationSectionDesktop = ({
+export const ConfirmationSectionMobile = ({
   handlePrevious,
 }: ConfirmationSectionDesktopProps) => {
   // Hooks
