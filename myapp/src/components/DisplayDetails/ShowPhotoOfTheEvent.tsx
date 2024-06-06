@@ -1,5 +1,5 @@
 import React from "react"
-import { useGlobalForm } from "@/context/GlobalFormContext"
+import { useGlobalState } from "@/context/GlobalStateContext"
 import { EventsConfig } from "@/data/Event/EventData/EventsConfig"
 import { motion } from "framer-motion"
 
@@ -11,10 +11,14 @@ export const ShowPhotoOfTheEvent = ({
   imageFirstParent,
   isMouseWithinHero,
 }: ShowPhotoOfTheEventProps) => {
-  const { formData, selectedEventColor } = useGlobalForm()
-  const selectedEvent = formData.event_type
-  const imageSrc = EventsConfig.filter((event) => event === selectedEvent)[0]
-    .imageSrc
+  const { event, themeColor } = useGlobalState()
+  const selectedEvent = event
+  const selectedEventConfig = EventsConfig.find(
+    (event) => event.value === selectedEvent
+  )
+  const imageSrc = selectedEventConfig
+    ? selectedEventConfig.imageSrc
+    : "images/real/festival.jpg"
 
   return (
     <motion.div
@@ -30,7 +34,7 @@ export const ShowPhotoOfTheEvent = ({
       </p>
       <motion.img
         alt="행사사진"
-        src={selectedEvent === "" ? "images/real/festival.jpg" : imageSrc}
+        src={imageSrc}
         style={{ width: 450, height: 450 }}
         className={`mb-[5px] mr-[5px] rounded brightness-110 ${
           isMouseWithinHero

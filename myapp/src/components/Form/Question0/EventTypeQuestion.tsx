@@ -34,8 +34,9 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
     selectedEventColor,
     setSelectedEventColor,
   } = useGlobalForm()
+
   const selectedEvent = watch("event_type", formData.event_type || "")
-  const { setThemeColor } = useGlobalState()
+  const { setThemeColor, setEvent } = useGlobalState()
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
     updateFormData(data)
     handleNext()
@@ -46,6 +47,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
       (event) => event.value === selectedEvent
     )
     if (selectedEventData) {
+      setEvent(selectedEvent)
       setSelectedEventColor(selectedEventData.color)
       setThemeColor(selectedEventData.color)
     }

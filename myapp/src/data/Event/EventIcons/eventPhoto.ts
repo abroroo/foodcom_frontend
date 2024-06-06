@@ -10,5 +10,5 @@ export const imageSources: ImageSources = {
   birthday: "images/real/birthday.jpg",
   fingerFood: "images/real/fingerFood.jpg",
   steak: "images/real/steak.jpg",
-  otherEvent: "",
+  otherEvent: "images/real/festival.jpg",
 }

@@ -68,7 +68,6 @@ export const ShowPhotoWithCursorFollower = ({
         }}
         className="relative flex-col"
       >
-        // mpuse cursor follower for explore button
         {isMouseWithinHero && (
           <motion.div
             onClick={handleExploreClick}
@@ -104,7 +103,7 @@ export const ShowPhotoWithCursorFollower = ({
             />{" "}
           </motion.div>
         )}
-        // event photo for each event type
+
         {currentStep < 1 && (
           <ShowPhotoOfTheEvent
             isMouseWithinHero={isMouseWithinHero}

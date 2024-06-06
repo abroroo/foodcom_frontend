@@ -29,6 +29,7 @@ export const GlobalStateProvider: FC<GlobalStateProviderProps> = ({
 }) => {
   const [currentStep, setCurrentStep] = useState(0)
   const [themeColor, setThemeColor] = useState("#F1F5F9")
+  const [event, setEvent] = useState("")
 
   return (
     <GlobalStateContext.Provider
@@ -37,6 +38,8 @@ export const GlobalStateProvider: FC<GlobalStateProviderProps> = ({
         setThemeColor,
         currentStep,
         setCurrentStep,
+        event,
+        setEvent,
       }}
     >
       {children}
