@@ -1,8 +1,7 @@
 import React from "react"
 import Head from "next/head"
+import { FormPage1 } from "@/components/FormPage1"
 import { motion } from "framer-motion"
-
-import From from "../../components/Form/Form"
 
 interface Props {}
 
@@ -57,7 +56,7 @@ const index = () => {
         <link rel="canonical" href="https://푸드컴.com/form" />
       </Head>
       <motion.div className="h-[100%]">
-        <From />
+        <FormPage1 />
       </motion.div>
     </>
   )

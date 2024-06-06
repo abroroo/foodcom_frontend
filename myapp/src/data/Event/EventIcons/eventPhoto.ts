@@ -2,7 +2,7 @@ type ImageSources = {
   [key: string]: string
 }
 
-const imageSources: ImageSources = {
+export const imageSources: ImageSources = {
   business: "images/real/business.jpg",
   wedding: "images/real/wedding.jpg",
   festival: "images/real/festival.jpg",

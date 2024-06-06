@@ -1,6 +1,7 @@
 import { EventDataType } from "@/types/eventTypes/eventTypes"
 
 import { eventIconUrls } from "../EventIcons/eventIconUrls"
+import { imageSources } from "../EventIcons/eventPhoto"
 
 export const EventsConfig: EventDataType[] = [
   {
