@@ -10,8 +10,23 @@ import {
     faSackDollar, faUserGroup
 } from "@fortawesome/free-solid-svg-icons";
 import {Dot, PartyPopper} from "lucide-react";
+import {useGlobalState} from "@/context/GlobalStateContext";
+import DisplayEvent from "@/components/DisplayDetails/DisplayInputs/DisplayEvent";
+import DisplayPeople from "@/components/DisplayDetails/DisplayInputs/DispayPeople";
+import {DisplayBudget} from "@/components/DisplayDetails/DisplayInputs/DisplayBudget";
+import {DisplayVenue} from "@/components/DisplayDetails/DisplayInputs/DisplayVenue";
+import {DisplayTools} from "@/components/DisplayDetails/DisplayInputs/DisplayTools";
+import {DisplayDate} from "@/components/DisplayDetails/DisplayInputs/DisplayDate";
+import {DisplayAddress} from "@/components/DisplayDetails/DisplayInputs/DisplayAddress";
+import {DsiplayName} from "@/components/DisplayDetails/DisplayInputs/DisplayName";
+import {DisplayPhone} from "@/components/DisplayDetails/DisplayInputs/DisplayPhone";
+import {DisplayMessage} from "@/components/DisplayDetails/DisplayInputs/DisplayMessage";
+import {DisplaySelectedValues} from "@/components/DisplayDetails/DisplaySelectedValues";
+import {ShowPhotoOfTheEvent} from "@/components/DisplayDetails/ShowPhotoOfTheEvent";
 
 export const EventDetailsDesktop = () => {
+    const {themeColor, currentStep, setCurrentStep} = useGlobalState();
+
   return (
       <div
           id="rightDiv"
@@ -32,6 +47,8 @@ export const EventDetailsDesktop = () => {
                       }}
                       className="relative flex-col"
                   >
+
+                      // mpuse cursor follower for explore button
                       {isMouseWithinHero && (
                           <motion.div
                               onClick={handleExploreClick}
@@ -71,360 +88,24 @@ export const EventDetailsDesktop = () => {
                               />{" "}
                           </motion.div>
                       )}
-                      {isCurrentQuestion < 1 && (
-                          <motion.div
-                              initial={{opacity: 0, x: 120}}
-                              whileInView={{opacity: 1, x: 0}}
-                              transition={{duration: 0.5, type: "spring", bounce: 0.3}}
-                              ref={imageFirstParent}
-                              className={
-                                  eventType === "wedding" ||
-                                  eventType === "festival" ||
-                                  eventType === "business" ||
-                                  eventType === "public" ||
-                                  eventType === "birthday" ||
-                                  eventType === "fingerFood" ||
-                                  eventType === "steak"
-                                      ? "flex cursor-pointer flex-col"
-                                      : "hidden"
-                              }
-                          >
-                              <p className="mb-3 flex w-[98%] justify-start text-sm">
-                                  {" "}
-                                  행사사진 구경하기
-                              </p>
-                              <motion.img
-                                  alt="행사사진"
-                                  src={
-                                      eventType === ""
-                                          ? "images/real/festival.jpg"
-                                          : imageSources[eventType]
-                                  }
-                                  style={{width: 450, height: 450}}
-                                  className={`mb-[5px] mr-[5px] rounded brightness-110 ${
-                                      isMouseWithinHero
-                                          ? " scale-[102%] duration-700"
-                                          : "scale-100 duration-700"
-                                  }`}
-                              />
-                          </motion.div>
+
+                      // event photo for each event type
+                      {currentStep < 1 && (
+                        <ShowPhotoOfTheEvent />
                       )}
                   </motion.div>
-                  {eventType !== "wedding" &&
-                      eventType !== "festival" &&
-                      eventType !== "business" &&
-                      eventType !== "public" &&
-                      eventType !== "birthday" &&
-                      eventType !== "fingerFood" &&
-                      eventType !== "steak" &&
-                      isCurrentQuestion < 1 && (
-                          <motion.div
-                              initial={{opacity: 0, x: 120}}
-                              whileInView={{opacity: 1, x: 0}}
-                              transition={{duration: 0.5, type: "spring", bounce: 0.3}}
-                              className="flex flex-col"
-                          >
-                              <span className="text-gray-700">행사 유형</span>
-                              <input
-                                  name="event_type"
-                                  type="text"
-                                  className="mt-1 block w-full appearance-none border-0 border-b-2 border-gray-200 px-0.5 focus:border-black focus:outline-none focus:ring-0 active:border-[#49111c]"
-                                  placeholder=""
-                                  onChange={onOtherChange}
-                              />
-                          </motion.div>
-                      )}
               </div>
 
-              {isCurrentQuestion >= 1 && isCurrentQuestion !== 9 && (
-                  <div className=" hidden h-full w-full flex-col items-center justify-center xl:flex">
-                      <div className="flex items-center justify-between">
-                          {isCurrentQuestion >= 1 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      <PartyPopper
-                                          style={{color: getColor(0)}}
-                                          className="h-5 w-5 md:h-9 md:w-9  "
-                                      />
-                                      <input
-                                          onChange={(e) => {
-                                              setEventType(e.target.value)
-                                          }}
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={`${
-                                              formDataTransfered.event_type === "wedding"
-                                                  ? "스몰웨딩, 야외결혼"
-                                                  : formDataTransfered.event_type === "business"
-                                                      ? "기업 이벤트"
-                                                      : formDataTransfered.event_type === "public"
-                                                          ? "사회 단체행사"
-                                                          : formDataTransfered.event_type === "festival"
-                                                              ? "기관, 축제등"
-                                                              : formDataTransfered.event_type === "birthday"
-                                                                  ? "가족 개인행사"
-                                                                  : formDataTransfered.event_type === "fingerFood"
-                                                                      ? "핑거푸드"
-                                                                      : formDataTransfered.event_type === "steak"
-                                                                          ? "스테이크 행사"
-                                                                          : desktopOtherType
-                                          } `}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                          {isCurrentQuestion >= 2 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faPerson}
-                                          className="h-9 w-9"
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.people_count + " 명"}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                      <div className="flex items-center justify-between">
-                          {isCurrentQuestion >= 3 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      {" "}
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faSackDollar}
-                                          className="h-5 w-5 md:h-8 md:w-8 "
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={
-                                              (
-                                                  formDataTransfered.meal_cost *
-                                                  formDataTransfered.people_count
-                                              ).toLocaleString("ko-KR") + " 원"
-                                          }
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                          {isCurrentQuestion >= 4 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faBuilding}
-                                          className="h-5 w-5 md:h-9 md:w-9 "
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.event_place}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                      <div className="flex w-[70%] items-center justify-start ">
-                          {isCurrentQuestion >= 5 && (
-                              <motion.div className=" flex w-full items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex w-full"
-                                  >
-                                      {" "}
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faChair}
-                                          className="h-5 w-5 md:h-9 md:w-9 "
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={[toolNamesArr, formDataTransfered.customTool]}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                      <div className="flex w-[100%] items-center justify-start">
-                          {isCurrentQuestion >= 6 && (
-                              <motion.div className=" flex w-[50%] items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex w-full"
-                                  >
-                                      {" "}
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faCalendarDays}
-                                          className="h-5 w-5 md:h-9 md:w-9 "
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-[100%] appearance-none border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={[
-                                              formattedEventDate +
-                                              " " +
-                                              formDataTransfered.event_time,
-                                          ]}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                          {isCurrentQuestion >= 7 && (
-                              <motion.div className=" flex w-[50%] items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex justify-between"
-                                  >
-                                      {" "}
-                                      <FontAwesomeIcon
-                                          style={{color: getColor(1)}}
-                                          icon={faMapLocationDot}
-                                          className="h-5 w-5 md:h-9 md:w-9 "
-                                      />
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.address}
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                      <div className="flex items-center justify-between">
-                          {isCurrentQuestion >= 8 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      {" "}
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.name}
-                                          placeholder="이름"
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                          {isCurrentQuestion >= 8 && (
-                              <motion.div className=" flex items-center justify-between p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex"
-                                  >
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.phone_number}
-                                          placeholder="연락처"
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                      <div className="flex w-full items-center justify-start">
-                          {isCurrentQuestion >= 8 && (
-                              <motion.div className=" flex w-full items-center justify-center p-2">
-                                  <motion.div
-                                      initial={{x: 50, opacity: 0}}
-                                      whileInView={{x: 0, opacity: 1}}
-                                      transition={{
-                                          duration: 1,
-                                          delay: 0,
-                                          type: "spring",
-                                          bounce: 0.3,
-                                      }}
-                                      className=" flex w-[90%]"
-                                  >
-                                      <input
-                                          className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-                                          value={formDataTransfered.message}
-                                          placeholder="요청 사항"
-                                      ></input>
-                                  </motion.div>
-                              </motion.div>
-                          )}
-                      </div>
-                  </div>
+
+              //display submitted form values
+              {currentStep >= 1 && currentStep !== 9 && (
+                  <DisplaySelectedValues  currentStep={currentStep}/>
               )}
           </div>
       </div>
 
+
+      // footer icons
     {isCurrentQuestion < 9 && (
             <div className="absolute hidden  h-screen w-screen bg-white md:block ">
                 <motion.div

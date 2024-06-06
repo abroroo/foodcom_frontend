@@ -3,6 +3,7 @@ export interface EventDataType {
   id: EventKeysType
   value: string
   iconSrc: string
+  imageSrc: string
   label: string
   color: string
 }
