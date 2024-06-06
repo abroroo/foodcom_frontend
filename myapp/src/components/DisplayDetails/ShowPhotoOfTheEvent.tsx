@@ -3,16 +3,24 @@ import { useGlobalForm } from "@/context/GlobalFormContext"
 import { EventsConfig } from "@/data/Event/EventData/EventsConfig"
 import { motion } from "framer-motion"
 
-export const ShowPhotoOfTheEvent = () => {
+type ShowPhotoOfTheEventProps = {
+  imageFirstParent: React.RefObject<HTMLDivElement>
+  isMouseWithinHero: boolean
+}
+export const ShowPhotoOfTheEvent = ({
+  imageFirstParent,
+  isMouseWithinHero,
+}: ShowPhotoOfTheEventProps) => {
   const { formData, selectedEventColor } = useGlobalForm()
   const selectedEvent = formData.event_type
   const imageSrc = EventsConfig.filter((event) => event === selectedEvent)[0]
     .imageSrc
-  let isMouseWithinHero = false
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 120 }}
       whileInView={{ opacity: 1, x: 0 }}
+      ref={imageFirstParent}
       transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
       className={selectedEvent ? "flex cursor-pointer flex-col" : "hidden"}
     >
