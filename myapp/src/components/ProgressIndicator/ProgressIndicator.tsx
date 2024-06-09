@@ -79,7 +79,7 @@ export const ProgressIndicator = ({
               style={{
                 background: currentStep > index ? themeColor60 : "#F0F0F0",
               }}
-              className="mx-auto hidden h-2 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-[3px] md:w-24"
+              className="mx-auto hidden h-2 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-[3px] md:w-10 xl:w-24"
             />
           )}
         </React.Fragment>

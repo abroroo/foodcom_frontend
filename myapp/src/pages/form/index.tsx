@@ -1,8 +1,7 @@
 import React from "react"
 import Head from "next/head"
+import { FormPage } from "@/components/FormPage"
 import { motion } from "framer-motion"
-
-import FormPage from "@/components/FormPage"
 
 interface Props {}
 

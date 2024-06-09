@@ -1,6 +1,6 @@
 import React from "react"
-import { DisplaySelectedValues } from "@/components/DisplayDetails/DisplaySelectedValues"
-import { ShowPhotoWithCursorFollower } from "@/components/DisplayDetails/ShowPhotoWithCursorFollower"
+import { DisplaySelectedValues } from "@/components/Sections/DisplayDetails/DisplaySelectedValues"
+import { ShowPhotoWithCursorFollower } from "@/components/Sections/DisplayDetails/ShowPhotoWithCursorFollower"
 import { useGlobalState } from "@/context/GlobalStateContext"
 
 export const EventDetailsDesktop = () => {

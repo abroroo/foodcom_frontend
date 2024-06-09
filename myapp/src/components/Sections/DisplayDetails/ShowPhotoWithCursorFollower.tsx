@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react"
 import { useRouter } from "next/router"
-import { ShowPhotoOfTheEvent } from "@/components/DisplayDetails/ShowPhotoOfTheEvent"
+import { ShowPhotoOfTheEvent } from "@/components/Sections/DisplayDetails/ShowPhotoOfTheEvent"
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"

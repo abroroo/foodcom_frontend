@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useCustomerAPI } from "@/components/api/useCustomerAPI"
+import { useCustomerAPI } from "@/api/useCustomerAPI"
 import { PreviousButton } from "@/components/Button/PreviousButton"
 import { useGlobalForm } from "@/context/GlobalFormContext"
 import { faEnvelopeCircleCheck } from "@fortawesome/free-solid-svg-icons"

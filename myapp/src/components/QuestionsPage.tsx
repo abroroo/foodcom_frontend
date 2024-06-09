@@ -1,6 +1,6 @@
 import React from "react"
-import { EventDetailsDesktop } from "@/components/DisplayDetails/EventDetailsDesktop"
 import { ProgressIndicator } from "@/components/ProgressIndicator/ProgressIndicator"
+import { EventDetailsDesktop } from "@/components/Sections/DisplayDetails/EventDetailsDesktop"
 import { GlobalFormProvider } from "@/context/GlobalFormContext"
 import { useGlobalState } from "@/context/GlobalStateContext"
 import { motion } from "framer-motion"
