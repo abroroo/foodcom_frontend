@@ -17,6 +17,7 @@ type ProgressIndicatorProps = {
   currentStep: number
   themeColor: string
 }
+
 export const ProgressIndicator = ({
   currentStep,
   themeColor,
@@ -32,39 +33,20 @@ export const ProgressIndicator = ({
     faFileContract,
   ]
 
-  const themeColor60 = hexToRgba(themeColor, 0.9)
+  const themeColor60 = hexToRgba(themeColor, 0.8)
 
   return (
     <div className="flex h-full w-full flex-row items-center justify-between px-2 md:flex-row md:px-16">
       {icons.map((icon, index) => (
-        <>
-          {index !== 0 && (
-            <motion.hr
-              initial={{ x: -20, scaleX: 1 }}
-              animate={{
-                x: currentStep === index ? 20 : 0,
-                scaleX: currentStep === index ? 0 : 1,
-              }}
-              transition={{
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              style={
-                currentStep === index
-                  ? { background: themeColor60 }
-                  : { background: "#f9fcfb" }
-              }
-              className="mx-auto hidden h-2 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-[3px]  md:w-12"
-            />
-          )}
-          <div key={index} className="flex flex-col items-center">
+        <React.Fragment key={index}>
+          <div className="flex flex-col items-center">
             <motion.div
               initial={{ y: 0 }}
               animate={{
                 y: currentStep === index ? -20 : 0,
                 backgroundColor:
-                  currentStep === index ? themeColor : "transparent",
-                color: currentStep === index ? "#fff" : themeColor,
+                  currentStep >= index ? themeColor : "transparent",
+                color: currentStep >= index ? "#fff" : "#F0F0F0",
               }}
               transition={{
                 duration: 0.3,
@@ -74,34 +56,33 @@ export const ProgressIndicator = ({
               }}
               className="rounded-md p-2"
             >
-              <FontAwesomeIcon icon={icon} className="h-5 w-5 md:h-9 md:w-9" />
+              <FontAwesomeIcon icon={icon} className="h-5 w-5 md:h-6 md:w-6" />
             </motion.div>
             <Dot
-              style={{ color: themeColor }}
+              style={{ color: currentStep >= index ? themeColor : "#F0F0F0" }}
               size="30px"
               className={`-translate-y-6 transform ${
                 currentStep === index ? "block" : "hidden"
               }`}
             />
           </div>
-          <motion.hr
-            initial={{ x: 0, scaleX: 0 }}
-            animate={{
-              x: currentStep === index ? 20 : 0,
-              scaleX: currentStep === index ? 1 : 0,
-            }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-            style={
-              currentStep === index
-                ? { background: themeColor60 }
-                : { background: "#f9fcfb" }
-            }
-            className="mx-auto hidden h-2 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-[3px]  md:w-12"
-          />
-        </>
+          {index < icons.length - 1 && (
+            <motion.hr
+              initial={{ scaleX: 0 }}
+              animate={{
+                scaleX: currentStep > index ? 1 : 0,
+              }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut",
+              }}
+              style={{
+                background: currentStep > index ? themeColor60 : "#F0F0F0",
+              }}
+              className="mx-auto hidden h-2 w-1 rounded border-0 bg-gray-200 dark:bg-gray-700 md:block md:h-[3px] md:w-24"
+            />
+          )}
+        </React.Fragment>
       ))}
     </div>
   )
