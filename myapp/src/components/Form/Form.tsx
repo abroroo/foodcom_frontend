@@ -18,12 +18,12 @@ const Form = () => {
 
   const handleNext = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion + 1)
-    setCurrentStep(currentQuestion)
+    setCurrentStep(currentQuestion + 1)
   }
 
   const handlePrevious = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion - 1)
-    setCurrentStep(currentQuestion)
+    setCurrentStep(currentQuestion - 1)
   }
 
   return (

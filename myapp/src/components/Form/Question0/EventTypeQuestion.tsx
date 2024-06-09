@@ -36,7 +36,7 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
   } = useGlobalForm()
 
   const selectedEvent = watch("event_type", formData.event_type || "")
-  const { setThemeColor, setEvent } = useGlobalState()
+  const { setThemeColor, setEvent, themeColor } = useGlobalState()
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
     updateFormData(data)
     handleNext()
@@ -59,7 +59,8 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
       className="mt-16 flex flex-col items-center justify-center md:mt-0"
     >
       <h1 className="flex items-center justify-center text-[1rem] font-semibold lg:text-[1.2rem]">
-        <PartyPopper className="mr-2 h-9 w-9" /> 어떤 행사를 계획하고 계십니까?
+        <PartyPopper style={{ color: themeColor }} className="mr-2 h-9 w-9" />{" "}
+        어떤 행사를 계획하고 계십니까?
       </h1>
       <div className="mt-5 flex flex-wrap justify-between md:mt-4">
         {/* Map over event types here */}
