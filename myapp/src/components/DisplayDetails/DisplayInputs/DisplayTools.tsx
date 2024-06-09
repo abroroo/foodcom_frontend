@@ -36,7 +36,7 @@ export const DisplayTools = () => {
         />
         <input
           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-          value={[toolLabels, formData.customTool]}
+          value={[toolLabels + " " + formData.customTool]}
         ></input>
       </motion.div>
     </motion.div>

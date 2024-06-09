@@ -87,7 +87,10 @@ export const AccessoriesQuestion = ({
             type="text"
             className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
             placeholder="직접입력"
-            {...register("customTool")}
+            {...register("customTool", {
+              validate: (value) =>
+                selectedTool.includes("14") && value?.trim() !== "",
+            })}
           />
         </div>
       )}

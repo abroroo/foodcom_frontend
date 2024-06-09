@@ -38,6 +38,8 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
   const selectedEvent = watch("event_type", formData.event_type || "")
   const { setThemeColor, setEvent, themeColor } = useGlobalState()
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
+    if (data.event_type === "otherEvent") {
+    }
     updateFormData(data)
     handleNext()
   }
@@ -87,7 +89,12 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
               type="text"
               className="my-2 ml-4 mt-1 block h-10 w-full border-b-[1px] border-slate-200 pb-0 text-[14px] text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
               placeholder="직접입력"
-              {...register("event_other_value")}
+              {...register("event_other_value", {
+                validate: (value) =>
+                  selectedEvent !== "otherEvent" ||
+                  value?.trim() !== "" ||
+                  "기타 행사 유형을 입력해 주세요",
+              })}
             />
           </motion.div>
         )}
@@ -95,6 +102,11 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
       {errors.event_type && (
         <div className="text-center text-sm text-red-500">
           {errors.event_type.message}
+        </div>
+      )}
+      {selectedEvent === "otherEvent" && errors.event_other_value && (
+        <div className="mt-3 text-center text-sm text-red-500">
+          기타 행사 유형을 입력해 주세요
         </div>
       )}
       <NextButton color={selectedEventColor} />
