@@ -4,11 +4,11 @@ import { useRouter } from "next/router"
 import { useCustomerAPI } from "@/components/api/useCustomerAPI"
 import { PreviousButton } from "@/components/Button/PreviousButton"
 import { useGlobalForm } from "@/context/GlobalFormContext"
-import { toolConfig } from "@/data/Accessories/AccessoriesConfig"
-import { EventsConfig } from "@/data/Event/EventData/EventsConfig"
 import { faEnvelopeCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
+
+import { useEventDetails } from "./useEventDetails"
 
 type ConfirmationSectionDesktopProps = {
   handlePrevious: () => void
@@ -20,35 +20,14 @@ const EventDetail = ({ label, value }: { label: string; value: string }) => (
     <span className="pl-1 font-light">{value}</span>
   </div>
 )
-
-export const ConfirmationSectionMobile = ({
-  handlePrevious,
-}: ConfirmationSectionDesktopProps) => {
-  // Hooks
+export const ConfirmationSectionMobile: React.FC<
+  ConfirmationSectionDesktopProps
+> = ({ handlePrevious }) => {
   const { formData, selectedEventColor } = useGlobalForm()
   const router = useRouter()
-
-  // Event details
-  const eventConfig = EventsConfig.find(
-    (event) => event.value === formData.event_type
-  )
-  const eventLabel = eventConfig ? eventConfig.label : formData.event_other_type
-  const toolLabels = formData.tool
-    .map((toolValue: string) => {
-      const tool = toolConfig.find((tool) => tool.value === toolValue.trim())
-      return tool ? tool.label : toolValue
-    })
-    .join(", ")
-
-  const eventDate = new Date(formData.event_date)
-  const formattedDate = new Intl.DateTimeFormat("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(eventDate)
-
-  // API call
   const { createNewCustomer, saveFormData, loading, error } = useCustomerAPI()
+  const { eventLabel, toolLabels, venue, formattedDate } = useEventDetails()
+
   const handleFormSubmit = async () => {
     try {
       const ticket_number = await createNewCustomer()
@@ -72,7 +51,7 @@ export const ConfirmationSectionMobile = ({
           </h1>
         </motion.div>
         <Image
-          src={"/images/female-chef.jpg"}
+          src="/images/female-chef.jpg"
           alt="salt-bae"
           width={400}
           height={600}
@@ -109,7 +88,7 @@ export const ConfirmationSectionMobile = ({
             label="이벤트 날짜"
             value={`${formattedDate} ${formData.event_time}`}
           />
-          <EventDetail label="장소" value={formData.event_place} />
+          <EventDetail label="장소" value={venue} />
           <EventDetail
             label="필요한 품목"
             value={`${toolLabels} ${formData.customTool ?? ""}`}
@@ -133,9 +112,7 @@ export const ConfirmationSectionMobile = ({
           className="relative mt-5 h-[41px] w-[40%] max-w-sm rounded-lg border bg-[#900C3F] py-2 text-[14px] font-semibold tracking-wider text-[#49111c] focus:outline-none md:w-[20%] md:text-[16px]"
           draggable="false"
         >
-          <>
-            견적예약하기 <FontAwesomeIcon icon={faEnvelopeCircleCheck} />
-          </>
+          견적예약하기 <FontAwesomeIcon icon={faEnvelopeCircleCheck} />
         </motion.button>
       </div>
 

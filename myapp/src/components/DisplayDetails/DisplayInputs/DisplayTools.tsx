@@ -1,11 +1,19 @@
 import React from "react"
 import { useGlobalForm } from "@/context/GlobalFormContext"
+import { toolConfig } from "@/data/Accessories/AccessoriesConfig"
 import { faChair } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 
 export const DisplayTools = () => {
   const { formData, selectedEventColor } = useGlobalForm()
+
+  const toolLabels = formData.tool
+    .map((toolValue: string) => {
+      const tool = toolConfig.find((tool) => tool.value === toolValue.trim())
+      return tool ? tool.label : toolValue
+    })
+    .join(", ")
 
   return (
     <motion.div className=" flex w-full items-center justify-between p-2">
@@ -28,7 +36,7 @@ export const DisplayTools = () => {
         />
         <input
           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-          value={[formData, formData.customTool]}
+          value={[toolLabels, formData.customTool]}
         ></input>
       </motion.div>
     </motion.div>

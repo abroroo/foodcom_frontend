@@ -7,6 +7,11 @@ import { motion } from "framer-motion"
 export const DisplayVenue = () => {
   const { formData, selectedEventColor } = useGlobalForm()
 
+  const venue =
+    formData.event_place === "기타"
+      ? formData.custom_event_place
+      : formData.event_place
+
   return (
     <motion.div className=" flex items-center justify-between p-2">
       <motion.div
@@ -27,7 +32,7 @@ export const DisplayVenue = () => {
         />
         <input
           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-          value={formData.event_place}
+          value={venue}
         ></input>
       </motion.div>
     </motion.div>

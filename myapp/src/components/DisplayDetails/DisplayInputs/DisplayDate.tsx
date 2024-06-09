@@ -1,12 +1,13 @@
 import React from "react"
 import { useGlobalForm } from "@/context/GlobalFormContext"
+import { formatDate } from "@/utils/formateDate"
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 
 export const DisplayDate = () => {
   const { formData, selectedEventColor } = useGlobalForm()
-
+  const formattedDate = formatDate(formData.event_date)
   return (
     <motion.div className=" flex w-[50%] items-center justify-between p-2">
       <motion.div
@@ -28,7 +29,7 @@ export const DisplayDate = () => {
         />
         <input
           className="my-2 ml-2 mt-1 block h-10 w-[100%] appearance-none border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-          value={[formData.event_date + " " + formData.event_time]}
+          value={[formattedDate + " " + formData.event_time]}
         ></input>
       </motion.div>
     </motion.div>

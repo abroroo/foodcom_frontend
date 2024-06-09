@@ -10,6 +10,9 @@ const DisplayEvent = () => {
     (event) => formData.event_type === event.value
   )[0].label
 
+  const event =
+    eventLabel === "도시락.기타 행사" ? formData.event_other_value : eventLabel
+
   return (
     <motion.div className=" flex items-center justify-between p-2">
       <motion.div
@@ -29,7 +32,7 @@ const DisplayEvent = () => {
         />
         <input
           className="my-2 ml-2 mt-1 block h-10 w-full border-b-[1px]  border-slate-200 pb-0 text-[14px] font-semibold text-[#49111c] focus:border-[#49111c] focus:outline-none md:text-[17px]"
-          value={eventLabel}
+          value={event}
         ></input>
       </motion.div>
     </motion.div>
