@@ -33,7 +33,16 @@ export const VenueQuestion = ({
   const selectedVenue = watch("event_place", formData.event_place || "")
 
   const onSubmit: SubmitHandler<VenueFormType> = (data) => {
-    updateFormData(data)
+    const combinedData = {
+      ...data,
+      event_place:
+        data.event_place === "기타"
+          ? data.custom_event_place
+          : data.event_place,
+    }
+    delete combinedData.custom_event_place
+
+    updateFormData(combinedData)
     handleNext()
   }
 

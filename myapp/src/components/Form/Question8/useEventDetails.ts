@@ -8,14 +8,15 @@ export const useEventDetails = () => {
   const { formData } = useGlobalForm()
 
   const eventConfig = useMemo(() => {
-    return EventsConfig.find((event) => event.value === formData.event_type)
+    return (
+      EventsConfig.find((event) => event.value === formData.event_type) ||
+      formData.event_type
+    )
   }, [formData.event_type])
 
   const eventLabel = useMemo(() => {
-    return eventConfig?.value === "otherEvent"
-      ? formData.event_other_value
-      : eventConfig?.label
-  }, [eventConfig, formData.event_other_value])
+    return eventConfig?.label || formData.event_type
+  }, [eventConfig, formData.event_type])
 
   const toolLabels = useMemo(() => {
     return formData.tool

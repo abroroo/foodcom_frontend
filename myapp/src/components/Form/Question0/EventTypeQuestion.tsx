@@ -38,9 +38,16 @@ export const EventTypeQuestion = ({ handleNext }: EventTypeQuestionProps) => {
   const selectedEvent = watch("event_type", formData.event_type || "")
   const { setThemeColor, setEvent, themeColor } = useGlobalState()
   const onSubmit: SubmitHandler<EventFormType> = (data) => {
-    if (data.event_type === "otherEvent") {
+    const combinedData = {
+      ...data,
+      event_type:
+        data.event_type === "otherEvent"
+          ? data.event_other_value
+          : data.event_type,
     }
-    updateFormData(data)
+    delete combinedData.event_other_value
+
+    updateFormData(combinedData)
     handleNext()
   }
 

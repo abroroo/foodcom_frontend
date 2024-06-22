@@ -6,9 +6,9 @@ import { PartyPopper } from "lucide-react"
 
 const DisplayEvent = () => {
   const { formData, selectedEventColor } = useGlobalForm()
-  const eventLabel = EventsConfig.filter(
-    (event) => formData.event_type === event.value
-  )[0].label
+  const eventLabel =
+    EventsConfig.filter((event) => formData.event_type === event.value)[0]
+      ?.label || formData.event_type
 
   const event =
     eventLabel === "도시락.기타 행사" ? formData.event_other_value : eventLabel
