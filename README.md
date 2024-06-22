@@ -6,19 +6,6 @@ Welcome to the FoodCom website, the official online platform for FoodCom, a cate
 
 The FoodCom website is designed to streamline the process of booking catering services, providing a user-friendly experience for clients and efficient management tools for FoodCom representatives.
 
-### Key Features
-
-- **Event Questionnaire**: Clients can book catering services through a detailed questionnaire.
-- **Personalized Requests**: Customize your event by selecting the type of event, number of guests, budget per person, venue, and additional items.
-- **Real-time Notifications**: A Telegram bot notifies FoodCom of new requests and allows for no-code management of website images.
-- **Secure Management**: Running on AWS LightSail for reliable and secure operations.
-
-## Technologies Used
-
-- **Frontend**: Built with Next.js for a fast, responsive, and dynamic user experience.
-- **Backend**: Powered by Django for robust and scalable server-side operations.
-- **Integration**: Telegram bot integration for real-time notifications and image management.
-
 ## How It Works
 
 1. **Select Event Details**: Begin by selecting the type of event you're hosting, the number of guests, and your preferred budget per person.
@@ -28,9 +15,23 @@ The FoodCom website is designed to streamline the process of booking catering se
 5. **Confirmation and Contact**: Once the form is completed, a FoodCom representative will contact you to discuss menu details and arrange advance payment.
 6. **Relax and Enjoy**: With all details finalized, you can relax, knowing that FoodCom will take care of all your catering needs for the event.
 
-## Contributions
 
-We welcome contributions from the community. To contribute, please fork the repository, create a new branch for your feature or bugfix, and submit a pull request.
+
+
+## Key Features
+
+- **Event Questionnaire**: Clients can book catering services through a detailed questionnaire.
+- **Personalized Requests**: Customize your event by selecting the type of event, number of guests, budget per person, venue, and additional items.
+- **Real-time Notifications**: A Telegram bot notifies FoodCom of new requests and allows for no-code management of website images.
+- **Secure Management**: Running on AWS LightSail for reliable and secure operations.
+
+
+## Technologies Used
+
+- **Frontend**: Built with Next.js for a fast, responsive, and dynamic user experience.
+- **Backend**: Powered by Django for robust and scalable server-side operations.
+- **Integration**: Telegram bot integration for real-time notifications and image management.
+
 
 ## License
 
