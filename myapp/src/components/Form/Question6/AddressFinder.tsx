@@ -82,7 +82,7 @@ const AddressFinder: React.FC<AddressFinderProps> = ({
   }
 
   return (
-    <div className="">
+    <div className="w-full md:w-[60%]">
       <motion.h1
         initial={{ x: -200 }}
         whileInView={{ x: 0 }}
