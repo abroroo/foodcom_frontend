@@ -37,7 +37,7 @@ const VenueCheckbox = ({
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.04, ease: [0.25, 1, 0.5, 1] }}
       style={selectedVenue === value ? onSelectStyle : {}}
-      className="relative m-1 flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2 md:h-28 md:w-28 xl:m-4"
+      className="relative m-[6px] flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg border text-[#49111c] shadow-lg hover:bg-indigo-50 md:m-2 md:h-28 md:w-28 xl:m-4"
     >
       <input
         style={{

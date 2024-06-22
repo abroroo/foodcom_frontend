@@ -36,7 +36,7 @@ export const EventsCheckbox = ({
       initial={{ x: -100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="event_range_wrapper relative m-1 h-20 w-20 rounded-lg border pl-[6px] pt-[4px] text-[12px] text-[#49111c] shadow-lg  md:m-2 md:h-32 md:w-32 md:text-[14px] xl:m-2"
+      className="event_range_wrapper relative m-[6px] h-20 w-20 rounded-lg border pl-[6px] pt-[4px] text-[11.5px] text-[#49111c] shadow-lg  md:m-2 md:h-32 md:w-32 md:text-[14px] xl:m-2"
       style={selectedEvent === value ? onSelectStyle : {}}
     >
       <input

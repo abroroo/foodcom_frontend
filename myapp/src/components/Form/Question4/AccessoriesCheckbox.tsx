@@ -32,7 +32,7 @@ export const AccessoriesCheckbox = ({
         delay: 0.06,
         ease: [0.25, 1, 0.5, 1],
       }}
-      className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28 md:justify-center xl:m-3 "
+      className="relative m-1 flex h-16 w-[85px] cursor-pointer  items-center justify-start rounded-lg  border p-1 text-[#49111c] shadow-md hover:bg-indigo-50 md:m-2 md:h-20 md:w-28 md:justify-center xl:m-2 "
     >
       <input
         style={{ accentColor: color }}

@@ -9,7 +9,7 @@ export const EventsConfig: EventDataType[] = [
     value: "wedding",
     iconSrc: eventIconUrls.wedding,
     imageSrc: imageSources.wedding,
-    label: "스몰웨딩, 야외결혼",
+    label: "스몰웨딩",
     color: "#F25287",
   },
   {
@@ -45,21 +45,20 @@ export const EventsConfig: EventDataType[] = [
     color: "#9D174D",
   },
   {
-    id: "fingerFood",
-    value: "fingerFood",
-    iconSrc: eventIconUrls.fingerFood,
-    imageSrc: imageSources.fingerFood,
-    label: "핑거푸드",
-    color: "#F8B400",
-  },
-
-  {
     id: "steak",
     value: "steak",
     iconSrc: eventIconUrls.steak,
     imageSrc: imageSources.steak,
     label: "스테이크 행사",
     color: "#FE0000",
+  },
+  {
+    id: "fingerFood",
+    value: "fingerFood",
+    iconSrc: eventIconUrls.fingerFood,
+    imageSrc: imageSources.fingerFood,
+    label: "핑거푸드",
+    color: "#F8B400",
   },
 
   {

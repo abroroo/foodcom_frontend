@@ -68,7 +68,7 @@ export const AccessoriesQuestion = ({
         </span>
       </motion.h4>
 
-      <div className="flex flex-wrap justify-center">
+      <div className="flex w-full flex-wrap justify-center">
         {toolConfig.map((tool) => (
           <AccessoriesCheckbox
             key={tool.id}
