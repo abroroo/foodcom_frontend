@@ -29,9 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "utils/kakaoMap.js",
-    "utils/kakaoMap.d.ts",
-    "components/fetchFunctions/fetchFunctions.js"
+    "src/utils/kakaoMap.js",
+    "src/utils/kakaoMap.d.ts",
+    "src/components/fetchFunctions/fetchFunctions.js"
   ],
   "exclude": ["node_modules"]
 }

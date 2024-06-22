@@ -1,0 +1,29 @@
+
+typescript:S3776+"TRefactor this function to reduce its Cognitive Complexity from 80 to the 15 allowed.(î‘ğµ8ƒÇ—Áı1J$4685fbe0-f978-4aa1-acb6-7f59a9ffe44b
+…typescript:S18545"<Remove this useless assignment to variable "setCurrentDate".(Òü‰£8ƒÇ—Áı1J$6452fa4f-baf7-42cf-91ac-c4e4c8659334
+€typescript:S1854="2Remove this useless assignment to variable "name".(“Ä½‚ıÿÿÿÿ8ƒÇ—Áı1J$ef967145-75d9-4162-83b1-0caa368f5b0f
+…typescript:S1854e"<Remove this useless assignment to variable "totalQuestions".(ˆ¯ãä8ƒÇ—Áı1J$87d7a599-0579-4182-a4b2-0fcd795f4ba1
+…typescript:S1854k"<Remove this useless assignment to variable "handlePrevious".(Ï×Ãá8ƒÇ—Áı1J$94223a49-3234-49fd-bb3a-4bdf32f9b979
+ƒtypescript:S6754q":useState call is not destructured into value + setter pair(Ó¿…8„Ç—Áı1J$f050d7a9-222c-4c6c-81b9-8e0f9159791f
+dtypescript:S108"Empty block statement.(¡»¢üùÿÿÿÿ8„Ç—Áı1J$adca3f7c-021f-4b15-977e-8281c7d94a97
+etypescript:S3626ˆ"Remove this redundant jump.(ÙãŞŸ8„Ç—Áı1J$0cda0bfb-142b-4edb-9858-e4244b153ad4
+etypescript:S3626"Remove this redundant jump.(ÙãŞŸ8…Ç—Áı1J$c703371b-04e9-4b7d-87db-e994cc4be908
+typescript:S6644¤">Unnecessary use of boolean literals in conditional expression.(‚ÈØ©üÿÿÿÿ8…Ç—Áı1J$fb944362-eec4-4139-9c43-64eec28ed61e
+typescript:S6644">Unnecessary use of boolean literals in conditional expression.(‡é‹øÿÿÿÿ8…Ç—Áı1J$03086741-e52b-4d3e-945d-5a5a625c4d9d
+ˆtypescript:S6644Œ">Unnecessary use of boolean literals in conditional expression.(Ÿ¢îÄ8…Ç—Áı1J$ef6635b2-40be-4b51-ad4c-0aca8f0fd26c
+ˆtypescript:S6644Ù
+">Unnecessary use of boolean literals in conditional expression.(¼ªš8…Ç—Áı1J$9c518dc3-f159-4dbb-83ee-a89c41f98094
+ˆtypescript:S6644">Unnecessary use of boolean literals in conditional expression.(‘ï¿À8…Ç—Áı1J$30cd59d4-5fcd-4842-8916-bbf6bc84d202
+{typescript:S6749Ñ",A fragment with only one child is redundant.(™åÑğüÿÿÿÿ8…Ç—Áı1J$008ce14c-f2f4-4dd0-b809-c81808f5f6b6
+ˆtypescript:S6644†">Unnecessary use of boolean literals in conditional expression.(²ëà°8…Ç—Áı1J$dc97e22d-2211-4c68-86ce-868aae74ac40
+typescript:S6644¿">Unnecessary use of boolean literals in conditional expression.(¨â‘øÿÿÿÿ8†Ç—Áı1J$28bcd39b-f61c-493e-83ed-8f211aced9d7
+ˆtypescript:S6644İ">Unnecessary use of boolean literals in conditional expression.(šÍ·Â8†Ç—Áı1J$c181c448-3b23-4346-8976-ec18736c168a
+typescript:S3358™"DExtract this nested ternary operation into an independent statement.(ßØ}8†Ç—Áı1J$56db6655-4574-4695-848d-5804cdbcca15
+typescript:S3358›"DExtract this nested ternary operation into an independent statement.(ßû°Ã8†Ç—Áı1J$26e066c0-4288-4353-b58f-929d816efe4b
+“typescript:S3358"DExtract this nested ternary operation into an independent statement.(¬í´²üÿÿÿÿ8†Ç—Áı1J$c0ed0947-36d8-4ab9-8f1a-5dbd660982bb
+“typescript:S3358Ÿ"DExtract this nested ternary operation into an independent statement.(ÈÚÏ¸ÿÿÿÿÿ8†Ç—Áı1J$f69ab49f-67ab-4550-a647-84cf4022752e
+“typescript:S3358¡"DExtract this nested ternary operation into an independent statement.(„Ÿ™ÿúÿÿÿÿ8†Ç—Áı1J$aab66c8e-469b-4f62-9de0-fd1f856003da
+“typescript:S3358£"DExtract this nested ternary operation into an independent statement.(îŸÖâúÿÿÿÿ8†Ç—Áı1J$b4f30573-bba5-4394-b359-3baf693cb6e8
+”typescript:S905æ"FExpected an assignment or function call and instead saw an expression.(µŞòÑùÿÿÿÿ8‡Ç—Áı1J$0fbd2912-ec6d-4ea6-911d-98dcf9d47fff
+otypescript:S878æ"!Unexpected use of comma operator.(µŞòÑùÿÿÿÿ8‡Ç—Áı1J$e823d5e4-42bd-4b4e-9262-03a8e0b5808d
+§typescript:S3923ƒ"]This conditional operation returns the same value whether the condition is "true" or "false".(†µ¸è8‡Ç—Áı1J$8d3c68fe-4615-4a74-895b-5d05a91751d4

@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "fonts.css";
+
+body {
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-non-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.phone_number_input {
+  --placeholder-size: 13px;
+}
+
+.phone_number_input::placeholder {
+  font-size: var(--placeholder-size);
+}
+
+datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  writing-mode: horizontal-tb;
+}
+
+
+.landing {
+  background-image: url("/images/bert-hall.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.steps-background {
+  /* background-image: url("/images/bert-wedd.jpeg");     #F9FCFB; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f9fcfb;
+}
+
+@keyframes moveBgRow1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveBgRow2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveBgRow3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-bg-row1 {
+  animation: moveBgRow1 50s linear infinite;
+}
+
+.animate-bg-row2 {
+  animation: moveBgRow2 25s linear infinite;
+}
+
+.animate-bg-row3 {
+  animation: moveBgRow3 30s linear infinite;
+}
+
+.rdp {
+  --rdp-cell-size: 55px !important;
+}
+
+@media (max-height: 900px) {
+  .rdp {
+    --rdp-cell-size: 50px !important; /* Size of the day cells. */
+  }
+}
+@media (max-height: 800px) and (max-width: 767px) {
+  .rdp {
+    --rdp-cell-size: 45px !important; /* Size of the day cells. */
+  }
+  .date-div {
+    overflow-y: scroll;
+    margin-top: 128px;
+  }
+}
+@media (max-width: 767px) {
+  .rdp {
+    --rdp-cell-size: 40px !important; /* Size of the day cells. */
+  }
+  .date-div {
+    overflow-y: visible;
+  }
+}
+
+@media (max-height: 800px) and (min-width: 1200px) {
+  .tool-div {
+    padding-top: 128px;
+    overflow-y: scroll;
+  }
+}
+
+
+
+/* Custom CSS class for styling datalist options */
+.circle-options {
+  list-style-type: none; /* Remove the default list-style */
+  padding: 0; /* Remove default padding */
+}
+
+/* Style each option as a circle */
+.circle-options option {
+  border-radius: 50%; /* Make each option a circle */
+  width: 5px; /* Adjust the size of the circle */
+  height: 5px; /* Adjust the size of the circle */
+  background-color: #007bff; /* Set the color of the circle */
+  margin-right: 0px; /* Adjust the spacing between circles */
+}
+
+.marquee {
+  height: 27px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee div {
+  display: block;
+  width: 200%;
+  height: 27px;
+  position: absolute;
+  overflow: hidden;
+  -webkit-animation: marquee 10s linear infinite;
+  animation: marquee 10s linear infinite;
+  background: linear-gradient(
+    to right,
+    red,
+    indigo,
+    green,
+    orange,
+    red,
+    blue,
+    #49111c,
+    red
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+@media (max-width: 767px) {
+  .marquee span {
+    width: 50%;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+}
+@-webkit-keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
