@@ -4,7 +4,7 @@ Welcome to the FoodCom website, the official online platform for FoodCom, a cate
 
 ## Overview
 
-The FoodCom website is designed to streamline the process of booking catering services, providing a user-friendly experience for clients and efficient management tools for FoodCom representatives.
+The FoodCom website is designed to ease the process of booking catering services, providing a user-friendly experience for clients and efficient management tools for FoodCom representatives.
 
 ## How It Works
 
