@@ -99,11 +99,11 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="만찬_푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
+          content="만찬외식 전문 푸드컴 - 30년노하우. 신선한재료와 정성가득 food서비스 특별한순간 고객을위한 최고의서비스제공."
         />
         <meta
           name="keywords"
-          content="푸드컴, 만찬, 만찬외식, 전북출장뷔페, 행사이벤트, 행사서비스, 출장, 통돼지, 전주출장부페, 출장케이터링, 단체도시락"
+          content="만찬외식, 푸드컴, 만찬, 전북출장뷔페, 행사이벤트, 행사서비스, 출장, 통돼지, 전주출장부페, 출장케이터링, 단체도시락"
         />
         <meta property="og:title" content="만찬 | 푸드컴" />
         <meta
@@ -164,7 +164,7 @@ export default function Home() {
               </motion.div>
               <span className="   mb-2 flex flex-col items-center justify-center py-0 text-[20px] font-[900] md:text-[30px]">
                 <span className=" py-0">MAN CHAN * FOODCOM</span>{" "}
-                <span className="py-0 font-kaushan">Catering Service</span>
+                <span className="py-0 font-kaushan">만찬외식 전문 Catering Service</span>
               </span>
             </h1>
             <div className="flex w-full items-center justify-center ">
@@ -368,8 +368,8 @@ export default function Home() {
                     >
                       <div className="marquee mb-2 font-bold">
                         <div>
-                          <span>출장푸드 | 행사대행 | 랜탈 </span>
-                          <span>출장푸드 | 행사대행 | 랜탈 </span>
+                          <span>만찬외식 | 출장푸드 | 행사대행 | 랜탈 </span>
+                          <span>만찬외식 | 출장푸드 | 행사대행 | 랜탈 </span>
                         </div>
                       </div>
                     </div>
