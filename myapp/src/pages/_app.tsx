@@ -32,10 +32,6 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           name="naver-site-verification"
           content="38c3a4d914672bc96ef1afc4832dbb98687ba697"
         />
-        <meta
-          name="naver-site-verification"
-          content="3579026e60b7019d9c6aa776edcd38baedc6311f"
-        />
         <title>푸드컴 - 출장푸드.이벤트.행사대행.랜탈</title>
         <meta
           name="sitename"
