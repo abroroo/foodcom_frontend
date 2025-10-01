@@ -43,7 +43,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         />
         <meta
           name="keywords"
-          content="만찬외식, 케이터링 서비스, 푸드컴, 맞춤형 메뉴, 출장푸드, 이벤트, 행사대행, 결혼식 케이터링, 회사 행사 케이터링, 친절한 서비스, 랜탈"
+          content="만찬, 만찬외식, 만찬외식산업, 케이터링 서비스, 푸드컴, 맞춤형 메뉴, 출장푸드, 이벤트, 행사대행, 결혼식 케이터링, 회사 행사 케이터링, 친절한 서비스, 랜탈"
         />
         <meta name="author" content="푸드컴.com"></meta>
         <meta property="og:url" content="https://푸드컴.com" />
