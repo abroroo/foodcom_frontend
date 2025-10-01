@@ -7,6 +7,14 @@ const MyDocument = () => {
   return (
     <Html lang="ko">
       <Head>
+        <meta
+          name="naver-site-verification"
+          content="38c3a4d914672bc96ef1afc4832dbb98687ba697"
+        />
+        <meta
+          name="naver-site-verification"
+          content="3579026e60b7019d9c6aa776edcd38baedc6311f"
+        />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/manifest/icon-512x512.png"></link>
         <meta name="theme-color" content="#000" />
